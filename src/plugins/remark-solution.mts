@@ -1,14 +1,14 @@
 import {visit} from "unist-util-visit";
 const transformer=(node)=>{
-	if(node.type==="textDirective"&&node.name==="blank"){
+	if(node.type==="containerDirective"&&node.name==="solution"){
 		const data=node.data||(node.data={});
 		data.hName="span";
 		data.hProperties={
-			className:["exam-blank"],
-		};
+			className:["exam-solution"],
+		}
 	}
 };
-export default function remarkBlank(){
+export default function remarkSolution(){
 	return (tree)=>{
 		visit(tree,transformer);
 	};

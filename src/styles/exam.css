@@ -7,3 +7,17 @@
 	vertical-align:baseline;
 	padding:0.1em 0.35em;
 }
+.exam-solution{
+	border:solid 1px;
+	border-radius:4px;
+}
+.exam-solution-summary{
+	cursor:pointer;
+	padding:0 4px;
+}
+.exam-solution[open] .exam-solution-summary{
+	border-bottom:solid 1px;
+}
+.exam-solution-content{
+	padding:0 4px;
+}

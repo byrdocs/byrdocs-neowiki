@@ -1,7 +1,6 @@
 import {visit} from "unist-util-visit";
 const transformer=(node,index,parent)=>{
 	if(node.tagName==="span"&&node.properties.className?.includes("exam-blank")){
-		console.log(JSON.stringify({node}));
 		const hasAnswer=node.children?.length>0||false;
 		parent.children[index]={
 			type:"element",
