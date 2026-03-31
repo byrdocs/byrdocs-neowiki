@@ -1,5 +1,29 @@
 ---
 const {frontmatter}=Astro.props;
+const answerCompleteness=(答案完成度:string)=>{
+	switch(答案完成度){
+		case "残缺":
+			return {
+				style:"red",
+				text:"残缺",
+			};
+		case "完整":
+			return {
+				style:"magenta",
+				text:"完整",
+			};
+		case "完整可靠":
+			return {
+				style:"green",
+				text:"完整可靠",
+			};
+		default:
+			return {
+				style:"gray",
+				text:"未知",
+			};
+	}
+};
 ---
 <div>
 	<table>
@@ -9,7 +33,7 @@ const {frontmatter}=Astro.props;
 		</tr>
 		<tr>
 			<th>科目</th>
-			<td><a href=`https://byrdocs.org/?c=test&q=${frontmatter.科目}`>{frontmatter.科目}</a></td>
+			<td><a href={`https://byrdocs.org/?c=test&q=${frontmatter.科目}`}>{frontmatter.科目}</a></td>
 		</tr>
 		<tr>
 			<th>阶段</th>
@@ -25,11 +49,13 @@ const {frontmatter}=Astro.props;
 		</tr>
 		<tr>
 			<th>来源</th>
-			<td>{frontmatter.来源?<a href=`https://byrdocs.org/?c=test&q=${frontmatter.来源}`>BYR Docs 文件</a>:"暂无"}</td>
+			<td>{frontmatter.来源?<a href={`https://byrdocs.org/?c=test&q=${frontmatter.来源}`}>BYR Docs 文件</a>:"暂无"}</td>
 		</tr>
 		<tr>
 			<th>答案完成度</th>
-			<td>{frontmatter.答案完成度?frontmatter.答案完成度:"未知"}</td>
+			<td>{(({style,text})=>(
+				<span style={`color:${style}`}>{text}</span>
+			))(answerCompleteness(frontmatter.答案完成度))}</td>
 		</tr>
 	</table>
 </div>
