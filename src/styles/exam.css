@@ -1,0 +1,9 @@
+.exam-blank{
+	border:none;
+	border-radius:4px;
+	display:inline-flex;
+	line-height:inherit;
+	min-height:1.3lh;
+	vertical-align:baseline;
+	padding:0.1em 0.35em;
+}

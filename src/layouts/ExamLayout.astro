@@ -1,9 +1,13 @@
 ---
 import InfoBox from "/src/components/InfoBox.astro";
 import Layout from "/src/layouts/Layout.astro";
+import "/src/styles/exam.css";
 const {title,frontmatter}=Astro.props;
 ---
 <Layout pageTitle={title}>
 	<InfoBox frontmatter={frontmatter} />
 	<slot />
 </Layout>
+<script>
+	import "/src/scripts/blank.ts";
+</script>
