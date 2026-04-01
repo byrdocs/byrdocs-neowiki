@@ -29,7 +29,6 @@ const transformer=(node,index,parent)=>{
 				}:{},
 			],
 		};
-		console.log("\x1b[31mrehype\x1b[0m",JSON.stringify(parent.children[index]));
 	}
 };
 export default function rehypeFigure(){
