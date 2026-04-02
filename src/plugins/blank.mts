@@ -1,5 +1,19 @@
 import {visit} from "unist-util-visit";
-const transformer=(node,index,parent)=>{
+const remark=(node)=>{
+	if(node.type==="textDirective"&&node.name==="blank"){
+		const data=node.data??(node.data={});
+		data.hName="span";
+		data.hProperties={
+			className:["exam-blank"],
+		};
+	}
+};
+export function remarkBlank(){
+	return (tree)=>{
+		visit(tree,remark);
+	};
+}
+const rehype=(node,index,parent)=>{
 	if(node.tagName==="span"&&node.properties.className?.includes("exam-blank")){
 		const hasAnswer=node.children?.length>0||false;
 		parent.children[index]={
@@ -37,8 +51,8 @@ const transformer=(node,index,parent)=>{
 		};
 	}
 };
-export default function rehypeBlank(){
+export function rehypeBlank(){
 	return (tree)=>{
-		visit(tree,"element",transformer);
+		visit(tree,"element",rehype);
 	}
 }

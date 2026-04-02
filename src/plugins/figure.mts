@@ -1,5 +1,28 @@
 import {visit} from "unist-util-visit";
-const transformer=(node,index,parent)=>{
+const remark=(node)=>{
+	if(node.type==="leafDirective"&&node.name==="figure"){
+		const data=node.data??(node.data={});
+		data.hName="div";
+		const className=["exam-figure"];
+		if("float" in (node.attributes??{})){
+			className.push("exam-figure-float");
+		}
+		if(node.attributes?.src.endsWith(".svg")){
+			className.push("exam-figure-svg");
+		}
+		data.hProperties={
+			className,
+			src:node.attributes?.src,
+		};
+	}
+};
+export function remarkFigure(){
+	return (tree)=>{
+		visit(tree,remark);
+	};
+}
+import {visit} from "unist-util-visit";
+const rehype=(node,index,parent)=>{
 	if(node.tagName==="div"&&node.properties.className?.includes("exam-figure")){
 		const img=node.properties.src;
 		parent.children[index]={
@@ -31,8 +54,8 @@ const transformer=(node,index,parent)=>{
 		};
 	}
 };
-export default function rehypeFigure(){
+export function rehypeFigure(){
 	return (tree)=>{
-		visit(tree,"element",transformer);
+		visit(tree,"element",rehype);
 	};
 }

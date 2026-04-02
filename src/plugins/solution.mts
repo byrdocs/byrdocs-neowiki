@@ -1,5 +1,19 @@
 import {visit} from "unist-util-visit";
-const transformer=(node,index,parent)=>{
+const remark=(node)=>{
+	if(node.type==="containerDirective"&&node.name==="solution"){
+		const data=node.data??(node.data={});
+		data.hName="div";
+		data.hProperties={
+			className:["exam-solution"],
+		};
+	}
+};
+export function remarkSolution(){
+	return (tree)=>{
+		visit(tree,remark);
+	};
+}
+const rehype=(node,index,parent)=>{
 	if(node.tagName==="div"&&node.properties.className?.includes("exam-solution")){
 		parent.children[index]={
 			type:"element",
@@ -34,8 +48,8 @@ const transformer=(node,index,parent)=>{
 		};
 	}
 };
-export default function rehypeSolution(){
+export function rehypeSolution(){
 	return (tree)=>{
-		visit(tree,"element",transformer);
+		visit(tree,"element",rehype);
 	}
 }

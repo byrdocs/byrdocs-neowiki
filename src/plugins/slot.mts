@@ -1,5 +1,5 @@
 import {visit} from "unist-util-visit";
-const transformer=(node)=>{
+const remark=(node)=>{
 	if(node.type==="textDirective"&&node.name==="slot"){
 		if(node.children[0]){
 			node.children[0].value=`( ${children.value} )`;
@@ -17,8 +17,8 @@ const transformer=(node)=>{
 		};
 	}
 };
-export default function remarkSlot(){
+export function remarkSlot(){
 	return (tree)=>{
-		visit(tree,transformer);
+		visit(tree,remark);
 	};
 }
