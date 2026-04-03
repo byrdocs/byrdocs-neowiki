@@ -1,3 +1,14 @@
+:root{
+	--background:#ffffff;
+	--black:#111;
+	--gray:#9ca3af;
+	--red:#dc2626;
+	--green:#16a34a;
+	--amber:#d97706;
+}
+:root html.dark{
+	--background-dark:#202226;
+}
 .exam-blank{
 	border:none;
 	border-radius:4px;
@@ -6,10 +17,6 @@
 	min-height:1.3lh;
 	vertical-align:baseline;
 	padding:0.1em 0.35em;
-}
-.exam-solution{
-	border:solid 1px;
-	border-radius:4px;
 }
 .exam-blank{
 	background:#e9e9ed;
@@ -30,6 +37,10 @@ html.dark .exam-blank:hover:not(:disabled){
 html.dark .exam-blank:disabled{
 	color:#8f8f8f;
 }
+.exam-solution{
+	border:solid 1px;
+	border-radius:4px;
+}
 .exam-solution-summary{
 	cursor:pointer;
 	padding:0 4px;
@@ -39,4 +50,72 @@ html.dark .exam-blank:disabled{
 }
 .exam-solution-content{
 	padding:0 4px;
+}
+.exam-choices{
+	border-radius:8px;
+}
+.exam-choice-letter{
+	font-size:18px;
+	font-weight:bold;
+}
+.exam-choice-option{
+	display:block;
+}
+.exam-choice-input{
+	appearance:none;
+}
+.exam-choices .exam-choice-indicator{
+	background:var(--background);
+	border:1.5px solid var(--gray);
+	display:inline-block;
+	height:11px;
+	position:relative;
+	vertical-align:baseline;
+	width:11px;
+}
+.exam-choices.single .exam-choice-indicator{
+	border-radius:50%;
+}
+.exam-choices .exam-choice-input:checked+.exam-choice-indicator{
+	border-color:var(--black);
+}
+.exam-choices .exam-choice-input:checked+.exam-choice-indicator::after{
+	background:var(--black);
+	content:"";
+	inset:2px;
+	place-items:center;
+	position:absolute;
+}
+.exam-choices.single .exam-choice-input:checked+.exam-choice-indicator::after{
+	border-radius:50%;
+}
+.exam-choices .exam-choice-option.is-correct .exam-choice-indicator{
+	border-color:var(--green);
+}
+.exam-choices .exam-choice-option.is-correct .exam-choice-indicator::after{
+	background:var(--green);
+}
+.exam-choices .exam-choice-option.is-wrong .exam-choice-indicator{
+	border-color:var(--red);
+}
+.exam-choices .exam-choice-option.is-wrong .exam-choice-indicator::after{
+	background:var(--red);
+}
+.exam-choices .exam-choice-option.is-missed .exam-choice-indicator{
+	border-color:var(--amber);
+}
+.exam-choices .exam-choice-option.is-missed .exam-choice-indicator::after{
+	background:var(--amber);
+	content:"";
+	inset:2px;
+	position:absolute;
+}
+.exam-choices.single .exam-choice-option.is-missed .exam-choice-indicator::after{
+	border-radius:50%;
+}
+.exam-choices-submit.is-all-correct{
+	color:green;
+}
+.exam-choices-submit.is-not-all-correct{
+	color:red;
 }

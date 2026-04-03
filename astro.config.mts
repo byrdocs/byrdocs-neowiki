@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import {remarkBlank,rehypeBlank} from "./src/plugins/blank.mts";
+import {remarkChoices,rehypeChoices} from "./src/plugins/choices.mts";
 import remarkDirective from "remark-directive";
 import {remarkFigure,rehypeFigure} from "./src/plugins/figure.mts";
 import remarkMath from "remark-math";
@@ -14,6 +15,7 @@ export default defineConfig({
 	markdown:{
 		remarkPlugins:[
 			remarkBlank,
+			remarkChoices,
 			remarkDirective,
 			remarkFigure,
 			remarkMath,
@@ -22,6 +24,7 @@ export default defineConfig({
 		],
 		rehypePlugins:[
 			rehypeBlank,
+			rehypeChoices,
 			rehypeKatex,
 			rehypeFigure,
 			rehypeSolution,
