@@ -1,20 +1,107 @@
-html{
-	background-color:#ffffff;
-	color:#000000;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base{
+	html{
+		@apply scroll-smooth bg-slate-50 text-slate-900 antialiased;
+	}
+	html.dark{
+		color-scheme:dark;
+	}
+	body{
+		@apply min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+	}
+	a{
+		@apply text-blue-700 underline decoration-blue-300 underline-offset-2 transition-colors hover:text-blue-900 dark:text-sky-300 dark:decoration-sky-700 dark:hover:text-sky-200;
+	}
+	strong{
+		@apply font-semibold text-slate-950 dark:text-white;
+	}
+	::selection{
+		@apply bg-sky-200 text-slate-950;
+	}
+	.dark ::selection{
+		@apply bg-sky-500/40 text-white;
+	}
+	h4{
+		font-weight:bold;
+	}
 }
-html.dark{
-	background-color:#202226;
-	color:#eeeeee;
-}
-a{
-	color:#0645ad;
-}
-a:visited{
-	color:#5a3696;
-}
-html.dark a{
-	color:#8ec5ff;
-}
-html.dark a:visited{
-	color:#c6a8ff;
+
+@layer components{
+	:where(.wiki-content){
+		@apply w-full text-[1.02rem] leading-7 text-slate-800 dark:text-slate-200;
+	}
+	:where(.wiki-content > :first-child){
+		margin-top:0;
+	}
+	:where(.wiki-content > :last-child){
+		margin-bottom:0;
+	}
+	:where(.wiki-content h1){
+		@apply mt-8 text-3xl font-bold tracking-tight text-slate-950 dark:text-white;
+	}
+	:where(.wiki-content h2){
+		@apply mt-10 border-b border-slate-200 pb-2 text-2xl font-bold tracking-tight text-slate-950 dark:border-slate-800 dark:text-white;
+	}
+	:where(.wiki-content h3){
+		@apply mt-8 text-xl font-semibold tracking-tight text-slate-950 dark:text-white;
+	}
+	:where(.wiki-content p),
+	:where(.wiki-content ul),
+	:where(.wiki-content ol),
+	:where(.wiki-content dl),
+	:where(.wiki-content pre),
+	:where(.wiki-content blockquote),
+	:where(.wiki-content table),
+	:where(.wiki-content figure),
+	:where(.wiki-content details){
+		@apply my-4;
+	}
+	:where(.wiki-content ul){
+		@apply list-disc pl-6;
+	}
+	:where(.wiki-content ol){
+		@apply list-decimal pl-6;
+	}
+	:where(.wiki-content li){
+		@apply my-2;
+	}
+	:where(.wiki-content hr){
+		@apply my-8 border-slate-200 dark:border-slate-800;
+	}
+	:where(.wiki-content code){
+		@apply rounded-md bg-slate-200/70 px-1.5 py-0.5 text-[0.95em] text-slate-900 dark:bg-slate-800/90 dark:text-slate-100;
+	}
+	:where(.wiki-content pre){
+		@apply overflow-x-auto rounded-2xl border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 shadow-sm dark:border-slate-800;
+	}
+	:where(.wiki-content pre code){
+		@apply bg-transparent p-0 text-inherit;
+	}
+	:where(.wiki-content blockquote){
+		@apply rounded-r-xl border-l-4 border-slate-300 bg-slate-100/80 px-4 py-3 text-slate-700 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200;
+	}
+	:where(.wiki-content table){
+		@apply w-full border-collapse border border-slate-200 text-sm shadow-sm dark:border-slate-800;
+	}
+	:where(.wiki-content th){
+		@apply bg-slate-100 px-4 py-3 text-left font-semibold text-slate-900 dark:bg-slate-900 dark:text-slate-100;
+	}
+	:where(.wiki-content td){
+		@apply border-t border-slate-200 px-4 py-3 align-top dark:border-slate-800;
+	}
+	:where(.wiki-content img){
+		@apply rounded-xl;
+	}
+	:where(.wiki-content figcaption){
+		@apply mt-2 text-center text-sm text-slate-600 dark:text-slate-400;
+	}
+	:where(.wiki-content figcaption p){
+		margin:0;
+	}
+	:where(.wiki-content details){
+		@apply overflow-hidden;
+	}
 }

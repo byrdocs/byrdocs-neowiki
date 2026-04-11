@@ -1,32 +1,15 @@
 ---
 import ThemeIcon from "/src/components/ThemeIcon.astro";
+
 const {pageTitle}=Astro.props;
 ---
-<nav>
-	<div>
-		<a class=link-item href="/" title="回到首页"><img src=/favicon.svg height=30px /></a>
-		<span class=page-title>{pageTitle}</span>
+
+<nav class="border-b border-slate-200/80 bg-white/85 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
+	<div class="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+		<a class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm no-underline transition hover:-translate-y-0.5 hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700" href="/" title="回到首页">
+			<img alt="BYR Docs" class="h-7 w-7" src="/favicon.svg" />
+		</a>
+		<span class="min-w-0 flex-1 truncate text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl dark:text-white">{pageTitle}</span>
 		<ThemeIcon />
 	</div>
 </nav>
-<style>
-	div{
-		display:flex;
-		justify-content:space-between;
-		align-items:center;
-		width:100%;
-	}
-	.page-title{
-		font-weight:bold;
-		font-size:30px;
-		color:#404040;
-	}
-	:global(.dark) .page-title{
-		font-weight:bold;
-		font-size:30px;
-		color:#ffffff;
-	}
-	.link-item{
-		text-decoration:none;
-	}
-</style>

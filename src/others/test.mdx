@@ -1,0 +1,112 @@
+---
+时间: 2025-2026学年第二学期
+科目: 维基真题
+阶段: 期末
+类型: 本科
+答案完成度: 完整可靠
+---
+
+当你阅读完[维基真题编辑者指引](/guide)后，你可以来自测一下自己是否很好地掌握了这些内容！
+
+## 选择题
+
+<Figure float src="favicon.svg">
+	BYR Docs 维基真题
+</Figure>
+
+1. 本题是 <Slot />。
+
+<Choices>
+	<False>多选题</False>
+	<True>单选题</True>
+</Choices>
+
+2. 下面哪些试题命名是符合规范的？
+
+<Choices>
+	<False>24-25-线性代数-期末</False>
+	<False>23-24-2-高等数学-期中</False>{/*应为《高等数学（上）》或《高等数学（下）》*/}
+	<True>25-26-1-计算导论与程序设计-期末（网络空间安全学院）</True>{/*加括号补注是符合规范的*/}
+	<False>23-25-1-人工智能引论B-期末</False>{/*不存在2023-2025学年*/}
+	<False>维基真题编辑者自测</False>
+</Choices>
+
+3. 在前言中，“答案完成度”可以填哪些值？
+
+<Choices multiple>
+	<True>完整</True>
+	<False>可靠</False>
+	<True>完整可靠</True>
+	<True>残缺</True>
+</Choices>
+
+下面几个组件中，用于展示题面的有 <Slot item="4" />，用于展示答案的有 <Slot item="5" />。
+
+<Choices multiple>
+	<True>Blank</True>
+	<False>Choices</False>
+	<True>Figure</True>
+	<True>Slot</True>
+	<False>Solution</False>
+</Choices>
+
+<Choices multiple>
+	<True>Blank</True>
+	<True>Choices</True>
+	<True>Figure</True>
+	<False>Slot</False>
+	<True>Solution</True>
+</Choices>
+
+6. `Figure` 组件可以使用哪些参数？
+
+<Choices multiple>
+	<False>item</False>
+	<True>float</True>
+	<True>src</True>
+	<False>multiple</False>
+</Choices>
+
+7. `Slot` 组件的 `id` 参数意味着什么？
+
+<Choices>
+	<True>题号</True>
+	<False>题量</False>
+	<False>分值</False>
+</Choices>
+
+## 填空题
+
+1. 对于一般编辑者来说，文件结构中只有两个目录是需要关注的。它们分别是保存试题文件的 <Blank>exams/</Blank> 和保存题目附件的 <Blank>public/</Blank>。
+2. 在维基真题中，大题的题号使用 <Blank>二</Blank> 级标题。
+3. 在 `Choices` 块中，应使用 <Blank>Option</Blank> 组件来定义选择题选项；对于正确答案的项，应使用 <Blank>True</Blank> 组件来定义。
+
+## 简答题
+
+### 1.
+
+在前言中，“来源”指的是什么？它应该是什么格式的？如何查到这则信息？
+
+<Solution>
+“来源”指的是 BYR Docs 主站上的文件，它在题目页中呈现为一个指向主站文件的链接。
+
+它的格式是一个 md5 值（其中字母全用小写），通过这个值可以搜索到主站文件。
+
+要获知一个目标文件的 md5 值，可以在主站查到这个文件，并在文件信息框的右下角复制得到。
+</Solution>
+
+### 2.
+
+本页面的开头插入了一张维基真题的 Logo，这张图片在[文件树](https://github.com/byrdocs/byrdocs-wiki-internal.git)中的位置是 `public/favicon.img`。
+
+如果要使用维基组件定义这张图片（及图片标题），应当如何写？
+
+<Solution>
+```mdx
+<Figure float src="favicon.svg">
+	BYR Docs 维基真题
+</Figure>
+```
+
+其中 `float` 和 `src="favicon.svg"` 的位置可以调换。
+</Solution>

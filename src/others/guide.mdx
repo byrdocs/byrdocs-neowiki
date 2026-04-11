@@ -1,0 +1,226 @@
+{/*
+---
+时间: 2025-2026学年第二学期
+科目: 维基真题
+阶段: 期中
+类型: 本科
+---
+*/}
+
+如果你已经对维基真题的编辑驾轻就熟，欢迎进行[自测](/test)！
+
+## 文件结构
+
+如果你是一般编辑者，文件结构中只有两个目录是你需要关注的：
+
+- [exams/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/exams) 存放 MDX 格式的试题文件。每份试题的命名格式为 **学年开始-学年结束-学期-科目-阶段（备注）**，例如：
+    - **23-24-1-线性代数-期末（B卷）** 因为本次考试的AB卷均收录于本维基，所以我们可以对其加注（A卷）或（B卷）加以区分。
+    - **23-24-2-高等数学A（下）-期末** 注意科目要用全名，不要使用缩写。
+    - **24-25-1-英语听说2-期末** 即便是英文试卷（包括国际学院的试卷），也要用中文名。
+    - **24-25-2-数字信号处理-期中** 当存在歧义时，最先创建的页面可以不加备注，这是重名的先来后到原则。
+    - **24-25-2-数字信号处理-期中（信息与通信工程学院）** 接下来出现的同名文件必须给予适当备注，以避免重名。
+- [public/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/public) 存放图像、音频文件，作为题目的附件。一般情况下，上传文件的命名均应以**它所属的试卷名**为前缀，再注明它是题图、答案或其它类型的文件，例如：
+    - **24-25-2-数字信号处理-期中（信息与通信工程学院）-题图3.1.png** 这份文件属于 24-25-2-数字信号处理-期中（信息与通信工程学院），是第3.1题的题图。
+    - **24-25-2-电路分析基础-期中-解答4.svg** 这份文件属于 24-25-2-电路分析基础-期中，是第四题解答中用到的图。
+    - **24-25-1-进阶综合英语（上）-期末-听力音频.mp3** 这份文件属于 24-25-1-进阶综合英语（上）-期末，是听力部分的听力音频。
+
+如果你有意向对网站本身做出调整，请自行了解 [Astro 文档](https://docs.astro.build/en/getting-started/)及本项目代码结构，也可加入[我们的 QQ 群](https://qm.qq.com/cgi-bin/qm/qr?k=plu_KgkqxI4Dw-FwW1aFQDQ0hL062WNV&jump_from=webapi&authKey=09aiBE16MH9jTfmgmGtCjMRsvpazAMkvLcG35mdICYHe2+FKF51qqSIdUC0dVxkh)。
+
+## 试题格式规范
+
+[exams/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/exams) 文件全部使用 [MDX 语言](https://mdxjs.com/)，并包含本项目使用的自定义模块编写而成。它的学习成本低，上手容易，又能满足本维基的功能需求。
+
+为了保持试题代码结构的规范性和一致性，我们要求编辑者**必须使用本维基指定组件和 Markdown 语法，不可以使用其它自定义组件、脚本及样式**。因此，除指定组件外，其它代码应与 Markdown 语法一致。
+
+### 前言
+
+前言描述了文档的元信息，必须置于文件开头。检查器会严格检查前言语法，所以请一定按照规范编写。
+
+```md
+---
+时间: 2024-2025学年第二学期
+科目: 电路分析基础
+阶段: 期中
+类型: 本科
+学院:
+- 电子工程学院
+答案完成度: 完整
+---
+```
+
+- 时间：**xxxx-yyyy学年第[一/二]学期**。
+- 阶段：**期中**或**期末**。
+- 类型：**本科**或**研究生**。
+- 科目：就是课程名。必须使用课程的中文全称，不得使用英文名、简称等。
+- 学院<sup>可选</sup>：必须是学院名，使用YAML格式的列表。如果缺少相关信息，可以留空。
+- 来源<sup>可选</sup>：填写 BYR Docs 主站相应文件的 md5 值（注意，字母要小写）。文件的 md5 可以在文件信息框的右下角复制得到。
+- 答案完成度<sup>可选</sup>：如果有完整的答案，且答案可靠，可以填为**完整可靠**；如果仅有答案，但不保证可靠，应填**完整**；如果答案残缺不全，应填**残缺**。
+
+### 正文结构
+
+- 试题内容只需要呈现有效的试题部分，不要添加无关紧要的细节，如「考试注意事项」「打分表」等。
+- 除题图、听力音频等必要附件外，试题内容应全部使用**符合维基真题规范的 MDX** 语法录入，不允许以照片形式存储试题。
+- 大题使用二级标题，简答题小题使用三级标题，如：
+
+```mdx
+## 二、简答题（每题10分，共40分）
+
+### 1.
+
+简述新民主主义的文化纲领。
+
+### 2.
+
+简述党在过渡时期的总路线。
+```
+
+- 但若同一个简答题的各个小题之间有共同关联，则不宜使用标题来划分，应直接使用列表来罗列小题，如：
+
+```mdx
+## 五（18分）
+
+一种蝙蝠通过发出度频声波进行回声定位，功能类似一个高通滤波器。请利用窗函数法设计线性相位 FIR 数字高通滤波器，要求：
+
+1. 阻带衰减不低于 $-48\,\mathrm{dB}$，通带边缘频率 $f_p=3.5\,\mathrm{kHz}$, 阻带边缘频率 $f_\text{stop}=3\,\mathrm{kHz}$，取样频率 $_s=10\,\mathrm{kHz}$。
+2. 画出线性相位实现结构。
+```
+
+- 对于填空、选择、判断类题型，若滥用三级标题将不利于阅读，因此应使用列表，如：
+
+```mdx
+## 三、判断题（每题 1 分，共 10 分）
+1. 在自然语言处理中，Prompt提示技术可以用于改善模型对新任务的理解和执行能力。<Blank />
+2. 人工智能的核心目标是完全模仿人类行为。<Blank />
+3. 梯度下降算法是神经网络训练中的核心优化方法。<Blank />
+```
+
+### 维基真题指定组件
+
+为了最大限度保证维基真题站点功能、编写体验和对内容的兼容性，我们设计了以下组件。
+
+#### `Blank` 组件
+
+`Blank` 组件常用于填空题中，作用是隐藏答案，只在用户点击时显示答案。
+
+```mdx
+1. 本题的答案是 <Blank>答案</Blank>。
+2. 下一题的答案是 <Blank />。
+```
+
+1. 本题的答案是 <Blank>答案</Blank>。
+2. 下一题的答案是 <Blank />。
+
+#### `Slot` 和 `Choices` 组件，及 `Option` `True` `False` 附属组件
+
+`Slot` 和 `Choices` 组件常用于选择题中。前者的作用是简单地在题面中插入一个空位；后者的作用是提供答题框，当用户提交时可以检验答案。
+
+- `Slot` 可以使用 `item` 属性加注题号，适用于多道题目共用同一题面的情况。
+- `Choices` 中的选择题默认为单选；如果是多选，需加注 `multiple` 属性。
+- 选项使用数个 `Option` 组件排布，A, B, C 等编号将按顺序自动生成，切勿手动添加编号。
+- 如需为题目提供答案，请使用 `True` `False` 组件替换 `Option`，其中 `True` 表示此选项是正确答案，`False` 表示此选项不是正确答案。
+
+```mdx
+1. 本题的答案是 <Slot />。
+
+<Choices multiple>
+    <True>1</True>
+    <False>2</False>
+    <True>3</True>
+</Choices>
+
+本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
+
+<Choices multiple>
+    <True>1</True>
+    <False>2</False>
+</Choices>
+
+<Choices multiple>
+    <False>1</False>
+    <True>2</True>
+</Choices>
+
+4. 本题的答案是 <Slot />。
+
+<Choices>
+    <Option>1</Option>
+    <Option>2</Option>
+    <Option>3</Option>
+</Choices>
+```
+
+1. 本题的答案是 <Slot />。
+
+<Choices multiple>
+    <True>1</True>
+    <False>2</False>
+    <True>3</True>
+</Choices>
+
+本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
+
+<Choices multiple>
+    <True>1</True>
+    <False>2</False>
+</Choices>
+
+<Choices multiple>
+    <False>1</False>
+    <True>2</True>
+</Choices>
+
+4. 本题的答案是 <Slot />。
+
+<Choices>
+    <Option>1</Option>
+    <Option>2</Option>
+    <Option>3</Option>
+</Choices>
+
+#### `Solution` 组件
+
+`Solution` 组件常用于解答题中，作用是隐藏大段答案，用户可以展开查看。
+
+```mdx
+<Solution>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</Solution>
+```
+
+<Solution>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</Solution>
+
+#### `Figure` 组件
+
+`Figure` 组件用于显示图片，支持斥文嵌入和串文旁置。
+
+- 图片来源 `src` 只能使用 [public/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/public) 目录内的文件，使用时不加 `public/` 前缀。
+- 图片默认使用斥文嵌入；如需串文旁置，请加注 `float` 属性。
+- 组件内填写图片标题；如果留空，则代表没有图片标题。
+
+```mdx
+两种插入图片的方法：
+
+<Figure src="favicon.svg" float>
+    BYR Docs 维基真题
+</Figure>
+
+串文旁置
+
+<Figure src="favicon.svg" />
+
+斥文嵌入
+```
+
+两种插入图片的方法：
+
+<Figure src="favicon.svg" float>
+    BYR Docs 维基真题
+</Figure>
+
+串文旁置
+
+<Figure src="favicon.svg" />
+
+斥文嵌入

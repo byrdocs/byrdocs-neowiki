@@ -1,5 +1,6 @@
 ---
 import {getCollection,render} from "astro:content";
+import * as examComponents from "/src/components/exam";
 import ExamLayout from "/src/layouts/ExamLayout.astro";
 export async function getStaticPaths(){
 	const exams=await getCollection("exams");
@@ -16,5 +17,5 @@ const {exam}=Astro.props;
 const {Content}=await render(exam);
 ---
 <ExamLayout frontmatter={exam.data} title={exam.id}>
-	<Content />
+	<Content components={examComponents} />
 </ExamLayout>

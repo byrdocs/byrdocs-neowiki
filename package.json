@@ -13,12 +13,13 @@
     "deploy": "pnpm build && wrangler pages deploy"
   },
   "dependencies": {
-    "astro": "^6.1.1",
-    "katex": "^0.16.44",
+    "@astrojs/mdx": "^5.0.3",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.5",
+    "katex": "^0.16.45",
     "rehype-katex": "^7.0.1",
-    "remark-directive": "^4.0.0",
     "remark-math": "^6.0.0",
-    "unist-util-visit": "^5.1.0",
-    "wrangler": "^4.79.0"
+    "tailwindcss": "^4.2.2",
+    "wrangler": "^4.81.1"
   }
 }
