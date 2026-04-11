@@ -1,0 +1,10 @@
+---
+const {correct}=Astro.props;
+const answer=typeof correct==="boolean"?`${correct}`:undefined;
+---
+<label class="exam-choice-option" data-answer={answer}>
+	<input class="exam-choice-input" type="radio" />
+	<span aria-hidden="true" class="exam-choice-indicator"></span>
+	<span aria-hidden="true" class="exam-choice-letter"></span>
+	<span class="exam-choice-content"><slot /></span>
+</label>

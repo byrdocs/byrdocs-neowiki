@@ -23,7 +23,7 @@ const SCHOOLS=[
 ]as const;
 const timePattern=/^(\d{4})-(\d{4})学年第[一二]学期$/;
 const exams=defineCollection({
-	loader:glob({pattern:"*.md",base:"./exams"}),
+	loader:glob({pattern:"*.mdx",base:"./exams"}),
 	schema:z.object({
 		时间:z.string()
 			.regex(timePattern)
@@ -37,9 +37,9 @@ const exams=defineCollection({
 		阶段:z.enum(["期中","期末"]),
 		类型:z.enum(["本科","研究生"]),
 		科目:z.string(),
-		学院:z.array(z.enum(SCHOOLS)).nonempty().optional(),
+		学院:z.array(z.enum(SCHOOLS)).optional(),
 		来源:z.string().regex(/^[0-9a-f]{32}$/).nonempty().optional(),
-		答案完成度:z.enum(["残缺","完整","完整可靠"]),
+		答案完成度:z.enum(["残缺","完整","完整可靠"]).optional(),
 	}),
 });
 export const collections={exams};

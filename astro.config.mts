@@ -1,33 +1,19 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import {remarkBlank,rehypeBlank} from "./src/plugins/blank.mts";
-import {remarkChoices,rehypeChoices} from "./src/plugins/choices.mts";
-import remarkDirective from "remark-directive";
-import {remarkFigure,rehypeFigure} from "./src/plugins/figure.mts";
-import remarkMath from "remark-math";
-import {remarkSlot} from "./src/plugins/slot.mts";
-import {remarkSolution,rehypeSolution} from "./src/plugins/solution.mts";
+import mdx from "@astrojs/mdx";
+import tailwindcss from "@tailwindcss/vite";
+import {defineConfig} from "astro/config";
 import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 // https://astro.build/config
 export default defineConfig({
 	site:"https://wiki.byrdocs.org",
+	integrations:[mdx()],
 	markdown:{
-		remarkPlugins:[
-			remarkBlank,
-			remarkChoices,
-			remarkDirective,
-			remarkFigure,
-			remarkMath,
-			remarkSlot,
-			remarkSolution,
-		],
-		rehypePlugins:[
-			rehypeBlank,
-			rehypeChoices,
-			rehypeKatex,
-			rehypeFigure,
-			rehypeSolution,
-		],
-	}
+		remarkPlugins:[remarkMath],
+		rehypePlugins:[rehypeKatex],
+	},
+	vite:{
+		plugins:[tailwindcss()],
+	},
 });

@@ -1,0 +1,8 @@
+---
+const hasAnswer=Astro.slots.has("default");
+---
+<label class:list={["exam-blank",!hasAnswer&&"is-disabled"]}>
+	{hasAnswer&&<input class="exam-blank-toggle" type="checkbox" />}
+	<span class="exam-blank-placeholder">{hasAnswer?"【显示答案】":"【暂无答案】"}</span>
+	{hasAnswer&&<span class="exam-blank-answer"><slot /></span>}
+</label>

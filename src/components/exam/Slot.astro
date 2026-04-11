@@ -1,0 +1,5 @@
+---
+const {item}=Astro.props;
+const text=item?`(${item})`:"(  )";
+---
+<span class="exam-slot">{text}</span>

@@ -1,0 +1,74 @@
+---
+const {multiple=false}=Astro.props;
+const isMultiple=multiple===true||multiple==="true"||multiple==="";
+---
+<fieldset class:list={["exam-choices",isMultiple?"multiple":"single"]} data-multiple={isMultiple?"true":"false"}>
+	<div class="exam-choices-options">
+		<slot />
+	</div>
+	<button class="exam-choices-submit" type="button">检查</button>
+</fieldset>
+<script>
+	const toAlphaLabel=(index)=>String.fromCharCode(65+index);
+	const groups=document.querySelectorAll(".exam-choices:not([data-exam-choices-ready])");
+	groups.forEach((group,groupIndex)=>{
+		group.setAttribute("data-exam-choices-ready","true");
+		const multiple=group.getAttribute("data-multiple")==="true";
+		const options=[...group.querySelectorAll(".exam-choice-option")];
+		const button=group.querySelector(".exam-choices-submit");
+		const hasAnswer=options.some(option=>option.getAttribute("data-answer")!==null);
+		const name=`exam-choices-${groupIndex}`;
+
+		options.forEach((option,index)=>{
+			const choice=toAlphaLabel(index);
+			option.setAttribute("data-choice",choice);
+			const input=option.querySelector(".exam-choice-input");
+			const letter=option.querySelector(".exam-choice-letter");
+			if(input instanceof HTMLInputElement){
+				input.type=multiple?"checkbox":"radio";
+				input.name=name;
+				input.value=choice;
+			}
+			if(letter){
+				letter.textContent=`${choice}.`;
+			}
+		});
+
+		if(!(button instanceof HTMLButtonElement))
+			return;
+
+		if(!hasAnswer){
+			button.disabled=true;
+			button.textContent="暂无答案";
+			return;
+		}
+
+		button.addEventListener("click",()=>{
+			let allCorrect=true;
+			options.forEach(option=>{
+				const input=option.querySelector(".exam-choice-input");
+				const isAnswer=option.getAttribute("data-answer")==="true";
+				const isSelected=input instanceof HTMLInputElement&&input.checked;
+
+				option.classList.remove("is-correct","is-wrong","is-missed");
+				if(isAnswer){
+					if(isSelected){
+						option.classList.add("is-correct");
+					}
+					else{
+						option.classList.add("is-missed");
+						allCorrect=false;
+					}
+				}
+				else if(isSelected){
+					option.classList.add("is-wrong");
+					allCorrect=false;
+				}
+			});
+
+			button.classList.remove("is-all-correct","is-not-all-correct");
+			button.classList.add(allCorrect?"is-all-correct":"is-not-all-correct");
+			button.textContent=allCorrect?"回答正确":"继续检查";
+		});
+	});
+</script>

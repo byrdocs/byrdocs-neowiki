@@ -1,0 +1,9 @@
+---
+const {src,float=false,alt}=Astro.props;
+const hasCaption=Astro.slots.has("default");
+const isFloat=float===true||float==="true"||float==="";
+---
+<figure class:list={["exam-figure",isFloat&&"exam-figure-float"]}>
+	<img alt={alt??(hasCaption?"题图":src)} class="exam-figure-image" loading="lazy" src={`/${src}`} />
+	{hasCaption&&<figcaption class="exam-figure-caption"><slot /></figcaption>}
+</figure>
