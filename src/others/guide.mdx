@@ -131,6 +131,7 @@
 - `Choices` 中的选择题默认为单选；如果是多选，需加注 `multiple` 属性。
 - 选项统一使用 `Option` 组件排布。A, B, C 等编号将按顺序自动生成，**切勿手动添加编号**。
 - `correct` 属性意味着这个 `Option` 是本题的正确答案；未加注 `correct` 的 `Option` 则意味着不是（或不知道）。如果一个 `Choices` 中没有任何带 `correct` 属性的 `Option`，则将本题视为暂无答案。
+- 为了简化语法，可以使用减号 `-` 引导的列表项来代替 `<Option>`，加号 `+` 引导的列表项来代替 `<Option correct>`，来定义一些选项。但请注意，这种语法的兼容性是有限的，对于复杂选项，还应使用 `<Option>` 语法。
 
 <div class="guide-example-grid">
     <div class="guide-example-panel guide-example-code">
@@ -139,30 +140,34 @@
             ```mdx
             1. 本题的答案是 <Slot />。
 
-            <Choices multiple>
-                <Option correct>1</Option>
+            <Choices>
+                <Option>1</Option>
                 <Option>2</Option>
-                <Option correct>3</Option>
+                <Option>3</Option>
             </Choices>
 
             本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
 
             <Choices multiple>
-                <Option correct>1</Option>
-                <Option>2</Option>
+                + 1
+                - 2
             </Choices>
 
             <Choices multiple>
-                <Option>1</Option>
-                <Option correct>2</Option>
+                - 1
+                + 2
             </Choices>
 
             4. 本题的答案是 <Slot />。
 
-            <Choices>
-                <Option>1</Option>
-                <Option>2</Option>
-                <Option>3</Option>
+            <Choices multiple>
+                + 是答案
+                - 不是答案
+                <Option correct>
+                    是答案是答案是答案
+
+                    是答案是答案是答案
+                </Option>
             </Choices>
             ```
         </div>
@@ -170,32 +175,36 @@
     <div class="guide-example-panel">
         <div class="guide-example-panel-title">预览</div>
         <div class="guide-example-panel-body guide-example-preview">
-            <Choices multiple>
-                <Option correct>1</Option>
-                <Option>2</Option>
-                <Option correct>3</Option>
-            </Choices>
-
-            <p>本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。</p>
-
-            <Choices multiple>
-                <Option correct>1</Option>
-                <Option>2</Option>
-            </Choices>
-
-            <Choices multiple>
-                <Option>1</Option>
-                <Option correct>2</Option>
-            </Choices>
-
-            <ol start={4}>
-                <li>本题的答案是 <Slot />。</li>
-            </ol>
+            1. 本题的答案是 <Slot />。
 
             <Choices>
                 <Option>1</Option>
                 <Option>2</Option>
                 <Option>3</Option>
+            </Choices>
+
+            本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
+
+            <Choices multiple>
+                + 1
+                - 2
+            </Choices>
+
+            <Choices multiple>
+                - 1
+                + 2
+            </Choices>
+
+            4. 本题的答案是 <Slot />。
+
+            <Choices multiple>
+                + 是答案
+                - 不是答案
+                <Option correct>
+                    是答案是答案是答案
+
+                    是答案是答案是答案
+                </Option>
             </Choices>
         </div>
     </div>

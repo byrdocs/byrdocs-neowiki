@@ -204,7 +204,14 @@ html.dark .exam-blank.is-disabled:hover{
 	width:0.9em;
 }
 .exam-choice-content{
+	display:block;
 	min-width:0;
+}
+.exam-choice-content>:first-child{
+	margin-top:0;
+}
+.exam-choice-content>:last-child{
+	margin-bottom:0;
 }
 .exam-choices.single .exam-choice-indicator{
 	border-radius:50%;
