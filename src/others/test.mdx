@@ -10,17 +10,6 @@
 
 ## 选择题
 
-<Choices multiple>
-+ 选项 1
-- 选项 2
-<Option>
-    选项 3 是一个超长选项
-
-    它有两段，已经不能用列表语法定义了
-</Option>
-+ 选项 4
-</Choices>
-
 <Figure float src="favicon.svg">
     BYR Docs 维基真题
 </Figure>
@@ -154,9 +143,9 @@
 1. BYR Docs 主站的网址是 <Blank>https://byrdocs.org</Blank>。
 2. 对于一般编辑者来说，文件结构中只有两个目录是需要关注的。它们分别是保存试题文件的 <Blank>exams/</Blank> 和保存题目附件的 <Blank>public/</Blank>。
 3. 在维基真题中，大题的题号使用 <Blank>二</Blank> 级标题。
-4. 在 `Choices` 块中，应使用 <Blank>Option</Blank> 组件来定义选择题选项；对于正确答案的项，应加注 <Blank>correct</Blank> 属性。
+4. 在 `Choices` 块中，应使用 <Blank>Option</Blank> 组件来定义选择题选项；对于正确答案的项，应加注 <Blank>correct</Blank> 属性。你也可以使用简化语法，即使用 <Blank>-</Blank> 引导的列表定义选择题选项，使用 <Blank>+</Blank> 引导的列表定义正确答案的项。
 5. 在维基真题中，前言应使用 <Blank>yaml</Blank> 语法，正文应使用符合维基真题规范的 <Blank>mdx</Blank> 语法。
-6. 这组填空题在源代码中要以 <Blank>有序列表</Blank> 来定义。
+7. 这组填空题在源代码中要以 <Blank>有序列表</Blank> 来定义。
 
 ## 简答题
 
