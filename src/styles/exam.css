@@ -301,3 +301,16 @@ html.dark .exam-figure-float{
 html.dark .exam-figure-caption{
 	color:#bbb;
 }
+@media (max-width:640px){
+	.exam-figure-float{
+		box-sizing:border-box;
+		clear:none;
+		float:none;
+		margin:1em 0;
+		max-width:none;
+		width:100%;
+	}
+	.exam-figure-float .exam-figure-image{
+		width:100%;
+	}
+}
