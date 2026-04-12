@@ -273,6 +273,21 @@ html.dark .exam-blank.is-disabled:hover{
 	margin:1em 0;
 	border-radius:8px;
 }
+.exam-figure-trigger{
+	background:none;
+	border:none;
+	border-radius:inherit;
+	cursor:zoom-in;
+	display:block;
+	max-width:100%;
+	padding:0;
+	text-align:inherit;
+	width:100%;
+}
+.exam-figure-trigger:focus-visible{
+	outline:2px solid color-mix(in srgb,var(--black) 55%,transparent);
+	outline-offset:4px;
+}
 .exam-figure-image{
 	display:block;
 	height:auto;
@@ -297,6 +312,56 @@ html.dark .exam-figure-float{
 	font-size:0.9em;
 	margin-top:0.5em;
 	text-align:center;
+}
+.exam-figure-dialog{
+	background:none;
+	border:none;
+	height:100vh;
+	inset:0;
+	margin:0;
+	max-height:none;
+	max-width:none;
+	padding:2vh 2vw;
+	width:100vw;
+}
+.exam-figure-dialog[open]{
+	display:grid;
+	place-items:center;
+}
+.exam-figure-dialog::backdrop{
+	background:rgb(15 23 42 / 82%);
+	backdrop-filter:blur(4px);
+}
+.exam-figure-dialog-panel{
+	align-items:center;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	max-height:96vh;
+	max-width:96vw;
+	position:relative;
+}
+.exam-figure-dialog-image{
+	border-radius:8px;
+	display:block;
+	height:auto;
+	max-height:88vh;
+	max-width:92vw;
+	object-fit:contain;
+	width:auto;
+}
+.exam-figure-dialog-image-svg{
+	width:92vw;
+}
+.exam-figure-dialog-caption{
+	color:#e5e7eb;
+	font-size:0.95rem;
+	max-width:92vw;
+	margin-top:0.75em;
+	text-align:center;
+}
+.exam-figure-dialog-caption p{
+	margin:0;
 }
 html.dark .exam-figure-caption{
 	color:#bbb;

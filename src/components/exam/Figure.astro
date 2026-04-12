@@ -2,8 +2,40 @@
 const {src,float=false,alt}=Astro.props;
 const hasCaption=Astro.slots.has("default");
 const isFloat=float===true||float==="true"||float==="";
+const isSvg=/\.svg(?:$|[?#])/i.test(src);
+const caption=hasCaption?await Astro.slots.render("default"):undefined;
+const imageAlt=alt??(hasCaption?"题图":src);
 ---
-<figure class:list={["exam-figure",isFloat&&"exam-figure-float"]}>
-	<img alt={alt??(hasCaption?"题图":src)} class="exam-figure-image" loading="lazy" src={`/${src}`} />
-	{hasCaption&&<figcaption class="exam-figure-caption"><slot /></figcaption>}
+<figure class:list={["exam-figure",isFloat&&"exam-figure-float"]} data-exam-figure>
+	<button aria-label="预览图片" class="exam-figure-trigger" data-exam-figure-trigger type="button">
+		<img alt={imageAlt} class="exam-figure-image" loading="lazy" src={`/${src}`} />
+	</button>
+	{caption&&<figcaption class="exam-figure-caption" set:html={caption} />}
+	<dialog aria-label="图片预览" class="exam-figure-dialog" data-exam-figure-dialog>
+		<div class="exam-figure-dialog-panel">
+			<img alt={imageAlt} class:list={["exam-figure-dialog-image",isSvg&&"exam-figure-dialog-image-svg"]} loading="lazy" src={`/${src}`} />
+			{caption&&<div class="exam-figure-dialog-caption" set:html={caption} />}
+		</div>
+	</dialog>
 </figure>
+<script>
+	const figures=document.querySelectorAll(".exam-figure[data-exam-figure]:not([data-exam-figure-ready])");
+	figures.forEach(figure=>{
+		figure.setAttribute("data-exam-figure-ready","true");
+		const trigger=figure.querySelector("[data-exam-figure-trigger]");
+		const dialog=figure.querySelector("[data-exam-figure-dialog]");
+
+		if(!(trigger instanceof HTMLButtonElement)||!(dialog instanceof HTMLDialogElement))
+			return;
+
+		trigger.addEventListener("click",()=>{
+			if(!dialog.open)
+				dialog.showModal();
+		});
+
+		dialog.addEventListener("click",event=>{
+			if(event.target===dialog)
+				dialog.close();
+		});
+	});
+</script>
