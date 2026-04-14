@@ -9,7 +9,7 @@ const {pageTitle,examControls=false}=Astro.props;
 		<a class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm no-underline transition hover:-translate-y-0.5 hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700" href="/" title="回到首页">
 			<img alt="BYR Docs" class="h-7 w-7" src="/favicon.svg" />
 		</a>
-		<span class="min-w-0 flex-1 truncate text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl dark:text-white">{pageTitle}</span>
+		<span class="min-w-0 flex-1 truncate text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl dark:text-white" style="-webkit-user-select:all">{pageTitle}</span>
 		{examControls&&<ExamAnswersToggle />}
 	</div>
 </nav>
