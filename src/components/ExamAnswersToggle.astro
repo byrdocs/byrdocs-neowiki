@@ -1,47 +1,87 @@
-<button class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white p-2.5 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:text-slate-950 disabled:cursor-default cursor-pointer disabled:opacity-60 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-white" id="examAnswersToggle" type="button" aria-label="显示全部答案" aria-pressed="false" title="显示全部答案">
-	<svg aria-hidden="true" class="h-6 w-6" data-exam-toggle-icon="show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
-		<path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
-		<circle cx="12" cy="12" r="3"></circle>
-	</svg>
-	<svg aria-hidden="true" class="h-6 w-6" data-exam-toggle-icon="hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
-		<path d="M3 3l18 18"></path>
-		<path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
-		<path d="M9.4 5.6A10.7 10.7 0 0 1 12 5.2c6.4 0 10 6 10 6a17.7 17.7 0 0 1-4.1 4.6"></path>
-		<path d="M6.2 6.3C3.7 8 2 10.8 2 10.8s3.6 6 10 6c1.2 0 2.4-.2 3.4-.6"></path>
-	</svg>
+<button
+  class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white p-2.5 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:text-slate-950 disabled:cursor-default cursor-pointer disabled:opacity-60 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-white"
+  id="examAnswersToggle"
+  type="button"
+  aria-label="显示全部答案"
+  aria-pressed="false"
+  title="显示全部答案"
+>
+  <svg
+    aria-hidden="true"
+    class="h-6 w-6"
+    data-exam-toggle-icon="show"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.8"
+  >
+    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
+    <circle cx="12" cy="12" r="3"></circle>
+  </svg>
+  <svg
+    aria-hidden="true"
+    class="h-6 w-6"
+    data-exam-toggle-icon="hide"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.8"
+  >
+    <path d="M3 3l18 18"></path>
+    <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
+    <path
+      d="M9.4 5.6A10.7 10.7 0 0 1 12 5.2c6.4 0 10 6 10 6a17.7 17.7 0 0 1-4.1 4.6"
+    ></path>
+    <path d="M6.2 6.3C3.7 8 2 10.8 2 10.8s3.6 6 10 6c1.2 0 2.4-.2 3.4-.6"
+    ></path>
+  </svg>
 </button>
 
 <style is:global>
-	#examAnswersToggle [data-exam-toggle-icon]{
-		display:none;
-	}
-	#examAnswersToggle[data-state="hidden"] [data-exam-toggle-icon="show"]{
-		display:block;
-	}
-	#examAnswersToggle[data-state="shown"] [data-exam-toggle-icon="hide"]{
-		display:block;
-	}
+  #examAnswersToggle [data-exam-toggle-icon] {
+    display: none;
+  }
+  #examAnswersToggle[data-state="hidden"] [data-exam-toggle-icon="show"] {
+    display: block;
+  }
+  #examAnswersToggle[data-state="shown"] [data-exam-toggle-icon="hide"] {
+    display: block;
+  }
 </style>
 
 <script is:inline>
-	const examAnswersToggle=document.getElementById("examAnswersToggle");
-	const updateExamAnswersToggle=()=>{
-		if(!(examAnswersToggle instanceof HTMLButtonElement))
-			return;
+  const examAnswersToggle = document.getElementById("examAnswersToggle");
+  const updateExamAnswersToggle = () => {
+    if (!(examAnswersToggle instanceof HTMLButtonElement)) return;
 
-		const hasRevealable=window.__examState?.hasRevealable?.()??false;
-		const allShown=hasRevealable&&(window.__examState?.getAllShown?.()??false);
-		const label=allShown?"隐藏全部答案":"显示全部答案";
+    const hasRevealable = window.__examState?.hasRevealable?.() ?? false;
+    const allShown =
+      hasRevealable && (window.__examState?.getAllShown?.() ?? false);
+    const label = allShown ? "隐藏全部答案" : "显示全部答案";
 
-		examAnswersToggle.disabled=!hasRevealable;
-		examAnswersToggle.dataset.state=allShown?"shown":"hidden";
-		examAnswersToggle.setAttribute("aria-label",label);
-		examAnswersToggle.setAttribute("aria-pressed",`${allShown}`);
-		examAnswersToggle.setAttribute("title",hasRevealable?label:"暂无可显示答案");
-	};
+    examAnswersToggle.disabled = !hasRevealable;
+    examAnswersToggle.dataset.state = allShown ? "shown" : "hidden";
+    examAnswersToggle.setAttribute("aria-label", label);
+    examAnswersToggle.setAttribute("aria-pressed", `${allShown}`);
+    examAnswersToggle.setAttribute(
+      "title",
+      hasRevealable ? label : "暂无可显示答案",
+    );
+  };
 
-	updateExamAnswersToggle();
-	window.addEventListener(window.__examState?.events?.change??"examstatechange",updateExamAnswersToggle);
-	examAnswersToggle?.addEventListener("click",()=>window.__examState?.toggleAll?.());
-	requestAnimationFrame(()=>window.__examState?.sync?.());
+  updateExamAnswersToggle();
+  window.addEventListener(
+    window.__examState?.events?.change ?? "examstatechange",
+    updateExamAnswersToggle,
+  );
+  examAnswersToggle?.addEventListener("click", () =>
+    window.__examState?.toggleAll?.(),
+  );
+  requestAnimationFrame(() => window.__examState?.sync?.());
 </script>

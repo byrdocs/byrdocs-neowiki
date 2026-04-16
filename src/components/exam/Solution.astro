@@ -1,49 +1,51 @@
 <details class="exam-solution">
-	<summary class="exam-solution-summary">
-		<span class="exam-solution-summary-main">
-			<span class="exam-solution-summary-icon" aria-hidden="true">›</span>
-			<span>答案 / 解析</span>
-		</span>
-		<span class="exam-solution-summary-hint" aria-hidden="true"></span>
-	</summary>
-	<div class="exam-solution-content">
-		<slot />
-	</div>
+  <summary class="exam-solution-summary">
+    <span class="exam-solution-summary-main">
+      <span class="exam-solution-summary-icon" aria-hidden="true">›</span>
+      <span>答案 / 解析</span>
+    </span>
+    <span class="exam-solution-summary-hint" aria-hidden="true"></span>
+  </summary>
+  <div class="exam-solution-content">
+    <slot />
+  </div>
 </details>
 
 <script>
-	const solutions=document.querySelectorAll(".exam-solution:not([data-exam-solution-ready])");
-	solutions.forEach((solution,solutionIndex)=>{
-		if(!(solution instanceof HTMLDetailsElement))
-			return;
+  const solutions = document.querySelectorAll(
+    ".exam-solution:not([data-exam-solution-ready])",
+  );
+  solutions.forEach((solution, solutionIndex) => {
+    if (!(solution instanceof HTMLDetailsElement)) return;
 
-		solution.setAttribute("data-exam-solution-ready","true");
-		const solutionKey=`solution:${solutionIndex}`;
-		const examState=window.__examState;
-		const persistSolutionState=()=>{
-			examState?.update?.((state)=>{
-				const solutionsState={...state.solutions};
-				if(solution.open)
-					solutionsState[solutionKey]=true;
-				else
-					delete solutionsState[solutionKey];
-				return {
-					...state,
-					solutions:solutionsState,
-				};
-			});
-			examState?.sync?.();
-		};
+    solution.setAttribute("data-exam-solution-ready", "true");
+    const solutionKey = `solution:${solutionIndex}`;
+    const examState = window.__examState;
+    const persistSolutionState = () => {
+      examState?.update?.((state) => {
+        const solutionsState = { ...state.solutions };
+        if (solution.open) solutionsState[solutionKey] = true;
+        else delete solutionsState[solutionKey];
+        return {
+          ...state,
+          solutions: solutionsState,
+        };
+      });
+      examState?.sync?.();
+    };
 
-		if(examState?.read?.().solutions?.[solutionKey]===true)
-			solution.open=true;
+    if (examState?.read?.().solutions?.[solutionKey] === true)
+      solution.open = true;
 
-		solution.addEventListener("toggle",persistSolutionState);
-		window.addEventListener(examState?.events?.setAll??"examsetall",(event)=>{
-			const revealed=event instanceof CustomEvent&&event.detail?.revealed===true;
-			if(solution.open!==revealed)
-				solution.open=revealed;
-		});
-		examState?.sync?.();
-	});
+    solution.addEventListener("toggle", persistSolutionState);
+    window.addEventListener(
+      examState?.events?.setAll ?? "examsetall",
+      (event) => {
+        const revealed =
+          event instanceof CustomEvent && event.detail?.revealed === true;
+        if (solution.open !== revealed) solution.open = revealed;
+      },
+    );
+    examState?.sync?.();
+  });
 </script>

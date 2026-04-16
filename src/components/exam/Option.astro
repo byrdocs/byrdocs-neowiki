@@ -1,11 +1,12 @@
 ---
-const {correct}=Astro.props;
-const isCorrect=correct===true||correct==="true"||correct==="";
-const answer=isCorrect?"true":undefined;
+const { correct } = Astro.props;
+const isCorrect = correct === true || correct === "true" || correct === "";
+const answer = isCorrect ? "true" : undefined;
 ---
+
 <label class="exam-choice-option" data-answer={answer}>
-	<input class="exam-choice-input" type="radio" />
-	<span aria-hidden="true" class="exam-choice-indicator"></span>
-	<span aria-hidden="true" class="exam-choice-letter"></span>
-	<div class="exam-choice-content"><slot /></div>
+  <input class="exam-choice-input" type="radio" />
+  <span aria-hidden="true" class="exam-choice-indicator"></span>
+  <span aria-hidden="true" class="exam-choice-letter"></span>
+  <div class="exam-choice-content"><slot /></div>
 </label>

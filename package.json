@@ -21,5 +21,8 @@
     "remark-math": "^6.0.0",
     "tailwindcss": "^4.2.2",
     "wrangler": "^4.81.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
   }
 }

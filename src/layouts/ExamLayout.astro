@@ -1,10 +1,12 @@
 ---
 import InfoBox from "/src/components/InfoBox.astro";
+import ExamToolbar from "/src/components/ExamToolbar.astro";
 import Layout from "/src/layouts/Layout.astro";
 import "/src/styles/exam.css";
 const {title,frontmatter}=Astro.props;
 ---
-<Layout examControls pageTitle={title}>
+<Layout pageTitle={title}>
 	<InfoBox frontmatter={frontmatter} />
 	<slot />
+	<ExamToolbar />
 </Layout>

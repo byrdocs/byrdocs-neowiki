@@ -1,58 +1,76 @@
 ---
-const hasAnswer=Astro.slots.has("default");
+const hasAnswer = Astro.slots.has("default");
 ---
-{hasAnswer?(
-	<button aria-pressed="false" class="exam-blank" type="button">
-		<span aria-hidden="true" class="exam-blank-placeholder">【显示答案】</span>
-		<span class="exam-blank-answer"><slot /></span>
-	</button>
-):(
-	<span class:list={["exam-blank","is-disabled"]}>【暂无答案】</span>
-)}
+
+{
+  hasAnswer ? (
+    <button aria-pressed="false" class="exam-blank" type="button">
+      <span aria-hidden="true" class="exam-blank-placeholder">
+        【显示答案】
+      </span>
+      <span class="exam-blank-answer">
+        <slot />
+      </span>
+    </button>
+  ) : (
+    <span class:list={["exam-blank", "is-disabled"]}>【暂无答案】</span>
+  )
+}
 <script>
-	const blanks=document.querySelectorAll(".exam-blank[aria-pressed]:not([data-exam-blank-ready])");
-	blanks.forEach((blank,blankIndex)=>{
-		if(!(blank instanceof HTMLButtonElement))
-			return;
+  const blanks = document.querySelectorAll(
+    ".exam-blank[aria-pressed]:not([data-exam-blank-ready])",
+  );
+  blanks.forEach((blank, blankIndex) => {
+    if (!(blank instanceof HTMLButtonElement)) return;
 
-		blank.setAttribute("data-exam-blank-ready","true");
-		const blankKey=`blank:${blankIndex}`;
-		const examState=window.__examState;
-		const setRevealed=(revealed)=>{
-			blank.setAttribute("aria-pressed",revealed?"true":"false");
-			examState?.update?.((state)=>{
-				const blanksState={...state.blanks};
-				if(revealed)
-					blanksState[blankKey]=true;
-				else
-					delete blanksState[blankKey];
-				return {
-					...state,
-					blanks:blanksState,
-				};
-			});
-			examState?.sync?.();
-		};
-		const placeholder=blank.querySelector(".exam-blank-placeholder");
-		const answer=blank.querySelector(".exam-blank-answer");
-		if(placeholder instanceof HTMLElement&&answer instanceof HTMLElement){
-			const styles=getComputedStyle(blank);
-			const paddingLeft=parseFloat(styles.paddingLeft);
-			const paddingRight=parseFloat(styles.paddingRight);
-			const answerWidth=answer.getBoundingClientRect().width;
-			const placeholderWidth=placeholder.scrollWidth;
-			const extraPadding=Math.max(0,placeholderWidth-(answerWidth+paddingLeft+paddingRight))/2;
-			if(extraPadding>0){
-				blank.style.paddingLeft=`${paddingLeft+extraPadding}px`;
-				blank.style.paddingRight=`${paddingRight+extraPadding}px`;
-			}
-		}
+    blank.setAttribute("data-exam-blank-ready", "true");
+    const blankKey = `blank:${blankIndex}`;
+    const examState = window.__examState;
+    const setRevealed = (revealed: boolean) => {
+      blank.setAttribute("aria-pressed", revealed ? "true" : "false");
+      examState?.update?.((state) => {
+        const blanksState = { ...state.blanks };
+        if (revealed) blanksState[blankKey] = true;
+        else delete blanksState[blankKey];
+        return {
+          ...state,
+          blanks: blanksState,
+        };
+      });
+      examState?.sync?.();
+    };
+    const placeholder = blank.querySelector(".exam-blank-placeholder");
+    const answer = blank.querySelector(".exam-blank-answer");
+    if (placeholder instanceof HTMLElement && answer instanceof HTMLElement) {
+      const styles = getComputedStyle(blank);
+      const paddingLeft = parseFloat(styles.paddingLeft);
+      const paddingRight = parseFloat(styles.paddingRight);
+      const answerWidth = answer.getBoundingClientRect().width;
+      const placeholderWidth = placeholder.scrollWidth;
+      const extraPadding =
+        Math.max(
+          0,
+          placeholderWidth - (answerWidth + paddingLeft + paddingRight),
+        ) / 2;
+      if (extraPadding > 0) {
+        blank.style.paddingLeft = `${paddingLeft + extraPadding}px`;
+        blank.style.paddingRight = `${paddingRight + extraPadding}px`;
+      }
+    }
 
-		if(examState?.read?.().blanks?.[blankKey]===true)
-			blank.setAttribute("aria-pressed","true");
+    if (examState?.read?.().blanks?.[blankKey] === true)
+      blank.setAttribute("aria-pressed", "true");
 
-		blank.addEventListener("click",()=>setRevealed(blank.getAttribute("aria-pressed")!=="true"));
-		window.addEventListener(examState?.events?.setAll??"examsetall",(event)=>setRevealed(event instanceof CustomEvent&&event.detail?.revealed===true));
-		examState?.sync?.();
-	});
+    blank.addEventListener("click", () =>
+      setRevealed(blank.getAttribute("aria-pressed") !== "true"),
+    );
+    window.addEventListener(
+      examState?.events?.setAll ?? "examsetall",
+      (event) =>
+        setRevealed(
+          event instanceof CustomEvent && event.detail?.revealed === true,
+        ),
+    );
+    examState?.sync?.();
+  });
 </script>

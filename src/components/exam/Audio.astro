@@ -1,18 +1,27 @@
 ---
-const {src}=Astro.props;
+const { src } = Astro.props;
 
-if(typeof src!=="string"||src.trim()==="")
-	throw new Error("Audio component requires a non-empty `src` prop.");
+if (typeof src !== "string" || src.trim() === "")
+  throw new Error("Audio component requires a non-empty `src` prop.");
 
-const hasCaption=Astro.slots.has("default");
-const caption=hasCaption?await Astro.slots.render("default"):undefined;
-const source=src.trim();
-const audioSrc=/^(?:[a-z]+:)?\/\//i.test(source)||source.startsWith("/")?source:`/${source}`;
+const hasCaption = Astro.slots.has("default");
+const caption = hasCaption ? await Astro.slots.render("default") : undefined;
+const source = src.trim();
+const audioSrc =
+  /^(?:[a-z]+:)?\/\//i.test(source) || source.startsWith("/")
+    ? source
+    : `/${source}`;
 ---
 
 <figure class="exam-audio">
-	<audio aria-label={caption?undefined:"音频播放器"} class="exam-audio-player" controls preload="none" src={audioSrc}>
-		浏览器不支持音频播放。
-	</audio>
-	{caption&&<figcaption class="exam-audio-caption" set:html={caption} />}
+  <audio
+    aria-label={caption ? undefined : "音频播放器"}
+    class="exam-audio-player"
+    controls
+    preload="none"
+    src={audioSrc}
+  >
+    浏览器不支持音频播放。
+  </audio>
+  {caption && <figcaption class="exam-audio-caption" set:html={caption} />}
 </figure>

@@ -1,187 +1,197 @@
 ---
-const {multiple=false,item}=Astro.props;
-const isMultiple=multiple===true||multiple==="true"||multiple==="";
-const itemText=item==null?undefined:String(item).trim()||undefined;
+const { multiple = false, item } = Astro.props;
+const isMultiple = multiple === true || multiple === "true" || multiple === "";
+const itemText = item == null ? undefined : String(item).trim() || undefined;
 ---
-<fieldset aria-label={itemText?`第 ${itemText} 题选项`:undefined} class:list={["exam-choices",isMultiple?"multiple":"single"]} data-multiple={isMultiple?"true":"false"}>
-	{itemText&&<div class="exam-choices-item">第 {itemText} 题</div>}
-	<div class="exam-choices-options">
-		<slot />
-	</div>
-	<button class="exam-choices-submit" type="button">检查</button>
+
+<fieldset
+  aria-label={itemText ? `第 ${itemText} 题选项` : undefined}
+  class:list={["exam-choices", isMultiple ? "multiple" : "single"]}
+  data-multiple={isMultiple ? "true" : "false"}
+>
+  {itemText && <div class="exam-choices-item">第 {itemText} 题</div>}
+  <div class="exam-choices-options">
+    <slot />
+  </div>
+  <button class="exam-choices-submit" type="button">检查</button>
 </fieldset>
 <script>
-	const toAlphaLabel=(index)=>String.fromCharCode(65+index);
-	const groups=document.querySelectorAll(".exam-choices:not([data-exam-choices-ready])");
-	groups.forEach((group,groupIndex)=>{
-		if(!(group instanceof HTMLFieldSetElement))
-			return;
+  const toAlphaLabel = (index: number) => String.fromCharCode(65 + index);
+  const groups = document.querySelectorAll(
+    ".exam-choices:not([data-exam-choices-ready])",
+  );
+  groups.forEach((group, groupIndex) => {
+    if (!(group instanceof HTMLFieldSetElement)) return;
 
-		group.setAttribute("data-exam-choices-ready","true");
-		const multiple=group.getAttribute("data-multiple")==="true";
-		const options=[...group.querySelectorAll(".exam-choice-option")];
-		const button=group.querySelector(".exam-choices-submit");
-		const hasAnswer=options.some(option=>option.getAttribute("data-answer")==="true");
-		const choiceKey=`choice:${groupIndex}`;
-		const examState=window.__examState;
-		const name=`exam-choices-${groupIndex}`;
-		group.setAttribute("data-has-answer",hasAnswer?"true":"false");
-		group.setAttribute("data-revealed","false");
+    group.setAttribute("data-exam-choices-ready", "true");
+    const multiple = group.getAttribute("data-multiple") === "true";
+    const options = [...group.querySelectorAll(".exam-choice-option")];
+    const button = group.querySelector(".exam-choices-submit");
+    const hasAnswer = options.some(
+      (option) => option.getAttribute("data-answer") === "true",
+    );
+    const choiceKey = `choice:${groupIndex}`;
+    const examState = window.__examState;
+    const name = `exam-choices-${groupIndex}`;
+    group.setAttribute("data-has-answer", hasAnswer ? "true" : "false");
+    group.setAttribute("data-revealed", "false");
 
-		options.forEach((option,index)=>{
-			const choice=toAlphaLabel(index);
-			option.setAttribute("data-choice",choice);
-			const input=option.querySelector(".exam-choice-input");
-			const letter=option.querySelector(".exam-choice-letter");
-			if(input instanceof HTMLInputElement){
-				input.type=multiple?"checkbox":"radio";
-				input.name=name;
-				input.value=choice;
-			}
-			if(letter){
-				letter.textContent=`${choice}.`;
-			}
-		});
+    options.forEach((option, index) => {
+      const choice = toAlphaLabel(index);
+      option.setAttribute("data-choice", choice);
+      const input = option.querySelector(".exam-choice-input");
+      const letter = option.querySelector(".exam-choice-letter");
+      if (input instanceof HTMLInputElement) {
+        input.type = multiple ? "checkbox" : "radio";
+        input.name = name;
+        input.value = choice;
+      }
+      if (letter) {
+        letter.textContent = `${choice}.`;
+      }
+    });
 
-		if(!(button instanceof HTMLButtonElement))
-			return;
+    if (!(button instanceof HTMLButtonElement)) return;
 
-		const clearResultClasses=()=>{
-			options.forEach((option)=>option.classList.remove("is-correct","is-wrong","is-missed"));
-			button.classList.remove("is-all-correct","is-not-all-correct");
-		};
-		const getSelectedChoices=()=>options.flatMap((option)=>{
-			const input=option.querySelector(".exam-choice-input");
-			const choice=option.getAttribute("data-choice")??"";
-			return input instanceof HTMLInputElement&&input.checked&&choice?[choice]:[];
-		});
-		const updateStoredChoiceState=(revealed,mode)=>{
-			examState?.update?.((state)=>{
-				const choicesState={...state.choices};
-				const selected=getSelectedChoices();
-				if(!revealed&&selected.length===0){
-					delete choicesState[choiceKey];
-				}
-				else{
-					choicesState[choiceKey]={
-						selected,
-						revealed,
-						mode:revealed?mode:undefined,
-					};
-				}
-				return {
-					...state,
-					choices:choicesState,
-				};
-			});
-			examState?.sync?.();
-		};
-		const setSelectedChoices=(selectedChoices)=>{
-			const selectedChoiceSet=new Set(selectedChoices);
-			options.forEach((option)=>{
-				const input=option.querySelector(".exam-choice-input");
-				const choice=option.getAttribute("data-choice")??"";
-				if(input instanceof HTMLInputElement)
-					input.checked=selectedChoiceSet.has(choice);
-			});
-		};
-		const applyHiddenState=()=>{
-			clearResultClasses();
-			group.setAttribute("data-revealed","false");
-			group.removeAttribute("data-reveal-mode");
-			updateStoredChoiceState(false);
-		};
-		const applyCheckedState=()=>{
-			let allCorrect=true;
-			clearResultClasses();
-			options.forEach((option)=>{
-				const input=option.querySelector(".exam-choice-input");
-				const isAnswer=option.getAttribute("data-answer")==="true";
-				const isSelected=input instanceof HTMLInputElement&&input.checked;
+    const clearResultClasses = () => {
+      options.forEach((option) =>
+        option.classList.remove("is-correct", "is-wrong", "is-missed"),
+      );
+      button.classList.remove("is-all-correct", "is-not-all-correct");
+    };
+    const getSelectedChoices = () =>
+      options.flatMap((option) => {
+        const input = option.querySelector(".exam-choice-input");
+        const choice = option.getAttribute("data-choice") ?? "";
+        return input instanceof HTMLInputElement && input.checked && choice
+          ? [choice]
+          : [];
+      });
+    const updateStoredChoiceState = (
+      revealed: boolean,
+      mode?: ExamChoiceRevealMode,
+    ) => {
+      examState?.update?.((state) => {
+        const choicesState = { ...state.choices };
+        const selected = getSelectedChoices();
+        if (!revealed && selected.length === 0) {
+          delete choicesState[choiceKey];
+        } else {
+          choicesState[choiceKey] = {
+            selected,
+            revealed,
+            mode: revealed ? mode : undefined,
+          };
+        }
+        return {
+          ...state,
+          choices: choicesState,
+        };
+      });
+      examState?.sync?.();
+    };
+    const setSelectedChoices = (selectedChoices: string[]) => {
+      const selectedChoiceSet = new Set(selectedChoices);
+      options.forEach((option) => {
+        const input = option.querySelector(".exam-choice-input");
+        const choice = option.getAttribute("data-choice") ?? "";
+        if (input instanceof HTMLInputElement)
+          input.checked = selectedChoiceSet.has(choice);
+      });
+    };
+    const applyHiddenState = () => {
+      clearResultClasses();
+      group.setAttribute("data-revealed", "false");
+      group.removeAttribute("data-reveal-mode");
+      updateStoredChoiceState(false);
+    };
+    const applyCheckedState = () => {
+      let allCorrect = true;
+      clearResultClasses();
+      options.forEach((option) => {
+        const input = option.querySelector(".exam-choice-input");
+        const isAnswer = option.getAttribute("data-answer") === "true";
+        const isSelected = input instanceof HTMLInputElement && input.checked;
 
-				if(isAnswer){
-					if(isSelected)
-						option.classList.add("is-correct");
-					else{
-						option.classList.add("is-missed");
-						allCorrect=false;
-					}
-				}
-				else if(isSelected){
-					option.classList.add("is-wrong");
-					allCorrect=false;
-				}
-			});
+        if (isAnswer) {
+          if (isSelected) option.classList.add("is-correct");
+          else {
+            option.classList.add("is-missed");
+            allCorrect = false;
+          }
+        } else if (isSelected) {
+          option.classList.add("is-wrong");
+          allCorrect = false;
+        }
+      });
 
-			button.classList.add(allCorrect?"is-all-correct":"is-not-all-correct");
-			group.setAttribute("data-revealed","true");
-			group.setAttribute("data-reveal-mode","checked");
-			updateStoredChoiceState(true,"checked");
-		};
-		const applyAnswerState=()=>{
-			clearResultClasses();
-			options.forEach((option)=>{
-				const input=option.querySelector(".exam-choice-input");
-				const isAnswer=option.getAttribute("data-answer")==="true";
-				const isSelected=input instanceof HTMLInputElement&&input.checked;
+      button.classList.add(
+        allCorrect ? "is-all-correct" : "is-not-all-correct",
+      );
+      group.setAttribute("data-revealed", "true");
+      group.setAttribute("data-reveal-mode", "checked");
+      updateStoredChoiceState(true, "checked");
+    };
+    const applyAnswerState = () => {
+      clearResultClasses();
+      options.forEach((option) => {
+        const input = option.querySelector(".exam-choice-input");
+        const isAnswer = option.getAttribute("data-answer") === "true";
+        const isSelected = input instanceof HTMLInputElement && input.checked;
 
-				if(isAnswer)
-					option.classList.add("is-correct");
-				else if(isSelected)
-					option.classList.add("is-wrong");
-			});
+        if (isAnswer) option.classList.add("is-correct");
+        else if (isSelected) option.classList.add("is-wrong");
+      });
 
-			group.setAttribute("data-revealed","true");
-			group.setAttribute("data-reveal-mode","answers");
-			updateStoredChoiceState(true,"answers");
-		};
-		const restoreState=()=>{
-			const storedChoiceState=examState?.read?.().choices?.[choiceKey];
-			if(storedChoiceState)
-				setSelectedChoices(storedChoiceState.selected);
-			if(!hasAnswer||!storedChoiceState?.revealed)
-				return;
-			if(storedChoiceState.mode==="answers")
-				applyAnswerState();
-			else
-				applyCheckedState();
-		};
-		const syncSelectionState=()=>{
-			const revealMode=group.getAttribute("data-reveal-mode");
-			if(group.getAttribute("data-revealed")!=="true")
-				updateStoredChoiceState(false);
-			else if(revealMode==="answers")
-				applyAnswerState();
-			else
-				applyCheckedState();
-		};
+      group.setAttribute("data-revealed", "true");
+      group.setAttribute("data-reveal-mode", "answers");
+      updateStoredChoiceState(true, "answers");
+    };
+    const restoreState = () => {
+      const storedChoiceState = examState?.read?.().choices?.[choiceKey];
+      if (storedChoiceState) setSelectedChoices(storedChoiceState.selected);
+      if (!hasAnswer || !storedChoiceState?.revealed) return;
+      if (storedChoiceState.mode === "answers") applyAnswerState();
+      else applyCheckedState();
+    };
+    const syncSelectionState = () => {
+      const revealMode = group.getAttribute("data-reveal-mode");
+      if (group.getAttribute("data-revealed") !== "true")
+        updateStoredChoiceState(false);
+      else if (revealMode === "answers") applyAnswerState();
+      else applyCheckedState();
+    };
 
-		if(!hasAnswer){
-			button.disabled=true;
-			button.textContent="暂无答案";
-			restoreState();
-			options.forEach((option)=>{
-				const input=option.querySelector(".exam-choice-input");
-				if(input instanceof HTMLInputElement)
-					input.addEventListener("change",()=>updateStoredChoiceState(false));
-			});
-			examState?.sync?.();
-			return;
-		}
+    if (!hasAnswer) {
+      button.disabled = true;
+      button.textContent = "暂无答案";
+      restoreState();
+      options.forEach((option) => {
+        const input = option.querySelector(".exam-choice-input");
+        if (input instanceof HTMLInputElement)
+          input.addEventListener("change", () =>
+            updateStoredChoiceState(false),
+          );
+      });
+      examState?.sync?.();
+      return;
+    }
 
-		restoreState();
-		options.forEach((option)=>{
-			const input=option.querySelector(".exam-choice-input");
-			if(input instanceof HTMLInputElement)
-				input.addEventListener("change",syncSelectionState);
-		});
-		button.addEventListener("click",applyCheckedState);
-		window.addEventListener(examState?.events?.setAll??"examsetall",(event)=>{
-			if(event instanceof CustomEvent&&event.detail?.revealed===true)
-				applyAnswerState();
-			else
-				applyHiddenState();
-		});
-		examState?.sync?.();
-	});
+    restoreState();
+    options.forEach((option) => {
+      const input = option.querySelector(".exam-choice-input");
+      if (input instanceof HTMLInputElement)
+        input.addEventListener("change", syncSelectionState);
+    });
+    button.addEventListener("click", applyCheckedState);
+    window.addEventListener(
+      examState?.events?.setAll ?? "examsetall",
+      (event) => {
+        if (event instanceof CustomEvent && event.detail?.revealed === true)
+          applyAnswerState();
+        else applyHiddenState();
+      },
+    );
+    examState?.sync?.();
+  });
 </script>
