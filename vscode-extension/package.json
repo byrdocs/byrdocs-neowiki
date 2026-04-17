@@ -2,7 +2,7 @@
   "name": "byrdocs-wiki-vscode",
   "displayName": "BYR Docs Wiki Tools",
   "description": "Workspace-specific authoring tools for the byrdocs-wiki repository.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "publisher": "byrdocs",
   "license": "MIT",
   "icon": "media/icon.png",
@@ -46,7 +46,8 @@
   ],
   "scripts": {
     "build": "tsc -p ./tsconfig.json",
-    "check": "tsc -p ./tsconfig.json --noEmit"
+    "check": "tsc -p ./tsconfig.json --noEmit",
+    "dev": "tsc -p ./tsconfig.json --watch"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
@@ -142,7 +143,7 @@
       "byrdocsWiki": [
         {
           "id": "byrdocsWiki.createExamPageView",
-          "name": "新建试题页面",
+          "name": " ",
           "type": "webview",
           "when": "byrdocsWiki.enabled"
         }
