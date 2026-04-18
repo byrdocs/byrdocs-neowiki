@@ -10,6 +10,8 @@
     "prepare": "husky",
     "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.astro,.md,.mdx --max-warnings=0",
     "lint:fix": "pnpm lint --fix",
+    "check:wiki-templates": "node scripts/check-wiki-templates.mjs",
+    "export:wiki": "node scripts/export-wiki-page.mjs",
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",

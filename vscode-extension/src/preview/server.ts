@@ -25,39 +25,64 @@ export function sanitizeUrlCandidate(candidate: string): string {
   return candidate.replace(/[),.;]+$/g, "");
 }
 
-export function extractUrlCandidates(output: string): string[] {
-  return [...output.matchAll(/\bhttps?:\/\/[^\s"'`<>)\]}]+/gi)]
-    .map((match) => sanitizeUrlCandidate(match[0] || ""))
-    .filter(Boolean);
+interface UrlCandidateRecord {
+  readonly candidate: string;
+  readonly line: string;
+}
+
+export function extractUrlCandidates(
+  output: string,
+): UrlCandidateRecord[] {
+  const records: UrlCandidateRecord[] = [];
+
+  for (const line of output.split(/\r?\n/u)) {
+    for (const match of line.matchAll(/\bhttps?:\/\/[^\s"'`<>)\]}]+/gi)) {
+      const candidate = sanitizeUrlCandidate(match[0] || "");
+      if (!candidate) {
+        continue;
+      }
+      records.push({
+        candidate,
+        line,
+      });
+    }
+  }
+
+  return records;
+}
+
+function isLocalUrlCandidate(candidate: string): boolean {
+  try {
+    const url = new URL(candidate);
+    return isLocalServerHost(url.hostname);
+  } catch {
+    return false;
+  }
 }
 
 export function scoreServerUrlCandidate(
-  output: string,
   candidate: string,
+  line: string,
 ): number {
   let score = 0;
 
   try {
     const url = new URL(candidate);
     const hostname = url.hostname.toLowerCase();
-    const matchingLine =
-      output
-        .split(/\r?\n/)
-        .find((line) => line.includes(candidate)) || "";
 
     if (isLocalServerHost(hostname)) {
       score += 100;
     }
 
-    if (/\blocal\b/i.test(matchingLine)) {
+    if (/\blocal\b/i.test(line)) {
       score += 120;
     }
 
-    if (/\bnetwork\b/i.test(matchingLine)) {
+    if (/\bnetwork\b/i.test(line)) {
       score -= 25;
     }
 
-    if (/\bastro\b/i.test(output) || /\bLocal\b/.test(output)) {
+    if (/\bastro\b/i.test(line) || /\bvite\b/i.test(line)) {
       score += 10;
     }
   } catch {
@@ -99,10 +124,24 @@ export function parseServerBaseUriFromTerminalOutput(
     return null;
   }
 
-  const bestCandidate = candidates
+  const localLineCandidates = candidates.filter(
+    (record) =>
+      /\blocal\b/i.test(record.line) && isLocalUrlCandidate(record.candidate),
+  );
+  const localCandidates = candidates.filter((record) =>
+    isLocalUrlCandidate(record.candidate),
+  );
+  const candidatePool =
+    localLineCandidates.length > 0 ? localLineCandidates : localCandidates;
+
+  if (candidatePool.length === 0) {
+    return null;
+  }
+
+  const bestCandidate = candidatePool
     .map((candidate) => ({
-      candidate,
-      score: scoreServerUrlCandidate(cleanedOutput, candidate),
+      candidate: candidate.candidate,
+      score: scoreServerUrlCandidate(candidate.candidate, candidate.line),
     }))
     .sort((left, right) => right.score - left.score)[0];
 
