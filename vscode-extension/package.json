@@ -2,7 +2,7 @@
   "name": "byrdocs-wiki-vscode",
   "displayName": "BYR Docs Wiki Tools",
   "description": "Workspace-specific authoring tools for the byrdocs-wiki repository.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "byrdocs",
   "license": "MIT",
   "icon": "media/icon.png",
@@ -68,6 +68,12 @@
         "icon": "$(add)"
       },
       {
+        "command": "byrdocsWiki.refreshExamList",
+        "title": "刷新试题列表",
+        "category": "BYR Docs Wiki",
+        "icon": "$(refresh)"
+      },
+      {
         "command": "byrdocsWiki.toggleChoiceCorrectness",
         "title": "切换选项正误",
         "category": "BYR Docs Wiki"
@@ -89,6 +95,10 @@
         },
         {
           "command": "byrdocsWiki.showCreateExamPage",
+          "when": "byrdocsWiki.enabled"
+        },
+        {
+          "command": "byrdocsWiki.refreshExamList",
           "when": "byrdocsWiki.enabled"
         },
         {
@@ -124,9 +134,14 @@
       ],
       "view/title": [
         {
+          "command": "byrdocsWiki.refreshExamList",
+          "when": "byrdocsWiki.enabled && view == byrdocsWiki.createExamPageView",
+          "group": "navigation@1"
+        },
+        {
           "command": "byrdocsWiki.showCreateExamPage",
           "when": "byrdocsWiki.enabled && view == byrdocsWiki.createExamPageView",
-          "group": "navigation"
+          "group": "navigation@2"
         }
       ]
     },

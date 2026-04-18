@@ -35,7 +35,10 @@ export class CreateExamPageViewProvider implements vscode.WebviewViewProvider {
       return;
     }
 
-    this.view.webview.html = this.render(this.view.webview);
+    void this.view.webview.postMessage({
+      type: "replaceExamEntries",
+      exams: this.getState().exams,
+    });
   }
 
   async reveal(view: SidebarViewMode = "list"): Promise<void> {
@@ -88,6 +91,7 @@ export class CreateExamPageViewProvider implements vscode.WebviewViewProvider {
           this.previewManagerInstance,
         );
         if (result.kind === "created") {
+          this.refresh();
           const success: CreateExamPageSuccessMessage = {
             type: "created",
             examName: result.examName,
@@ -140,18 +144,21 @@ export class CreateExamPageViewProvider implements vscode.WebviewViewProvider {
   }
 
   private render(webview: vscode.Webview): string {
+    const state = this.getState();
+    return renderCreateExamPageViewHtml(webview, state);
+  }
+
+  private getState(): CreateExamPageViewState {
     const workspaceFolder = getWikiWorkspaceFolderForUri();
     const schools = workspaceFolder ? readSchoolOptions(workspaceFolder) : [];
     const exams = workspaceFolder ? readExamEntries(workspaceFolder) : [];
     const defaults = getDefaultCreateFormState();
-    const state: CreateExamPageViewState = {
+    return {
       schools,
       defaults,
       exams,
       initialView: this.preferredView,
     };
-
-    return renderCreateExamPageViewHtml(webview, state);
   }
 }
 

@@ -418,7 +418,7 @@ export function renderCreateExamPageViewHtml(
   <script nonce="${nonce}">
     const vscode = acquireVsCodeApi();
     const state = ${serializedState};
-    const exams = Array.isArray(state.exams) ? state.exams : [];
+    let exams = Array.isArray(state.exams) ? state.exams : [];
     const schools = Array.isArray(state.schools) ? state.schools : [];
     const initialView = state.initialView === "create" ? "create" : "list";
     const listView = document.getElementById("list-view");
@@ -522,8 +522,8 @@ export function renderCreateExamPageViewHtml(
 
       examList.innerHTML = filteredExams.map((exam) => {
         return '<button type="button" class="exam-item" data-exam-name="' + escapeHtml(exam.examName) + '">' +
-          '<div class="exam-title">' + escapeHtml(exam.subject) + '</div>' +
-          '<div class="exam-name">' + escapeHtml(exam.examName) + '</div>' +
+          '<div class="exam-title">' + escapeHtml(exam.examName) + '</div>' +
+          '<div class="exam-name">' + escapeHtml(exam.subject) + '</div>' +
         '</button>';
       }).join("");
     }
@@ -658,6 +658,11 @@ export function renderCreateExamPageViewHtml(
       if (message.type === "createError") {
         setBusy(false);
         renderMessage(message.message || "创建失败。");
+      }
+      if (message.type === "replaceExamEntries") {
+        exams = Array.isArray(message.exams) ? message.exams : [];
+        populateFilters();
+        renderExamList();
       }
     });
     populateFilters();
