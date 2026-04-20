@@ -1,0 +1,403 @@
+---
+const { editHref, showTocToggle = false } = Astro.props;
+---
+
+<div
+  class="floating-toolbar"
+  id="examToolbar"
+  data-expanded="false"
+>
+  <div
+    class="floating-toolbar-actions"
+    id="examToolbarActions"
+  >
+    <button
+      class="floating-toolbar-control cursor-pointer transition-opacity active:scale-95"
+      id="backToTop"
+      type="button"
+      aria-label="回到顶部"
+      data-tooltip="回到顶部"
+      data-toolbar-action
+    >
+      <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"></path>
+      </svg>
+    </button>
+    {
+      showTocToggle && (
+        <button
+          class="floating-toolbar-control exam-toolbar-toc-toggle cursor-pointer active:scale-95"
+          id="examTocMobileToggle"
+          type="button"
+          aria-label="显示目录"
+          aria-expanded="false"
+          data-tooltip="目录"
+          data-toolbar-action
+        >
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <path d="M9 6h10"></path>
+            <path d="M9 12h10"></path>
+            <path d="M9 18h10"></path>
+            <circle cx="5" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+            <circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"></circle>
+            <circle cx="5" cy="18" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </button>
+      )
+    }
+    {
+      editHref && (
+        <a
+          class="no-underline floating-toolbar-control active:scale-95"
+          href={editHref}
+          aria-label="在 GitHub 上编辑"
+          data-tooltip="在 GitHub 上编辑"
+          data-toolbar-action
+        >
+          <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M12 20h9"></path>
+            <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z"></path>
+          </svg>
+        </a>
+      )
+    }
+    <button
+      class="floating-toolbar-control cursor-pointer active:scale-95"
+      id="examPrint"
+      type="button"
+      aria-label="打印试卷"
+      data-tooltip="打印试卷"
+      data-toolbar-action
+    >
+      <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+    </button>
+    <button
+      class="floating-toolbar-control cursor-pointer active:scale-95 disabled:cursor-default disabled:opacity-50"
+      id="examAnswersToggle"
+      type="button"
+      aria-label="显示全部答案"
+      aria-pressed="false"
+      data-tooltip="显示全部答案"
+      data-toolbar-action
+    >
+      <svg aria-hidden="true" class="h-5 w-5" data-exam-toggle-icon="show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+        <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+      <svg aria-hidden="true" class="h-5 w-5" data-exam-toggle-icon="hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+        <path d="M3 3l18 18"></path>
+        <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
+        <path d="M9.4 5.6A10.7 10.7 0 0 1 12 5.2c6.4 0 10 6 10 6a17.7 17.7 0 0 1-4.1 4.6"></path>
+        <path d="M6.2 6.3C3.7 8 2 10.8 2 10.8s3.6 6 10 6c1.2 0 2.4-.2 3.4-.6"></path>
+      </svg>
+    </button>
+  </div>
+  <button
+    class="floating-toolbar-control floating-toolbar-toggle cursor-pointer active:scale-95"
+    id="examToolbarToggle"
+    type="button"
+    aria-label="展开工具栏"
+    aria-expanded="false"
+    aria-controls="examToolbarActions"
+    data-tooltip="展开工具栏"
+  >
+    <svg
+      aria-hidden="true"
+      class="h-5 w-5"
+      data-toolbar-toggle-icon="open"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path d="M12 5v14"></path>
+      <path d="M5 12h14"></path>
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="h-5 w-5"
+      data-toolbar-toggle-icon="close"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path d="m18 6-12 12"></path>
+      <path d="M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+
+<style is:global>
+  #examAnswersToggle [data-exam-toggle-icon] {
+    display: none;
+  }
+  #examAnswersToggle[data-state="hidden"] [data-exam-toggle-icon="show"] {
+    display: block;
+  }
+  #examAnswersToggle[data-state="shown"] [data-exam-toggle-icon="hide"] {
+    display: block;
+  }
+  #backToTop {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  #backToTop.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media print {
+    @page {
+      margin: 2cm 1.5cm;
+    }
+    #examToolbar {
+      display: none !important;
+    }
+    nav, footer {
+      display: none !important;
+    }
+    .exam-blank {
+      background: transparent !important;
+      min-width: 0 !important;
+    }
+    .exam-blank-placeholder {
+      display: none !important;
+    }
+    .exam-blank-answer {
+      visibility: visible !important;
+    }
+    .exam-blank[aria-pressed="true"].exam-blank,
+    .exam-blank[aria-pressed="false"].exam-blank {
+      background: transparent !important;
+      box-shadow: 0 1px 0 0 #999 !important;
+      border-radius: 0 !important;
+    }
+    .exam-solution {
+      break-inside: avoid;
+      border-radius: 12px !important;
+      border: 1.5px solid #ccc !important;
+    }
+    .exam-solution[open],
+    .exam-solution:not([open]) {
+      overflow: visible !important;
+    }
+    .exam-solution-summary {
+      display: none !important;
+    }
+    .exam-solution-content {
+      display: block !important;
+      padding: 1em 1.2em !important;
+    }
+    .exam-choices .exam-choice-option[data-answer="true"] {
+      outline: 1px solid #000 !important;
+      outline-offset: -2px;
+      border-radius: 8px !important;
+    }
+    .exam-choices .exam-choice-option.is-correct .exam-choice-indicator,
+    .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator {
+      border-color: #000 !important;
+      border-width: 2px !important;
+    }
+    .exam-choices .exam-choice-option.is-correct .exam-choice-indicator::after,
+    .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
+      background: #000 !important;
+      content: "" !important;
+      inset: 1.5px !important;
+      position: absolute !important;
+    }
+    .exam-choices.single .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
+      border-radius: 50% !important;
+    }
+    .exam-choices-submit {
+      display: none !important;
+    }
+    .exam-choice-option {
+      border-color: transparent !important;
+      box-shadow: none !important;
+      padding: 0.2em 0.5em !important;
+    }
+    .print-footer {
+      display: block !important;
+      margin-top: 2em;
+      padding-top: 1em;
+      border-top: 1px solid #ccc;
+      font-size: 0.85em;
+      color: #666;
+      line-height: 1.8;
+    }
+    .print-footer a {
+      color: #444;
+    }
+  }
+</style>
+
+<script is:inline>
+  var examToolbar = document.getElementById("examToolbar");
+  var examToolbarToggle = document.getElementById("examToolbarToggle");
+  var examAnswersToggle = document.getElementById("examAnswersToggle");
+  var backToTop = document.getElementById("backToTop");
+  var examPrint = document.getElementById("examPrint");
+  var setExamToolbarExpanded = function(expanded) {
+    if (!(examToolbar instanceof HTMLElement)) return;
+    examToolbar.dataset.expanded = expanded ? "true" : "false";
+    if (examToolbarToggle instanceof HTMLButtonElement) {
+      examToolbarToggle.setAttribute("aria-expanded", String(expanded));
+      examToolbarToggle.setAttribute(
+        "aria-label",
+        expanded ? "收起工具栏" : "展开工具栏",
+      );
+      examToolbarToggle.dataset.tooltip = expanded ? "收起工具栏" : "展开工具栏";
+    }
+  };
+  var toggleExamToolbarExpanded = function() {
+    setExamToolbarExpanded(examToolbar?.dataset.expanded !== "true");
+  };
+
+  setExamToolbarExpanded(false);
+  examToolbarToggle?.addEventListener("click", function(event) {
+    event.stopPropagation();
+    toggleExamToolbarExpanded();
+  });
+  examToolbar?.querySelectorAll("[data-toolbar-action]").forEach(function(control) {
+    control.addEventListener("click", function() {
+      setExamToolbarExpanded(false);
+    });
+  });
+  document.addEventListener("click", function(event) {
+    if (!(examToolbar instanceof HTMLElement) || examToolbar.dataset.expanded !== "true")
+      return;
+    if (examToolbar.contains(event.target))
+      return;
+    setExamToolbarExpanded(false);
+  });
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape")
+      setExamToolbarExpanded(false);
+  });
+
+  // Back to top
+  var updateBackToTopVisibility = function() {
+    if (!backToTop) return;
+    backToTop.classList.toggle("is-visible", window.scrollY > 200);
+  };
+  updateBackToTopVisibility();
+  window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+  backToTop?.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Print preparation (works for both Ctrl+P and print button)
+  var printUrlFooter = null;
+  var prePrintState = null;
+  window.addEventListener("beforeprint", function() {
+    // Save current state to restore after print
+    prePrintState = {
+      blanks: [],
+      solutions: [],
+      choices: []
+    };
+    // Reveal all answers
+    if (!window.__examState?.getAllShown?.()) {
+      window.__examState?.toggleAll?.();
+      prePrintState.wasHidden = true;
+    }
+    // Open all <details> solutions
+    document.querySelectorAll(".exam-solution:not([open])").forEach(function(el) {
+      el.setAttribute("open", "");
+      prePrintState.solutions.push(el);
+    });
+    // Show all blanks
+    document.querySelectorAll(".exam-blank[aria-pressed='false']").forEach(function(el) {
+      el.setAttribute("aria-pressed", "true");
+      prePrintState.blanks.push(el);
+    });
+    // Reveal all choice answers
+    document.querySelectorAll(".exam-choices[data-has-answer='true'][data-revealed='false']").forEach(function(group) {
+      group.querySelectorAll(".exam-choice-option").forEach(function(opt) {
+        if (opt.getAttribute("data-answer") === "true") {
+          opt.classList.add("is-correct");
+          var input = opt.querySelector(".exam-choice-input");
+          if (input) input.checked = true;
+        }
+      });
+      group.setAttribute("data-revealed", "true");
+      prePrintState.choices.push(group);
+    });
+    // Add print footer
+    printUrlFooter = document.createElement("div");
+    printUrlFooter.className = "print-footer";
+    printUrlFooter.style.display = "none";
+    printUrlFooter.innerHTML =
+      '本页面打印自 <a href="' + window.location.href + '">' + window.location.href + '</a><br>' +
+      '来源：<a href="https://wiki.byrdocs.org">BYR Docs 维基真题</a><br>' +
+      '除非另有声明，本文件内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 授权。';
+    document.querySelector(".wiki-content")?.appendChild(printUrlFooter);
+  });
+  window.addEventListener("afterprint", function() {
+    // Remove URL footer
+    if (printUrlFooter) { printUrlFooter.remove(); printUrlFooter = null; }
+    // Restore previous state
+    if (!prePrintState) return;
+    if (prePrintState.wasHidden) {
+      window.__examState?.toggleAll?.();
+    }
+    prePrintState.solutions.forEach(function(el) { el.removeAttribute("open"); });
+    prePrintState.blanks.forEach(function(el) { el.setAttribute("aria-pressed", "false"); });
+    prePrintState.choices.forEach(function(group) {
+      group.querySelectorAll(".exam-choice-option").forEach(function(opt) {
+        opt.classList.remove("is-correct");
+        var input = opt.querySelector(".exam-choice-input");
+        if (input) input.checked = false;
+      });
+      group.setAttribute("data-revealed", "false");
+    });
+    prePrintState = null;
+  });
+
+  // Print button just triggers window.print()
+  examPrint?.addEventListener("click", function() { window.print(); });
+
+  // Answers toggle
+  var updateExamAnswersToggle = function() {
+    if (!(examAnswersToggle instanceof HTMLButtonElement)) return;
+    var hasRevealable = window.__examState?.hasRevealable?.() ?? false;
+    var allShown = hasRevealable && (window.__examState?.getAllShown?.() ?? false);
+    var label = allShown ? "隐藏全部答案" : "显示全部答案";
+    var tooltip = hasRevealable ? label : "暂无可显示答案";
+    examAnswersToggle.disabled = !hasRevealable;
+    examAnswersToggle.dataset.state = allShown ? "shown" : "hidden";
+    examAnswersToggle.dataset.tooltip = tooltip;
+    examAnswersToggle.setAttribute("aria-label", label);
+    examAnswersToggle.setAttribute("aria-pressed", "" + allShown);
+  };
+  updateExamAnswersToggle();
+  window.addEventListener(
+    window.__examState?.events?.change ?? "examstatechange",
+    updateExamAnswersToggle,
+  );
+  examAnswersToggle?.addEventListener("click", function() {
+    window.__examState?.toggleAll?.();
+  });
+  requestAnimationFrame(function() { window.__examState?.sync?.(); });
+</script>

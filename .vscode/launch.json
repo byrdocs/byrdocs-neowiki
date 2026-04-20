@@ -6,6 +6,17 @@
       "name": "Development server",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "name": "Debug BYR Docs Wiki Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/vscode-extension",
+        "--folder-uri=${workspaceFolder}"
+      ],
+      "outFiles": ["${workspaceFolder}/vscode-extension/dist/**/*.js"]
     }
   ]
 }

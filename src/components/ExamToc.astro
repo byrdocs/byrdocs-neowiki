@@ -1,0 +1,435 @@
+---
+import type { MarkdownHeading } from "@astrojs/markdown-remark";
+import ExamTocNav from "/src/components/ExamTocNav.astro";
+import { buildExamTocTree, isExamTocHeading } from "/src/components/examToc";
+
+const { headings = [] } = Astro.props as {
+  headings?: MarkdownHeading[];
+};
+
+const tocItems = buildExamTocTree(headings.filter(isExamTocHeading));
+const hasToc = tocItems.length > 0;
+---
+
+{
+  hasToc && (
+    <>
+      <aside class="exam-toc-shell" id="examTocShell" data-collapsed="false">
+        <div class="exam-toc-panel">
+          <ExamTocNav items={tocItems} navId="examTocNav" variant="desktop" />
+        </div>
+        <button
+          class="exam-toc-desktop-trigger inline-flex h-11 w-11 items-center justify-center rounded-r-xl border border-slate-200 border-l-0 bg-white text-slate-500 shadow-sm transition hover:border-slate-300 hover:text-slate-700 dark:border-slate-800 dark:border-l-0 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-200"
+          id="examTocDesktopToggle"
+          type="button"
+          aria-label="展开目录侧边栏"
+          aria-expanded="true"
+        >
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16" />
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+          </svg>
+        </button>
+      </aside>
+
+      <div class="exam-toc-mobile" id="examTocMobile" data-open="false">
+        <button
+          class="exam-toc-mobile-backdrop"
+          id="examTocMobileBackdrop"
+          type="button"
+          aria-label="关闭目录"
+        ></button>
+        <div class="exam-toc-mobile-panel" id="examTocMobilePanel">
+          <div class="exam-toc-mobile-header">
+            <p class="exam-toc-mobile-title">目录</p>
+          </div>
+          <ExamTocNav
+            items={tocItems}
+            navId="examTocMobileNav"
+            class="exam-toc-nav-mobile"
+            variant="mobile"
+          />
+        </div>
+      </div>
+    </>
+  )
+}
+
+<script is:inline>
+  var initExamToc = function() {
+    var tocShell = document.getElementById("examTocShell");
+    var tocNav = document.getElementById("examTocNav");
+    var mobileRoot = document.getElementById("examTocMobile");
+    var mobilePanel = document.getElementById("examTocMobilePanel");
+    var mobileBackdrop = document.getElementById("examTocMobileBackdrop");
+    var mobileToggle = document.getElementById("examTocMobileToggle");
+
+    if (
+      !(tocShell instanceof HTMLElement) &&
+      !(mobileRoot instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    var tocLinks = Array.from(
+      document.querySelectorAll(".exam-toc-link[data-slug]"),
+    ).filter(function(link) {
+      return link instanceof HTMLAnchorElement;
+    });
+    var desktopItems = Array.from(
+      tocShell?.querySelectorAll(".exam-toc-item[data-slug]") || [],
+    ).filter(function(item) {
+      return item instanceof HTMLElement;
+    });
+    var mobileItems = Array.from(
+      mobileRoot?.querySelectorAll(".exam-toc-item[data-slug]") || [],
+    ).filter(function(item) {
+      return item instanceof HTMLElement;
+    });
+    var mobileBranchButtons = Array.from(
+      mobileRoot?.querySelectorAll(".exam-toc-branch-toggle[data-branch-toggle]") ||
+        [],
+    ).filter(function(button) {
+      return button instanceof HTMLButtonElement;
+    });
+
+    var setMobileOpen = function(open) {
+      if (!(mobileRoot instanceof HTMLElement))
+        return;
+
+      mobileRoot.dataset.open = open ? "true" : "false";
+
+      if (mobileToggle instanceof HTMLButtonElement) {
+        mobileToggle.setAttribute("aria-expanded", String(open));
+        mobileToggle.setAttribute("aria-label", open ? "隐藏目录" : "显示目录");
+      }
+    };
+    var syncDesktopVisibility = function() {
+      if (!(tocShell instanceof HTMLElement))
+        return;
+
+      var collapsed =
+        document.documentElement.dataset.examTocDesktop === "collapsed";
+      tocShell.dataset.collapsed = collapsed ? "true" : "false";
+      if (tocNav instanceof HTMLElement) {
+        tocNav.setAttribute("aria-hidden", String(collapsed));
+      }
+    };
+
+    var setBranchExpanded = function(items, buttons, slug, expanded) {
+      items.forEach(function(item) {
+        if (
+          !(item instanceof HTMLElement) ||
+          item.dataset.slug !== slug ||
+          item.querySelector(".exam-toc-children") === null
+        ) {
+          return;
+        }
+
+        item.dataset.expanded = expanded ? "true" : "false";
+      });
+
+      buttons.forEach(function(button) {
+        if (
+          !(button instanceof HTMLButtonElement) ||
+          button.dataset.branchToggle !== slug
+        ) {
+          return;
+        }
+
+        button.setAttribute("aria-expanded", String(expanded));
+      });
+    };
+    var setAllDesktopBranchesExpanded = function() {
+      desktopItems.forEach(function(item) {
+        if (
+          !(item instanceof HTMLElement) ||
+          item.querySelector(".exam-toc-children") === null
+        ) {
+          return;
+        }
+
+        item.dataset.expanded = "true";
+      });
+    };
+
+    syncDesktopVisibility();
+    setMobileOpen(false);
+    setAllDesktopBranchesExpanded();
+
+    mobileItems.forEach(function(item) {
+      if (!(item instanceof HTMLElement) || !item.dataset.slug)
+        return;
+      setBranchExpanded(
+        mobileItems,
+        mobileBranchButtons,
+        item.dataset.slug,
+        item.dataset.expanded === "true",
+      );
+    });
+    window.addEventListener("examtocdesktopchange", syncDesktopVisibility);
+
+    mobileToggle?.addEventListener("click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setMobileOpen(mobileRoot?.dataset.open !== "true");
+    });
+
+    mobileBackdrop?.addEventListener("click", function() {
+      setMobileOpen(false);
+    });
+
+    mobilePanel?.addEventListener("click", function(event) {
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", function(event) {
+      if (!(mobileRoot instanceof HTMLElement) || mobileRoot.dataset.open !== "true")
+        return;
+      if (mobilePanel instanceof HTMLElement && mobilePanel.contains(event.target))
+        return;
+      if (mobileToggle instanceof HTMLElement && mobileToggle.contains(event.target))
+        return;
+      setMobileOpen(false);
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape")
+        setMobileOpen(false);
+    });
+
+    mobileBranchButtons.forEach(function(button) {
+      if (!(button instanceof HTMLButtonElement))
+        return;
+
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var slug = button.dataset.branchToggle;
+        if (!slug)
+          return;
+
+        var matchingItem = mobileItems.find(function(item) {
+          return (
+            item instanceof HTMLElement &&
+            item.dataset.slug === slug &&
+            item.querySelector(".exam-toc-children") !== null
+          );
+        });
+
+        var nextExpanded = matchingItem?.dataset.expanded !== "true";
+        setBranchExpanded(
+          mobileItems,
+          mobileBranchButtons,
+          slug,
+          nextExpanded,
+        );
+      });
+    });
+
+    if (tocLinks.length === 0)
+      return;
+
+    var seenSlugs = {};
+    var headingEntries = tocLinks
+      .map(function(link) {
+        if (!(link instanceof HTMLAnchorElement))
+          return null;
+
+        var slug = link.dataset.slug;
+        if (!slug || seenSlugs[slug])
+          return null;
+
+        var heading = document.getElementById(slug);
+        if (!(heading instanceof HTMLElement))
+          return null;
+
+        seenSlugs[slug] = true;
+        return {
+          slug: slug,
+          path: (link.dataset.path || slug).split("||").filter(Boolean),
+          heading: heading,
+        };
+      })
+      .filter(function(entry) {
+        return entry !== null;
+      });
+
+    if (headingEntries.length === 0)
+      return;
+
+    var activationOffset = 140;
+    var headingEntriesBySlug = {};
+    headingEntries.forEach(function(entry) {
+      headingEntriesBySlug[entry.slug] = entry;
+    });
+    var lastActiveSlug = "";
+    var programmaticScrollState = null;
+    var programmaticScrollFrame = 0;
+    var applyTocState = function(activeEntry) {
+      var activeSlug = activeEntry.slug;
+      var activePath = activeEntry.path;
+
+      tocLinks.forEach(function(link) {
+        if (!(link instanceof HTMLAnchorElement))
+          return;
+
+        var slug = link.dataset.slug || "";
+        var isActive = slug === activeSlug;
+        var isInPath = activePath.indexOf(slug) >= 0;
+
+        link.classList.toggle("is-active", isActive);
+        link.classList.toggle("is-in-path", isInPath && !isActive);
+
+        if (isActive)
+          link.setAttribute("aria-current", "location");
+        else
+          link.removeAttribute("aria-current");
+      });
+
+      setAllDesktopBranchesExpanded();
+
+      if (activeSlug !== lastActiveSlug) {
+        tocLinks.forEach(function(link) {
+          if (
+            !(link instanceof HTMLAnchorElement) ||
+            link.dataset.slug !== activeSlug
+          ) {
+            return;
+          }
+
+          var inMobile = link.closest(".exam-toc-mobile") !== null;
+          var inDesktop = link.closest(".exam-toc-shell") !== null;
+
+          if (inMobile && mobileRoot?.dataset.open !== "true")
+            return;
+          if (inDesktop && tocShell?.dataset.collapsed === "true")
+            return;
+
+          link.scrollIntoView({
+            block: "nearest",
+            inline: "nearest",
+          });
+        });
+
+        lastActiveSlug = activeSlug;
+      }
+    };
+    var syncTocState = function() {
+      var activeEntry = headingEntries[0];
+
+      for (var i = 0; i < headingEntries.length; i++) {
+        if (headingEntries[i].heading.getBoundingClientRect().top <= activationOffset)
+          activeEntry = headingEntries[i];
+        else
+          break;
+      }
+
+      applyTocState(activeEntry);
+    };
+    var clearProgrammaticScroll = function() {
+      if (programmaticScrollFrame) {
+        window.cancelAnimationFrame(programmaticScrollFrame);
+        programmaticScrollFrame = 0;
+      }
+      programmaticScrollState = null;
+    };
+    var watchProgrammaticScroll = function() {
+      if (!programmaticScrollState || programmaticScrollFrame)
+        return;
+
+      programmaticScrollFrame = window.requestAnimationFrame(function() {
+        programmaticScrollFrame = 0;
+
+        if (!programmaticScrollState)
+          return;
+
+        var elapsed = Date.now() - programmaticScrollState.startedAt;
+        var distance = Math.abs(
+          programmaticScrollState.heading.getBoundingClientRect().top -
+            activationOffset,
+        );
+
+        if (distance <= 6 || elapsed >= 1200) {
+          clearProgrammaticScroll();
+          requestSync();
+          return;
+        }
+
+        watchProgrammaticScroll();
+      });
+    };
+    var syncFrame = 0;
+    var requestSync = function() {
+      if (programmaticScrollState) {
+        watchProgrammaticScroll();
+        return;
+      }
+      if (syncFrame)
+        return;
+
+      syncFrame = window.requestAnimationFrame(function() {
+        syncFrame = 0;
+        syncTocState();
+      });
+    };
+
+    tocLinks.forEach(function(link) {
+      if (!(link instanceof HTMLAnchorElement))
+        return;
+
+      link.addEventListener("click", function(event) {
+        var slug = link.dataset.slug || "";
+        var entry = headingEntriesBySlug[slug];
+
+        setMobileOpen(false);
+
+        if (!entry)
+          return;
+
+        event.preventDefault();
+        applyTocState(entry);
+        programmaticScrollState = {
+          slug: entry.slug,
+          heading: entry.heading,
+          startedAt: Date.now(),
+        };
+
+        if (window.history && typeof window.history.pushState === "function") {
+          window.history.pushState(null, "", "#" + entry.slug);
+        } else {
+          window.location.hash = entry.slug;
+        }
+
+        entry.heading.scrollIntoView({
+          block: "start",
+          behavior: "smooth",
+        });
+        watchProgrammaticScroll();
+      });
+    });
+
+    syncTocState();
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync, { passive: true });
+    window.addEventListener("hashchange", requestSync);
+    window.addEventListener("load", syncTocState);
+    window.addEventListener("examtocdesktopchange", syncTocState);
+  };
+
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", initExamToc, { once: true });
+  else
+    initExamToc();
+</script>

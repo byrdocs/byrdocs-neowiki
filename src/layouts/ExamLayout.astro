@@ -1,10 +1,31 @@
 ---
 import InfoBox from "/src/components/InfoBox.astro";
+import ExamToc from "/src/components/ExamToc.astro";
+import ExamToolbar from "/src/components/ExamToolbar.astro";
+import { isExamTocHeading } from "/src/components/examToc";
 import Layout from "/src/layouts/Layout.astro";
+import { getGitHubEditUrl } from "/src/utils/github";
 import "/src/styles/exam.css";
-const {title,frontmatter}=Astro.props;
+const { title, frontmatter, editPath, headings = [] } = Astro.props;
+const editHref =
+  typeof editPath === "string" && editPath.length > 0
+    ? getGitHubEditUrl(editPath)
+    : undefined;
+const showToc = headings.some(isExamTocHeading);
 ---
-<Layout examControls pageTitle={title}>
-	<InfoBox frontmatter={frontmatter} />
-	<slot />
+
+<Layout
+  pageTitle={title}
+  editPath={editPath}
+  showToolbar={false}
+  showExamTocToggle={showToc}
+>
+  <div class="exam-page-layout">
+    <ExamToc headings={headings} />
+    <div class="exam-page-main">
+      <InfoBox frontmatter={frontmatter} />
+      <slot />
+    </div>
+  </div>
+  <ExamToolbar editHref={editHref} showTocToggle={showToc} />
 </Layout>

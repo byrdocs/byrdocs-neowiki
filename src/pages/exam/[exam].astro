@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from "astro:content";
+import * as examComponents from "/src/components/exam";
+import ExamLayout from "/src/layouts/ExamLayout.astro";
+export async function getStaticPaths() {
+  const exams = await getCollection("exams");
+  return exams.map((exam) => ({
+    params: {
+      exam: exam.id,
+    },
+    props: {
+      exam,
+    },
+  }));
+}
+const { exam } = Astro.props;
+const { Content, headings } = await render(exam);
+---
+
+<ExamLayout
+  frontmatter={exam.data}
+  title={exam.id}
+  editPath={exam.filePath}
+  headings={headings}
+>
+  <Content components={examComponents} />
+</ExamLayout>

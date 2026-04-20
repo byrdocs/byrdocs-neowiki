@@ -1,0 +1,110 @@
+---
+import type { TocItem } from "/src/components/examToc";
+
+const {
+  navId,
+  items = [],
+  class: className,
+  variant = "desktop",
+} = Astro.props as {
+  navId: string;
+  items?: TocItem[];
+  class?: string;
+  variant?: "desktop" | "mobile";
+};
+const hasCollapsibleBranches = variant === "mobile";
+---
+
+<nav class:list={["exam-toc-nav", className]} id={navId} aria-label="试题目录">
+  <ol class="exam-toc-list">
+    {
+      items.map((section) => {
+        const sectionPath = section.heading.slug;
+        return (
+          <li
+            class="exam-toc-item"
+            data-slug={section.heading.slug}
+            data-path={sectionPath}
+            data-depth={section.heading.depth}
+            data-expanded={
+              section.children.length > 0
+                ? hasCollapsibleBranches
+                  ? "false"
+                  : "true"
+                : undefined
+            }
+          >
+            <div class="exam-toc-row">
+              {section.children.length > 0 && hasCollapsibleBranches ? (
+                <button
+                  class="exam-toc-branch-toggle"
+                  type="button"
+                  aria-label={`展开或折叠${section.heading.text}`}
+                  aria-expanded="false"
+                  data-branch-toggle={section.heading.slug}
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </button>
+              ) : hasCollapsibleBranches ? (
+                <span class="exam-toc-branch-spacer" aria-hidden="true"></span>
+              ) : null}
+              <a
+                class="exam-toc-link exam-toc-link-level-1"
+                href={`#${section.heading.slug}`}
+                data-slug={section.heading.slug}
+                data-path={sectionPath}
+                data-depth={section.heading.depth}
+              >
+                <span class="exam-toc-link-label">{section.heading.text}</span>
+              </a>
+            </div>
+
+            {section.children.length > 0 && (
+              <div class="exam-toc-children">
+                <div class="exam-toc-children-inner">
+                  <ol class="exam-toc-sublist">
+                    {section.children.map((question) => {
+                      const questionPath = `${sectionPath}||${question.heading.slug}`;
+                      return (
+                        <li
+                          class="exam-toc-item"
+                          data-slug={question.heading.slug}
+                          data-path={questionPath}
+                          data-depth={question.heading.depth}
+                        >
+                          <div class="exam-toc-row">
+                            <a
+                              class="exam-toc-link exam-toc-link-level-2"
+                              href={`#${question.heading.slug}`}
+                              data-slug={question.heading.slug}
+                              data-path={questionPath}
+                              data-depth={question.heading.depth}
+                            >
+                              <span class="exam-toc-link-label">
+                                {question.heading.text}
+                              </span>
+                            </a>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              </div>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

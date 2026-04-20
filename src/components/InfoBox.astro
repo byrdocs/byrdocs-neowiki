@@ -1,67 +1,102 @@
 ---
-const {frontmatter}=Astro.props;
+const { frontmatter } = Astro.props;
 
-const answerCompleteness=(value?:string)=>{
-	switch(value){
-		case "残缺":
-			return {
-				className:"text-red-600 dark:text-red-400",
-				text:"残缺",
-			};
-		case "完整":
-			return {
-				className:"text-fuchsia-600 dark:text-fuchsia-400",
-				text:"完整",
-			};
-		case "完整可靠":
-			return {
-				className:"text-emerald-600 dark:text-emerald-400",
-				text:"完整可靠",
-			};
-		default:
-			return {
-				className:"text-slate-500 dark:text-slate-400",
-				text:"未知",
-			};
-	}
+const answerCompleteness = (value?: string) => {
+  switch (value) {
+    case "残缺":
+      return {
+        className: "text-red-600 dark:text-red-400",
+        text: "残缺",
+      };
+    case "完整":
+      return {
+        className: "text-fuchsia-600 dark:text-fuchsia-400",
+        text: "完整",
+      };
+    case "完整可靠":
+      return {
+        className: "text-emerald-600 dark:text-emerald-400",
+        text: "完整可靠",
+      };
+    default:
+      return {
+        className: "text-slate-500 dark:text-slate-400",
+        text: "未知",
+      };
+  }
 };
 
-const completeness=answerCompleteness(frontmatter.答案完成度);
-const schoolText=frontmatter.学院?.length?frontmatter.学院.join("、"):"未知";
+const completeness = answerCompleteness(frontmatter.答案完成度);
+const schoolText = frontmatter.学院?.length
+  ? frontmatter.学院.join("、")
+  : "未知";
 ---
 
-<aside class="mb-6 overflow-hidden rounded-[8px] border border-slate-200 bg-white/90 shadow-sm dark:border-slate-800 dark:bg-slate-900/80 lg:float-right lg:mb-8 lg:ml-6 lg:w-[22rem]">
-	<div class="border-b border-slate-200 px-4 py-3 dark:border-slate-800">
-		<p class="m-0 text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-300">试题信息</p>
-	</div>
-	<dl class="divide-y divide-slate-200 text-sm dark:divide-slate-800">
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">时间</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{frontmatter.时间}</dd>
-		</div>
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">科目</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100"><a href={`https://byrdocs.org/?c=test&q=${frontmatter.科目}`}>{frontmatter.科目}</a></dd>
-		</div>
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">阶段</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{frontmatter.阶段}</dd>
-		</div>
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">类型</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{frontmatter.类型}</dd>
-		</div>
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">学院</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{schoolText}</dd>
-		</div>
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">来源</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{frontmatter.来源?<a href={`https://byrdocs.org/?c=test&q=${frontmatter.来源}`} target="_blank">BYR Docs 文件</a>:"暂无"}</dd>
-		</div>
-		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
-			<dt class="font-medium text-slate-500 dark:text-slate-400">答案完成度</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100"><span class:list={["font-semibold",completeness.className]}>{completeness.text}</span></dd>
-		</div>
-	</dl>
+<aside
+  class="mb-6 overflow-hidden rounded-[8px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:float-right lg:mb-8 lg:ml-6 lg:w-[22rem]"
+>
+  <div class="border-b border-slate-200 px-4 py-3 dark:border-slate-800">
+    <p
+      class="m-0 text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-300"
+    >
+      试题信息
+    </p>
+  </div>
+  <dl class="divide-y divide-slate-200 text-sm dark:divide-slate-800">
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">时间</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        {frontmatter.时间}
+      </dd>
+    </div>
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">科目</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        <a href={`https://byrdocs.org/?c=test&q=${frontmatter.科目}`}
+          >{frontmatter.科目}</a>
+      </dd>
+    </div>
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">阶段</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        {frontmatter.阶段}
+      </dd>
+    </div>
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">类型</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        {frontmatter.类型}
+      </dd>
+    </div>
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">学院</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        {schoolText}
+      </dd>
+    </div>
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">来源</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        {
+          frontmatter.来源 ? (
+            <a
+              href={`https://byrdocs.org/?c=test&q=${frontmatter.来源}`}
+              target="_blank"
+            >
+              BYR Docs 文件
+            </a>
+          ) : (
+            "暂无"
+          )
+        }
+      </dd>
+    </div>
+    <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
+      <dt class="font-medium text-slate-500 dark:text-slate-400">答案完成度</dt>
+      <dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">
+        <span class:list={["font-semibold", completeness.className]}
+          >{completeness.text}</span>
+      </dd>
+    </div>
+  </dl>
 </aside>

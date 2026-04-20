@@ -1,154 +1,371 @@
 ---
 import Footer from "/src/components/Footer.astro";
 import Header from "/src/components/Header.astro";
+import PageToolbar from "/src/components/PageToolbar.astro";
 import "/src/styles/global.css";
+import { getGitHubEditUrl } from "/src/utils/github";
 
-const {pageTitle,examControls=false}=Astro.props;
-const organization="BYR Docs";
-const pageDescription="BYR Docs 维基真题收录北京邮电大学近年试题，是一个开放、共建、共享的维基网站。";
+const {
+  pageTitle,
+  editPath,
+  showToolbar = true,
+  showExamTocToggle = false,
+} = Astro.props;
+const organization = "BYR Docs";
+const pageDescription =
+  "BYR Docs 维基真题收录北京邮电大学近年试题，是一个开放、共建、共享的维基网站。";
+const editHref =
+  typeof editPath === "string" && editPath.length > 0
+    ? getGitHubEditUrl(editPath)
+    : undefined;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh">
-	<head>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="apple-touch-icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.44/dist/katex.min.css" />
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={pageDescription} />
-		<meta name="keywords" content="北邮,北京邮电大学,考试题目,维基" />
-		<meta name="author" content={organization} />
-		<script is:inline>
-			const themeMedia=window.matchMedia("(prefers-color-scheme: dark)");
-			const applyTheme=()=>{
-				const resolvedTheme=themeMedia.matches?"dark":"light";
-				const isDark=resolvedTheme==="dark";
-				document.documentElement.classList.toggle("dark",isDark);
-				document.documentElement.style.colorScheme=resolvedTheme;
-			};
-			applyTheme();
-			themeMedia.addEventListener("change",applyTheme);
-		</script>
-		<script is:inline>
-			const examStateStorageKeyPrefix="exam-state:";
-			const examStateTtlMs=12*60*60*1000;
-			const examStateChangeEvent="examstatechange";
-			const examStateSetAllEvent="examsetall";
-			const createEmptyExamState=()=>({
-				blanks:{},
-				solutions:{},
-				choices:{},
-			});
-			const isRecord=(value)=>value!==null&&typeof value==="object"&&!Array.isArray(value);
-			const normalizeChoiceState=(value)=>({
-				selected:Array.isArray(value?.selected)?value.selected.filter((item)=>typeof item==="string"):[],
-				revealed:value?.revealed===true,
-				mode:value?.mode==="answers"||value?.mode==="checked"?value.mode:undefined,
-			});
-			const normalizeExamState=(value)=>{
-				const state=createEmptyExamState();
-				if(!isRecord(value))
-					return state;
-				if(isRecord(value.blanks))
-					state.blanks=Object.fromEntries(Object.entries(value.blanks).filter(([,revealed])=>revealed===true));
-				if(isRecord(value.solutions))
-					state.solutions=Object.fromEntries(Object.entries(value.solutions).filter(([,open])=>open===true));
-				if(isRecord(value.choices))
-					state.choices=Object.fromEntries(Object.entries(value.choices).map(([key,choiceState])=>[key,normalizeChoiceState(choiceState)]).filter(([,choiceState])=>choiceState.revealed===true||choiceState.selected.length>0));
-				return state;
-			};
-			const isExamStateEmpty=(state)=>Object.keys(state.blanks).length===0&&Object.keys(state.solutions).length===0&&Object.keys(state.choices).length===0;
-			const getExamStateStorageKey=()=>`${examStateStorageKeyPrefix}${window.location.pathname}`;
-			const removeExamState=()=>{
-				try{
-					window.localStorage.removeItem(getExamStateStorageKey());
-				}
-				catch{
-					return;
-				}
-			};
-			const readExamState=()=>{
-				try{
-					const raw=window.localStorage.getItem(getExamStateStorageKey());
-					if(!raw)
-						return createEmptyExamState();
-					const parsed=JSON.parse(raw);
-					if(!isRecord(parsed)||typeof parsed.expiresAt!=="number"||parsed.expiresAt<Date.now()){
-						removeExamState();
-						return createEmptyExamState();
-					}
-					return normalizeExamState(parsed);
-				}
-				catch{
-					removeExamState();
-					return createEmptyExamState();
-				}
-			};
-			const writeExamState=(state)=>{
-				const normalizedState=normalizeExamState(state);
-				if(isExamStateEmpty(normalizedState)){
-					removeExamState();
-					return normalizedState;
-				}
-				try{
-					window.localStorage.setItem(getExamStateStorageKey(),JSON.stringify({
-						expiresAt:Date.now()+examStateTtlMs,
-						...normalizedState,
-					}));
-				}
-				catch{
-					return normalizedState;
-				}
-				return normalizedState;
-			};
-			const updateExamState=(updater)=>writeExamState(updater(readExamState())??createEmptyExamState());
-			const getRevealableExamChoiceGroups=()=>[...document.querySelectorAll(".exam-choices[data-has-answer='true']")];
-			const hasRevealable=()=>document.querySelector(".exam-blank[aria-pressed], .exam-solution, .exam-choices[data-has-answer='true']")!==null;
-			const getAllShown=()=>{
-				if(!hasRevealable())
-					return false;
-				const blanks=[...document.querySelectorAll(".exam-blank[aria-pressed]")];
-				const solutions=[...document.querySelectorAll(".exam-solution")];
-				const choiceGroups=getRevealableExamChoiceGroups();
-				return blanks.every((blank)=>blank.getAttribute("aria-pressed")==="true")
-					&&solutions.every((solution)=>solution instanceof HTMLDetailsElement&&solution.open)
-					&&choiceGroups.every((group)=>group.getAttribute("data-revealed")==="true");
-			};
-			const syncExamState=()=>window.dispatchEvent(new CustomEvent(examStateChangeEvent,{
-				detail:{
-					allShown:getAllShown(),
-					hasRevealable:hasRevealable(),
-				},
-			}));
-			const setAllRevealed=(revealed)=>window.dispatchEvent(new CustomEvent(examStateSetAllEvent,{
-				detail:{revealed},
-			}));
-			window.__examState={
-				read:readExamState,
-				update:updateExamState,
-				sync:syncExamState,
-				toggleAll:()=>setAllRevealed(!getAllShown()),
-				getAllShown,
-				hasRevealable,
-				events:{
-					change:examStateChangeEvent,
-					setAll:examStateSetAllEvent,
-				},
-			};
-		</script>
-		<title>{`${pageTitle} - BYR Docs 维基真题`}</title>
-	</head>
-	<body>
-		<div class="flex min-h-screen flex-col">
-			<Header examControls={examControls} pageTitle={pageTitle} />
-			<main class="mx-auto flex w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 lg:px-8">
-				<article class="wiki-content min-w-0 flex-1">
-					<slot />
-				</article>
-			</main>
-			<Footer />
-		</div>
-	</body>
+  <head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.44/dist/katex.min.css"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content="北邮,北京邮电大学,考试题目,维基" />
+    <meta name="author" content={organization} />
+    <script is:inline>
+      const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+      const applyTheme = () => {
+        const resolvedTheme = themeMedia.matches ? "dark" : "light";
+        const isDark = resolvedTheme === "dark";
+        document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.style.colorScheme = resolvedTheme;
+      };
+      applyTheme();
+      themeMedia.addEventListener("change", applyTheme);
+    </script>
+    {
+      showExamTocToggle && (
+        <script is:inline>
+          (() => {
+            const storageKey = "exam-toc-desktop-collapsed";
+            let collapsed = false;
+
+            try {
+              collapsed = window.localStorage.getItem(storageKey) === "true";
+            } catch {}
+
+            document.documentElement.dataset.examTocDesktop = collapsed
+              ? "collapsed"
+              : "expanded";
+          })();
+        </script>
+      )
+    }
+    <script is:inline>
+      const examStateStorageKeyPrefix = "exam-state:";
+      const examStateTtlMs = 12 * 60 * 60 * 1000;
+      const examStateChangeEvent = "examstatechange";
+      const examStateSetAllEvent = "examsetall";
+      const createEmptyExamState = () => ({
+        blanks: {},
+        solutions: {},
+        choices: {},
+      });
+      const isRecord = (value) =>
+        value !== null && typeof value === "object" && !Array.isArray(value);
+      const normalizeChoiceState = (value) => ({
+        selected: Array.isArray(value?.selected)
+          ? value.selected.filter((item) => typeof item === "string")
+          : [],
+        revealed: value?.revealed === true,
+        mode:
+          value?.mode === "answers" || value?.mode === "checked"
+            ? value.mode
+            : undefined,
+      });
+      const normalizeExamState = (value) => {
+        const state = createEmptyExamState();
+        if (!isRecord(value)) return state;
+        if (isRecord(value.blanks))
+          state.blanks = Object.fromEntries(
+            Object.entries(value.blanks).filter(
+              ([, revealed]) => revealed === true,
+            ),
+          );
+        if (isRecord(value.solutions))
+          state.solutions = Object.fromEntries(
+            Object.entries(value.solutions).filter(([, open]) => open === true),
+          );
+        if (isRecord(value.choices))
+          state.choices = Object.fromEntries(
+            Object.entries(value.choices)
+              .map(([key, choiceState]) => [
+                key,
+                normalizeChoiceState(choiceState),
+              ])
+              .filter(
+                ([, choiceState]) =>
+                  choiceState.revealed === true ||
+                  choiceState.selected.length > 0,
+              ),
+          );
+        return state;
+      };
+      const isExamStateEmpty = (state) =>
+        Object.keys(state.blanks).length === 0 &&
+        Object.keys(state.solutions).length === 0 &&
+        Object.keys(state.choices).length === 0;
+      const getExamStateStorageKey = () =>
+        `${examStateStorageKeyPrefix}${window.location.pathname}`;
+      const removeExamState = () => {
+        try {
+          window.localStorage.removeItem(getExamStateStorageKey());
+        } catch {
+          return;
+        }
+      };
+      const readExamState = () => {
+        try {
+          const raw = window.localStorage.getItem(getExamStateStorageKey());
+          if (!raw) return createEmptyExamState();
+          const parsed = JSON.parse(raw);
+          if (
+            !isRecord(parsed) ||
+            typeof parsed.expiresAt !== "number" ||
+            parsed.expiresAt < Date.now()
+          ) {
+            removeExamState();
+            return createEmptyExamState();
+          }
+          return normalizeExamState(parsed);
+        } catch {
+          removeExamState();
+          return createEmptyExamState();
+        }
+      };
+      const writeExamState = (state) => {
+        const normalizedState = normalizeExamState(state);
+        if (isExamStateEmpty(normalizedState)) {
+          removeExamState();
+          return normalizedState;
+        }
+        try {
+          window.localStorage.setItem(
+            getExamStateStorageKey(),
+            JSON.stringify({
+              expiresAt: Date.now() + examStateTtlMs,
+              ...normalizedState,
+            }),
+          );
+        } catch {
+          return normalizedState;
+        }
+        return normalizedState;
+      };
+      const updateExamState = (updater) =>
+        writeExamState(updater(readExamState()) ?? createEmptyExamState());
+      const getRevealableExamChoiceGroups = () => [
+        ...document.querySelectorAll(".exam-choices[data-has-answer='true']"),
+      ];
+      const hasRevealable = () =>
+        document.querySelector(
+          ".exam-blank[aria-pressed], .exam-solution, .exam-choices[data-has-answer='true']",
+        ) !== null;
+      const getAllShown = () => {
+        if (!hasRevealable()) return false;
+        const blanks = [
+          ...document.querySelectorAll(".exam-blank[aria-pressed]"),
+        ];
+        const solutions = [...document.querySelectorAll(".exam-solution")];
+        const choiceGroups = getRevealableExamChoiceGroups();
+        return (
+          blanks.every(
+            (blank) => blank.getAttribute("aria-pressed") === "true",
+          ) &&
+          solutions.every(
+            (solution) =>
+              solution instanceof HTMLDetailsElement && solution.open,
+          ) &&
+          choiceGroups.every(
+            (group) => group.getAttribute("data-revealed") === "true",
+          )
+        );
+      };
+      const syncExamState = () =>
+        window.dispatchEvent(
+          new CustomEvent(examStateChangeEvent, {
+            detail: {
+              allShown: getAllShown(),
+              hasRevealable: hasRevealable(),
+            },
+          }),
+        );
+      const setAllRevealed = (revealed) =>
+        window.dispatchEvent(
+          new CustomEvent(examStateSetAllEvent, {
+            detail: { revealed },
+          }),
+        );
+      window.__examState = {
+        read: readExamState,
+        update: updateExamState,
+        sync: syncExamState,
+        toggleAll: () => setAllRevealed(!getAllShown()),
+        getAllShown,
+        hasRevealable,
+        events: {
+          change: examStateChangeEvent,
+          setAll: examStateSetAllEvent,
+        },
+      };
+    </script>
+    <title>{`${pageTitle} - BYR Docs 维基真题`}</title>
+  </head>
+  <body>
+    <script is:inline>
+      document.addEventListener(
+        "click",
+        (e) => {
+          const a = e.target.closest("a[href]");
+          if (!a) return;
+          const href = a.getAttribute("href");
+          if (href && /^https?:\/\//.test(href)) {
+            a.setAttribute("target", "_blank");
+            a.setAttribute("rel", "noopener noreferrer");
+          }
+        },
+        true,
+      );
+    </script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".astro-code").forEach((pre) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "code-block-wrapper";
+          pre.parentNode.insertBefore(wrapper, pre);
+          wrapper.appendChild(pre);
+
+          const toolbar = document.createElement("div");
+          toolbar.className = "code-toolbar";
+
+          const wrapBtn = document.createElement("button");
+          wrapBtn.type = "button";
+          wrapBtn.title = "切换自动换行";
+          wrapBtn.innerHTML =
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h15a3 3 0 1 1 0 6h-4"/><polyline points="13 16 11 18 13 20"/><path d="M3 18h4"/></svg>';
+          wrapBtn.addEventListener("click", () => {
+            const isWrapped = pre.style.whiteSpace === "pre-wrap";
+            pre.style.whiteSpace = isWrapped ? "" : "pre-wrap";
+            pre.style.wordBreak = isWrapped ? "" : "break-all";
+            wrapBtn.style.color = isWrapped ? "" : "#4ade80";
+          });
+
+          const copyBtn = document.createElement("button");
+          copyBtn.type = "button";
+          copyBtn.title = "复制代码";
+          const copyIcon =
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+          const checkIcon =
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+          copyBtn.innerHTML = copyIcon;
+          copyBtn.addEventListener("click", () => {
+            const code = pre.querySelector("code");
+            const text = code ? code.textContent : pre.textContent;
+            navigator.clipboard.writeText(text || "").then(() => {
+              copyBtn.innerHTML = checkIcon;
+              copyBtn.classList.add("is-copied");
+              toolbar.classList.add("is-active");
+              setTimeout(() => {
+                copyBtn.innerHTML = copyIcon;
+                copyBtn.classList.remove("is-copied");
+                toolbar.classList.remove("is-active");
+              }, 2000);
+            });
+          });
+
+          toolbar.appendChild(wrapBtn);
+          toolbar.appendChild(copyBtn);
+          wrapper.appendChild(toolbar);
+        });
+      });
+    </script>
+    <div
+      class="layout-shell flex min-h-screen flex-col"
+      data-has-exam-toc={showExamTocToggle ? "true" : undefined}
+    >
+      <Header />
+      <main
+        class="layout-container mx-auto flex w-full flex-1 px-4 py-6 sm:px-6 lg:px-8"
+      >
+        <article class="wiki-content min-w-0 flex-1">
+          <h1>{pageTitle}</h1>
+          <slot />
+        </article>
+      </main>
+      {showToolbar && editHref && <PageToolbar editHref={editHref} />}
+      <Footer />
+    </div>
+    {
+      showExamTocToggle && (
+        <script is:inline>
+          var initExamTocDesktopToggle = function() {
+            var button = document.getElementById("examTocDesktopToggle");
+            if (!(button instanceof HTMLButtonElement))
+              return;
+
+            var storageKey = "exam-toc-desktop-collapsed";
+            var getCollapsed = function() {
+              return document.documentElement.dataset.examTocDesktop === "collapsed";
+            };
+            var syncButton = function() {
+              var collapsed = getCollapsed();
+              button.dataset.state = collapsed ? "collapsed" : "expanded";
+              button.setAttribute("aria-expanded", String(!collapsed));
+              button.setAttribute(
+                "aria-label",
+                collapsed ? "展开目录侧边栏" : "折叠目录侧边栏",
+              );
+            };
+            var setCollapsed = function(collapsed) {
+              document.documentElement.dataset.examTocDesktop = collapsed
+                ? "collapsed"
+                : "expanded";
+              try {
+                window.localStorage.setItem(
+                  storageKey,
+                  collapsed ? "true" : "false",
+                );
+              } catch {}
+              syncButton();
+              window.dispatchEvent(
+                new CustomEvent("examtocdesktopchange", {
+                  detail: { collapsed: collapsed },
+                }),
+              );
+            };
+
+            syncButton();
+            button.addEventListener("click", function() {
+              setCollapsed(!getCollapsed());
+            });
+            window.addEventListener("examtocdesktopchange", syncButton);
+            window.__examTocDesktop = {
+              getCollapsed: getCollapsed,
+              setCollapsed: setCollapsed,
+            };
+          };
+
+          if (document.readyState === "loading")
+            document.addEventListener("DOMContentLoaded", initExamTocDesktopToggle, {
+              once: true,
+            });
+          else
+            initExamTocDesktopToggle();
+        </script>
+      )
+    }
+  </body>
 </html>

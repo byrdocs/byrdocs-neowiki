@@ -1,161 +1,221 @@
 ---
-const {src,float=false,alt}=Astro.props;
-const hasCaption=Astro.slots.has("default");
-const isFloat=float===true||float==="true"||float==="";
-const isSvg=/\.svg(?:$|[?#])/i.test(src);
-const caption=hasCaption?await Astro.slots.render("default"):undefined;
-const imageAlt=alt??(hasCaption?"题图":src);
-const imageSrc=`/${src}`;
+const { src, float = false, alt, background } = Astro.props;
+const hasCaption = Astro.slots.has("default");
+const isFloat = float === true || float === "true" || float === "";
+const isSvg = /\.svg(?:$|[?#])/i.test(src);
+const caption = hasCaption ? await Astro.slots.render("default") : undefined;
+const imageAlt = alt ?? (hasCaption ? "题图" : src);
+const imageBackground =
+  background === true || background === ""
+    ? "white"
+    : typeof background === "string" && background.trim()
+      ? background.trim()
+      : undefined;
+const figureStyle = imageBackground
+  ? `--exam-figure-background: ${imageBackground};`
+  : undefined;
+const pathname = Astro.url.pathname.replace(/\/$/, "");
+const imageSrc = pathname.startsWith("/exam/")
+  ? `${pathname}/${src}`
+  : `/${src}`;
 ---
-<figure class:list={["exam-figure",isFloat&&"exam-figure-float"]} data-exam-figure data-exam-figure-alt={imageAlt} data-exam-figure-src={src}>
-	<button aria-label="预览图片" class="exam-figure-trigger" data-exam-figure-trigger type="button">
-		<span class="exam-figure-media">
-			<img alt={imageAlt} class="exam-figure-image" data-exam-figure-image loading="lazy" src={imageSrc} />
-			<span aria-hidden="true" class="exam-figure-missing">
-				<span class="exam-figure-missing-title">图片暂缺</span>
-				<code class="exam-figure-missing-meta" data-exam-figure-missing-meta>{src}</code>
-			</span>
-		</span>
-	</button>
-	{caption&&<figcaption class="exam-figure-caption" set:html={caption} />}
-	<dialog aria-label="图片预览" class="exam-figure-dialog" data-exam-figure-dialog>
-		<div class="exam-figure-dialog-panel">
-			<div class="exam-figure-dialog-media">
-				{isSvg?
-					<div aria-label={imageAlt} class="exam-figure-dialog-svg-container" data-exam-figure-svg-container data-src={imageSrc} role="img"></div>
-				:
-					<img alt={imageAlt} class="exam-figure-dialog-image" data-exam-figure-dialog-image loading="lazy" src={imageSrc} />}
-				<div class="exam-figure-dialog-fallback" data-exam-figure-dialog-fallback hidden>
-					<p class="exam-figure-dialog-fallback-title">图片暂缺</p>
-					<code class="exam-figure-dialog-fallback-meta" data-exam-figure-missing-meta>{src}</code>
-				</div>
-			</div>
-			{caption&&<div class="exam-figure-dialog-caption" set:html={caption} />}
-		</div>
-	</dialog>
+
+<figure
+  class:list={["exam-figure", isFloat && "exam-figure-float"]}
+  data-exam-figure
+  data-exam-figure-alt={imageAlt}
+  data-exam-figure-src={src}
+  style={figureStyle}
+>
+  <button
+    aria-label="预览图片"
+    class="exam-figure-trigger"
+    data-exam-figure-trigger
+    type="button"
+  >
+    <span class="exam-figure-media">
+      <img
+        alt={imageAlt}
+        class="exam-figure-image"
+        data-exam-figure-image
+        loading="lazy"
+        src={imageSrc}
+      />
+      <span aria-hidden="true" class="exam-figure-missing">
+        <span class="exam-figure-missing-title">图片暂缺</span>
+        <code class="exam-figure-missing-meta" data-exam-figure-missing-meta
+          >{src}</code
+        >
+      </span>
+    </span>
+  </button>
+  {caption && <figcaption class="exam-figure-caption" set:html={caption} />}
+  <dialog
+    aria-label="图片预览"
+    class="exam-figure-dialog"
+    data-exam-figure-dialog
+  >
+    <div class="exam-figure-dialog-panel">
+      <div class="exam-figure-dialog-media">
+        {
+          isSvg ? (
+            <div
+              aria-label={imageAlt}
+              class="exam-figure-dialog-svg-container"
+              data-exam-figure-svg-container
+              data-src={imageSrc}
+              role="img"
+            />
+          ) : (
+            <img
+              alt={imageAlt}
+              class="exam-figure-dialog-image"
+              data-exam-figure-dialog-image
+              loading="lazy"
+              src={imageSrc}
+            />
+          )
+        }
+        <div
+          class="exam-figure-dialog-fallback"
+          data-exam-figure-dialog-fallback
+          hidden
+        >
+          <p class="exam-figure-dialog-fallback-title">图片暂缺</p>
+          <code
+            class="exam-figure-dialog-fallback-meta"
+            data-exam-figure-missing-meta>{src}</code
+          >
+        </div>
+      </div>
+      {caption && <div class="exam-figure-dialog-caption" set:html={caption} />}
+    </div>
+  </dialog>
 </figure>
 <script>
-	const figures=document.querySelectorAll(".exam-figure[data-exam-figure]:not([data-exam-figure-ready])");
-	figures.forEach(figure=>{
-		figure.setAttribute("data-exam-figure-ready","true");
-		const trigger=figure.querySelector("[data-exam-figure-trigger]");
-		const dialog=figure.querySelector("[data-exam-figure-dialog]");
-		const image=figure.querySelector("[data-exam-figure-image]");
-		const dialogImage=figure.querySelector("[data-exam-figure-dialog-image]");
-		const dialogFallback=figure.querySelector("[data-exam-figure-dialog-fallback]");
-		const missingMetas=figure.querySelectorAll("[data-exam-figure-missing-meta]");
-		const svgContainer=figure.querySelector("[data-exam-figure-svg-container]");
+  const figures = document.querySelectorAll(
+    ".exam-figure[data-exam-figure]:not([data-exam-figure-ready])",
+  );
+  figures.forEach((figure) => {
+    figure.setAttribute("data-exam-figure-ready", "true");
+    const trigger = figure.querySelector("[data-exam-figure-trigger]");
+    const dialog = figure.querySelector("[data-exam-figure-dialog]");
+    const image = figure.querySelector("[data-exam-figure-image]");
+    const dialogImage = figure.querySelector("[data-exam-figure-dialog-image]");
+    const dialogFallback = figure.querySelector(
+      "[data-exam-figure-dialog-fallback]",
+    );
+    const missingMetas = figure.querySelectorAll(
+      "[data-exam-figure-missing-meta]",
+    );
+    const svgContainer = figure.querySelector(
+      "[data-exam-figure-svg-container]",
+    );
 
-		if(!(trigger instanceof HTMLButtonElement)||!(dialog instanceof HTMLDialogElement))
-			return;
+    if (
+      !(trigger instanceof HTMLButtonElement) ||
+      !(dialog instanceof HTMLDialogElement)
+    )
+      return;
 
-		const showDialogFallback=()=>{
-			if(dialogFallback instanceof HTMLDivElement)
-				dialogFallback.hidden=false;
-			if(svgContainer instanceof HTMLDivElement)
-				svgContainer.hidden=true;
-			if(dialogImage instanceof HTMLImageElement)
-				dialogImage.hidden=true;
-		};
+    const showDialogFallback = () => {
+      if (dialogFallback instanceof HTMLDivElement)
+        dialogFallback.hidden = false;
+      if (svgContainer instanceof HTMLDivElement) svgContainer.hidden = true;
+      if (dialogImage instanceof HTMLImageElement) dialogImage.hidden = true;
+    };
 
-		const markMissing=()=>{
-			figure.setAttribute("data-state","missing");
-			trigger.setAttribute("aria-disabled","true");
-			trigger.setAttribute("aria-label",`图片缺失：${figure.getAttribute("data-exam-figure-src")??"未知文件"}`);
-			showDialogFallback();
-		};
+    const markMissing = () => {
+      figure.setAttribute("data-state", "missing");
+      trigger.setAttribute("aria-disabled", "true");
+      trigger.setAttribute(
+        "aria-label",
+        `图片缺失：${figure.getAttribute("data-exam-figure-src") ?? "未知文件"}`,
+      );
+      showDialogFallback();
+    };
 
-		const fitSvgPreview=()=>{
-			if(!(svgContainer instanceof HTMLDivElement))
-				return;
-			const svg=svgContainer.querySelector("svg");
-			if(!(svg instanceof SVGSVGElement))
-				return;
-			try{
-				const box=svg.getBBox();
-				if(box.width<=0||box.height<=0)
-					return;
-				svg.setAttribute("viewBox",`${box.x} ${box.y} ${box.width} ${box.height}`);
-				const maxWidth=window.innerWidth*0.92;
-				const maxHeight=window.innerHeight*0.88;
-				const scale=Math.min(maxWidth/box.width,maxHeight/box.height);
-				svgContainer.style.width=`${box.width*scale}px`;
-				svgContainer.style.height=`${box.height*scale}px`;
-			}
-			catch{}
-		};
+    const fitSvgPreview = () => {
+      if (!(svgContainer instanceof HTMLDivElement)) return;
+      const svg = svgContainer.querySelector("svg");
+      if (!(svg instanceof SVGSVGElement)) return;
+      try {
+        const box = svg.getBBox();
+        if (box.width <= 0 || box.height <= 0) return;
+        svg.setAttribute(
+          "viewBox",
+          `${box.x} ${box.y} ${box.width} ${box.height}`,
+        );
+        const maxWidth = window.innerWidth * 0.92;
+        const maxHeight = window.innerHeight * 0.88;
+        const scale = Math.min(maxWidth / box.width, maxHeight / box.height);
+        svgContainer.style.width = `${box.width * scale}px`;
+        svgContainer.style.height = `${box.height * scale}px`;
+      } catch {}
+    };
 
-		const loadSvgPreview=async()=>{
-			if(!(svgContainer instanceof HTMLDivElement))
-				return;
-			if(svgContainer.getAttribute("data-ready")==="true"){
-				fitSvgPreview();
-				return;
-			}
-			const src=svgContainer.getAttribute("data-src");
-			if(!src)
-				return;
-			try{
-				const response=await fetch(src);
-				if(!response.ok)
-					return showDialogFallback();
-				const text=await response.text();
-				const parsed=new DOMParser().parseFromString(text,"image/svg+xml");
-				const svg=parsed.documentElement;
-				if(!(svg instanceof SVGSVGElement))
-					return showDialogFallback();
-				svgContainer.hidden=false;
-				if(dialogFallback instanceof HTMLDivElement)
-					dialogFallback.hidden=true;
-				svgContainer.style.width="";
-				svgContainer.style.height="";
-				svg.classList.add("exam-figure-dialog-svg");
-				svg.removeAttribute("width");
-				svg.removeAttribute("height");
-				svg.setAttribute("preserveAspectRatio","xMidYMid meet");
-				svgContainer.replaceChildren(svg);
-				svgContainer.setAttribute("data-ready","true");
-				requestAnimationFrame(()=>requestAnimationFrame(fitSvgPreview));
-			}
-			catch{
-				showDialogFallback();
-			}
-		};
+    const loadSvgPreview = async () => {
+      if (!(svgContainer instanceof HTMLDivElement)) return;
+      if (svgContainer.getAttribute("data-ready") === "true") {
+        fitSvgPreview();
+        return;
+      }
+      const src = svgContainer.getAttribute("data-src");
+      if (!src) return;
+      try {
+        const response = await fetch(src);
+        if (!response.ok) return showDialogFallback();
+        const text = await response.text();
+        const parsed = new DOMParser().parseFromString(text, "image/svg+xml");
+        const svg = parsed.documentElement;
+        if (!(svg instanceof SVGSVGElement)) return showDialogFallback();
+        svgContainer.hidden = false;
+        if (dialogFallback instanceof HTMLDivElement)
+          dialogFallback.hidden = true;
+        svgContainer.style.width = "";
+        svgContainer.style.height = "";
+        svg.classList.add("exam-figure-dialog-svg");
+        svg.removeAttribute("width");
+        svg.removeAttribute("height");
+        svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+        svgContainer.replaceChildren(svg);
+        svgContainer.setAttribute("data-ready", "true");
+        requestAnimationFrame(() => requestAnimationFrame(fitSvgPreview));
+      } catch {
+        showDialogFallback();
+      }
+    };
 
-		if(image instanceof HTMLImageElement){
-			if(image.complete&&image.naturalWidth===0)
-				markMissing();
-			else
-				image.addEventListener("error",markMissing,{once:true});
-		}
+    if (image instanceof HTMLImageElement) {
+      if (image.complete && image.naturalWidth === 0) markMissing();
+      else image.addEventListener("error", markMissing, { once: true });
+    }
 
-		if(dialogImage instanceof HTMLImageElement){
-			const handleDialogImageError=()=>showDialogFallback();
-			if(dialogImage.complete&&dialogImage.naturalWidth===0)
-				handleDialogImageError();
-			else
-				dialogImage.addEventListener("error",handleDialogImageError,{once:true});
-		}
+    if (dialogImage instanceof HTMLImageElement) {
+      const handleDialogImageError = () => showDialogFallback();
+      if (dialogImage.complete && dialogImage.naturalWidth === 0)
+        handleDialogImageError();
+      else
+        dialogImage.addEventListener("error", handleDialogImageError, {
+          once: true,
+        });
+    }
 
-		missingMetas.forEach(meta=>{
-			meta.addEventListener("click",event=>event.stopPropagation());
-		});
+    missingMetas.forEach((meta) => {
+      meta.addEventListener("click", (event) => event.stopPropagation());
+    });
 
-		trigger.addEventListener("click",()=>{
-			if(figure.getAttribute("data-state")==="missing")
-				return;
-			if(!dialog.open)
-				dialog.showModal();
-			void loadSvgPreview();
-		});
+    trigger.addEventListener("click", () => {
+      if (figure.getAttribute("data-state") === "missing") return;
+      if (!dialog.open) dialog.showModal();
+      void loadSvgPreview();
+    });
 
-		dialog.addEventListener("click",event=>{
-			if(event.target===dialog)
-				dialog.close();
-		});
-		window.addEventListener("resize",()=>{
-			if(dialog.open)
-				fitSvgPreview();
-		});
-	});
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    window.addEventListener("resize", () => {
+      if (dialog.open) fitSvgPreview();
+    });
+  });
 </script>

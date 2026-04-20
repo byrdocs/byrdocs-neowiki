@@ -11,18 +11,25 @@
 
 ## 文件结构
 
-如果你是一般编辑者，文件结构中只有两个目录是你需要关注的：
+如果你是一般编辑者，文件结构中只有一个目录是你需要关注的：
 
-- [exams/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/exams) 存放 MDX 格式的试题文件。每份试题的命名格式为 **学年开始-学年结束-学期-科目-阶段（备注）**，例如：
+- [exams/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/exams) 存放试题内容及其资源文件。每份试题的命名格式为 **学年开始-学年结束-学期-科目-阶段（备注）**，例如：
     - **23-24-1-线性代数-期末（B卷）** 因为本次考试的AB卷均收录于本维基，所以我们可以对其加注（A卷）或（B卷）加以区分。
     - **23-24-2-高等数学A（下）-期末** 注意科目要用全名，不要使用缩写。
     - **24-25-1-英语听说2-期末** 即便是英文试卷（包括国际学院的试卷），也要用中文名。
     - **24-25-2-数字信号处理-期中** 当存在歧义时，最先创建的页面可以不加备注，这是重名的先来后到原则。
     - **24-25-2-数字信号处理-期中（信息与通信工程学院）** 接下来出现的同名文件必须给予适当备注，以避免重名。
-- [public/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/public) 存放图像、音频文件，作为题目的附件。一般情况下，上传文件的命名均应以**它所属的试卷名**为前缀，再注明它是题图、答案或其它类型的文件，例如：
-    - **24-25-2-数字信号处理-期中（信息与通信工程学院）-题图3.1.png** 这份文件属于 24-25-2-数字信号处理-期中（信息与通信工程学院），是第3.1题的题图。
-    - **24-25-2-电路分析基础-期中-解答4.svg** 这份文件属于 24-25-2-电路分析基础-期中，是第四题解答中用到的图。
-    - **24-25-1-进阶综合英语（上）-期末-听力音频.mp3** 这份文件属于 24-25-1-进阶综合英语（上）-期末，是听力部分的听力音频。
+
+试题统一使用目录结构：
+
+- 每份试题都应创建同名目录，并把正文放在 `index.mdx` 中，例如 `exams/23-24-2-高等数学A（下）-期末/index.mdx`。
+- 如果试题有题图、音频等资源文件，也应与 `index.mdx` 放在同一个试题目录下。
+
+对于带资源文件的试题，建议资源文件名直接描述其用途，例如：
+
+- `题图3.1.png`
+- `解答4.svg`
+- `听力音频.mp3`
 
 如果你有意向对网站本身做出调整，请自行了解 [Astro 文档](https://docs.astro.build/en/getting-started/)及本项目代码结构，也可加入[我们的 QQ 群](https://qm.qq.com/cgi-bin/qm/qr?k=plu_KgkqxI4Dw-FwW1aFQDQ0hL062WNV&jump_from=webapi&authKey=09aiBE16MH9jTfmgmGtCjMRsvpazAMkvLcG35mdICYHe2+FKF51qqSIdUC0dVxkh)。
 
@@ -60,6 +67,7 @@
 
 - 试题内容只需要呈现有效的试题部分，不要添加无关紧要的细节，如「考试注意事项」「打分表」等。
 - 除题图、听力音频等必要附件外，试题内容应全部使用**符合维基真题规范的 MDX** 语法录入，不允许以照片形式存储试题。
+- 每份试题的正文都应写在试题目录下的 `index.mdx` 中。如有题图、音频等资源文件，也应与它放在同一个试题目录下；不要把这些资源放进 `public/`。
 - 大题使用二级标题，简答题小题使用三级标题，如：
 
 ```mdx
@@ -241,9 +249,11 @@
 
 `Figure` 组件用于显示图片，支持斥文嵌入和串文旁置。
 
-- 图片来源 `src` 只能使用 [public/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/public) 目录内的文件，使用时不加 `public/` 前缀。
+- 在试题页中，图片来源 `src` 应填写**当前试题目录内的相对文件名**，例如 `题图3.1.png`。每份试题都应使用 `exams/试卷名/index.mdx + 同目录资源文件` 的组织方式。
 - 图片默认使用斥文嵌入；如需串文旁置，请加注 `float` 属性。
+- 对于透明背景的 `png` / `svg`，应显式设置 `background`。如果题图本身没有背景色，通常应手动写成 `background="white"`，避免深色模式下对比度过低；如果确实希望保持透明，也必须显式写 `background="transparent"`。
 - 组件内填写图片标题；如果留空，则代表没有图片标题。（建议只在串文旁置时使用图片标题）
+- 本指南页不是试题页，因此下方预览仍使用站点已有文件 `favicon.svg`，这里只是演示组件效果。
 
 <div class="guide-example-grid">
     <div class="guide-example-panel guide-example-code">
@@ -252,13 +262,13 @@
             ```mdx
             两种插入图片的方法：
 
-            <Figure src="favicon.svg" float>
+            <Figure src="favicon.svg" float background="transparent">
                 BYR Docs 维基真题
             </Figure>
 
             串文旁置
 
-            <Figure src="favicon.svg" />
+            <Figure src="favicon.svg" background="transparent" />
 
             斥文嵌入
             ```
@@ -269,13 +279,13 @@
         <div class="guide-example-panel-body guide-example-preview">
             两种插入图片的方法：
 
-            <Figure src="favicon.svg" float>
+            <Figure src="favicon.svg" float background="transparent">
                 BYR Docs 维基真题
             </Figure>
 
             串文旁置
 
-            <Figure src="favicon.svg" />
+            <Figure src="favicon.svg" background="transparent" />
 
             斥文嵌入
         </div>

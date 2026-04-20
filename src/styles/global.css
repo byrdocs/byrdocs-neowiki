@@ -2,134 +2,359 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@layer base{
-	html{
-		@apply scroll-smooth bg-slate-50 text-slate-900 antialiased;
-	}
-	html.dark{
-		color-scheme:dark;
-	}
-	body{
-		@apply min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
-	}
-	a{
-		@apply text-blue-700 underline decoration-blue-300 underline-offset-2 transition-colors hover:text-blue-900 dark:text-sky-300 dark:decoration-sky-700 dark:hover:text-sky-200;
-	}
-	strong{
-		@apply font-semibold text-slate-950 dark:text-white;
-	}
-	::selection{
-		@apply bg-sky-200 text-slate-950;
-	}
-	.dark ::selection{
-		@apply bg-sky-500/40 text-white;
-	}
-	h4{
-		font-weight:bold;
-	}
+@layer base {
+  html {
+    @apply scroll-smooth bg-slate-50 text-slate-900 antialiased;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  }
+  a {
+    @apply text-blue-700 underline decoration-blue-300 underline-offset-2 transition-colors hover:text-blue-900 dark:text-sky-300 dark:decoration-sky-700 dark:hover:text-sky-200;
+  }
+  a[href^="http"]::after {
+    content: "";
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    margin-left: 0.3em;
+    vertical-align: middle;
+    position: relative;
+    top: -0.05em;
+    opacity: 0.45;
+    background: currentColor;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+  }
+  a.no-underline[href^="http"]::after {
+    content: none;
+  }
+  strong {
+    @apply font-semibold text-slate-950 dark:text-white;
+  }
+  ::selection {
+    @apply bg-sky-200 text-slate-950;
+  }
+  .dark ::selection {
+    @apply bg-sky-500/40 text-white;
+  }
+  h4 {
+    font-weight: bold;
+  }
 }
 
-@layer components{
-	:where(.wiki-content){
-		@apply w-full text-[1.02rem] leading-7 text-slate-800 dark:text-slate-200;
-	}
-	:where(.wiki-content > :first-child){
-		margin-top:0;
-	}
-	:where(.wiki-content > :last-child){
-		margin-bottom:0;
-	}
-	:where(.wiki-content h1){
-		@apply mt-8 text-3xl font-bold tracking-tight text-slate-950 dark:text-white;
-	}
-	:where(.wiki-content h2){
-		@apply mt-10 border-b border-slate-200 pb-2 text-2xl font-bold tracking-tight text-slate-950 dark:border-slate-800 dark:text-white;
-	}
-	:where(.wiki-content h3){
-		@apply mt-8 text-xl font-semibold tracking-tight text-slate-950 dark:text-white;
-	}
-	:where(.wiki-content p),
-	:where(.wiki-content ul),
-	:where(.wiki-content ol),
-	:where(.wiki-content dl),
-	:where(.wiki-content pre),
-	:where(.wiki-content blockquote),
-	:where(.wiki-content table),
-	:where(.wiki-content figure),
-	:where(.wiki-content details){
-		@apply my-0;
-	}
-	:where(.wiki-content ul){
-		@apply list-disc pl-6;
-	}
-	:where(.wiki-content ol){
-		@apply list-decimal pl-6;
-	}
-	:where(.wiki-content li){
-		@apply my-2;
-	}
-	:where(.wiki-content hr){
-		@apply my-8 border-slate-200 dark:border-slate-800;
-	}
-	:where(.wiki-content code){
-		@apply rounded-md bg-slate-200/70 px-1.5 py-0.5 text-[0.95em] text-slate-900 dark:bg-slate-800/90 dark:text-slate-100;
-	}
-	:where(.wiki-content pre){
-		@apply overflow-x-auto rounded-[8px] border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 shadow-sm dark:border-slate-800;
-	}
-	:where(.wiki-content pre code){
-		@apply bg-transparent p-0 text-inherit;
-	}
-	:where(.wiki-content blockquote){
-		@apply rounded-r-xl border-l-4 border-slate-300 bg-slate-100/80 px-4 py-3 text-slate-700 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200;
-	}
-	:where(.wiki-content table){
-		@apply w-full border-collapse border border-slate-200 text-sm shadow-sm dark:border-slate-800;
-	}
-	:where(.wiki-content th),
-	:where(.wiki-content td){
-		@apply border border-slate-200 px-4 py-3 dark:border-slate-800;
-	}
-	:where(.wiki-content th){
-		@apply bg-slate-100 text-left font-semibold text-slate-900 dark:bg-slate-900 dark:text-slate-100;
-	}
-	:where(.wiki-content td){
-		@apply align-top;
-	}
-	:where(.wiki-content img){
-		@apply rounded-xl;
-	}
-	:where(.wiki-content figcaption){
-		@apply mt-2 text-center text-sm text-slate-600 dark:text-slate-400;
-	}
-	:where(.wiki-content figcaption p){
-		margin:0;
-	}
-	:where(.wiki-content details){
-		@apply overflow-hidden;
-	}
-	:where(.wiki-content .guide-example-grid){
-		@apply my-6 grid gap-4 xl:grid-cols-2;
-	}
-	:where(.wiki-content .guide-example-panel){
-		@apply min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
-	}
-	:where(.wiki-content .guide-example-panel-title){
-		@apply border-b border-slate-200 px-4 py-3 text-sm font-semibold tracking-[0.08em] text-slate-600 dark:border-slate-800 dark:text-slate-400;
-	}
-	:where(.wiki-content .guide-example-panel-body){
-		@apply p-4;
-	}
-	:where(.wiki-content .guide-example-panel-body > :first-child){
-		margin-top:0;
-	}
-	:where(.wiki-content .guide-example-panel-body > :last-child){
-		margin-bottom:0;
-	}
-	:where(.wiki-content .guide-example-code pre){
-		@apply my-0 rounded-none border-0 shadow-none;
-	}
-	:where(.wiki-content .guide-example-preview){
-		@apply flow-root;
-	}
+@layer components {
+  :where(.layout-shell) {
+    --exam-sidebar-gap-expanded: 1.75rem;
+    --exam-sidebar-width-expanded: clamp(20rem, 22vw, 26rem);
+    --exam-sidebar-trigger-width: 2.75rem;
+  }
+  :where(.layout-shell .layout-container) {
+    max-width: 72rem;
+  }
+  :where(.exam-toc-desktop-trigger[data-state="expanded"]) {
+    background: rgb(226 232 240 / 0.75);
+    border-color: rgb(203 213 225 / 0.95);
+    color: rgb(15 23 42 / 0.92);
+  }
+  .dark :where(.exam-toc-desktop-trigger[data-state="expanded"]) {
+    background: rgb(30 41 59 / 0.96);
+    border-color: rgb(71 85 105 / 0.95);
+    color: rgb(248 250 252 / 0.98);
+  }
+  @media (min-width: 1680px) {
+    :where(.layout-shell[data-has-exam-toc="true"] main.layout-container) {
+      left: 0;
+      position: relative;
+      transition: left 0.22s ease;
+    }
+    html[data-exam-toc-desktop="expanded"]
+      :where(.layout-shell[data-has-exam-toc="true"] main.layout-container) {
+      left: calc(
+        (
+            var(--exam-sidebar-width-expanded) +
+              var(--exam-sidebar-gap-expanded)
+          ) / 2
+      );
+    }
+  }
+  :where(.wiki-content) {
+    @apply w-full text-[1.02rem] leading-7 text-slate-800 dark:text-slate-200;
+  }
+  :where(.wiki-content > :first-child) {
+    margin-top: 0;
+  }
+  :where(.wiki-content > :last-child) {
+    margin-bottom: 0;
+  }
+  :where(.wiki-content h1) {
+    @apply mt-8 border-b border-slate-200 pb-2 mb-4 text-3xl font-bold tracking-tight text-slate-950 dark:border-slate-800 dark:text-white;
+  }
+  :where(.wiki-content h2) {
+    @apply mt-10 border-b border-slate-200 pb-2 mb-4 text-2xl font-bold tracking-tight text-slate-950 dark:border-slate-800 dark:text-white;
+  }
+  :where(.wiki-content h3) {
+    @apply mt-8 mb-4 text-xl font-semibold tracking-tight text-slate-950 dark:text-white;
+  }
+  :where(.floating-toolbar) {
+    @apply fixed right-4 bottom-6 z-50 flex flex-col items-end sm:right-6 sm:bottom-8;
+  }
+  :where(.floating-toolbar-actions) {
+    @apply flex flex-col gap-2;
+  }
+  :where(.floating-toolbar-control) {
+    @apply relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 no-underline shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300;
+    transition:
+      opacity 0.2s ease,
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  :where(.floating-toolbar-control)::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    transform: translate3d(6px, -50%, 0);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(226 232 240 / 0.95);
+    background: rgb(255 255 255 / 0.96);
+    color: rgb(15 23 42 / 0.95);
+    box-shadow: 0 12px 28px rgb(15 23 42 / 0.14);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.6rem 0.75rem;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
+    transition-delay: 0s;
+  }
+  :where(.floating-toolbar-control:hover)::before,
+  :where(.floating-toolbar-control:focus-visible)::before {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+    transition-delay: 0.1s;
+  }
+  :where(.floating-toolbar-control:focus-visible) {
+    outline: 2px solid rgb(59 130 246 / 0.45);
+    outline-offset: 2px;
+  }
+  :where(.floating-toolbar-toggle) {
+    display: none;
+  }
+  :where(.floating-toolbar-toggle [data-toolbar-toggle-icon]) {
+    position: absolute;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
+  }
+  :where(.floating-toolbar-toggle [data-toolbar-toggle-icon="open"]) {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  :where(.floating-toolbar-toggle [data-toolbar-toggle-icon="close"]) {
+    opacity: 0;
+    transform: scale(0.72) rotate(-90deg);
+  }
+  :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-toggle [data-toolbar-toggle-icon="open"]) {
+    opacity: 0;
+    transform: scale(0.72) rotate(90deg);
+  }
+  :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-toggle [data-toolbar-toggle-icon="close"]) {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  .dark :where(.floating-toolbar-control)::before {
+    border-color: rgb(51 65 85 / 0.95);
+    background: rgb(15 23 42 / 0.96);
+    color: rgb(226 232 240 / 0.96);
+    box-shadow: 0 12px 28px rgb(2 6 23 / 0.32);
+  }
+  @media (max-width: 639px) {
+    :where(.floating-toolbar-toggle) {
+      display: inline-flex;
+    }
+    :where(.floating-toolbar-actions) {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(0.5rem) scale(0.96);
+      transform-origin: bottom right;
+      visibility: hidden;
+      transition:
+        max-height 0.18s ease,
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        visibility 0s linear 0.18s;
+    }
+    :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-actions) {
+      max-height: 24rem;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      visibility: visible;
+      transition-delay: 0s;
+    }
+    :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-toggle) {
+      margin-top: 0.5rem;
+    }
+  }
+  @media (hover: none) {
+    :where(.floating-toolbar-control)::before {
+      display: none;
+    }
+  }
+  :where(.wiki-content p),
+  :where(.wiki-content ul),
+  :where(.wiki-content ol),
+  :where(.wiki-content dl),
+  :where(.wiki-content pre),
+  :where(.wiki-content blockquote),
+  :where(.wiki-content table),
+  :where(.wiki-content figure),
+  :where(.wiki-content details) {
+    @apply my-0;
+  }
+  :where(.wiki-content ul) {
+    @apply list-disc pl-6;
+  }
+  :where(.wiki-content ol) {
+    @apply list-decimal pl-6;
+  }
+  :where(.wiki-content li) {
+    @apply my-2;
+  }
+  :where(.wiki-content hr) {
+    @apply my-8 border-slate-200 dark:border-slate-800;
+  }
+  :where(.wiki-content code) {
+    @apply rounded-md bg-slate-200/70 px-1.5 py-0.5 text-[0.95em] text-slate-900 dark:bg-slate-800/90 dark:text-slate-100;
+  }
+  :where(.wiki-content pre) {
+    @apply overflow-x-auto rounded-xl border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 shadow-sm dark:border-slate-800;
+  }
+  .wiki-content .astro-code {
+    border-radius: var(--radius-xl);
+  }
+  .wiki-content .code-block-wrapper {
+    position: relative;
+  }
+  .wiki-content .code-block-wrapper .code-toolbar {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+    display: flex;
+    gap: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+  .wiki-content .code-block-wrapper:hover .code-toolbar,
+  .wiki-content .code-block-wrapper .code-toolbar.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media (max-width: 640px) {
+    .wiki-content .code-block-wrapper .code-toolbar {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  .wiki-content .code-block-wrapper .code-toolbar button {
+    appearance: none;
+    border: none;
+    border-radius: 0.375rem;
+    background: rgb(255 255 255 / 0.1);
+    color: rgb(255 255 255 / 0.6);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .wiki-content .code-block-wrapper .code-toolbar button:hover {
+    background: rgb(255 255 255 / 0.2);
+    color: rgb(255 255 255 / 0.9);
+  }
+  .wiki-content .code-block-wrapper .code-toolbar button.is-copied {
+    color: #4ade80;
+  }
+  .wiki-content .code-block-wrapper:not(:first-child) {
+    margin-top: 1em;
+  }
+  .wiki-content .code-block-wrapper:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  :where(.wiki-content pre code) {
+    @apply bg-transparent p-0 text-inherit;
+  }
+  :where(.wiki-content blockquote) {
+    @apply my-4 rounded-r-xl border-l-4 border-slate-300 bg-slate-100/80 px-4 py-3 text-slate-700 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200;
+  }
+  :where(.wiki-content table) {
+    @apply w-full border-collapse border border-slate-200 text-sm shadow-sm dark:border-slate-800;
+  }
+  :where(.wiki-content th),
+  :where(.wiki-content td) {
+    @apply border border-slate-200 px-4 py-3 dark:border-slate-800;
+  }
+  :where(.wiki-content th) {
+    @apply bg-slate-100 text-left font-semibold text-slate-900 dark:bg-slate-900 dark:text-slate-100;
+  }
+  :where(.wiki-content td) {
+    @apply align-top;
+  }
+  :where(.wiki-content img) {
+    @apply rounded-xl;
+  }
+  :where(.wiki-content figcaption) {
+    @apply mt-2 text-center text-sm text-slate-600 dark:text-slate-400;
+  }
+  :where(.wiki-content figcaption p) {
+    margin: 0;
+  }
+  :where(.wiki-content details) {
+    @apply overflow-hidden;
+  }
+  :where(.wiki-content .guide-example-grid) {
+    @apply my-6 grid gap-4 xl:grid-cols-2;
+  }
+  :where(.wiki-content .guide-example-panel) {
+    @apply min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
+  }
+  :where(.wiki-content .guide-example-panel-title) {
+    @apply border-b border-slate-200 px-4 py-3 text-sm font-semibold tracking-[0.08em] text-slate-600 dark:border-slate-800 dark:text-slate-400;
+  }
+  :where(.wiki-content .guide-example-panel-body) {
+    @apply p-4;
+  }
+  :where(.wiki-content .guide-example-panel-body > :first-child) {
+    margin-top: 0;
+  }
+  :where(.wiki-content .guide-example-panel-body > :last-child) {
+    margin-bottom: 0;
+  }
+  :where(.wiki-content .guide-example-code pre) {
+    @apply my-0 rounded-none border-0 shadow-none;
+  }
+  :where(.wiki-content .guide-example-preview) {
+    @apply flow-root;
+  }
 }
