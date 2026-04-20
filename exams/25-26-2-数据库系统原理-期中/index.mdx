@@ -1,0 +1,96 @@
+---
+时间: 2025-2026学年第二学期
+科目: 数据库系统原理
+阶段: 期中
+类型: 本科
+学院:
+- 计算机学院
+答案完成度: 残缺
+---
+
+## 1. (15 points)
+
+1. Database (DB) is a collection of <Blank /> stored in systems as files
+2. A <Blank /> is a set of one or more attributes that, taken collectively, can be used to identify uniquely a tuple in the relation
+3. <Blank /> semi-quantitatively express the number of entities to which another entity can be associated via a relationship set.
+4. Domain is <Blank /> if its elements are considered to be indivisible units.
+5. DBS design can be divided into three stages, at the <Blank /> stage, the E-R model is used to describe the data objects in the world and the associations among the objects.
+6. An entity set that does not have sufficient attributes to form a primary key is termed a <Blank />.
+7. SQL queries can be invoked from host languages, e.g. C++, via <Blank />and dynamic SQL.
+8. In referencing relation and referenced relation, the value of a foreign key is either null or equal to the value of the <Blank /> in another relation.
+9. From the entity sets A and B, the relationship set R among them, if the cardinality limit of A is 2....*, and the cardinality limit of B is 0 ....1, then the mapping cardinality from A to B is: <Blank />.
+10. The three levels of data abstractions are physical level, <Blank /> level and view level.
+11. An <Blank /> of the database is the collection of information stored in the database at a particular moment
+12. Query is a a statement requesting the <Blank /> of information.
+13. The <Blank /> clause causes the tuples in the result of query to appear in sorted order.
+14. A <Blank /> provides a mechanism to hide certain data from the view of certain users.
+15. The <Blank /> of a weak entity set is the set of attributes that distinguishes among all those entities in the weak entity set that depending on a particular strong entity
+
+## 2. (22 points)
+
+Here is the schema diagram for the **Banking** database(银行数据库). The table *branch* describes the name, the city located and the assets(资产) of the bank's branches (支行). The customers of branches are represented in the table *customer*. A customer may have an *account* (存款账户) in a branch. His account is uniquely identified by the attribute *account_number*, and the attribute *balance* (存款额) records the amount of money in this account; A customer may also have a *loan* (借款账户) in a branch. His loan is solely identified by *loan_number*, and the *amount* (借款额) of money he loans is given by *amount*. The relationships between customers and their accounts or loans are modelled as *depositor* or *borrower* respectively.
+
+<Figure src="25-26-2-数据库系统原理-期中-第2题图.svg" />
+
+For the following queries, give **relational algebra** expressions for (1), and **SQL statements** for (2)~(5)
+
+1. Find the names of all customers who have an account at the "Haidian" branch, but at any branch have no loan whose amount is greater than 1000. (4 points)
+
+2. Create the table *account*, in which *account_number* is the primary key, *branch_name* is a foreign key that defines a referential integrity constraint from *account* to *branch*. It is also required that *branch_name* is not permitted to be null, and the account's balance is not below 0. (5 points)
+
+3. Use one or more SQL statements to verify whether or not the functional dependency *account_number*→*balance* is satisfied by the table *account*. (4 points)
+
+4. A customer BUPT paid off all of his loans in Haidian branch, and accordingly, use SQL statements to delete related information in database. (4 points)
+
+5. For each branch located in Beijing, count the total number of the customers who have accounts in the branch. For the branch that have more than 100 account customers (i.e. depositors), list its name, the total number of the depositors, as well as the sum of the balances, in descending order of balance sum. (5 points)
+
+## 3. (23 points)
+
+In the Company database, there are six relational tables as follows.
+
+&emsp;&emsp;*employee*(<u>*eID*</u>, *ename*, *birthdate*, *sex*, *salary*, *deptID*)
+
+&emsp;&emsp;*department*(<u>*deptID*</u>, *deptname*, *mgr_ID*)
+
+&emsp;&emsp;*departlocation*(<u>*deptID*</u>, *dept_location*)
+
+&emsp;&emsp;*workson*(<u>*eID*, *prj_ID*,</u> *hours*)
+
+&emsp;&emsp;*project*(<u>*prj_ID*,</u> *prj_name*, *prj_location*, *deptID*)
+
+&emsp;&emsp;*dependent*(<u>*eID*,</u> *dependent_name*, *sex*, *birthdate*)
+
+The three data objects employee, department and project are modeled as the relational table *employee*, *department*, and *project*, respectively. Each employee *eID* belongs to a department *deptID*, this department's manager is identified by *mgr_ID*, and its location is given in the table *depart_location*; The employee *eID* works on a project recognized by *prj_ID*, this project is managed by the department *deptID*, and the times he spends on this project is given by the attribute *hours*; An employee *eID* may have one or more dependents, and the dependent's information such as name, sex and birthdate is given in the table *dependent*.
+
+&emsp;
+
+For the following queries, give **SQL statements** for (1)~(3), and **relational algebra** expressions for (4).
+
+1. Create the table *employee*, in which (*eID*) is the primary key, and (*ename*) is not permitted to be null; there exists a referential integrity constraint from *employee* to *department*, and it is also required that the employee's salary is not below 0. (6 points)
+
+2. For the female employees who work in the department *deptname*='EE', increase their salaries by ten percent. (6 points)
+
+3. Among all the departments, find the department that has the largest number of the employees in it. List the department's ID, name and the number of the employees belonging to this department. (6 points)
+
+4. Find the average age of the female employees in the department that is located in 'Building 4'. (5 points)
+
+# 4.(20 points)
+
+Consider the following E/R diagram. Create the relational schema that captures this E/R diagram. For every relation in your schema, specify the primary key of that relation.
+
+<Figure src="25-26-2-数据库系统原理-期中-第4题图.svg" />
+
+# 5. (20 Points)
+
+Consider the data requirements which DVD rental company needs to record.
+- This rental companies have several branches. The data of each branch include: address (consist of the city, street and zip code), telephone number (each branch can have several phone numbers), branch number, this number is unique.
+- The staff. Each employee has a unique number, as well as the names, positions and salaries.
+- The DVD. The following data should be saved, including DVD number, title, the daily rental price, status, and the names of the main actors and directors, among which the number is unique, but the major actors and directors in each DVD can be more than one.
+- The classification of DVD. Including the classification number, name and description, classification number must be unique.
+- The customers. Including customer number, name, address and date of registration, the customer number is unique.
+- A branch may contain many employees, but an employee only belongs to one branch.
+- A branch may have many DVDs, but each DVD belongs to one branch.
+- Each DVD can belong to more than one classification, but a classification may have no DVDs.
+- The record that customer rented DVD. A customer can rent more than one DVD, and a DVD may be rented by more than one customer. The rental date and the return date must be recorded.
+
+Draw the E/R diagram for the database based on the information mentioned above.
