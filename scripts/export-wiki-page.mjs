@@ -647,6 +647,8 @@ function resolveStructuredBlocks(text, context) {
 
 function cleanupMath(text) {
     return text
+        .replace(/\\begin\s*\{\s*align\s*\}/g, "\\begin{align*}")
+        .replace(/\\end\s*\{\s*align\s*\}/g, "\\end{align*}")
         .replace(/^\s+|\s+$/g, "")
         .replace(/\s*\n\s*/g, " ");
 }
