@@ -1,5 +1,5 @@
 ---
-const { src, float = false, alt, background } = Astro.props;
+const { src, float = false, alt, background = "white" } = Astro.props;
 const hasCaption = Astro.slots.has("default");
 const isFloat = float === true || float === "true" || float === "";
 const isSvg = /\.svg(?:$|[?#])/i.test(src);

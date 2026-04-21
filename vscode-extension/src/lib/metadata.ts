@@ -121,10 +121,10 @@ export const COMPONENTS = {
       },
       background: {
         type: "string",
-        valueKind: "enum",
+        valueKind: "freeform",
         values: ["white", "transparent"],
         description:
-          "透明背景图片建议显式设置。常见值为 `white` 或 `transparent`，也可填写其他 CSS 颜色。",
+          "透明背景图片建议显式设置。常见值为 `white` 或 `transparent`，也支持常见 CSS 颜色字符串。",
       },
       alt: {
         type: "string",
