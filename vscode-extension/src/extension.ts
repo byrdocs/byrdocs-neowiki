@@ -144,7 +144,9 @@ export function activate(context: vscode.ExtensionContext): void {
         scheduleExamListRefresh("text document saved", document.uri);
       }
       if (path.basename(document.fileName) === "package.json") {
-        void refreshEnabledContext();
+        void refreshEnabledContext().then(() =>
+          ensureMdxWordWrapForWikiWorkspaces(),
+        );
       }
     }),
     vscode.workspace.onDidCreateFiles((event) => {
@@ -197,6 +199,7 @@ export function activate(context: vscode.ExtensionContext): void {
     }),
     vscode.workspace.onDidChangeWorkspaceFolders(() => {
       void refreshEnabledContext();
+      void ensureMdxWordWrapForWikiWorkspaces();
       resetExamIndexWatchers();
       createExamPageViewProvider.refresh();
       refreshAllOpenFigureDiagnostics(figureDiagnosticCollection);
@@ -212,6 +215,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
   logOutput("activate");
   void refreshEnabledContext();
+  void ensureMdxWordWrapForWikiWorkspaces();
   refreshAllOpenFigureDiagnostics(figureDiagnosticCollection);
 }
 
@@ -352,4 +356,38 @@ function describeExamResourceMatch(match: {
     return "exam path";
   }
   return "ignored";
+}
+
+async function ensureMdxWordWrapForWikiWorkspaces(): Promise<void> {
+  for (const workspaceFolder of getWikiWorkspaceFolders()) {
+    try {
+      const configuration = vscode.workspace.getConfiguration(
+        "",
+        workspaceFolder.uri,
+      );
+      const rawMdxConfiguration = configuration.get<unknown>("[mdx]");
+      const mdxConfiguration =
+        rawMdxConfiguration &&
+        typeof rawMdxConfiguration === "object" &&
+        !Array.isArray(rawMdxConfiguration)
+          ? (rawMdxConfiguration as Record<string, unknown>)
+          : {};
+      if (mdxConfiguration["editor.wordWrap"] === "on") {
+        continue;
+      }
+
+      await configuration.update(
+        "[mdx]",
+        {
+          ...mdxConfiguration,
+          "editor.wordWrap": "on",
+        },
+        vscode.ConfigurationTarget.WorkspaceFolder,
+      );
+      logOutput("set mdx wordWrap", workspaceFolder.uri);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      logOutput("set mdx wordWrap failed", workspaceFolder.uri, message);
+    }
+  }
 }
