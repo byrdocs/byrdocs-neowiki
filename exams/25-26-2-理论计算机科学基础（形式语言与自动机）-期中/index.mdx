@@ -1,0 +1,86 @@
+---
+时间: 2025-2026学年第二学期
+科目: 形式语言与自动机
+阶段: 期中
+类型: 本科
+答案完成度: 残缺
+学院:
+- 计算机学院
+---
+
+## 1、2.（题面暂缺）
+
+第 1、2 题题面暂缺，当前仅保留考点回忆：给出了文法的生成式，进行文法类型判断、由右线性文法导出正则表达式等。  
+即当出现形如 $x=\alpha x+\beta$ 的方程时，可用 Arden 引理写为 $x=\alpha^{*}\beta$。
+
+
+## 3.
+
+已知右线性文法 G, 请构造相应的有限自动机。
+
+$$
+G=(\{S, A, B\}, \{a,b\}, P,S)
+$$
+
+生成式 $P$ 如下:
+
+$$
+\begin{aligned}
+S &\to aA \mid baB \mid a \\
+A &\to aA \mid aS \mid bB \\
+B &\to bB \mid b \mid a
+\end{aligned}
+$$
+
+<Solution>
+    产生式集合 $P$ 经过拆分标准化后如下：
+    $$
+    \begin{aligned}
+    S &\to aA \mid bC \mid a \\
+    C &\to aB \\
+    A &\to aA \mid aS \mid bB \\
+    B &\to bB \mid b \mid a
+    \end{aligned}
+    $$
+    根据上述产生式，我们可以构造一个非确定有限自动机 (NFA)：
+    <Figure src="第3题-非确定有限自动机.svg">
+        构造的非确定有限自动机
+    </Figure>
+</Solution>
+
+## 4. （题面暂缺）
+
+考点为：含 $\varepsilon$ 转换的 NFA、无 $\varepsilon$ 转换的 NFA 与 DFA 三者之间的等价转换。
+
+## 5. 
+
+写出第5题题图中有限自动机接收的字符串集合。
+
+<Figure src="第5题-有限自动机转换图.svg">
+    有限自动机转换图
+</Figure>
+
+## 6. 
+
+使用泵浦引理证明集合 $\{ a^n b^m c^{n+m} \mid n, m \geq 1 \}$ 不是正则集。
+
+## 7. (题目暂缺)
+
+题图缺，考查内容为：填表法化简`DFA M`，求出最简自动机。
+
+## 8. 
+
+构造**最简**的`DFA M`能够产生下列语言。终止符号的集合为 $\{a, b\}$。
+1. 存在子串 $bab$ 的字符串集合。
+<Solution>
+    <Figure src="第8题-存在子串 bab 的 DFA.svg">
+        存在子串 $bab$ 的字符串集合
+    </Figure>
+</Solution>
+
+2. 不包含连续子串 $bb$ 的字符串集合。
+<Solution>
+    <Figure src="第8题-不包含连续子串 bb 的 DFA.svg">
+        不包含连续子串 $bb$ 的字符串集合
+    </Figure>
+</Solution>

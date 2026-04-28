@@ -1,0 +1,52 @@
+<svg width="600" height="420" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 自动适配主题颜色 */
+    :root { --bg: #ffffff; --main: #000000; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1a1a; --main: #ffffff; } }
+
+    .bg { fill: var(--bg); transition: fill 0.3s; }
+    .stroke { stroke: var(--main); stroke-width: 1.5; fill: none; transition: stroke 0.3s; }
+    .fill { fill: var(--main); transition: fill 0.3s; }
+    text { 
+      font-family: "Times New Roman", serif; 
+      font-style: italic; 
+      font-size: 18px; 
+      text-anchor: middle; 
+      fill: var(--main); 
+      transition: fill 0.3s; 
+    }
+    .label { font-style: italic; font-size: 17px; }
+  </style>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="fill" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <g class="stroke">
+    <circle cx="150" cy="280" r="25" /> <circle cx="300" cy="280" r="25" /> <circle cx="450" cy="280" r="25" /> <circle cx="300" cy="100" r="25" /> <circle cx="300" cy="100" r="20" /> </g>
+
+  <text x="150" y="286">q<tspan baseline-shift="sub" font-size="12">0</tspan></text>
+  <text x="300" y="286">q<tspan baseline-shift="sub" font-size="12">1</tspan></text>
+  <text x="450" y="286">q<tspan baseline-shift="sub" font-size="12">2</tspan></text>
+  <text x="300" y="106">q<tspan baseline-shift="sub" font-size="12">3</tspan></text>
+
+  <g class="stroke" marker-end="url(#arrow)">
+    <line x1="80" y1="280" x2="125" y2="280" />
+    <line x1="175" y1="280" x2="275" y2="280" />
+    <line x1="325" y1="280" x2="425" y2="280" />
+    <line x1="300" y1="125" x2="300" y2="255" />
+    <line x1="282" y1="118" x2="168" y2="262" />
+    <line x1="432" y1="262" x2="318" y2="118" />
+    <path d="M 435,300 Q 300,385 165,300" />
+    
+    <path d="M 140,258 C 130,220 170,220 160,258" />
+    <path d="M 290,78 C 280,40 320,40 310,78" />
+  </g>
+
+  <g class="label">
+    <text x="150" y="215">a</text> <text x="300" y="35">b</text>  <text x="225" y="270">b</text> <text x="375" y="270">a</text> <text x="315" y="190">b</text> <text x="210" y="185">a</text> <text x="390" y="185">b</text> <text x="300" y="385">a</text> </g>
+</svg>
