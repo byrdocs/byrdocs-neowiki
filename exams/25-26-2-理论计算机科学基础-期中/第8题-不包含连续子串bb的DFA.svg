@@ -1,0 +1,82 @@
+<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 默认：浅色主题 (白底黑线) */
+    :root {
+      --bg-color: #ffffff;
+      --main-color: #000000;
+    }
+
+    /* 自动检测：深色主题 (黑底白线) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a; /* 深灰色背景 */
+        --main-color: #ffffff;
+      }
+    }
+
+    /* 应用变量 */
+    .bg-rect { fill: var(--bg-color); transition: fill 0.3s; }
+    .stroke-element { stroke: var(--main-color); stroke-width: 2; fill: none; transition: stroke 0.3s; }
+    .fill-element { fill: var(--main-color); transition: fill 0.3s; }
+    
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: var(--main-color);
+      transition: fill 0.3s;
+    }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="fill-element" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg-rect" />
+
+  <g class="stroke-element">
+    <circle cx="100" cy="150" r="30" />
+    <circle cx="100" cy="150" r="25" />
+    
+    <circle cx="300" cy="150" r="30" />
+    <circle cx="300" cy="150" r="25" />
+    
+    <circle cx="500" cy="150" r="30" />
+  </g>
+
+  <g>
+    <text x="100" y="156">q0</text>
+    <text x="300" y="156">q1</text>
+    <text x="500" y="156">q2</text>
+  </g>
+
+  <g class="stroke-element" marker-end="url(#arrowhead)">
+    <line x1="30" y1="150" x2="68" y2="150" />
+    
+    q1 -->
+    <line x1="130" y1="150" x2="268" y2="150" />
+    
+    q2 -->
+    <line x1="330" y1="150" x2="468" y2="150" />
+    
+    q0 (Loop) -->
+    <path d="M 85,124 C 70,80 130,80 115,124" />
+    
+    q0 (Back) -->
+    <path d="M 285,176 Q 200,220 115,176" />
+
+    q2 (Loop) -->
+    <path d="M 485,124 C 470,80 530,80 515,124" />
+  </g>
+
+  <g class="fill-element" style="font-size: 16px;">
+    <text x="200" y="140">b</text>
+    <text x="400" y="140">b</text>
+    <text x="100" y="70">a</text>
+    <text x="200" y="210">a</text>
+    <text x="500" y="70">a, b</text>
+  </g>
+</svg>

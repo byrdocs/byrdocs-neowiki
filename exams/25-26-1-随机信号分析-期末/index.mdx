@@ -1,0 +1,59 @@
+---
+科目: 随机信号分析
+时间: 2025-2026学年第一学期
+类型: 本科
+阶段: 期末
+学院:
+- 信息与通信工程学院
+答案完成度: 完整可靠
+---
+
+## 四、（13 分）
+
+$X(t)$ 为平稳正态随机过程，功率谱 $G_{X}(\omega)=\frac{5 \omega^{2}+8}{\omega^{4}+5 \omega^{2}+4}$， $Y(t) = X\left(t - t_{0}\right) + 1$。求：
+
+1. $X(t)$ 的自相关函数和均值。（已知 $\mathrm{e}^{-\alpha |\tau|} \leftrightarrow \frac{2\alpha}{\omega^2 + \alpha^2}$）（5 分）
+
+<Solution>
+    $G_X(\omega) = \frac{1}{2} \cdot \frac{2 \times 1}{\omega^2 + 1^2} + \frac{2 \times 2}{\omega^2 + 2^2}$ （2 分）
+
+    $R_X(\tau) = \frac{1}{2}\mathrm{e}^{-|\tau|} + \mathrm{e}^{-2|\tau|}$ （1 分）
+
+    $m_X^2 = R_X(\infty)$ （1 分） $= 0 \implies m_X = 0$ （1 分）
+</Solution>
+
+2. $Y(t)$ 的自相关函数。（3 分）
+
+<Solution>
+    $$
+    \begin{align*}
+        R_Y(\tau)=&E[Y(t+\tau)Y(t)^2]=E\{[X(t+\tau-t_0)+1][X(t-t_0)+1]^2\}\\
+        =&R_X(\tau)+2m_X+1\tag{2分}\\
+        =&\frac12\mathrm e^{-|\tau|}+\mathrm e^{-2|\tau|}+1\tag{1分}
+    \end{align*}
+    $$
+</Solution>
+
+3. $Y(t)$ 的均值、方差及一维概率密度。（5 分）
+
+<Solution>
+    $m_Y = E\left[ X\left(t-t_0\right) + 1 \right]^2 = m_X + 1 = 1$ （1 分）
+
+    $$
+    \begin{align*}
+    \sigma_Y^2=&R_Y(0)-m_Y^2\tag{1分}\\
+    =&(\frac12+1+1)-1^2=\frac32\tag{1分}
+    \end{align*}
+    $$
+
+    $Y(t)$ 服从正态分布
+
+    $$
+    \begin{align*}
+    f_Y(y) =& \frac{1}{\sqrt{2\pi \cdot \frac{3}{2}}} \exp\left( -\frac{(y-1)^2}{2 \cdot \frac{3}{2}} \right) \\
+    =& \frac{1}{\sqrt{3\pi}} \exp\left( -\frac{(y-1)^2}{3} \right)
+    \end{align*}
+    $$
+
+    （2 分）
+</Solution>
