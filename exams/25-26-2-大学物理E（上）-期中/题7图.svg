@@ -1,0 +1,55 @@
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 默认：浅色主题 */
+    :root {
+      --bg-color: #ffffff;
+      --main-color: #000000;
+    }
+
+    /* 自动检测：深色主题 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
+      }
+    }
+
+    /* 应用变量 */
+    .bg-rect { fill: var(--bg-color); transition: fill 0.3s; }
+    .stroke-element { stroke: var(--main-color); stroke-width: 2; fill: none; transition: stroke 0.3s; }
+    .hatch-pattern { stroke: var(--main-color); stroke-width: 1; transition: stroke 0.3s; }
+    
+    text {
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      font-size: 24px;
+      text-anchor: middle;
+      fill: var(--main-color);
+      transition: fill 0.3s;
+    }
+  </style>
+
+  <defs>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" class="hatch-pattern" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg-rect" />
+
+  <rect x="100" y="50" width="200" height="30" class="stroke-element" fill="url(#hatch)" />
+
+  <line x1="200" y1="80" x2="200" y2="140" class="stroke-element" />
+
+  <rect x="140" y="140" width="120" height="70" class="stroke-element" />
+  <text x="200" y="185">1</text>
+
+  <path d="M 200,210 
+           L 220,220 L 180,235 L 220,250 L 180,265 L 220,280 L 200,290" 
+        class="stroke-element" />
+
+  <rect x="140" y="290" width="120" height="70" class="stroke-element" />
+  <text x="200" y="335">2</text>
+
+  <text x="200" y="450" style="font-size: 20px;">题 7 图</text>
+
+</svg>

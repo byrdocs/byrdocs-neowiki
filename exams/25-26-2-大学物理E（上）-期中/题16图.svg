@@ -1,0 +1,64 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 默认：浅色主题 (白底黑线) */
+    :root {
+      --bg-color: #ffffff;
+      --main-color: #000000;
+    }
+
+    /* 自动检测：深色主题 (黑底白线) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
+      }
+    }
+
+    /* 应用变量 */
+    .bg-rect { fill: var(--bg-color); transition: fill 0.3s; }
+    .stroke-element { stroke: var(--main-color); stroke-width: 2; fill: none; transition: stroke 0.3s; }
+    .fill-element { fill: var(--main-color); transition: fill 0.3s; }
+    
+    text {
+      font-family: "Times New Roman", serif;
+      font-style: italic;
+      font-size: 24px;
+      fill: var(--main-color);
+      transition: fill 0.3s;
+    }
+    .caption {
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      font-style: normal;
+      font-size: 20px;
+      text-anchor: middle;
+    }
+  </style>
+
+  <rect width="100%" height="100%" class="bg-rect" />
+
+  <path d="M 200,80 L 100,253 L 300,253 Z" class="stroke-element" />
+
+  <g transform="translate(200, 80)">
+    <circle r="18" class="stroke-element" fill="var(--bg-color)" />
+    <line x1="-8" y1="0" x2="8" y2="0" class="stroke-element" stroke-width="2" />
+    <line x1="0" y1="-8" x2="0" y2="8" class="stroke-element" stroke-width="2" />
+    <text x="22" y="5">Q<tspan baseline-shift="sub" font-size="16" font-style="italic">A</tspan></text>
+  </g>
+
+  <g transform="translate(100, 253)">
+    <circle r="18" class="stroke-element" fill="var(--bg-color)" />
+    <line x1="-8" y1="0" x2="8" y2="0" class="stroke-element" stroke-width="2" />
+    <line x1="0" y1="-8" x2="0" y2="8" class="stroke-element" stroke-width="2" />
+    <text x="22" y="25">Q<tspan baseline-shift="sub" font-size="16" font-style="italic">B</tspan></text>
+  </g>
+
+  <g transform="translate(300, 253)">
+    <circle r="18" class="stroke-element" fill="var(--bg-color)" />
+    <line x1="-8" y1="0" x2="8" y2="0" class="stroke-element" stroke-width="2" />
+    <line x1="0" y1="-8" x2="0" y2="8" class="stroke-element" stroke-width="2" />
+    <text x="22" y="25">Q<tspan baseline-shift="sub" font-size="16" font-style="italic">C</tspan></text>
+  </g>
+
+  <text x="200" y="350" class="caption">题 16 图</text>
+
+</svg>

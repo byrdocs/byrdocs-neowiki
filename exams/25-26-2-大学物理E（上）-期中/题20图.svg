@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 默认浅色模式颜色 */
+    :root {
+      --bg: #e2e9f0;
+      --fg: #2b3b4c;
+    }
+
+    /* 深色模式颜色反转 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1b1e;
+        --fg: #d1d5db;
+      }
+    }
+
+    circle, line, polygon, path, text, rect {
+      transition: fill 0.3s, stroke 0.3s;
+    }
+
+    .main-stroke { stroke: var(--fg); fill: none; stroke-width: 3; }
+    .thin-stroke { stroke: var(--fg); fill: none; stroke-width: 2; }
+    .dash-stroke { stroke: var(--fg); fill: none; stroke-width: 2; stroke-dasharray: 6 3; }
+    .text-label { fill: var(--fg); font-family: "Times New Roman", serif; font-style: italic; }
+    .hatch-pattern { stroke: var(--fg); stroke-width: 1.5; }
+    .marker-fill { fill: var(--fg); }
+    .bg-fill { fill: var(--bg); }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0,0 10,5 0,10" class="marker-fill" />
+    </marker>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="20" class="hatch-pattern" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg-fill" />
+
+  <circle cx="350" cy="400" r="300" fill="url(#hatch)" class="main-stroke" />
+
+  <circle cx="500" cy="400" r="120" class="bg-fill" stroke="var(--fg)" stroke-width="3" />
+
+  <circle cx="350" cy="400" r="8" class="marker-fill" />
+  <circle cx="500" cy="400" r="8" class="marker-fill" />
+  <circle cx="500" cy="300" r="6" class="marker-fill" />
+
+  <line x1="350" y1="400" x2="500" y2="400" class="dash-stroke" />
+  <text x="425" y="440" font-size="36" text-anchor="middle" class="text-label">a</text>
+
+  <line x1="350" y1="400" x2="140" y2="190" class="thin-stroke" marker-end="url(#arrow)" />
+  <text x="220" y="220" font-size="40" class="text-label">ρ</text>
+
+  <text x="200" y="380" font-size="48" class="text-label">R</text>
+
+  <text x="600" y="220" font-size="48" class="text-label">C</text>
+
+  <line x1="500" y1="400" x2="500" y2="300" class="dash-stroke" />
+  <text x="470" y="355" font-size="36" text-anchor="middle" class="text-label">d</text>
+
+  <line x1="500" y1="400" x2="585" y2="315" class="thin-stroke" marker-end="url(#arrow)" />
+  <text x="540" y="340" font-size="36" class="text-label">r</text>
+
+  <text x="350" y="475" font-size="48" text-anchor="middle" class="text-label">O</text>
+  <text x="500" y="475" font-size="48" text-anchor="middle" class="text-label">O'</text>
+</svg>
