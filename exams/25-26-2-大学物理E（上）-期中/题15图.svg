@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="750" viewBox="0 0 800 750" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 默认：浅色主题 */
+    svg {
+      --bg-color: #ffffff;
+      --main-color: #000000;
+    }
+
+    /* 自动检测：深色主题 */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
+      }
+    }
+
+    /* 状态切换过渡 */
+    rect, circle, path, text {
+      transition: fill 0.3s, stroke 0.3s;
+    }
+
+    .background { fill: var(--bg-color); }
+    .stroke-main { stroke: var(--main-color); fill: none; stroke-width: 3; }
+    .fill-bg { fill: var(--bg-color); stroke: var(--main-color); stroke-width: 3; }
+    .text-omega { fill: var(--main-color); font-family: "Times New Roman", serif; font-style: italic; font-size: 44px; text-anchor: middle; }
+    .text-caption { fill: var(--main-color); font-family: "SimSun", serif; font-size: 48px; text-anchor: middle; }
+    .marker-fill { fill: var(--main-color); }
+  </style>
+
+  <defs>
+    <marker id="rotate-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="7" orient="auto">
+      <polygon points="0,0 12,6 0,12" class="marker-fill" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="background" />
+
+  <g>
+    <rect x="220" y="180" width="60" height="500" class="fill-bg" rx="2" />
+    <circle cx="250" cy="250" r="150" class="stroke-main" />
+    <path d="M 360 250 A 110 110 0 0 0 140 250" class="stroke-main" marker-end="url(#rotate-arrow)" />
+    <text x="250" y="125" class="text-omega">ω</text>
+  </g>
+
+  <g>
+    <rect x="570" y="180" width="60" height="500" class="fill-bg" rx="2" />
+    <circle cx="600" cy="250" r="150" class="stroke-main" />
+    <path d="M 710 250 A 110 110 0 0 0 490 250" class="stroke-main" marker-end="url(#rotate-arrow)" />
+    <text x="600" y="125" class="text-omega">ω</text>
+  </g>
+</svg>
