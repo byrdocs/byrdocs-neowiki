@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
   <style>
-    /* 默认浅色模式变量 */
-    :root {
-      --bg: #e2e9f0;
-      --fg: #2b3b4c;
+    /* 默认：浅色主题 */
+    svg {
+      --bg-color: #ffffff;
+      --main-color: #000000;
     }
 
-    /* 深色模式变量反转 */
+    /* 自动检测：深色主题 */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1a1b1e; /* 深色背景 */
-        --fg: #d1d5db; /* 浅色线条 */
+      svg {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
       }
     }
 
@@ -20,11 +20,11 @@
       transition: fill 0.3s, stroke 0.3s;
     }
 
-    .background { fill: var(--bg); }
-    .stroke-main { stroke: var(--fg); fill: none; stroke-width: 3; }
-    .stroke-thin { stroke: var(--fg); fill: none; stroke-width: 2; }
-    .fill-match-bg { fill: var(--bg); stroke: var(--fg); stroke-width: 3; }
-    .text-main { fill: var(--fg); font-family: "Times New Roman", serif; font-style: italic; }
+    .background { fill: var(--bg-color); }
+    .stroke-main { stroke: var(--main-color); fill: none; stroke-width: 3; }
+    .stroke-thin { stroke: var(--main-color); fill: none; stroke-width: 2; }
+    .fill-match-bg { fill: var(--bg-color); stroke: var(--main-color); stroke-width: 3; }
+    .text-main { fill: var(--main-color); font-family: "Times New Roman", serif; font-style: italic; }
   </style>
 
   <rect width="100%" height="100%" class="background" />

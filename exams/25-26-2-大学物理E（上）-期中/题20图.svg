@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+<svg width="700" height="800" viewBox="0 0 700 800" xmlns="http://www.w3.org/2000/svg">
   <style>
-    /* 默认浅色模式颜色 */
-    :root {
-      --bg: #e2e9f0;
-      --fg: #2b3b4c;
+    /* 默认：浅色主题 */
+    svg {
+      --bg-color: #ffffff;
+      --main-color: #000000;
     }
 
-    /* 深色模式颜色反转 */
+    /* 自动检测：深色主题 */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1a1b1e;
-        --fg: #d1d5db;
+      svg {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
       }
     }
 
@@ -19,13 +19,13 @@
       transition: fill 0.3s, stroke 0.3s;
     }
 
-    .main-stroke { stroke: var(--fg); fill: none; stroke-width: 3; }
-    .thin-stroke { stroke: var(--fg); fill: none; stroke-width: 2; }
-    .dash-stroke { stroke: var(--fg); fill: none; stroke-width: 2; stroke-dasharray: 6 3; }
-    .text-label { fill: var(--fg); font-family: "Times New Roman", serif; font-style: italic; }
-    .hatch-pattern { stroke: var(--fg); stroke-width: 1.5; }
-    .marker-fill { fill: var(--fg); }
-    .bg-fill { fill: var(--bg); }
+    .main-stroke { stroke: var(--main-color); fill: none; stroke-width: 3; }
+    .thin-stroke { stroke: var(--main-color); fill: none; stroke-width: 2; }
+    .dash-stroke { stroke: var(--main-color); fill: none; stroke-width: 2; stroke-dasharray: 6 3; }
+    .text-label { fill: var(--main-color); font-family: "Times New Roman", serif; font-style: italic; }
+    .hatch-pattern { stroke: var(--main-color); stroke-width: 1.5; }
+    .marker-fill { fill: var(--main-color); }
+    .bg-fill { fill: var(--bg-color); }
   </style>
 
   <defs>
@@ -41,7 +41,7 @@
 
   <circle cx="350" cy="400" r="300" fill="url(#hatch)" class="main-stroke" />
 
-  <circle cx="500" cy="400" r="120" class="bg-fill" stroke="var(--fg)" stroke-width="3" />
+  <circle cx="500" cy="400" r="120" class="bg-fill" stroke="var(--main-color)" stroke-width="3" />
 
   <circle cx="350" cy="400" r="8" class="marker-fill" />
   <circle cx="500" cy="400" r="8" class="marker-fill" />
@@ -51,11 +51,11 @@
   <text x="425" y="440" font-size="36" text-anchor="middle" class="text-label">a</text>
 
   <line x1="350" y1="400" x2="140" y2="190" class="thin-stroke" marker-end="url(#arrow)" />
-  <text x="220" y="220" font-size="40" class="text-label">ρ</text>
+  <text x="280" y="280" font-size="40" class="text-label">ρ</text>
 
   <text x="200" y="380" font-size="48" class="text-label">R</text>
 
-  <text x="600" y="220" font-size="48" class="text-label">C</text>
+  <text x="450" y="280" font-size="48" class="text-label">C</text>
 
   <line x1="500" y1="400" x2="500" y2="300" class="dash-stroke" />
   <text x="470" y="355" font-size="36" text-anchor="middle" class="text-label">d</text>

@@ -1,14 +1,14 @@
-<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="350" viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
   <style>
-    /* 默认：浅色主题 (白底黑线) */
-    :root {
+    /* 默认：浅色主题 */
+    svg {
       --bg-color: #ffffff;
       --main-color: #000000;
     }
 
-    /* 自动检测：深色主题 (黑底白线) */
+    /* 自动检测：深色主题 */
     @media (prefers-color-scheme: dark) {
-      :root {
+      svg {
         --bg-color: #1a1a1a;
         --main-color: #ffffff;
       }
@@ -58,7 +58,4 @@
     <line x1="0" y1="-8" x2="0" y2="8" class="stroke-element" stroke-width="2" />
     <text x="22" y="25">Q<tspan baseline-shift="sub" font-size="16" font-style="italic">C</tspan></text>
   </g>
-
-  <text x="200" y="350" class="caption">题 16 图</text>
-
 </svg>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="750" viewBox="0 0 800 750" xmlns="http://www.w3.org/2000/svg">
   <style>
-    /* 默认浅色模式：浅灰背景，深蓝线条 */
-    :root {
-      --bg: #e2e9f0;
-      --fg: #2b3b4c;
+    /* 默认：浅色主题 */
+    svg {
+      --bg-color: #ffffff;
+      --main-color: #000000;
     }
 
-    /* 深色模式：深色背景，亮灰色线条 */
+    /* 自动检测：深色主题 */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1a1b1e;
-        --fg: #d1d5db;
+      svg {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
       }
     }
 
@@ -20,12 +20,12 @@
       transition: fill 0.3s, stroke 0.3s;
     }
 
-    .background { fill: var(--bg); }
-    .stroke-main { stroke: var(--fg); fill: none; stroke-width: 3; }
-    .fill-bg { fill: var(--bg); stroke: var(--fg); stroke-width: 3; }
-    .text-omega { fill: var(--fg); font-family: "Times New Roman", serif; font-style: italic; font-size: 44px; text-anchor: middle; }
-    .text-caption { fill: var(--fg); font-family: "SimSun", serif; font-size: 48px; text-anchor: middle; }
-    .marker-fill { fill: var(--fg); }
+    .background { fill: var(--bg-color); }
+    .stroke-main { stroke: var(--main-color); fill: none; stroke-width: 3; }
+    .fill-bg { fill: var(--bg-color); stroke: var(--main-color); stroke-width: 3; }
+    .text-omega { fill: var(--main-color); font-family: "Times New Roman", serif; font-style: italic; font-size: 44px; text-anchor: middle; }
+    .text-caption { fill: var(--main-color); font-family: "SimSun", serif; font-size: 48px; text-anchor: middle; }
+    .marker-fill { fill: var(--main-color); }
   </style>
 
   <defs>
@@ -49,6 +49,4 @@
     <path d="M 710 250 A 110 110 0 0 0 490 250" class="stroke-main" marker-end="url(#rotate-arrow)" />
     <text x="600" y="125" class="text-omega">ω</text>
   </g>
-
-  <text x="425" y="750" class="text-caption">题 15 图</text>
 </svg>
