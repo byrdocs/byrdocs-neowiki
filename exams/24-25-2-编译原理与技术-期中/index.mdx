@@ -1,0 +1,201 @@
+---
+科目: 编译原理与技术
+时间: 2024-2025学年第二学期
+阶段: 期中
+类型: 本科
+学院:
+- 未来学院
+答案完成度: 完整可靠
+---
+
+## 一（15分）
+设字母表 $\Sigma=\{0, 1\}$，$\Sigma$ 上的正规表达式 $R=1(0|1)^*0^+$。
+
+1. 请构造与之等价的 DFA，要求给出 DFA 的状态转换图。
+
+<Solution>
+    <Figure src="解答1.svg" />
+</Solution>
+
+2. 根据上述 DFA，构造与之等价的右线性文法，要求给出产生式集合。
+
+<Solution>
+    ```text
+    S->1A
+    A->1A|0B
+    B->1A|0B|ε
+    ```
+
+    或者
+
+    ```text
+    S->1A
+    A->1A|B
+    B->1A|0B|0
+    ```
+</Solution>
+
+## 二（40分）
+有如下文法
+
+$S \rightarrow ABc$
+
+$A \rightarrow aAd \mid ab \mid \varepsilon$
+
+$B \rightarrow Bb \mid \varepsilon$
+
+1. 判断该文法是否为 LL(1) 文法，说明原因。若不是，做（2），若是，做（3）。
+
+<Solution>
+    $A\rightarrow aAc\mid a\mid\varepsilon$ 含左公因子 $a$；$B\rightarrow Bb\mid\varepsilon$ 含左递归，所以不是 LL(1) 文法。
+</Solution>
+
+2. 是否将该文法变换为等价的 LL(1) 文法？如果可以，给出改造后的文法，并根据产生式说明改造后的文法为 LL(1) 文法，之后继续做 (3)；如果不可以，说明理由，并尝试完成 (3) 和 (4)。
+
+<Solution>
+    改写后的文法为
+
+$$
+\begin{align*}
+&S\rightarrow ABc\\
+&A\rightarrow aA'\mid\varepsilon\\
+&A'\rightarrow Ad\mid b\\
+&B\rightarrow B'\\
+&B'\rightarrow bB\mid\varepsilon
+\end{align*}
+$$
+</Solution>
+
+3. 计算 LL(1) 文法中每个非终结符号的 FIRST 集合和 FOLLOW 集合。
+
+<Solution>
+    <table border="1" style={{ borderCollapse: 'collapse' }}>
+        <thead>
+            <tr>
+                <th></th>
+                <td>First 集</td>
+                <td>Follow 集</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>S</td><td>{`{a,b,c}`}</td><td>{`{$}`}</td></tr>
+            <tr><td>A</td><td>{`{a,ε}`}</td><td>{`{b,c,d}`}</td></tr>
+            <tr><td>A'</td><td>{`{a,b,d}`}</td><td>{`{b,c,d}`}</td></tr>
+            <tr><td>B</td><td>{`{b,ε}`}</td><td>{`{c}`}</td></tr>
+            <tr><td>B'</td><td>{`{b,ε}`}</td><td>{`{c}`}</td></tr>
+        </tbody>
+    </table>
+</Solution>
+
+4. 构造文法的 LL(1) 分析表。
+
+<Solution>
+    <table border="1" style={{ borderCollapse: 'collapse' }}>
+        <thead>
+            <tr>
+                <th></th>
+                <td>a</td>
+                <td>b</td>
+                <td>c</td>
+                <td>d</td>
+                <td>$</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>S</td><td>S-&gt;ABc</td><td>S-&gt;ABc</td><td>S-&gt;ABc</td><td></td><td></td></tr>
+            <tr><td>A</td><td>A-&gt;aA</td><td>A-&gt;ε</td><td>A-&gt;ε</td><td>A-&gt;ε</td><td></td></tr>
+            <tr><td>A'</td><td>A'-&gt;Ad</td><td>A'-&gt;b</td><td></td><td>A'-&gt;Ad</td><td></td></tr>
+            <tr><td>B</td><td></td><td>B-&gt;B'</td><td>B-&gt;B'</td><td></td><td></td></tr>
+            <tr><td>B'</td><td></td><td>B'-&gt;bB</td><td>B'-&gt;ε</td><td></td><td></td></tr>
+        </tbody>
+    </table>
+</Solution>
+
+## 三（45分）
+有如下文法
+
+$E \rightarrow AaBa \mid BbAb$
+
+$A \rightarrow c$
+
+$B \rightarrow c$
+
+1. 构造该文法的 LR(1) 项目集规范族及识别其所有活前缀的 DFA；
+
+<Solution>
+    拓广文法为
+
+    ```text
+    0. E'->E
+    1. E->AaBa
+    2. E->BbAb
+    3. A->c
+    4. B->c
+    ```
+
+    I<sub>0</sub>=&#123;[E'->⋅E,$], [E->⋅AaBa,$], [E->⋅BbAb,$], [A->⋅c,a], [B->⋅c,b]&#125;
+
+    I<sub>1</sub>=goto(I<sub>0</sub>,E)=&#123;[E'->E⋅,$]&#125;
+
+    I<sub>2</sub>=goto(I<sub>0</sub>,A)=&#123;[E->A⋅aBa,$]&#125;
+
+    I<sub>3</sub>=goto(I<sub>0</sub>,B)=&#123;[E->B⋅bAb,$]&#125;
+
+    I<sub>4</sub>=goto(I<sub>0</sub>,c)=&#123;[A->c⋅,a], [B->c⋅,b]&#125;
+
+    I<sub>5</sub>=goto(I<sub>2</sub>,a)=&#123;[E->Aa⋅Ba,$], [B->⋅c,a]&#125;
+
+    I<sub>6</sub>=goto(I<sub>3</sub>,b)=&#123;[E->Bb⋅Ab,$], [A->⋅c,b]&#125;
+
+    I<sub>7</sub>=goto(I<sub>5</sub>,B)=&#123;[E->AaB⋅a,$]&#125;
+
+    I<sub>8</sub>=goto(I<sub>5</sub>,c)=&#123;[B->c⋅,a]&#125;
+
+    I<sub>9</sub>=goto(I<sub>6</sub>,A)=&#123;[E->BbA⋅b,$]&#125;
+
+    I<sub>10</sub>=goto(I<sub>6</sub>,c)=&#123;[A->c⋅,b]&#125;
+
+    I<sub>11</sub>=goto(I<sub>7</sub>,a)=&#123;[E->AaBa⋅,$]&#125;
+
+    I<sub>12</sub>=goto(I<sub>9</sub>,b)=&#123;[E->BbAb⋅,$]&#125;
+
+    <Figure src="解答3.1.svg" />
+</Solution>
+
+2. 判断该文法是否为 LR(1) 文法，如果是，构造该文法的 LR(1) 分析表，如果不是，请阐述理由；
+
+<Solution>
+    所有项目集均无冲突，所以是 LR(1) 文法。LR(1) 分析表如下：
+
+    <table border="1" style={{ borderCollapse: 'collapse' }}>
+        <tbody>
+            <tr><td></td><th colSpan="4">action</th><th colSpan="3">goto</th></tr>
+            <tr><td>状态</td><td>a</td><td>b</td><td>c</td><td>$</td><td>E</td><td>A</td><td>B</td></tr>
+            <tr><td>0</td><td></td><td></td><td>S4</td><td></td><td>1</td><td>2</td><td>3</td></tr>
+            <tr><td>1</td><td></td><td></td><td></td><td>ACC</td><td></td><td></td><td></td></tr>
+            <tr><td>2</td><td>S5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>3</td><td></td><td>S6</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>4</td><td>R3</td><td>R4</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>5</td><td></td><td></td><td>S8</td><td></td><td></td><td></td><td>7</td></tr>
+            <tr><td>6</td><td></td><td></td><td>S10</td><td></td><td></td><td></td><td>9</td></tr>
+            <tr><td>7</td><td>S11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>8</td><td>R4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>9</td><td></td><td>S12</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>10</td><td></td><td>R3</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>11</td><td></td><td></td><td>R1</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>12</td><td></td><td></td><td>R2</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+    </table>
+</Solution>
+
+3. 判断该文法是否为 SLR(1) 文法，如果是，构造该文法的 SLR(1) 分析表，如果不是，请阐述理由；
+
+<Solution>
+    项目集 I<sub>4</sub> 存在归约-归约冲突，follow(A)=follow(B)=&#123;a,b&#125;，所以该冲突不能通过简单向前看一个符号来解决，所以该文法不是 SLR(1) 文法。
+</Solution>
+
+4. 判断该文法是否为 LALR(1) 文法，如果是，构造该文法的 LALR(1) 分析表，如果不是，请阐述理由；
+
+<Solution>
+    因为该 LR(1) 项目集规范族中没有同心集，所以文法是 LALR(1) 文法，分析表同 LR(1) 分析表。
+</Solution>
