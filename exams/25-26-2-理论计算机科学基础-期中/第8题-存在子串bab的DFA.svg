@@ -1,0 +1,75 @@
+<svg width="650" height="300" viewBox="0 0 650 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 默认：浅色主题 (白底黑线) */
+    :root {
+      --bg-color: #ffffff;
+      --main-color: #000000;
+    }
+
+    /* 自动检测：深色主题 (黑底白线) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a;
+        --main-color: #ffffff;
+      }
+    }
+
+    /* 应用变量 */
+    .bg-rect { fill: var(--bg-color); transition: fill 0.3s; }
+    .stroke-element { stroke: var(--main-color); stroke-width: 2; fill: none; transition: stroke 0.3s; }
+    .fill-element { fill: var(--main-color); transition: fill 0.3s; }
+    
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: var(--main-color);
+      transition: fill 0.3s;
+    }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="fill-element" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg-rect" />
+
+  <g class="stroke-element">
+    <circle cx="80" cy="150" r="30" /> <circle cx="230" cy="150" r="30" /> <circle cx="380" cy="150" r="30" /> <circle cx="530" cy="150" r="30" />
+    <circle cx="530" cy="150" r="25" />
+  </g>
+
+  <g>
+    <text x="80" y="156">q0</text>
+    <text x="230" y="156">q1</text>
+    <text x="380" y="156">q2</text>
+    <text x="530" y="156">q3</text>
+  </g>
+
+  <g class="stroke-element" marker-end="url(#arrowhead)">
+    <line x1="20" y1="150" x2="48" y2="150" />
+    
+    q1 --a--> q2 --b--> q3 -->
+    <line x1="110" y1="150" x2="198" y2="150" />
+    <line x1="260" y1="150" x2="348" y2="150" />
+    <line x1="410" y1="150" x2="498" y2="150" />
+    
+    <path d="M 65,124 C 50,80 110,80 95,124" /> <path d="M 215,124 C 200,80 260,80 245,124" /> <path d="M 515,124 C 500,80 560,80 545,124" /> q0 -->
+    <path d="M 365,176 Q 222,250 95,176" />
+  </g>
+
+  <g class="fill-element" style="font-size: 16px;">
+    <text x="155" y="140">b</text>
+    <text x="305" y="140">a</text>
+    <text x="455" y="140">b</text>
+    
+    <text x="80" y="70">a</text>
+    <text x="230" y="70">b</text>
+    <text x="530" y="70">a, b</text>
+    
+    <text x="230" y="235">a</text>
+  </g>
+</svg>

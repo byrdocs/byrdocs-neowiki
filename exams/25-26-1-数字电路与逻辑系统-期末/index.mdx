@@ -1,0 +1,87 @@
+---
+时间: 2025-2026学年第一学期
+科目: 数字电路与逻辑系统
+阶段: 期末
+类型: 本科
+学院:
+- 未来学院
+答案完成度: 残缺
+---
+
+## 一、单选题
+
+### 13
+
+用 Verilog HDL 描述电路，在第四行的空白处填入 <Slot /> 能使描述完整。
+
+<Choices>
+    - `wire`
+    - `reg`
+    + `assign`
+    - `always`
+</Choices>
+
+```verilog
+module tri_driver(in,out,enable);
+    output out;
+    input in,enable;
+    ______ out=enable?in:'bz;
+endmodule
+```
+
+## 四、简答题
+
+### 3
+
+用JK触发器设计一个计数型序列发生器，能同时产生三个序列。要求电路最简，做出状态转移表、写出各触发器的激励方程、画出状态图、电路图。
+
+（1）11010…
+
+（2）10100…
+
+（3）01101…
+
+（提示：观察三个输出序列，它们长度相同且同步变化，横向看看是3个序列，纵向看是5个计数状态:110、101、011、100、001。）
+
+### 8
+
+```verilog
+module guess
+    #(parameter CNT_SIZE=8)
+(
+    input wire clk,rst,//时钟和复位
+    output reg [CNT_SIZE-1:0] cnt
+);
+always @(posedge clk)
+    if (!rst)
+        cnt <= {{(CNT_SIZE-1){1'b0}},1'b1};
+    else
+        cnt <= {~cnt[0],cnt[CNT_SIZE-1:1]};
+endmodule
+```
+
+1. 该模块属于哪种典型计数器？其状态转移规律是什么？
+
+<Solution>
+    扭环计数器；在每个状态之间仅改变一位
+</Solution>
+
+2. 模是多少？
+
+<Solution>
+    $16$
+</Solution>
+
+3. 是异步复位还是同步复位？
+
+<Solution>
+    同步复位
+</Solution>
+
+4. 改哪句能改变复位方式？
+
+<Solution>
+    ```verilog
+    always @(posedge clk or negedge rst)
+    ```
+</Solution>
