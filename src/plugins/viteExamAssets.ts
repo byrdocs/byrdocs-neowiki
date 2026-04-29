@@ -39,7 +39,7 @@ const isStaticRoutePrefix = (value: string): value is keyof typeof STATIC_PAGE_A
 const listAssetFiles = async (directoryPath: string) => {
     const entries = await readdir(directoryPath, { withFileTypes: true });
     return entries
-        .filter((entry) => entry.isFile() && ASSET_EXTENSIONS.has(extname(entry.name).toLowerCase()))
+        .filter((entry) => (entry.isFile()||entry.isSymbolicLink()) && ASSET_EXTENSIONS.has(extname(entry.name).toLowerCase()))
         .map((entry) => entry.name);
 };
 
