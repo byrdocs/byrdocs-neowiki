@@ -1,0 +1,169 @@
+---
+时间: 2024-2025学年第一学期
+科目: 数据库系统原理
+阶段: 期末
+类型: 本科
+来源: 24d9d95f63c1a9e59803345739d6ee47
+答案完成度: 残缺
+学院:
+- 计算机学院
+- 人工智能学院
+---
+
+## 一 (10 points)
+
+Judge whether or not the proposition is correct.
+
+1. While E-R diagrams describe objects and associations among them, Functional Dependencies illustrates relationships among attributes of objects. <Blank />
+2. A transaction is initiated by an application program written in data manipulating language, such as SQL and programming languages, such as C++ embedded accesses. <Blank />
+3. The participation of an entry E in a relationship R is total, if every entity in E participates in at least one relationship in R. <Blank />
+4. K is a superkey for relation schema R if and only if K->R. In addition, primary key is a candidate key as principal means to identify tuples. <Blank />
+5. R is a relation schema, and R1 and R2 form a decomposition of R. The decomposition is a lossless decomposition, if there is no loss of information by replacing R. <Blank />
+6. Logical design consists of initial relational schema generating and relational schema normalizing. Bad design may result in Pitfalls repetition of information and inability to represent certain information. <Blank />
+7. A relationship is an association among several entities, while a relationship set is a mathematica relation among several entities. <Blank />
+8. An entity is an object that exists distinguishable from other objects, while an entity set is a set of entities of the same type with the same properties. <Blank />
+9. DBMS executes the read and write operations to fulfill data access in transactions. <Blank />
+10. Data Manipulation Language has the ability to query/retrieve information (the ability to select, insert, delete, update tuples), while Data Definition Language has the ability to define, drop, modify on schemas. <Blank />
+
+## 二 (5 points)
+
+Use one or more SQL statements to verify whether or not customer ID is the primary key in the table customer (customer ID, name, address), i.e. the functional dependency (customer ID->name, address) is satisfied by the table, according to the query results of one or more SQL statements.
+
+## 三 (15 points)
+
+### 1.
+
+A DB file is made up of 128-byte fix-sized logical records and stored on disk in unit of block that is of 1024 bytes in size. The size of the file is 10240 bytes. Physical I/O operations transfer data on disk into an DBMS buffer in main memory, in terms of 1024-byte block.
+
+Problems: If a transaction issues read requests in sequential access manner, what is the percentage of read requests that results in I/O operations?
+
+### 2.
+
+Consider the following relation schema R about information and the functional dependency F hold on R:
+
+R(A, B, C, D, E)
+
+F=\{A->C, C->A, B->A, D->AC, B->E\}
+
+Problems: Compute the canonical cover.
+
+## 四 (15 points)
+
+A university student database needs to store information about ***students, professors, projects, and departments.***
+
+Consider the following information:
+
+- Each student has an SNo, a name, an age, and a degree program (M.S. or Ph.D.).
+- Each professor has a PNo, a name, an age, and a research specialty.
+- Each project has a project number, a starting date, an ending date, and a budget.
+- Each department has a department number, a department name, and a main office.
+- Integrity constraints:
+    - A student *studies* in one (and only one) department.
+    - A Professor works in one (and only one) department.
+    - Each project must be managed by one and only one professor, and each professor must manage at least one project.
+    - Each project is worked on by some students, more than one student can participate (or work on) the same project, and some students may work on no projects.
+    - When a student work on a project, the professor managing this project must supervise the student's work. One student may work on several projects, so he may have several supervisors.
+
+Problems:
+
+1. Design and draw an E/R diagram for this database that captures the information above.
+2. Convert the E-R diagram to the proper relational schema, and give the primary key of each relation schema by underlines.
+
+## 五 (15 points)
+
+Consider schema `R(X, Y, Z, W)`, and `F={X->Z, Z->X, Y->XZ, W->XZ}` that holds on R.
+
+Problems:
+
+1. Compute (AB)+.
+2. Give the lossless and dependency-preserving decomposition of this schema info 3NF.
+
+## 六 (15 points)
+
+Consider the following tables:
+
+***Factory*** (<u>factoryID</u>, name, manager, account)
+
+***Employee*** (<u>employeeID</u>, name, age, factoryID)
+
+***Airconditioner*** (<u>serialID</u>, date, model, price, factoryID)
+
+***Storehouse*** (<u>houseID</u>, size, address)
+
+***Stored*** (<u>serialID</u>, <u>houseID</u>)
+
+***Order*** (<u>orderID</u>, customerID, model, num_ordered, factoryID)
+
+***Customer*** (customerID, name, address)
+
+Problems:
+
+1. Describe the principles of the heuristic optimization to choose a better evaluation plan.
+2. Give a SQL statement to find tha air conditioner model.
+
+It is required that the number of the ordered products of this model is not below 200, the model's price is higher than 2000, and all ordered products of this model are stored in the storehouse with house ID BJ101. List the model, the number of the ordered product.
+
+3. For the SQL statement in (2)
+
+Give the initial query tree for this query.
+
+Give an optimized query tree.
+
+## 七 (10 points)
+
+In the University database system, it is assumed that multiple granularity locks are granted on three-level data items, i.e. the database, tables, and tuples.
+
+### 1.
+
+If a transaction T1 is now modifying the table Course by
+
+```sql
+update Course
+set credits = credits + 1
+where title = 'DBS'
+```
+
+Problem: What types of locks on the database, tables and tuples should it hold?
+
+### 2.
+
+When T1 is modifying Course, transaction T2 wants to access Course by
+
+```sql
+select *
+from Course
+where title in { 'OS', 'DBS', 'Compiler' };
+```
+
+Problem: What types of three-level locks should T2 request?
+
+## 八 (15 points)
+
+Consider the concurrent transactions T<sub>1</sub>, T<sub>2</sub>, T<sub>3</sub> and T<sub>4</sub> under the schedule ***S***, which access relational tables *Student (stuID, stuName, age, height)* and *Grade (stuID, cosID, grade)* concurrently. The tuples/rows in the tables are viewedd as the data items to be locked by DBMS and independently accessed by the transactions.
+
+Problems:
+
+1. Construct the precedence graph for ***S***.
+2. Is ***S*** a serializable schedule? If not, give the reason. If it is, give a serial schedule that is equivalent to ***S***.
+3. Is ***S*** a recoverable schedule, and why?
+4. Is ***S*** a cascadeless schedule, and why?
+
+<table>
+  <tbody>
+    <tr><td>begin_transaction</td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>begin_transaction</td><td></td><td></td></tr>
+    <tr><td>update Student<br />set stuName='Li'<br />where stuID=10</td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>update Student<br />set age=age+1<br />where stuID=20</td><td></td><td></td></tr>
+    <tr><td></td><td></td><td>select age<br />from Student<br />where stuID=50</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td>begin_transaction</td></tr>
+    <tr><td></td><td></td><td></td><td>update Student<br />set height=height+5<br />where stuID=30</td></tr>
+    <tr><td>update Grade<br />set grade=grade+1<br />where stuID=40<br />AND CosID=10</td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>select stuName<br />from Student<br />where stuID=10</td><td></td><td></td></tr>
+    <tr><td></td><td>commit</td><td></td><td></td></tr>
+    <tr><td>commit</td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td>select stuID,grade<br />from Grade<br />where stuID=40<br />AND CosID=10</td></tr>
+    <tr><td></td><td></td><td></td><td>commit</td></tr>
+    <tr><td></td><td></td><td>select height<br />from Student<br />where stuID=30</td><td></td></tr>
+    <tr><td></td><td></td><td>commit</td><td></td></tr>
+  </tbody>
+</table>
