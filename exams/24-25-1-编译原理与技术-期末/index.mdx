@@ -1,0 +1,251 @@
+---
+时间: 2024-2025学年第一学期
+科目: 编译原理与技术
+阶段: 期末
+类型: 本科
+答案完成度: 残缺
+学院:
+- 计算机学院
+---
+
+## 一、请回答下面词法分析问题（10分）
+
+### 1（3分）
+
+请给出 C 语言中“标识符”的正则文法 RG（标识符必须以字母 a~z, A~Z 或下划线开头，后面可跟任意个（可为0）字符，这些字符可以是字母、下划线和数字，其他字符不允许出现在标识符中）。
+
+<Solution>
+1. `S' -> LS`
+2. `S -> \epsilon`
+3. `S -> LS | DS`
+4. `L -> a|b|...|z|A|B|....|Z|_`
+5. `D -> 0|1|2|....9`
+</Solution>
+
+### 2（7分）
+
+给出下面 C 语言代码的词法分析结果：
+
+```c
+int max(int i, int j) /*return maximum of integer i and j */
+{
+	return i>j?i:j;
+}
+```
+
+<Solution>
+1. `<int,keyword>`
+2. `<max, id>`
+3. `<(,Delimiter>`
+4. `<int,keyword>`
+5. `<i,id>`
+6. `<, , delimiter>`
+7. `<int, keyword>`
+8. `<j,id>`
+9. `<), delimiter>`
+10. `<{,delimiter>`
+11. `<return, keyword>`
+12. `<i,id>`
+13. `<>,op>`
+14. `<j,id>`
+15. `<?,op>`
+16. `<i,id>`
+17. `<:,op>`
+18. `<j,id>`
+19. `<;,delimiter>`
+20. `<},delimiter>`
+</Solution>
+
+## 二（20分）
+
+考虑下列文法 G，回答以下问题。
+
+$$
+G: \begin{align*}
+S&\rightarrow Aa\\
+S&\rightarrow bAe\\
+S&\rightarrow Be\\
+S&\rightarrow bBa\\
+A&\rightarrow d\\
+B&\rightarrow d
+\end{align*}
+$$
+
+1. 构建该文法的拓广文法。（3分）
+2. 构造 first 集和 follow 集。（3分）
+3. 构造该文法的 LR(1) 项目集规范族及识别其所有活前缀的 DFA。（7分）
+4. 构造该文法的 LR(1) 分析表。（7分）
+
+## 三（15分）
+
+下述语法制导定义完成算数表达式求值的翻译目标，请补充相应语义规则，并给出句子 $(4+7)*2n$ 的注释分析树。
+
+| 产生式 | 语义规则 |
+| --- | --- |
+| $L\rightarrow E$ | $\operatorname{print}(E.val)$ |
+| $E\rightarrow E_1+T$ |  |
+| $E\rightarrow T$ |  |
+| $T\rightarrow T*F$ |  |
+| $T\rightarrow F$ |  |
+| $F\rightarrow (E)$ |  |
+| $F\rightarrow \text{digit}$ |  |
+
+## 四（10分）
+
+有如下的 C 语言声明，写出变量 foo 和 bar 的类型表达式。
+
+```c
+typedef struct{
+	int *a, b[10];
+}CEll, *PCELL;
+
+CELL foo[100];
+PCELL bar(int x, CELL y){...}
+```
+
+1. foo 的类型表达式
+<Solution>
+`array(100, record(pointer(int)\times array(10,int)))`
+</Solution>
+2. bar 的类型表达式
+<Solution>
+`(int , record(pointer(int)\times array(10,int))) -> Pointer(pointer(int) \times array(10,int))`
+</Solution>
+
+## 五（15分）
+
+有如下程序，编译程序采用的参数传递方式不同，得到的变量结果也不同，请说明传值调用、引用调用、复制恢复（假定按从左到右的顺序把结果复制回实参）等参数传递方式的具体做法，并给出各种参数传递情况下下面程序的输出。
+
+```text
+program main(input, output);
+	var a, b: integer;
+	procedure p(x, y, z: integer);
+	begin
+		y:=y+3;
+		z:=z+x
+	end;
+begin
+	a:=5;
+	b:=6;
+	p(a, a, b);
+	writeln('a=', a, 'b=', b)
+end.
+```
+
+1. 传值调用
+<Solution>
+传值调用不会修改实参，所以 a 和 b 不变
+
+```text
+a=5 b=6
+```
+</Solution>
+2. 引用调用
+<Solution>
+引用调用
+
+- 初始：a=5, b=6
+- 形参映射：x→a, y→a, z→b
+- 执行 y:=y+3 即 a:=a+3 → a=8
+- 执行 z:=z+x 即 b:=b+a → b=14
+
+```text
+a=8 b=14
+```
+</Solution>
+3. 复制恢复
+<Solution>
+复制恢复
+
+- 调用前：a=5, b=6
+- copy-in 得到：x=5, y=5, z=6
+- 执行 y:=y+3 → y=8；执行 z:=z+x → z=11；
+- copy-out（按左到右顺序）
+	- 将 x(5) 写回第1个实参 a → a=5
+	- 将 y(8) 写回第2个实参 a → a=8
+	- 将 z(11) 写回第3个实参 b → b=11
+
+```text
+a=8 b=11
+```
+</Solution>
+
+## 六（10分）
+
+输出布尔表达式 `x>2 or y=0 and z<=10` 的两种三地址码中间代码翻译结果（`and` 优先级高于 `or` 优先级）。
+
+1. 数值表示法（假设起始语句编号为 100）
+
+<Solution>
+1. `100 if x > 2 then goto 103`
+2. `101 t1 := 0`
+3. `102 goto 104`
+4. `103 t1 := 1`
+5. `104 if y = 0 then goto 107`
+6. `105 t2 := 0`
+7. `106 goto 108`
+8. `107 t2 := 1`
+9. `108 if z<= 10 then goto 111`
+10. `109 t3 := 0`
+11. `110 goto 112`
+12. `111 t3 := 1`
+13. `112 t4:= t2 and t3`
+14. `113 t5:= t1 or t4`
+</Solution>
+2. 控制流表示法（假设语句起始编号为 200，假定语句的真出口为 `x`，假出口为 `y`）
+<Solution>
+1. `200 if x>2 then goto x`
+2. `201 if y=0 then goto 203`
+3. `202 goto y`
+4. `203 if z<=10 then goto x`
+5. `204 goto y`
+</Solution>
+
+## 七（20分）
+
+语句 `x[i]:=x[i]+y[i]` 可以翻译为以下中间代码：
+
+```text
+t1:=x-4
+t2:=4*i
+t3:=x-4
+t4:=4*i
+t5:=t3[t4]
+t6:=y-4
+t7:=4*i
+t8:=t6[t7]
+t9:=t5+t8
+t1[t2]=t9
+```
+
+回答以下问题：
+
+1. 对以上中间代码进行优化，并说明采用了哪些优化方法。
+
+<Solution>
+```text
+t1:=x-4
+t2:=4*i
+t5:=t1[t2]
+t6:=y-4
+t8:=t6[t2]
+t9:=t5+t8
+t1[t2]:=t9
+```
+
+利用了死代码清除和公共子表达式消除
+</Solution>
+
+2. 假设目标机器的指令形式为 `OP DEST，SRC`（OP 包含 MOV, SUB, MUL, ADD 等，DEST 表示目标操作数，SRC 表示源操作数），该机器有三个寄存器 `R0`, `R1`, `R2`（假定各寄存器初始均为空），将优化后的代码转换为目标代码（尽量提高资源利用率，并说明寄存器描述符及地址描述符内容）。
+
+| 三地址语句 | 生成的目标代码 | 寄存器描述符 | 地址描述符 |
+| --- | --- | --- | --- |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
