@@ -1,0 +1,106 @@
+---
+科目: 工科数学分析（上）
+时间: 2024-2025学年第一学期
+阶段: 期末
+类型: 本科
+学院:
+- 信息与通信工程学院
+来源: 9e0b827e78035eba4effa82a1ec0890e
+---
+
+## 一 填空题 (本大题共10小题，每小题3分，共30分)
+
+1. $\lim_{x\rightarrow0}\frac{\sin 2x}{\left|x\right|}\arctan\frac{1}{x}=$ <Blank>$\pi$</Blank>.
+
+2. $\lim_{x\rightarrow0^+}\frac{\mathrm e^{\frac1x}+a\mathrm e^{-\frac1x}}{a\mathrm e^{\frac1x}+2\mathrm e^{-\frac1x}}=\lim_{n\rightarrow\infty}\left(\frac n{n+1}\right)^n$, 则常数 $a=$ <Blank>$e$</Blank>.
+
+3. 函数 $y=\sqrt{x\sin^2\pi x}$ 的连续区间为 <Blank>$\left[0, +\infty\right)$</Blank>.
+
+4. 已知当 $x\rightarrow0$ 时, $(1+2x)^x-1\sim kx^2$, 则常数 $k=$ <Blank>$2$</Blank>.
+
+5. 曲线 $y=2\ln x+\frac1x$ 的拐点是 <Blank>$\left ( 1, 1 \right )$</Blank>.
+
+6. 曲线 $y=x\mathrm e^{-\frac2x}$ 的斜渐近线方程为 <Blank>$y=x-2$</Blank>.
+
+7. 比较大小: $\sqrt{2024}^{\sqrt{2025}}$ <Blank>$>$</Blank> $\sqrt{2025}^{\sqrt{2024}}$.
+
+8. 定积分: $\int_{-1}^1\frac{|x|+\ln(x+\sqrt{x^2+1})}{1+x^2}\,\mathrm dx=$ <Blank>$\ln_{}{2}$</Blank>.
+
+9. 反常积分: $\int_{\sqrt{\mathrm e}}^{+\infty}\frac1{x\ln^2x}\,\mathrm dx=$ <Blank>$2$</Blank>.
+
+10. 微分方程 $\frac{\mathrm{d} y}{\mathrm{d} x}=\frac y{x+y}$ 满足 $y(0)=1$ 的解为 <Blank>$y=e^{\frac{x}{y}}$</Blank>.
+
+## 二 求极限 (每小题6分, 共12分)
+
+### 1.
+
+$\lim_{n\rightarrow\infty}\left(\frac1{n+\frac1n}+\frac{\mathrm e^{\frac1n}}{n+\frac2n}+\frac{\mathrm e^{\frac2n}}{n+\frac3n}+\cdots+\frac{\mathrm e^{\frac{n-1}n}}{n+\frac nn}\right)$.
+
+<Solution>
+$e-1$
+</Solution>
+
+### 2.
+
+$\lim_{x\rightarrow0}\frac{x-\frac43\sin x+\frac16\sin2x}{x\left(\mathrm e^{x^2}-x^2-1\right)}$.
+
+## 三 求导数 (每小题6分, 共12分)
+
+### 1.
+
+设函数 $y=y(x)$ 由方程 $\int_{-1}^y\mathrm e^{-t^2}\mathrm dt-\ln x=0$ 确定, 求 $\left.y''\right|_{x=1}$;
+
+### 2.
+
+设函数 $f(x)=(x-a)^3\varphi(x)$, 其中 $\varphi(x)$ 在点 $a$ 的邻域 $U(a)$ 内具有二阶连续导数, 求 $f'''(a)$.
+
+## 四 计算积分 (每小题6分, 共12分)
+
+### 1.
+
+$\int\frac{\mathrm dx}{x+\sqrt{1-x^2}}$.
+
+<Solution>
+令 $x=\sin t$，则原积分转化为
+
+$$
+\begin{aligned}
+&\int\frac{\cos t\,\mathrm dt}{\sin t+\cos t}\\
+=&\frac12\int\frac{\sin t+\cos t}{\sin t+\cos t}\,\mathrm dt+\frac12\int\frac{\cos t-\sin t}{\sin t+\cos t}\,\mathrm dt\\
+=&\frac12\int\mathrm dt+\frac12\int\frac{\mathrm d(\sin t+\cos t)}{\sin t+\cos t}\\
+=&\frac t2+\frac12\ln\left|\sin t+\cos t\right|+C
+\end{aligned}
+$$
+</Solution>
+
+### 2.
+
+设 $f(x)=\int_1^{x^2}\frac{t\,\mathrm dt}{\sqrt{1+t^3}}$，求 $\int_0^{\sqrt2}xf(x)\,\mathrm dx$.
+
+## 五 (8分)
+
+求函数 $y=(x+1)\mathrm e^{-\arctan x}$ 的单调区间与极值.
+
+## 六 (10分)
+
+<Figure src="题图6.svg" float>
+    第6题图
+</Figure>
+
+曲线 $a^2y=x^2\,(0<a<1)$ 将图中边长为 1 的正方形分成 $A,\,B$ 两部分.
+
+### 1.
+
+当 $a$ 取何值时, $S=S_A^2+S_B^2$ 取得最小值, 其中 $S_A$ 和 $S_B$ 分别是 $A,\,B$ 两部分的面积.
+
+### 2.
+
+当 $a$ 取何值时, $V_A=V_B$, 其中 $V_A$ 和 $V_B$ 分别是 $A$ 绕直线 $y=1$ 旋转一周与 $B$ 绕 $x$ 轴旋转一周所得两旋转体的体积.
+
+## 七 (10分)
+
+求 $y''+y=x^2+\cos x$ 的通解.
+
+## 八 证明题 (6分)
+
+设 $f$ 在区间 $I$ 上三阶可导, 对 $\forall[a,b]\in I$, 证明: 存在 $\xi\in(a,b)$, 使得 $f(b)=f(a)+\frac12(b-a)[f'(a)+f'(b)]-\frac1{12}(b-a)^3f'''(\xi)$.
