@@ -1,6 +1,6 @@
 # BYR Docs 维基真题 (Neowiki)
 
-本站收录北京邮电大学近年的期中、期末考试题，使用更友好的 MDX 编辑语言和更丰富的插件（相比早期建站使用的 MediaWiki），将往年试题整理成易阅读、可交互的形式。
+本站收录北京邮电大学近年的期中、期末考试题，使用更友好的 MDX 编辑语言和更丰富的插件，将往年试题整理成易阅读、可交互的形式。
 
 你可以在 [guide.mdx](./src/guide/index.mdx) 中看到我们的编辑规范，并在 [test.mdx](./src/test/index.mdx) 中查看自测题的源代码。
 
@@ -8,7 +8,7 @@
 
 ## 如何贡献
 
-1. [Fork 本仓库](https://github.com/byrdocs/byrdocs-wiki-internal/fork) 到你自己的 GitHub 账号下。
+1. [Fork 本仓库](https://github.com/byrdocs/byrdocs-neowiki/fork) 到你自己的 GitHub 账号下。
 2. Clone 你的仓库到本地。
 3. 安装必要依赖。
 ```
