@@ -21,11 +21,11 @@ export default defineConfig({
         remarkPlugins: [remarkMath, remarkChoices],
         rehypePlugins: [rehypeKatex],
     },
-    redirects:{
-        "/w/[exam]":{
-            status:308,
-            destination:"/exam/[exam]"
-        }
+    redirects: {
+        "/w/[exam]": {
+            status: 308,
+            destination: "/exam/[exam]",
+        },
     },
     vite: {
         plugins: vitePlugins,

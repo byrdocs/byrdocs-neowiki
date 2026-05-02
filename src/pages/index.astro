@@ -1,3 +1,91 @@
 ---
-return Astro.redirect("/guide",308);
+import { getCollection } from "astro:content";
+import Layout from "/src/layouts/Layout.astro";
+
+const allExams = await getCollection("exams");
+const exams = [...allExams].sort((a, b) => b.id.localeCompare(a.id, "zh-CN"));
 ---
+
+<Layout pageTitle="欢迎来到 BYR Docs 维基真题" editPath="src/pages/index.astro">
+  <p class="text-lg leading-8 text-slate-700 dark:text-slate-300">
+    本站收录北京邮电大学近年的期中、期末考试题。
+  </p>
+  <p class="text-base leading-7 text-slate-600 dark:text-slate-400">
+    你可以为本站添加试卷、补充题目或撰写解答。任何一笔小编辑都可能帮到无数读者。
+  </p>
+
+  <section class="mt-8 grid gap-4 md:grid-cols-2">
+    <div
+      class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2
+        class="mt-2 border-none p-0 text-xl font-semibold text-slate-950 dark:text-white"
+      >
+        检索试题
+      </h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-400">
+        使用 BYR Docs 的搜索功能按课程名、学期或关键词查找试题。
+      </p>
+      <a
+        class="mt-4 inline-flex items-center gap-2 justify-center rounded-xl bg-slate-950 px-4 py-2 text-sm font-medium text-white no-underline transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+        href="https://byrdocs.org">打开 BYR Docs</a
+      >
+    </div>
+    <div
+      class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2
+        class="mt-2 border-none p-0 text-xl font-semibold text-slate-950 dark:text-white"
+      >
+        编辑试题与解答
+      </h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-400">
+        你可以在 GitHub 仓库中编辑试卷、补充答案并提交 PR。
+      </p>
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <a
+          class="inline-flex items-center justify-center rounded-xl bg-slate-950 px-4 py-2 text-sm font-medium text-white no-underline transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+          href="/guide">查看本维基的编辑指南</a
+        >
+        <a
+          class="inline-flex items-center justify-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-900 no-underline transition hover:border-slate-400 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800"
+          href="https://github.com/byrdocs/byrdocs-wiki-internal"
+          >查看 GitHub 仓库</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+  >
+    <div
+      class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
+    >
+      <div>
+        <p
+          class="m-0 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400"
+        >
+          全部试题
+        </p>
+      </div>
+      <p class="m-0 text-sm text-slate-500 dark:text-slate-400">
+        共 {exams.length} 篇
+      </p>
+    </div>
+    <ul class="mt-4 grid list-none gap-3 p-0 md:grid-cols-2">
+      {
+        exams.map((exam) => (
+          <li>
+            <a
+              class="block rounded-xl border border-slate-200 px-4 py-3 text-slate-700 no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 dark:border-slate-800 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-800 dark:hover:text-white"
+              href={`/exam/${exam.id}`}
+            >
+              {exam.id}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
