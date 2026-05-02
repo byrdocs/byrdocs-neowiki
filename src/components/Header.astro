@@ -1,5 +1,15 @@
+---
+const {
+  pageTitle = "",
+  showScrolledPageTitle = false,
+} = Astro.props;
+---
+
 <nav
   class="relative border-b border-slate-200/80 bg-white/85 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80 sticky top-0 z-40"
+  data-header-nav
+  data-page-title-enabled={showScrolledPageTitle ? "true" : "false"}
+  data-title-state="site"
 >
   <div
     class="layout-container mx-auto flex w-full items-center gap-4 px-4 py-4 sm:px-6 lg:px-8"
@@ -11,10 +21,20 @@
     >
       <img alt="BYR Docs" class="h-7 w-7" src="/favicon.svg" />
     </a>
-    <a
-      class="min-w-0 flex-1 truncate text-lg font-semibold tracking-tight text-slate-950 no-underline hover:text-slate-950 sm:text-2xl dark:text-white dark:hover:text-white"
-      href="/">BYR Docs 维基真题</a
-    >
+    <div class="relative min-w-0 flex-1">
+      <a
+        class="block truncate text-lg font-semibold tracking-tight text-slate-950 no-underline transition-[opacity,transform] duration-200 hover:text-slate-950 sm:text-2xl dark:text-white dark:hover:text-white"
+        data-header-site-title
+        href="/">BYR Docs 维基真题</a
+      >
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 block truncate text-lg font-semibold tracking-tight text-slate-950 opacity-0 transition-[opacity,transform] duration-200 sm:text-2xl dark:text-white"
+        data-header-page-title
+      >
+        {pageTitle}
+      </span>
+    </div>
     <a
       class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm no-underline transition hover:border-slate-300 hover:text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-200"
       href="https://github.com/byrdocs/byrdocs-wiki-internal"
@@ -31,3 +51,24 @@
     </a>
   </div>
 </nav>
+
+<style>
+  nav[data-title-state="site"] [data-header-site-title] {
+    transform: translateY(0);
+  }
+
+  nav[data-title-state="site"] [data-header-page-title] {
+    transform: translateY(0.25rem);
+  }
+
+  nav[data-title-state="page"] [data-header-site-title] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-0.25rem);
+  }
+
+  nav[data-title-state="page"] [data-header-page-title] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

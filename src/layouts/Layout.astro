@@ -11,6 +11,7 @@ const {
   showToolbar = true,
   showExamTocToggle = false,
 } = Astro.props;
+const showScrolledPageTitle = Astro.url.pathname !== "/";
 const organization = "BYR Docs";
 const pageDescription =
   "BYR Docs 维基真题收录北京邮电大学近年试题，是一个开放、共建、共享的维基网站。";
@@ -296,12 +297,15 @@ const editHref =
       class="layout-shell flex min-h-screen flex-col"
       data-has-exam-toc={showExamTocToggle ? "true" : undefined}
     >
-      <Header />
+      <Header
+        pageTitle={pageTitle}
+        showScrolledPageTitle={showScrolledPageTitle}
+      />
       <main
         class="layout-container mx-auto flex w-full flex-1 px-4 py-6 sm:px-6 lg:px-8"
       >
         <article class="wiki-content min-w-0 flex-1">
-          <h1>{pageTitle}</h1>
+          <h1 data-page-heading>{pageTitle}</h1>
           <slot />
         </article>
       </main>
@@ -367,5 +371,50 @@ const editHref =
         </script>
       )
     }
+    <script is:inline>
+      var initHeaderPageTitle = function() {
+        var header = document.querySelector("[data-header-nav]");
+        if (!(header instanceof HTMLElement))
+          return;
+
+        var pageHeading = document.querySelector("[data-page-heading]");
+        if (
+          header.dataset.pageTitleEnabled !== "true" ||
+          !(pageHeading instanceof HTMLElement)
+        ) {
+          header.dataset.titleState = "site";
+          return;
+        }
+
+        var frame = null;
+        var syncHeaderTitleState = function() {
+          frame = null;
+          var headerHeight = header.getBoundingClientRect().height;
+          header.dataset.titleState =
+            pageHeading.getBoundingClientRect().top <= headerHeight
+              ? "page"
+              : "site";
+        };
+        var requestHeaderTitleStateSync = function() {
+          if (frame !== null)
+            return;
+          frame = window.requestAnimationFrame(syncHeaderTitleState);
+        };
+
+        syncHeaderTitleState();
+        window.addEventListener("scroll", requestHeaderTitleStateSync, {
+          passive: true,
+        });
+        window.addEventListener("resize", requestHeaderTitleStateSync);
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initHeaderPageTitle, {
+          once: true,
+        });
+      } else {
+        initHeaderPageTitle();
+      }
+    </script>
   </body>
 </html>
