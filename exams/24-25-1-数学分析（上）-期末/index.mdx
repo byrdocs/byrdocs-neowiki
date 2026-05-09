@@ -1,0 +1,82 @@
+---
+时间: 2024-2025学年第一学期
+科目: 数学分析（上）
+类型: 本科
+阶段: 期末
+答案完成度: 残缺
+学院:
+- 人工智能学院
+来源: b6b5a9b7ab7520b058f3917705d92540
+---
+
+## 一 填空题 (本大题共10小题, 每小题3分, 共30分)
+
+1. $\lim_{x\rightarrow0}\left(\frac1x-\frac1{\ln(1+x)}\right)=$ <Blank>$-\frac12$</Blank>.
+
+2. 已知 $f(x)$ 在 $x_0$ 点可导, 且当 $n\rightarrow\infty$ 时, $f(x_0-\frac1n)-f(x_0)+\frac2n=o\left(\frac1n\right)$, 则 $f'(x_0)=$ <Blank>$2$</Blank>.
+
+3. 函数 $y=y(x)$ 是由参数方程 $\begin{cases}x=\sin t^2,\\y=t\sin t^2-\int_1^{t^2}\frac1{2\sqrt u}\sin u\,\mathrm du\end{cases}$ 确定, 则 $\left.\frac{\mathrm d^2y}{\mathrm dx^2}\right|_{t=\sqrt\pi}=$ <Blank>$-\frac{1}{2\sqrt\pi}$</Blank>.
+
+4. 函数 $f(x)=x\mathrm e^{-x^2}$, 则 $f^{(99)}(0)=$ <Blank>$-\frac{99!}{49!}$</Blank>.
+
+<Solution>
+	对 $\mathrm e^{-x^2}$ 展开成幂级数。
+</Solution>
+
+5. 当 $x>0$ 时, $f(\ln x)=\frac1x$, 则 $\int_0^1xf'(x)\,\mathrm dx=$ <Blank>$\frac2{\mathrm e}-1$</Blank>.
+
+6. $\lim_{n\rightarrow\infty}\left(\frac1{n^2+1}+\frac2{n^2+2^2}+\cdots+\frac n{n^2+n^2}\right)=$ <Blank>$\frac{\ln2}2$</Blank>.
+
+<Solution>
+	$\lim_{n\rightarrow\infty}\sum_{k=1}^n\frac k{n^2+k^2}=\lim_{n\rightarrow\infty}\frac1n\sum_{k=1}^n\frac{\frac kn}{\left(\frac kn\right)^2+1}=\int_0^1\frac{x\,\mathrm dx}{x^2+1}$
+</Solution>
+
+7. 曲线 $y=\sqrt x$ 与直线 $y=x$ 所围的有限区域绕 $y$ 旋转一周, 所得旋转体的体积为 <Blank>$\frac{2\pi}{15}$</Blank>.
+
+8. $\int_{-\frac\pi4}^{\frac\pi4}\left(\frac{1+x^3\cos^2x}{1+\cos2x}\right)\,\mathrm dx=$ <Blank>$1$</Blank>.
+
+9. 反常积分 $\int_0^2\sqrt\frac x{2-x}\,\mathrm dx$ 的敛散性为 <Blank>收敛</Blank> (填**收敛**或**发散**).
+
+10. 方程 $\frac{\mathrm dy}{\mathrm dx}=\frac1{(x+y)^2}$ 的通解为 <Blank>$y-\arctan(x+y)=C$</Blank>.
+
+<Solution>
+	令 $t=x+y$
+</Solution>
+
+## 二 (10分)
+
+讨论函数 $f(x)=\begin{cases}\frac x{1-\mathrm e^{\frac1x}},&x\ne0\\0,&x=0\end{cases}$ 在 $x=0$ 处的连续性和可导性.
+
+## 三 (每小题5分, 共10分)
+
+### 1.
+
+设 $f(x)$ 连续, 且 $f(0)=0$, $f(\pi)=2$, 计算 $\int_0^\pi[f(x)+f''(x)]\sin x\,\mathrm dx$.
+
+### 2.
+
+$f(x)=\begin{cases}\frac1{1+x},x\ge0,\\\frac1{\mathrm e^x+\mathrm e^{-x}},x<0\end{cases}$, 求 $\int_{-\infty}^2f(x-1)\,\mathrm dx$.
+
+## 四 (12分)
+
+求函数 $y=(x+2)\mathrm e^{\frac1x}$ 的极值和渐近线.
+
+## 五 (10分)
+
+已知函数 $f(x)$ 在 $[0,2]$ 上二阶可导, $f(0)=f(2)=0$, 且曲线 $y=f(x)$ 与抛物线 $y=x^2-2x$ 在 $(0,2)$ 内有一个交点. 证明: 存在 $\xi\in(0,2)$, 使得 $f''(\xi)=2$.
+
+## 六 (10分)
+
+设有连接点 $O(0,0)$ 和 $A(1,1)$ 的一段连续的曲线弧 $\overset{\frown}{OA}$, 对 $\overset{\frown}{OA}$ 上任一点 $P(x,y)$, 曲线弧 $\overset{\frown}{OP}$ 在直线段 $\overline{OP}$ 上方, 且曲线弧 $\overset{\frown}{OP}$ 与直线段 $\overline{OP}$ 所围图形的面积为 $x^2$, 求曲线弧 $\overset{\frown}{OA}$ 的方程.
+
+## 七 (12 分)
+
+求微分方程 $y''-y'=x+\sin x$ 的通解.
+
+## 八 (6 分)
+
+设函数 $f(x)$ 在 $[a,b]$ 上二阶可导, 且 $f''(x)>0$, 证明:
+
+$$
+f\left(\frac{a+b}2\right)\le\frac1{b-a}\int_a^bf(x)\,\mathrm dx
+$$

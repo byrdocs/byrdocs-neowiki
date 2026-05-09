@@ -1,0 +1,76 @@
+---
+时间: 2025-2026学年第一学期
+类型: 研究生
+科目: 图论及其应用
+阶段: 期末
+来源: 2da40325a022d1f808eb909a297f0a8d
+学院:
+- 信息与通信工程学院
+- 计算机学院
+- 网络空间安全学院
+- 智能工程与自动化学院
+- 物理科学与技术学院
+- 人工智能学院
+---
+
+## 二（8分）
+
+证明：对于 $\nu \geq 2$ 的图 $G$ ，若 $\varepsilon \leq \nu - 2$ ，则 $G$ 不连通。
+
+## 三（10分）
+
+用所附算法求下图中最优生成树（边旁的数字表示权重）。
+
+<Figure src="题图3.svg" float>
+    第三题图
+</Figure>
+
+附：Prim算法（令 $S$ 为当前子树的顶点集合，$E$ 为当前子树的边的集合，$w(uv)$ 为边 $uv$ 的权重，$d(v)$ 为点 $v$ 到 $S$ 的最小距离。）
+
+0. $k = 0$ ，任取 $\nu \in V(G)$ ，令 $\nu_{0} = \nu$ ， $S = \{\nu_0\}, E = \emptyset$ ， $d(\nu_0) = 0$ ， $d(\nu) = \infty (\nu \neq \nu_0)$
+1. 若 $S = V(G)$ ，结束（$S$ 与 $E$ 分别为最优树的顶点集与边集）；否则，转 2。
+2. 对任意的 $\nu \in V(G) \setminus S$ ，计算 $d(\nu) = \min \{w(v_k\nu), d(\nu)\}$；对所有的 $\nu \in V(G) \setminus S$ ，计算 $\min\{d(\nu) \mid \nu \in V(G) \setminus S\}$ ，令 $\nu_{k+1}$ 为最小值点，若 $d(\nu_{k+1}) = \infty$ ，则图 $G$ 不连通，结束（$G$ 没有生成树）；否则，选取边 $\nu_{k+1}$ （其中 $\nu \in S$ ， $w(\nu_{k+1}) = d(\nu_{k+1})$），令 $S = S \cup \{\nu_{k+1}\}$ ， $E = E \cup \{\nu_{k+1}\}$ ，令 $k := k + 1$ ，转 1。
+
+## 四（12分）
+
+用所附算法求下面赋权完全偶图 $G = (X,Y;E)$ 中的最优匹配（权重最大的完美匹配）。
+$M = (m_{ij})$ ，其中 $m_{ij}$ 表示边 $(x_i, y_j)$ 的权重。
+
+$$
+\left[
+\begin{matrix}
+4 & 5 & 8 & 10 & 11 \\
+7 & 6 & 5 & 7 & 4 \\
+8 & 5 & 12 & 9 & 6 \\
+6 & 6 & 13 & 10 & 7 \\
+4 & 5 & 7 & 9 & 8
+\end{matrix}
+\right]
+$$
+
+附：对赋权完全偶图 $G = (X,Y;E)$ ，以 $G$ 的任意 f.v.l. $l$ 作为开始。 定 $G_{l}$ ，并在 $G_{l}$ 上任取一匹配 $M$ （可为 $\varnothing$）作为开始的匹配。
+
+（1）若 $M$ 饱和 $X$ 的每个顶点，则 $M$ 为最优匹配，停止；否则，任取一 $M$-不饱和顶点 $u$ ，令 $S = \{u\}$ ， $T = \varnothing$。
+
+（2）若 $N_{G_l}(S) \supset T$ ，转到（3）；否则， $N_{G_l}(S) = T$。计算 $\alpha_l = \min_{x \in S, y \in T} \{l(x) + l(y) - w(xy)\}$ 及 f.v.l. $\widetilde{l}: \widetilde{l}(v) = \begin{cases}
+l(v) - \alpha_l, & v \in S \\
+l(v) + \alpha_l, & v \in T \\
+l(v), & \text{其它}
+\end{cases}$，令 $l = \widetilde{l}$ ， $G_l = G_{\widetilde{l}}$。
+
+（3）选取 $y \in N_{G_l}(S) \setminus T$ ，若 $y$ 为 $M$-饱和的，设 $yz \in M$ ，则令： $S = S \cup \{z\}$ ， $T = T \cup \{y\}$ ，转（2）；否则， $y$ 为 $M$-不饱和的，存在 $M$-可扩路 $P$ ，令 $M = M \Delta E(P)$ ，转到（1）。
+
+附：对赋权完全偶图 $G = (X,Y;E)$ ，如果 $G$ 的顶点标号 $l(v), v \in V(G)$ 满足：对 $\forall x\in X, y\in Y$ 都有 $l(x) + l(y)\geq w(xy)$ ，其中 $w(xy) (\geq 0)$ 为边 $xy$ 的权重，则称 $l$ 为 $G$ 的可行顶点标号，简记为 $G$ 的 f.v.l.。
+
+对任意赋权完全偶图，可行顶点标号总是存在的，例如：
+
+$$
+\left\{
+\begin{array}{l}
+l(x) = \max_{y \in Y} \{w(xy)\} \forall x \in X\\
+l(y) = 0
+\end{array}
+\right.
+$$
+
+记： $E_{l} = \{xy \in E \mid l(x) + l(y) = w(xy)\}$ ，并称以 $E_{l}$ 为边集的 $G$ 的生成子图为相等子图（equality subgraph），记为 $G_{l}$。

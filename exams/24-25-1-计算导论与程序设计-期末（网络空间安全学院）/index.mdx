@@ -1,0 +1,463 @@
+---
+时间: 2024-2025学年第一学期
+科目: 计算导论与程序设计
+阶段: 期末
+类型: 本科
+学院:
+- 网络空间安全学院
+答案完成度: 残缺
+---
+
+## 函数题
+
+### 7-1 矩阵加法
+
+矩阵加法通常被定义在两个相同大小的矩阵。比如两个 `m×n` 矩阵 `A` 和 `B` 的和，标记为 `A+B`，该矩阵一样是个 `m×n` 矩阵，其内的各元素为其相对应元素相加后的值。
+现请你写三个函数来实现矩阵加法操作。
+
+**输入：**
+
+第一行为用空格分隔的两个整数 `rows` 和 `cols(0<rows,cols<=10)`，依次代表矩阵的行数和列数。后边是 `rows` 乘二行 `cols` 列用空格分隔的整数，代表两个矩阵。
+
+**输出：**
+
+为 `rows` 行 `cols` 列用空格分隔的整数（行末无空格），代表运算结果（具体见样例）。
+
+测试用例保证：
+
+1. 合法。
+2. 所有整数都远小于 `int` 的存储范围。
+
+**函数接口定义一：**
+
+```c
+void matrixInput(int matrix[][MAX_COL] , int rows , int cols );
+```
+
+该函数的功能为按要求输入一个矩阵。其中 `matrix`、`rows` 和 `cols` 都是用户传入的参数。`matrix` 代表保存矩阵的数组；`rows` 和 `cols` 分别代表矩阵的行数和列数。函数没有返回值。
+
+**函数接口定义二：**
+
+```c
+void matrixOutput(int matrix[][MAX_COL] , int rows , int cols );
+```
+
+该函数的功能为按要求输出一个矩阵。其中 `matrix`、`rows` 和 `cols` 都是用户传入的参数。`matrix` 代表待输出矩阵；`rows` 和 `cols` 分别代表矩阵的行数和列数。函数没有返回值。
+
+**函数接口定义三：**
+
+```c
+void matrixAddition(int matrix1[][MAX_COL], int matrix2[][MAX_COL], int result[][MAX_COL] , int rows , int cols );
+```
+
+该函数的功能为实现两个矩阵相加。其中 `matrix1`、`matrix2`、`result`、`rows` 和 `cols` 都是用户传入的参数。`matrix1` 和 `matrix2` 为参与加法运算的两个矩阵，`result` 为运算结果矩阵，也就是说你的程序要把计算结果保存在这个矩阵中；`rows` 和 `cols` 分别代表这三个矩阵的行数和列数。函数没有返回值。
+
+**裁判测试程序样例：**
+
+```c
+#include <stdio.h>
+
+#define MAX_ROW 10  // 定义矩阵的最大行数
+
+#define MAX_COL 10  // 定义矩阵的最大列数
+
+
+void matrixAddition(int matrix1[][MAX_COL], int matrix2[][MAX_COL], int result[][MAX_COL] , int rows , int cols );
+
+void matrixInput(int matrix[][MAX_COL] , int rows , int cols ) ;
+
+void matrixOutput(int matrix[][MAX_COL] , int rows , int cols ) ;
+
+int main() {
+    int        rows , cols ;
+    int        matrix1[MAX_ROW][MAX_COL] , matrix2[MAX_ROW][MAX_COL] , result[MAX_ROW][MAX_COL];  
+    
+    scanf("%d%d" , &rows , &cols) ;
+    matrixInput(matrix1 , rows , cols ) ;
+    matrixInput(matrix2 , rows , cols ) ;
+    matrixAddition(matrix1 , matrix2 , result ,  rows , cols);
+    matrixOutput(result , rows , cols ) ;
+
+    return 0;
+}
+
+
+
+/* 请在这里填写答案 */
+```
+
+**输入样例：**
+
+```text
+3 3
+
+11 12 13
+
+14 15 16
+
+17 18 19
+
+21 22 23
+
+24 25 26
+
+27 28 29
+```
+
+**输出样例：**
+
+```text
+32 34 36
+
+38 40 42
+
+44 46 48
+```
+
+代码长度限制：`16 KB`
+
+时间限制：`400 ms`
+
+内存限制：`64 MB`
+
+### 7-2 大于平均值
+
+现在有若干整数，请你写一个函数把这些整数中所有大于这些整数的平均值的整数都找出来。
+
+**输入：**第一行为一个整数 `n(1<n<100)`，代表共有 `n` 个整数；第二行为 `n` 个用空格分隔的整数，代表这 `n` 个整数。
+
+**输出：**只有一行，为若干用空格分隔的整数（行末无空格），代表输入的整数中所有大于平均值的整数。输出顺序与输入顺序一致。
+
+测试用例保证：
+
+1. 合法。
+2. 所有整数及这些整数的和远小于 `int` 的存储范围。
+
+**函数接口定义：**
+
+```c
+int getBigNumbers( int numbers[] , int bigNumbers[] , int size) ;
+```
+
+其中 `numbers`、`bigNumbers` 和 `size` 都是用户传入的参数。`numbers` 代表存储那 `n` 个待处理整数的数组；`bigNumbers` 是保存所有大于平均值的整数的数组，也就是说你的程序要把找到的大于平均值的整数保存在这个数组里；`size` 代表 `numbers` 中整数的个数。函数须返回 `bigNumbers` 中整数的个数。
+
+**裁判测试程序样例：**
+
+```c
+#include<stdio.h>
+
+#define    MAX    100
+
+int    getBigNumbers( int numbers[] , int bigNumbers[] , int size) ;
+
+int main(){
+    int        i , m , n ,    numbers[MAX] , bigNumbers[MAX];
+    
+    scanf( "%d" , &n ) ;
+    for ( i = 0 ; i < n ; i++ )
+        scanf( "%d" ,  &numbers[i] ) ;
+    
+    m = getBigNumbers( numbers , bigNumbers , n ) ;
+    for ( i = 0 ; i < m ; i++ )
+    {
+        if ( i == m - 1 )
+            printf( "%d\n" ,  bigNumbers[i] ) ;
+        else
+            printf( "%d " ,  bigNumbers[i] ) ;
+    }
+    
+    return 0;
+}
+
+/* 请在这里填写答案 */
+```
+
+**输入样例：**
+
+```text
+9 1 3 5 7 9 2 4 6 8
+```
+
+**输出样例：**
+
+```text
+7 9 6 8
+```
+
+代码长度限制：`16 KB`
+
+时间限制：`400 ms`
+
+内存限制：`64 MB`
+
+### 7-3 旋风单词
+
+<Figure src="题图7.3.png" float>
+    第7-3题图
+</Figure>
+旋风单词是这样的英语单词，当我们按照旋风模式遍历这个单词时，它所有的字符是按字母表顺序排列的。如下图所示，adjourned就是旋风单词。
+你的任务是写一个函数，该函数可以判断一个单词是否是旋风单词。
+
+**输入：**
+
+第一行为一个整数 `n(1<n)`，代表测试用例组数。后边为 `n` 行，每行一个字符串（长度不大于 `30`），代表待判断单词。
+
+**输出：**
+
+共 `n` 行，与输入单词相对应，如果输入的是旋风单词，则输出 `YES`，否则输出 `NO`。
+
+**函数接口定义：**
+
+```c
+int isCycloneWord(char *word) ;
+```
+
+其中 `word` 是用户传入的参数，代表待判断的单词。如果 `word` 是旋风单词，函数须返 `1`，否则函数返回 `0`。
+
+裁判测试程序样例：
+
+```c
+#include<stdio.h>
+
+#include<string.h>
+
+#define MAXLEN        32
+
+int    isCycloneWord(char *word) ;
+
+int main()
+{
+    char    word[MAXLEN];
+    int        n , i ;
+    
+    scanf("%d" , &n) ;
+    for(i = 0 ; i < n ; i++) 
+    {
+        scanf("%s" , word) ;
+        if ( isCycloneWord(word) == 1 )
+            printf("YES\n") ;
+        else
+            printf("NO\n") ;
+    }
+ 
+    return 0;
+}
+
+/* 请在这里填写答案 */
+```
+
+**输入样例：**
+
+```text
+2
+
+adjourned
+
+abc
+```
+
+**输出样例：**
+
+```text
+YES
+
+NO
+```
+
+代码长度限制：`16 KB`
+
+时间限制：`400 ms`
+
+内存限制：`64 MB`
+
+### 7-4 当日之星
+
+2022年，党的二十大首次将 “教育数字化” 写进报告，提出 “推进教育数字化，建设全民终身学习的学习型社会、学习型大国”。2023 年 2 月，中共中央、国务院印发《数字中国建设整体布局规划》，提出 “大力实施国家教育数字化战略行动，完善国家智慧教育平台”，进一步强调了教育数字化在数字中国建设中的重要地位。
+在国家大力倡导教育数字化的时代浪潮下，B大学秉持着高度的使命感与前瞻性视野，积极投身于教育数字化建设的征程之中。为深入践行国家教育数字化的先进理念，切实贯彻落实相关政策方针，学校精心谋划、精准施策，全力打造了一系列具有高水准、高质量、高实用性的数字化教育平台。
+其中某学习平台为了鼓励同学们更多的使用该平台学习，每天都有当日之星评选。评选的规则很简单，就是在线时长最长的前10名同学。统计在线时长的算法也很简单，就是该同学最后登出的时间减去最早登录的时间。现在就请你写两个函数依据此规则来为所有同学进行排序。
+
+**输入格式**
+
+第一行为一个整数 `n(0<n<100)`，代表共 `n` 个同学当天使用了该平台；后面是 `n` 行，每行代表一个同学的信息。每行的格式都是 `7` 个用空格分隔的整数，第1个整数代表该同学的学号，第2、3、4个整数依次代表该同学当天最早登录时间（依次为时、分、秒），第5、6、7个整数依次代表该同学当天最后登出的时间（依次为时、分、秒）。
+
+**输出格式**
+
+共 `n` 行，按排名由高到低每一行输出一个同学的学号（测试数据保证合法且没有在线总时长相等的同学）。
+
+**函数接口定义一：**
+
+```c
+STUDENT * Create( int size ) ;
+```
+
+其中 `size` 是用户传入的参数，该函数创建一个长度为 `size` 的 `STUDENT` 类型（见裁判测试程序样例）的动态数组。如果申请内存成功，则函数须返回动态数组第一个元素的地址。否则返回 `NULL`。
+
+**函数接口定义二：**
+
+```c
+void Sort(STUDENT *p,int n);
+```
+
+其中 `p` 和 `n` 都是用户传入的参数。`p` 为指向待排序的数组的指针，`n` 为数组中元素的个数。该函数的功能是将待排序数组按指定规则排序；函数没有返回值。
+
+**裁判测试程序样例：**
+
+```c
+#include<stdio.h>
+
+#include<stdlib.h>
+
+typedef struct Time
+{
+    int        hour , minute , second ;
+}TIME ;    // 时间结构，三个变量依次代表时、分、秒。
+
+typedef struct student 
+{
+    int        id;        
+    TIME    start , end ;
+} STUDENT;    // 学生结构， 三个变量依次为学号，开始时间和结束时间
+
+void Sort(STUDENT *p,int n);
+STUDENT * Create( int size ) ;
+
+int main()
+{
+    int        i , n ;
+    STUDENT    *students ;     
+
+    scanf("%d",&n);  
+    students = Create( n ) ;
+    
+    if ( students != NULL )
+    {
+        for( i = 0 ; i < n ; i++ ) 
+            scanf( "%d%d%d%d%d%d%d" , &students[i].id ,
+             &students[i].start.hour , &students[i].start.minute , &students[i].start.second , 
+             &students[i].end.hour , &students[i].end.minute , &students[i].end.second );
+    
+        Sort( students , n );
+        for( i = 0 ; i < n ; i++ ) 
+            printf("%d\n" , students[i].id);
+            
+        free( students ) ;
+    }
+    
+    return 0;
+}
+
+/* 请在这里填写答案 */
+```
+
+**输入样例：**
+
+```text
+10
+
+2024215000 6 24 4 9 7 43
+
+2024215001 7 6 42 9 13 23
+
+2024215002 1 3 45 2 8 13
+
+2024215003 17 41 38 19 51 33
+
+2024215004 8 35 33 10 35 34
+
+2024215005 7 48 9 10 3 42
+
+2024215006 17 52 4 23 27 16
+
+2024215007 11 27 38 13 43 10
+
+2024215008 13 11 15 13 59 54
+
+2024215009 18 1 7 23 24 12
+```
+
+**输出样例：**
+
+```text
+2024215006
+
+2024215009
+
+2024215000
+
+2024215005
+
+2024215007
+
+2024215003
+
+2024215001
+
+2024215004
+
+2024215002
+
+2024215008
+```
+
+代码长度限制：`16 KB`
+
+时间限制：`400 ms`
+
+内存限制：`64 MB`
+
+### 7-5 采用头插法创建联系人链表
+
+编写一个函数，完成链表的创建。具体要求：在函数中首先输入一个正整数 `n`，然后输入 `n` 行数据。每行数据代表一个联系人信息，将联系人信息用链表存储起来。
+
+**函数接口定义：**
+
+```c
+con * creatlist ( )；
+```
+
+**裁判测试程序样例：**
+
+```c
+#include <stdio.h> 
+#include <stdlib.h>
+typedef struct con con;
+struct con{   
+ int xh;   
+ char name[20];   
+ char tel[20];   
+ struct con *next;
+};
+con* creatList();
+int main(){ 
+   con *head,*p; 
+   head=creatList();
+   for(p=head;p!=NULL;p=p->next ) 
+       printf("%d %s %s\n",p->xh ,p->name ,p->tel );
+    return 0;
+}
+
+/* 请在这里填写答案 */
+```
+
+**输入样例：**
+
+```text
+3
+1 XiaoMing 13647165566
+2 XiaoFei 13347148970
+3 LuYang 15847102233
+```
+
+**输出样例：**
+
+```text
+3 LuYang 15847102233
+2 XiaoFei 13347148970
+1 XiaoMing 13647165566
+```
+
+代码长度限制：`16 KB`
+
+时间限制：`400 ms`
+
+内存限制：`64 MB`

@@ -1,0 +1,78 @@
+<svg width="600" height="350" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .edge { stroke: black; stroke-width: 2px; fill: none; }
+    .node-circle { fill: white; stroke: black; stroke-width: 2px; }
+    .node-text { font-family: Arial, sans-serif; font-size: 20px; text-anchor: middle; dominant-baseline: middle; fill: black; }
+    .sub { baseline-shift: sub; font-size: 0.7em; }
+    .weight { font-family: Arial, sans-serif; font-size: 22px; fill: black; text-anchor: middle; dominant-baseline: middle; paint-order: stroke; stroke: white; stroke-width: 4px; }
+  </style>
+
+  <line x1="50" y1="160" x2="160" y2="70" class="edge" />
+  <text x="95" y="105" class="weight">2</text>
+
+  <line x1="50" y1="160" x2="260" y2="160" class="edge" />
+  <text x="155" y="150" class="weight">3</text>
+
+  <line x1="50" y1="160" x2="260" y2="280" class="edge" />
+  <text x="130" y="240" class="weight">7</text>
+
+  <line x1="160" y1="70" x2="340" y2="70" class="edge" />
+  <text x="250" y="60" class="weight">1</text>
+
+  <line x1="160" y1="70" x2="260" y2="160" class="edge" />
+  <text x="225" y="110" class="weight">4</text>
+
+  <line x1="340" y1="70" x2="550" y2="180" class="edge" />
+  <text x="460" y="110" class="weight">6</text>
+
+  <line x1="260" y1="160" x2="260" y2="280" class="edge" />
+  <text x="245" y="220" class="weight">2</text>
+
+  <line x1="260" y1="160" x2="420" y2="220" class="edge" />
+  <text x="350" y="180" class="weight">5</text>
+
+  <line x1="260" y1="280" x2="420" y2="220" class="edge" />
+  <text x="330" y="265" class="weight">5</text>
+
+  <path d="M 260 280 Q 420 330 550 180" class="edge" />
+  <text x="440" y="310" class="weight">8</text>
+
+  <line x1="420" y1="220" x2="550" y2="180" class="edge" />
+  <text x="495" y="190" class="weight">3</text>
+
+  <g transform="translate(50, 160)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">0</tspan></text>
+  </g>
+
+  <g transform="translate(160, 70)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">1</tspan></text>
+  </g>
+
+  <g transform="translate(340, 70)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">2</tspan></text>
+  </g>
+
+  <g transform="translate(260, 160)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">3</tspan></text>
+  </g>
+
+  <g transform="translate(260, 280)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">4</tspan></text>
+  </g>
+
+  <g transform="translate(420, 220)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">5</tspan></text>
+  </g>
+
+  <g transform="translate(550, 180)">
+    <circle r="22" class="node-circle" />
+    <text y="2" class="node-text">v<tspan class="sub">6</tspan></text>
+  </g>
+
+</svg>

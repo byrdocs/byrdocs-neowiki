@@ -1,0 +1,100 @@
+---
+时间: 2024-2025学年第二学期
+科目: 离散数学
+阶段: 期末
+类型: 本科
+学院:
+- 人工智能学院
+答案完成度: 残缺
+---
+
+## 一、选择
+
+1. 下述哪些公式与 $p\leftrightarrow q$ 等值。<Slot />
+
+<Choices multiple>
+    - $(p\land q)\lor(\lnot p\land \lnot q)$
+    - $(p\rightarrow q)\land(q\rightarrow p)$
+    - $(p\lor q)\land\lnot(p\land q)$
+    - $\lnot(p\lor q)$
+</Choices>
+
+2. 并不是每个学生都喜欢晩睡，设谓词 $P(x)$: $x$ 是学生，$Q(x)$: $x$ 会喜欢晩睡，原命题符号化为 <Slot />。
+
+<Choices>
+    - $\lnot\exists x(P(x)\land\lnot Q(x))$
+    - $\lnot\forall x(P(x)\rightarrow Q(x))$
+    - $\exists x(P(x)\land\lnot Q(x))$
+    - $\forall x(P(x)\rightarrow Q(x))$
+</Choices>
+
+3. 下面公式为永真式的是 <Slot />。
+
+<Choices>
+    - $\lnot(\forall xP(x)\rightarrow(\exists xQ(x)\rightarrow \forall xP(x)))$
+    - $\exists xP(x)\land\lnot\exists xP(x)$
+    - $\exists xP(x)\rightarrow(\exists xP(x)\lor Q(x,y))$
+    - $\forall x\forall y(P(x,y)\rightarrow P(y,x))$
+</Choices>
+
+4. 下面哪些等值式成立 <Slot />。
+
+<Choices multiple>
+    - $\exists x(A(x)\rightarrow B)\Leftrightarrow\exists xA(x)\rightarrow B$
+    - $\exists x(A(x)\land B(x))\Leftrightarrow\exists xA(x)\land\exists xB(x)$
+    - $\forall x\forall yA(x,y)\Leftrightarrow\forall y\forall xA(x,y)$
+    - $\exists x(B\rightarrow A(x))\Leftrightarrow B\rightarrow\exists xA(x)$
+</Choices>
+
+5. 集合 $A=\{1,2,\dots,9\}$, $R=\{<x,y>\mid x+y=9\}$，则 $R$ 为 <Slot />。
+
+<Choices>
+    - 自反的
+    - 对称的
+    - 传递的
+    - 反自反的
+</Choices>
+
+## 三、填空
+
+1. $(A\lor\lnot B)\land B\Rightarrow A$ 为 <Blank /> 推理定律。
+
+2. 公式 $\forall x\forall y(F(x)\land G(y)\rightarrow H(x,y))$ 的类型是 <Blank />。
+
+3. 与 $\lnot (p\rightarrow(q\rightarrow r))$ 等值且仅用联结词集 $\{\uparrow\}$ 表示的公式是 <Blank />。
+
+4. 已知 $A=\{<1,2>,<2,4>,<3,3>\}$, $B=\{<1,3>,<2,4>,<4,2>\}$，则 $\operatorname{fld}(A-B)=$<Blank />, $A\circ B=$<Blank />。
+
+## 四、综合题
+
+### 1.
+
+在自然推理系统中，构造实际问题证明：
+
+> 每个一年级学生至少配备一名高年级学生当他的辅导员。凡工科生的辅导员都是工科生。小王是工科一年级学生，因此，至少有一个工科高年级学生。
+
+### 2.
+
+求证：设 $R$ 是非空集合 $A$ 上的等价关系，则 $\forall a,b\in A,<a,b>\in R$ 当且仅当 $[a]_R=[b]_R$。
+
+### 3.
+
+证明以下两个结论：
+
+1. 对于有限群 $G$，任意元 $a$ 的生成群 $<a>$ 一定是子群。
+2. 阶为 $12$ 的群没有 $5$ 阶元素。
+
+### 4.
+
+设 $G=\left\{\left(\begin{matrix}1&0\\0&1\end{matrix}\right),\left(\begin{matrix}-\frac12&-\frac{\sqrt3}2\\\frac{\sqrt3}2&-\frac12\end{matrix}\right),\left(\begin{matrix}-\frac12&\frac{\sqrt3}2\\-\frac{\sqrt3}2&-\frac12\end{matrix}\right)\right\}$。
+
+1. 判断 $G$ 关于矩阵乘法是否构成一个群，并证明结论。
+2. 证明 $G$ 的子群都是平凡子群。
+
+### 5.
+
+设集合 $S=\{<n,m>\mid n\in N,m\in\{0,1\}\}$。定义二元运算 $\cdot$ 为 $<n_1,m_1>\cdot<n_2,m_2>=<n_1+n_2,m_1\oplus m_2\oplus 1>$。其中 $\oplus$ 为模 $2$ 加法。
+
+1. 证明 $<S,\cdot>$ 是一个半群。
+2. 证明 $S$ 是可数集。
+3. 构建一个半群同构映射 $\phi:\;<N\times Z_2,+>\rightarrow <S,\cdot>$，其中 $Z_2=\{0,1\}$ 上的加法为模 $2$ 加法。

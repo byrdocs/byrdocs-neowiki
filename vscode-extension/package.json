@@ -1,7 +1,7 @@
 {
   "name": "byrdocs-wiki-vscode",
   "displayName": "BYR Docs Wiki Tools",
-  "description": "Workspace-specific authoring tools for the byrdocs-wiki repository.",
+  "description": "Workspace-specific authoring tools for the byrdocs-neowiki repository.",
   "version": "0.2.2",
   "publisher": "byrdocs",
   "license": "MIT",
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/byrdocs/byrdocs-wiki-internal.git"
+    "url": "https://github.com/byrdocs/byrdocs-neowiki.git"
   },
-  "homepage": "https://github.com/byrdocs/byrdocs-wiki-internal",
+  "homepage": "https://github.com/byrdocs/byrdocs-neowiki",
   "bugs": {
-    "url": "https://github.com/byrdocs/byrdocs-wiki-internal/issues"
+    "url": "https://github.com/byrdocs/byrdocs-neowiki/issues"
   },
   "engines": {
     "vscode": "^1.90.0"

@@ -32,7 +32,7 @@ const parseMetadata = (exam: CollectionEntry<"exams">) => {
             },
             content: hasAnswers ? ["原题", "答案"] : ["原题"],
         },
-        url: `https://wiki.byrdocs.org/w/${exam.id}`,
+        url: `https://wiki.byrdocs.org/exam/${exam.id}`,
     };
 };
 

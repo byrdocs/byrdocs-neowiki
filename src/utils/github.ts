@@ -1,4 +1,4 @@
-const GITHUB_REPO_URL = "https://github.com/byrdocs/byrdocs-wiki-internal";
+const GITHUB_REPO_URL = "https://github.com/byrdocs/byrdocs-neowiki";
 const GITHUB_DEFAULT_BRANCH = "master";
 
 const encodeGitHubPath = (path: string) =>
