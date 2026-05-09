@@ -1,0 +1,33 @@
+<svg width="500" height="420" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="axisArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#222"/>
+    </marker>
+    <marker id="rArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <!-- white background -->
+  <rect width="500" height="420" fill="white"/>
+
+  <!-- coordinate axes -->
+  <line x1="80" y1="350" x2="440" y2="350" stroke="#222" stroke-width="2.5" marker-end="url(#axisArrow)"/>
+  <line x1="250" y1="380" x2="250" y2="45" stroke="#222" stroke-width="2.5" marker-end="url(#axisArrow)"/>
+
+  <!-- circle: center on y-axis, tangent to x-axis at O -->
+  <circle cx="250" cy="220" r="130" fill="none" stroke="#222" stroke-width="3"/>
+
+  <!-- origin / tangent point -->
+  <circle cx="250" cy="350" r="3.5" fill="#222"/>
+  <text x="235" y="371" font-family="Times New Roman, serif" font-size="24" font-style="italic">O</text>
+
+  <!-- radius from center to right edge -->
+  <line x1="250" y1="220" x2="356" y2="150" stroke="#222" stroke-width="2.5" marker-end="url(#rArrow)"/>
+  <circle cx="250" cy="220" r="3.5" fill="#222"/>
+  <text x="308" y="207" font-family="Times New Roman, serif" font-size="24" font-style="italic">R</text>
+
+  <!-- axis labels -->
+  <text x="450" y="358" font-family="Times New Roman, serif" font-size="26" font-style="italic">x</text>
+  <text x="238" y="35" font-family="Times New Roman, serif" font-size="26" font-style="italic">y</text>
+</svg>

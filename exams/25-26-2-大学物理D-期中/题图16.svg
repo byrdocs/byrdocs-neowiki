@@ -1,0 +1,36 @@
+<svg width="700" height="360" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#777" stroke-width="1.8"/>
+    </pattern>
+  </defs>
+  <rect width="700" height="360" fill="white"/>
+
+  <!-- Infinite plate A: dashed extensions, solid middle -->
+  <line x1="145" y1="35" x2="145" y2="95" stroke="#111" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <line x1="145" y1="95" x2="145" y2="255" stroke="#111" stroke-width="3.5"/>
+  <line x1="145" y1="255" x2="145" y2="320" stroke="#111" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <text x="98" y="85" font-family="Times New Roman, serif" font-size="28">+σ</text>
+  <text x="155" y="285" font-family="Times New Roman, serif" font-size="28" font-style="italic">A</text>
+
+  <!-- Infinite slab B, thinner thickness -->
+  <rect x="375" y="95" width="54" height="160" fill="url(#hatch)" stroke="none"/>
+
+  <!-- left face of B -->
+  <line x1="375" y1="35" x2="375" y2="95" stroke="#111" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <line x1="375" y1="95" x2="375" y2="255" stroke="#111" stroke-width="3.5"/>
+  <line x1="375" y1="255" x2="375" y2="320" stroke="#111" stroke-width="2.5" stroke-dasharray="8 7"/>
+
+  <!-- right face of B -->
+  <line x1="429" y1="35" x2="429" y2="95" stroke="#111" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <line x1="429" y1="95" x2="429" y2="255" stroke="#111" stroke-width="3.5"/>
+  <line x1="429" y1="255" x2="429" y2="320" stroke="#111" stroke-width="2.5" stroke-dasharray="8 7"/>
+
+  <!-- slab top/bottom edges only in solid visible part -->
+  <line x1="375" y1="95" x2="429" y2="95" stroke="#111" stroke-width="2.5"/>
+  <line x1="375" y1="255" x2="429" y2="255" stroke="#111" stroke-width="2.5"/>
+
+  <text x="343" y="82" font-family="Times New Roman, serif" font-size="26">σ₁</text>
+  <text x="440" y="82" font-family="Times New Roman, serif" font-size="26">σ₂</text>
+  <text x="393" y="285" font-family="Times New Roman, serif" font-size="28" font-style="italic">B</text>
+</svg>

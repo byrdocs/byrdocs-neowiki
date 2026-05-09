@@ -1,0 +1,11 @@
+<svg width="520" height="380" viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#111"/></marker></defs>
+  <rect width="520" height="380" fill="white"/>
+  <line x1="70" y1="310" x2="465" y2="310" stroke="#111" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="70" y1="310" x2="70" y2="45" stroke="#111" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="478" y="317" font-family="Times New Roman, serif" font-size="24" font-style="italic">r</text>
+  <text x="58" y="35" font-family="Times New Roman, serif" font-size="24" font-style="italic">E</text>
+  <text x="54" y="333" font-family="Times New Roman, serif" font-size="22" font-style="italic">O</text>
+  <path d="M 128.9 76.2 L 136.8 128.6 L 144.8 165.1 L 152.7 191.6 L 160.7 211.5 L 168.6 226.7 L 176.6 238.7 L 184.5 248.3 L 192.5 256.0 L 200.5 262.4 L 208.4 267.7 L 216.4 272.2 L 224.3 276.0 L 232.3 279.2 L 240.2 282.0 L 248.2 284.5 L 256.1 286.6 L 264.1 288.5 L 272.0 290.2 L 280.0 291.6 L 288.0 292.9 L 295.9 294.1 L 303.9 295.2 L 311.8 296.1 L 319.8 297.0 L 327.7 297.8 L 335.7 298.5 L 343.6 299.2 L 351.6 299.8 L 359.5 300.3 L 367.5 300.8 L 375.5 301.3 L 383.4 301.8 L 391.4 302.2 L 399.3 302.5 L 407.3 302.9" fill="none" stroke="#111" stroke-width="3"/>
+  <text x="255" y="140" font-family="Times New Roman, serif" font-size="22" font-style="italic">E ∝ 1/r²</text>
+</svg>
