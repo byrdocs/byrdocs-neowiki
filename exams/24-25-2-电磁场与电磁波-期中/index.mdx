@@ -111,7 +111,7 @@
     \begin{align*}
     &\nabla\cdot\overrightarrow A=0,\;\nabla\times\overrightarrow A=\overrightarrow B,\;\nabla\times\overrightarrow H=\overrightarrow J=0\\
     \Rightarrow&\nabla\times\overrightarrow B=\nabla\times\mu_0\overrightarrow H=0\\
-    \Rightarrow&0=\nabla\times\nabla\times\overrightarrow A=\nabla(\nabla\cdot\overrightarrow A)=\nabla^2\overrightarrow A=-\nabla^2\overrightarrow A\\
+    \Rightarrow&0=\nabla\times\nabla\times\overrightarrow A=\nabla(\nabla\cdot\overrightarrow A)-\nabla^2\overrightarrow A=-\nabla^2\overrightarrow A\\
     \Rightarrow&\nabla^2\overrightarrow A=0
     \end{align*}
     $$
@@ -190,5 +190,5 @@ $$
 2. 利用分离变量法求解上述定解问题, 得到区域内的电位分布. (备注: 对结果中涉及傅立叶级数展开的相关计算, 不做要求)
 
 <Solution>
-    $\varphi=\sum_{n=1}^\infty A_m\sin\frac{m\pi}b\sin\left(\frac{m\pi}by\right)$
+    $\varphi=\sum_{n=1}^\infty A_n\sinh\frac{n\pi x}b\sin\left(\frac{n\pi y}b\right)$
 </Solution>

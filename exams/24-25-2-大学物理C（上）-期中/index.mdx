@@ -66,21 +66,21 @@
 2. 绳子质心的加速度;
 
 <Solution>
-    绳子的自由端是自由落体的，所以下落 $x$ 后，自由端的速度为 $\sqrt{2gx}$。
+    绳子的自由端是自由落体的，所以下落 $x$ 后，自由端的速度为 $\dot x=\sqrt{2gx}$。
 
-    自由端的质量是 $\frac{\lambda(l-x)}2$，所以质心的速度为 $\frac{(l-x)\sqrt{2gx}}{2l}$，
+    质心的速度为 $v_\text{cm}=\frac{\mathrm dy_\text{cm}}{\mathrm dt}=\frac{\mathrm dy_\text{cm}}{\mathrm dx}\cdot\dot x=\frac{(l-x)\sqrt{2gx}}{2l}$，
 
-    因此质心的加速度是 $\frac{\mathrm dv}{\mathrm dt}=v\frac{\mathrm dv}{\mathrm dx}=\frac{g(l-x)(l-3x)}{4l^2}$。
+    因此质心的加速度是 $a_\text{cm}=\frac{\mathrm dv_\text{cm}}{\mathrm dt}=\frac{\mathrm dv_\text{cm}}{\mathrm dx}\cdot\dot x=\frac{g(l-3x)}{2l\sqrt{2gx}}\cdot\sqrt{2gx}=\frac{g(l-3x)}{2l}$。
 </Solution>
 
 3. 悬挂点给 $A$ 端绳的拉力大小.
 
 <Solution>
-    整段绳子只受到两个外力：悬挂点的拉力和重力。二者共同作用，形成质心加速度 $\frac{g(l-x)(l-3x)}{4l^2}$。
+    整段绳子只受到两个外力：悬挂点的拉力和重力。二者共同作用，形成质心加速度 $\frac{g(l-3x)}{2l}$。
 
-    因此有方程 $\lambda l\frac{g(l-x)(l-3x)}{4l^2}=\lambda lg-F$，
+    因此有方程 $\lambda l\cdot\frac{g(l-3x)}{2l}=\lambda lg-F$，
 
-    解得 $F=\lambda g\frac{3l^2+4lx-3x^2}{4l}$。
+    解得 $F=\lambda g\cdot\frac{l+3x}{2}$。
 </Solution>
 
 ## 三(20 分)
