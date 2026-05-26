@@ -1,0 +1,98 @@
+---
+import type { RelatedExam } from "/src/utils/relatedExams";
+
+interface Props {
+  subject: string;
+  stage: string;
+  relatedExams: RelatedExam[];
+}
+
+const { subject, stage, relatedExams } = Astro.props;
+
+if (relatedExams.length === 0) return null;
+---
+
+<details
+  id="related-exams"
+  class="related-exams mt-8 overflow-hidden rounded-[8px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
+  open
+>
+  <summary
+    class="flex cursor-pointer list-none items-center justify-between border-b border-slate-200 px-4 py-3 transition-colors hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+  >
+    <p
+      class="m-0 text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-300"
+    >
+      其他《{subject}》的{stage}试卷
+    </p>
+    <svg
+      class="related-exams-chevron h-4 w-4 flex-none text-slate-400 transition-transform duration-200 dark:text-slate-500"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </summary>
+  <ul class="divide-y divide-slate-200 text-sm dark:divide-slate-800">
+    {
+      relatedExams.map((exam) => (
+        <li class="flex items-center justify-between px-4 py-3">
+          <a
+            href={exam.url}
+            class="no-underline"
+            target={exam.isWiki ? undefined : "_blank"}
+          >
+            {exam.title}
+          </a>
+          {!exam.isWiki && (
+            <span class="ml-2 inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              PDF
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  (function() {
+    var STORAGE_KEY = 'relatedExamsExpanded';
+    var details = document.getElementById('related-exams');
+    if (!details) return;
+
+    try {
+      // Restore saved state
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved !== null) {
+        details.open = saved === 'true';
+      }
+      // If no saved state, keep default (open)
+
+      // Save state on toggle
+      details.addEventListener('toggle', function() {
+        localStorage.setItem(STORAGE_KEY, String(details.open));
+      });
+    } catch (e) {
+      // localStorage may be disabled (private mode, etc.)
+    }
+  })();
+</script>
+
+<style>
+  .related-exams > summary::-webkit-details-marker {
+    display: none;
+  }
+  .related-exams > summary::marker {
+    content: "";
+  }
+  .related-exams[open] .related-exams-chevron {
+    transform: rotate(180deg);
+  }
+</style>
