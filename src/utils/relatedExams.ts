@@ -35,8 +35,9 @@ const getWikiSortKey = (time: string): number => {
   return startYear * 10 + semester;
 };
 
-const getMetaSortKey = (start: string): number => {
-  return Number(start) * 10;
+const getMetaSortKey = (start: string, semester: string | null): number => {
+  const sem = semester === "First" ? 1 : semester === "Second" ? 2 : 0;
+  return Number(start) * 10 + sem;
 };
 
 export async function fetchMetadata(): Promise<MetadataItem[]> {
@@ -121,7 +122,7 @@ export function buildRelatedExams(
         title,
         url: `https://byrdocs.org/?c=test&q=${item.id}`,
         isWiki: false,
-        sortKey: getMetaSortKey(item.data.time.start),
+        sortKey: getMetaSortKey(item.data.time.start, item.data.time.semester),
       });
     }
   }
