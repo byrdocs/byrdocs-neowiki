@@ -14,11 +14,10 @@ interface Props {
   frontmatter: Record<string, any>;
   editPath?: string;
   headings?: any[];
-  examId: string;
   relatedExams?: RelatedExam[];
 }
 
-const { title, frontmatter, editPath, headings = [], examId, relatedExams = [] } = Astro.props;
+const { title, frontmatter, editPath, headings = [], relatedExams = [] } = Astro.props;
 const editHref =
   typeof editPath === "string" && editPath.length > 0
     ? getGitHubEditUrl(editPath)
@@ -38,7 +37,6 @@ const showToc = headings.some(isExamTocHeading);
       <InfoBox frontmatter={frontmatter} />
       <slot />
       <RelatedExams
-        currentExamId={examId}
         subject={frontmatter.科目}
         stage={frontmatter.阶段}
         relatedExams={relatedExams}

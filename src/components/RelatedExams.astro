@@ -64,7 +64,7 @@ if (relatedExams.length === 0) return null;
 <script>
   (function() {
     var STORAGE_KEY = 'relatedExamsExpanded';
-    var details = document.getElementById('related-exams');
+    var details = document.getElementById('related-exams') as HTMLDetailsElement | null;
     if (!details) return;
 
     try {
@@ -77,9 +77,9 @@ if (relatedExams.length === 0) return null;
 
       // Save state on toggle
       details.addEventListener('toggle', function() {
-        localStorage.setItem(STORAGE_KEY, String(details.open));
+        localStorage.setItem(STORAGE_KEY, String(details!.open));
       });
-    } catch (e) {
+    } catch {
       // localStorage may be disabled (private mode, etc.)
     }
   })();
