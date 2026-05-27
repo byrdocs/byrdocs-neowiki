@@ -20,6 +20,7 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 - Heading structure: major questions use `##`, subquestions use `###` only when appropriate. Choice/blank/judgment questions should use lists instead of overusing headings.
 - `Figure` / `Audio` references must use local file names within the same exam directory.
 - Prefer actionable comments tied to rendering or editorial correctness. Avoid low-value wording suggestions unless wording creates ambiguity.
+- **LaTeX spacing**: GitHub renders LaTeX only when dollar signs have spaces on both sides. Inline math must be written as ` $E=mc^2$ ` (with spaces outside the `$`), not `$E=mc^2$`. Display math `$$` blocks must also have surrounding blank lines or spaces. Flag any LaTeX that lacks the required outer spaces.
 - **Answer correctness**: For exams that contain answers (marked with `+` in `<Choices>`, content inside `<Blank>...</Blank>`, or content inside `<Solution>...</Solution>`), verify the correctness of the provided answers. This applies to all subjects. If an answer is wrong, point out the specific question, explain why it is incorrect, and provide the correct answer.
 
 ### Site code (`src/`, `astro.config.mts`, config files)
@@ -38,14 +39,3 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 
 - If everything looks good, **APPROVE** the PR.
 - If there are issues that must be fixed, **REQUEST CHANGES** and clearly explain each problem.
-
-## Re-request Instructions
-
-When requesting changes, always include the following message at the end of your review:
-
-```
----
-修改完成后，你可以通过以下方式重新请求 review：
-- 在 PR 评论中 @claude 并说明修改内容
-- 点击 reviewer 旁边的 🔄 (Re-request review) 按钮
-```
