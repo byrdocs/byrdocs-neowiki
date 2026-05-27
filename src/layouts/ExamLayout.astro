@@ -1,12 +1,23 @@
 ---
 import InfoBox from "/src/components/InfoBox.astro";
+import RelatedExams from "/src/components/RelatedExams.astro";
 import ExamToc from "/src/components/ExamToc.astro";
 import ExamToolbar from "/src/components/ExamToolbar.astro";
 import { isExamTocHeading } from "/src/components/examToc";
 import Layout from "/src/layouts/Layout.astro";
 import { getGitHubEditUrl } from "/src/utils/github";
+import type { RelatedExam } from "/src/utils/relatedExams";
 import "/src/styles/exam.css";
-const { title, frontmatter, editPath, headings = [] } = Astro.props;
+
+interface Props {
+  title: string;
+  frontmatter: Record<string, any>;
+  editPath?: string;
+  headings?: any[];
+  relatedExams?: RelatedExam[];
+}
+
+const { title, frontmatter, editPath, headings = [], relatedExams = [] } = Astro.props;
 const editHref =
   typeof editPath === "string" && editPath.length > 0
     ? getGitHubEditUrl(editPath)
@@ -25,6 +36,11 @@ const showToc = headings.some(isExamTocHeading);
     <div class="exam-page-main">
       <InfoBox frontmatter={frontmatter} />
       <slot />
+      <RelatedExams
+        subject={frontmatter.科目}
+        stage={frontmatter.阶段}
+        relatedExams={relatedExams}
+      />
     </div>
   </div>
   <ExamToolbar editHref={editHref} showTocToggle={showToc} />
