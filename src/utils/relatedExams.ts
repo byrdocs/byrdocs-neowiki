@@ -22,6 +22,7 @@ export interface RelatedExam {
   title: string;
   url: string;
   isWiki: boolean;
+  isCurrent: boolean;
   sortKey: number;
 }
 
@@ -81,10 +82,9 @@ export function buildRelatedExams(
 
   const relatedExams: RelatedExam[] = [];
 
-  // Add other wiki exams with same subject and stage
+  // Add wiki exams with same subject and stage, including the current page.
   for (const exam of allWikiExams) {
     if (
-      exam.id !== currentExam.id &&
       exam.data.科目 === currentSubject &&
       exam.data.阶段 === currentStage
     ) {
@@ -93,18 +93,23 @@ export function buildRelatedExams(
         title: exam.id,
         url: `/exam/${exam.id}`,
         isWiki: true,
+        isCurrent: exam.id === currentExam.id,
         sortKey: getWikiSortKey(exam.data.时间),
       });
     }
   }
 
-  // Add metadata exams with same subject and stage that are NOT in wiki
+  // Add metadata exams with same subject and stage that are NOT represented in wiki.
   for (const item of metadata) {
+    const isCurrentSource = Boolean(currentSource && item.id === currentSource);
+    const isRepresentedByCurrentPage =
+      isCurrentSource && wikiSourceMap.get(item.id)?.id === currentExam.id;
+
     if (
       item.data.course.name === currentSubject &&
       item.data.time.stage === currentStage &&
-      (!currentSource || item.id !== currentSource) &&
-      !wikiSourceMap.has(item.id)
+      !isRepresentedByCurrentPage &&
+      (isCurrentSource || !wikiSourceMap.has(item.id))
     ) {
       const semester = item.data.time.semester;
       const sem =
@@ -122,6 +127,7 @@ export function buildRelatedExams(
         title,
         url: `https://byrdocs.org/?c=test&q=${item.id}`,
         isWiki: false,
+        isCurrent: isCurrentSource,
         sortKey: getMetaSortKey(item.data.time.start, item.data.time.semester),
       });
     }
