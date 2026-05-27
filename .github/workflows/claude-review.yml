@@ -4,17 +4,18 @@ on:
   pull_request:
     types: [opened, review_requested]
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+
 jobs:
   review:
     if: |
       github.event.action == 'opened' ||
       (github.event.action == 'review_requested' && github.event.requested_reviewer.login == 'claude[bot]')
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
-      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -34,6 +35,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           claude_args: "--model opus"
           prompt: ${{ env.REVIEW_PROMPT }}
         env:
