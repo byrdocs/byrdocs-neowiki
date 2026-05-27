@@ -1,0 +1,41 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, review_requested]
+
+jobs:
+  review:
+    if: |
+      github.event.action == 'opened' ||
+      (github.event.action == 'review_requested' && github.event.requested_reviewer.login == 'claude[bot]')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Read review prompt
+        id: prompt
+        run: |
+          {
+            echo 'REVIEW_PROMPT<<EOF'
+            cat .github/prompts/review.md
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
+
+      - name: Run Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: "--model opus"
+          prompt: ${{ env.REVIEW_PROMPT }}
+        env:
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_DEFAULT_OPUS_MODEL: "anthropic/claude-opus-4.7"

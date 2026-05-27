@@ -13,6 +13,8 @@ const {
   variant?: "desktop" | "mobile";
 };
 const hasCollapsibleBranches = variant === "mobile";
+const hasAnyChildren = items.some((item) => item.children.length > 0);
+const showBranchControls = hasCollapsibleBranches && hasAnyChildren;
 ---
 
 <nav class:list={["exam-toc-nav", className]} id={navId} aria-label="试题目录">
@@ -28,14 +30,14 @@ const hasCollapsibleBranches = variant === "mobile";
             data-depth={section.heading.depth}
             data-expanded={
               section.children.length > 0
-                ? hasCollapsibleBranches
+                ? showBranchControls
                   ? "false"
                   : "true"
                 : undefined
             }
           >
             <div class="exam-toc-row">
-              {section.children.length > 0 && hasCollapsibleBranches ? (
+              {section.children.length > 0 && showBranchControls ? (
                 <button
                   class="exam-toc-branch-toggle"
                   type="button"
@@ -55,7 +57,7 @@ const hasCollapsibleBranches = variant === "mobile";
                     <path d="m9 18 6-6-6-6" />
                   </svg>
                 </button>
-              ) : hasCollapsibleBranches ? (
+              ) : showBranchControls ? (
                 <span class="exam-toc-branch-spacer" aria-hidden="true"></span>
               ) : null}
               <a
