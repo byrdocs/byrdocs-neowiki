@@ -1,0 +1,75 @@
+<svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .component { stroke: black; stroke-width: 4; fill: white; }
+    .inductor { stroke: black; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .node { fill: black; }
+    .terminal { stroke: black; stroke-width: 3; fill: white; }
+    .arrow { fill: black; }
+    .label { font-family: "Times New Roman", serif; font-size: 52px; fill: black; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 52px; font-style: italic; fill: black; }
+    .label-meter { font-family: "Times New Roman", serif; font-size: 56px; fill: black; }
+  </style>
+
+  <!-- Wires -->
+  <!-- We break the main horizontal wire so it does not draw a diameter through the inductor -->
+  <line x1="80" y1="200" x2="535" y2="200" class="wire" />
+  <line x1="715" y1="200" x2="800" y2="200" class="wire" />
+  <line x1="80" y1="560" x2="1100" y2="560" class="wire" />
+
+  <!-- Input Current arrow -->
+  <polygon points="170,200 150,188 160,200 150,212" class="arrow" />
+  <text x="140" y="180" class="label-italic" text-anchor="middle">i</text>
+
+  <!-- Voltmeter V (Left) -->
+  <line x1="200" y1="200" x2="200" y2="560" class="wire" />
+  <circle cx="200" cy="380" r="50" class="component" />
+  <text x="200" y="398" class="label-meter" text-anchor="middle">V</text>
+
+  <!-- Main Branch R -->
+  <rect x="280" y="180" width="120" height="40" class="component" />
+  <text x="340" y="275" class="label-italic" text-anchor="middle">R</text>
+
+  <!-- Main Branch L (Exactly 3 upper semicircles, centered, no diameter) -->
+  <path d="M 535 200 A 30 30 0 0 1 595 200 A 30 30 0 0 1 655 200 A 30 30 0 0 1 715 200" class="inductor" />
+  <text x="625" y="275" class="label-italic" text-anchor="middle">L</text>
+
+  <!-- Voltmeter V1 (Top Left) -->
+  <line x1="200" y1="200" x2="200" y2="70" class="wire" />
+  <line x1="200" y1="70" x2="450" y2="70" class="wire" />
+  <line x1="450" y1="70" x2="450" y2="200" class="wire" />
+  <circle cx="325" cy="70" r="50" class="component" />
+  <text x="325" y="88" class="label-meter" text-anchor="middle">V<tspan baseline-shift="sub" font-size="0.65em">1</tspan></text>
+
+  <!-- Voltmeter V2 (Top Right) -->
+  <line x1="450" y1="70" x2="800" y2="70" class="wire" />
+  <line x1="800" y1="70" x2="800" y2="200" class="wire" />
+  <circle cx="625" cy="70" r="50" class="component" />
+  <text x="625" y="88" class="label-meter" text-anchor="middle">V<tspan baseline-shift="sub" font-size="0.65em">2</tspan></text>
+
+  <!-- Capacitor C (Vertical branch) -->
+  <line x1="800" y1="200" x2="800" y2="355" class="wire" />
+  <line x1="800" y1="395" x2="800" y2="560" class="wire" />
+  <line x1="750" y1="355" x2="850" y2="355" class="wire" />
+  <line x1="750" y1="395" x2="850" y2="395" class="wire" />
+  <text x="730" y="390" class="label-italic" text-anchor="end">C</text>
+
+  <!-- Voltmeter V3 (Right) -->
+  <line x1="800" y1="200" x2="1100" y2="200" class="wire" />
+  <line x1="1100" y1="200" x2="1100" y2="560" class="wire" />
+  <circle cx="1100" cy="380" r="50" class="component" />
+  <text x="1100" y="398" class="label-meter" text-anchor="middle">V<tspan baseline-shift="sub" font-size="0.65em">3</tspan></text>
+
+  <!-- Nodes -->
+  <circle cx="200" cy="200" r="10" class="node" />
+  <circle cx="200" cy="560" r="10" class="node" />
+  <circle cx="450" cy="200" r="10" class="node" />
+  <circle cx="450" cy="70" r="10" class="node" />
+  <circle cx="800" cy="200" r="10" class="node" />
+  <circle cx="800" cy="560" r="10" class="node" />
+
+  <!-- Terminals -->
+  <circle cx="80" cy="200" r="12" class="terminal" />
+  <circle cx="80" cy="560" r="12" class="terminal" />
+
+</svg>

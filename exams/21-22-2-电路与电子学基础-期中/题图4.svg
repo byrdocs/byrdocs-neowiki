@@ -1,0 +1,22 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 网络 N -->
+  <rect x="150" y="50" width="80" height="100" fill="white" stroke="black" stroke-width="2"/>
+  <text x="180" y="105" font-size="24" font-family="Arial">N</text>
+
+  <!-- 左侧端口 -->
+  <line x1="50" y1="80" x2="150" y2="80" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="120" x2="150" y2="120" stroke="black" stroke-width="2"/>
+  
+  <circle cx="50" cy="80" r="4" fill="white" stroke="black" stroke-width="2"/>
+  <circle cx="50" cy="120" r="4" fill="white" stroke="black" stroke-width="2"/>
+
+  <!-- u(t) 标记 -->
+  <text x="20" y="85" font-size="32" font-family="Arial">+</text>
+  <text x="25" y="130" font-size="40" font-family="Arial">-</text>
+  <text x="15" y="105" font-size="20" font-family="Arial">u(t)</text>
+
+  <!-- i(t) 标记 -->
+  <line x1="80" y1="80" x2="100" y2="80" stroke="black" stroke-width="2"/>
+  <polygon points="100,80 90,75 90,85" fill="black"/>
+  <text x="85" y="70" font-size="20" font-family="Arial">i(t)</text>
+</svg>

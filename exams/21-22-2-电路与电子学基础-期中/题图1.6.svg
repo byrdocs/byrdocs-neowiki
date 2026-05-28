@@ -1,0 +1,77 @@
+<svg width="900" height="450" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 2; fill: none; }
+    .component { stroke: #000080; stroke-width: 4; fill: white; }
+    .comp-line { stroke: #000080; stroke-width: 4; fill: none; }
+    .node { fill: #000080; }
+    .terminal { stroke: #000080; stroke-width: 2; fill: white; }
+    .arrow { fill: black; }
+    .label { font-family: "Times New Roman", serif; font-size: 48px; fill: black; }
+    .label-small { font-family: "Times New Roman", serif; font-size: 44px; fill: black; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 56px; font-style: italic; fill: black; }
+  </style>
+
+  <!-- Wires -->
+  <line x1="150" y1="100" x2="750" y2="100" class="wire" />
+  <line x1="150" y1="350" x2="750" y2="350" class="wire" />
+  <line x1="150" y1="100" x2="150" y2="350" class="wire" />
+  <line x1="400" y1="100" x2="400" y2="350" class="wire" />
+  <line x1="600" y1="100" x2="600" y2="350" class="wire" />
+
+  <!-- Nodes -->
+  <circle cx="400" cy="100" r="6" class="node" />
+  <circle cx="600" cy="100" r="6" class="node" />
+  <circle cx="400" cy="350" r="6" class="node" />
+  <circle cx="600" cy="350" r="6" class="node" />
+
+  <!-- Components (drawn over wires) -->
+  <!-- 6A Source -->
+  <circle cx="150" cy="250" r="45" class="component" />
+  <line x1="105" y1="250" x2="195" y2="250" class="comp-line" />
+  <!-- Current arrow on left branch -->
+  <polygon points="150,130 140,150 160,150" class="arrow" />
+
+  <!-- 1Ω Resistor -->
+  <rect x="235" y="85" width="80" height="30" class="component" />
+
+  <!-- 3Ω Resistor -->
+  <rect x="460" y="85" width="80" height="30" class="component" />
+
+  <!-- Dependent Source (2u) -->
+  <polygon points="400,165 460,225 400,285 340,225" class="component" />
+  <line x1="400" y1="165" x2="400" y2="285" class="comp-line" />
+
+  <!-- 6Ω Resistor -->
+  <rect x="585" y="185" width="30" height="80" class="component" />
+
+  <!-- Terminals -->
+  <circle cx="750" cy="100" r="8" class="terminal" />
+  <circle cx="750" cy="350" r="8" class="terminal" />
+
+  <!-- Labels -->
+  <!-- 6A -->
+  <text x="80" y="200" class="label">6A</text>
+
+  <!-- 1Ω -->
+  <text x="275" y="70" class="label" text-anchor="middle">1Ω</text>
+  <text x="215" y="150" class="label-small" text-anchor="middle">+</text>
+  <text x="275" y="150" class="label" text-anchor="middle" font-style="italic">u</text>
+  <text x="335" y="150" class="label-small" text-anchor="middle">−</text>
+
+  <!-- 3Ω -->
+  <text x="500" y="70" class="label" text-anchor="middle">3Ω</text>
+
+  <!-- Dependent source -->
+  <text x="445" y="170" class="label-small" text-anchor="start">+</text>
+  <text x="445" y="295" class="label-small" text-anchor="start">−</text>
+  <text x="470" y="240" class="label" text-anchor="start">
+    <tspan font-style="normal">2</tspan><tspan font-style="italic">u</tspan>
+  </text>
+
+  <!-- 6Ω -->
+  <text x="635" y="240" class="label" text-anchor="start">6Ω</text>
+
+  <!-- Terminals a, b -->
+  <text x="775" y="115" class="label-italic">a</text>
+  <text x="775" y="365" class="label-italic">b</text>
+</svg>
