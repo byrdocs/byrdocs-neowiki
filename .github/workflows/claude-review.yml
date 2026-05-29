@@ -10,11 +10,14 @@ permissions:
 
 jobs:
   review:
+<<<<<<< HEAD
     # Only auto-review external contributors (internal members use @claude manually)
     if: >
       github.event.pull_request.author_association != 'MEMBER' &&
       github.event.pull_request.author_association != 'OWNER' &&
       github.event.pull_request.author_association != 'COLLABORATOR'
+=======
+>>>>>>> 038e05b7b886802f66e700d12e83166e3ba5722c
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR head (read-only)
@@ -53,6 +56,10 @@ jobs:
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           ANTHROPIC_DEFAULT_OPUS_MODEL: "anthropic/claude-opus-4.7"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+<<<<<<< HEAD
+=======
+          DEBUG: "true"
+>>>>>>> 038e05b7b886802f66e700d12e83166e3ba5722c
         run: |
           REVIEW_PROMPT=$(cat .github/prompts/review.md)
           PR_NUMBER=${{ github.event.pull_request.number }}

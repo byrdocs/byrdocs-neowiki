@@ -1,0 +1,88 @@
+<svg width="1000" height="450" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .component { stroke: #000080; stroke-width: 5; fill: white; }
+    .comp-line { stroke: #000080; stroke-width: 5; fill: none; }
+    .node { fill: black; }
+    .switch-node { stroke: #000080; stroke-width: 2; fill: white; }
+    .arrow { fill: #000080; }
+    .black-arrow { fill: black; }
+    .label { font-family: "Times New Roman", serif; font-size: 56px; fill: black; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 56px; font-style: italic; fill: black; }
+    .label-sign { font-family: "Times New Roman", serif; font-size: 48px; fill: black; }
+  </style>
+
+  <!-- Main wires -->
+  <line x1="200" y1="100" x2="850" y2="100" class="wire" />
+  <line x1="200" y1="400" x2="850" y2="400" class="wire" />
+  
+  <line x1="200" y1="100" x2="200" y2="400" class="wire" />
+  <line x1="500" y1="100" x2="500" y2="400" class="wire" />
+  <line x1="700" y1="100" x2="700" y2="400" class="wire" />
+  <line x1="850" y1="100" x2="850" y2="400" class="wire" />
+
+  <!-- Solid connection nodes -->
+  <circle cx="500" cy="100" r="10" class="node" />
+  <circle cx="500" cy="400" r="10" class="node" />
+  <circle cx="700" cy="100" r="10" class="node" />
+  <circle cx="700" cy="400" r="10" class="node" />
+
+  <!-- Components -->
+  
+  <!-- Branch 1: 8V Source -->
+  <circle cx="200" cy="250" r="45" class="component" />
+  <line x1="200" y1="205" x2="200" y2="295" class="comp-line" />
+  <!-- Current arrow i -->
+  <polygon points="200,140 188,165 200,158 212,165" class="arrow" />
+
+  <!-- Top Wire: 4Ω Resistor -->
+  <rect x="290" y="85" width="80" height="30" class="component" />
+
+  <!-- Branch 2: Switch -->
+  <!-- Erase the solid wire in the middle for the switch mechanism -->
+  <line x1="500" y1="210" x2="500" y2="290" class="wire" stroke="white" stroke-width="7" />
+  <!-- Switch blade -->
+  <line x1="500" y1="290" x2="490" y2="210" class="wire" />
+  <!-- Hollow switch terminals -->
+  <circle cx="500" cy="210" r="8" class="switch-node" />
+  <circle cx="500" cy="290" r="8" class="switch-node" />
+  <!-- Curved arc for switch action -->
+  <path d="M 550 250 A 60 60 0 0 0 470 270" stroke="black" stroke-width="2" fill="none" />
+  <polygon points="468,272 485,260 480,270 488,276" class="black-arrow" />
+
+  <!-- Branch 3: 4Ω Resistor -->
+  <rect x="685" y="210" width="30" height="80" class="component" />
+
+  <!-- Branch 4: 2Ω Resistor and 5F Capacitor -->
+  <!-- 2Ω Resistor -->
+  <rect x="835" y="140" width="30" height="80" class="component" />
+  <!-- 5F Capacitor -->
+  <!-- Erase wire between plates -->
+  <line x1="850" y1="310" x2="850" y2="330" class="wire" stroke="white" stroke-width="5" />
+  <!-- Plates -->
+  <line x1="820" y1="310" x2="880" y2="310" class="comp-line" />
+  <line x1="820" y1="330" x2="880" y2="330" class="comp-line" />
+
+
+  <!-- Labels -->
+  
+  <!-- 8V Source -->
+  <text x="130" y="180" class="label-sign" text-anchor="middle">+</text>
+  <text x="130" y="340" class="label-sign" text-anchor="middle">−</text>
+  <text x="130" y="270" class="label" text-anchor="end">8V</text>
+  <text x="240" y="170" class="label-italic" text-anchor="start">i</text>
+
+  <!-- Top 4Ω -->
+  <text x="330" y="170" class="label" text-anchor="middle">4Ω</text>
+
+  <!-- Switch S -->
+  <text x="410" y="270" class="label-italic" text-anchor="end">S</text>
+
+  <!-- Middle 4Ω -->
+  <text x="660" y="270" class="label" text-anchor="end">4Ω</text>
+
+  <!-- Right Branch -->
+  <text x="880" y="195" class="label" text-anchor="start">2Ω</text>
+  <text x="895" y="340" class="label" text-anchor="start">5F</text>
+
+</svg>

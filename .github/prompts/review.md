@@ -39,3 +39,13 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 
 - If everything looks good, **APPROVE** the PR.
 - If there are issues that must be fixed, **REQUEST CHANGES** and clearly explain each problem.
+
+## Your Comment Formatting (for your own review comments, NOT for checking contributor code)
+
+When writing your review comments, you must follow these rules so GitHub renders them correctly:
+
+- **LaTeX spacing**: GitHub renders LaTeX only when dollar signs have spaces on both sides. In YOUR comments, inline math must always have a space immediately outside each `$`, regardless of surrounding punctuation or brackets. Examples:
+  - Correct: ` $E=mc^2$ `, `( $E=mc^2$ )`, ` $E=mc^2$ .`, ` $E=mc^2$ ，`
+  - Wrong: `$E=mc^2$`, `($E=mc^2$)`, ` $E=mc^2$.`, ` $E=mc^2$，`
+  - Display math `$$` blocks must also have surrounding blank lines or spaces.
+- Do NOT flag contributors' LaTeX for spacing issues — their code is rendered by MDX/KaTeX which handles spacing differently from GitHub Markdown.

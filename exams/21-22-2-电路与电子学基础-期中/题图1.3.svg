@@ -1,0 +1,54 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .resistor { stroke: #000080; stroke-width: 4; fill: white; }
+    .terminal { stroke: #000080; stroke-width: 3; fill: white; }
+    .label { font-family: "Times New Roman", serif; font-size: 40px; fill: black; }
+    .var-label { font-family: "Times New Roman", serif; font-size: 40px; font-style: italic; fill: black; }
+    .arrow { fill: black; }
+  </style>
+
+  <!-- Wires -->
+  <line x1="80" y1="100" x2="450" y2="100" class="wire" />
+  <line x1="80" y1="500" x2="450" y2="500" class="wire" />
+  <line x1="250" y1="100" x2="250" y2="500" class="wire" />
+  <line x1="450" y1="100" x2="450" y2="500" class="wire" />
+  <line x1="250" y1="300" x2="450" y2="300" class="wire" />
+
+  <!-- Terminals -->
+  <circle cx="80" cy="100" r="8" class="terminal" />
+  <circle cx="80" cy="500" r="8" class="terminal" />
+
+  <!-- Arrows on wires (Current directions) -->
+  <!-- 7A arrow down -->
+  <polygon points="235,145 265,145 250,170" class="arrow" />
+  <!-- 3A arrow down -->
+  <polygon points="435,145 465,145 450,170" class="arrow" />
+  <!-- i arrow right -->
+  <polygon points="280,285 280,315 305,300" class="arrow" />
+
+  <!-- Resistors (drawn over wires to create the hollow effect) -->
+  <!-- Top Left (3Ω) -->
+  <rect x="238" y="205" width="24" height="60" class="resistor" />
+  <!-- Bottom Left (unlabeled) -->
+  <rect x="238" y="380" width="24" height="60" class="resistor" />
+  <!-- Top Right (8Ω) -->
+  <rect x="438" y="205" width="24" height="60" class="resistor" />
+  <!-- Bottom Right (unlabeled) -->
+  <rect x="438" y="380" width="24" height="60" class="resistor" />
+  <!-- Middle (3Ω) -->
+  <rect x="345" y="288" width="60" height="24" class="resistor" />
+
+  <!-- Labels -->
+  <!-- Left branch -->
+  <text x="220" y="170" class="label" text-anchor="end">7A</text>
+  <text x="220" y="245" class="label" text-anchor="end">3Ω</text>
+  
+  <!-- Right branch -->
+  <text x="480" y="170" class="label" text-anchor="start">3A</text>
+  <text x="480" y="245" class="label" text-anchor="start">8Ω</text>
+  
+  <!-- Middle branch -->
+  <text x="295" y="275" class="var-label" text-anchor="middle">i</text>
+  <text x="375" y="350" class="label" text-anchor="middle">3Ω</text>
+</svg>

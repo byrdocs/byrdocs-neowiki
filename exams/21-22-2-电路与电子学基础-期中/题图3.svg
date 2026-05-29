@@ -1,0 +1,84 @@
+<svg width="950" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .component { stroke: black; stroke-width: 3; fill: white; }
+    .comp-line { stroke: black; stroke-width: 3; fill: none; }
+    .node { fill: black; stroke: black; stroke-width: 2; }
+    .node-open { fill: white; stroke: black; stroke-width: 3; }
+    .label { font-family: "Times New Roman", serif; font-size: 32px; fill: black; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 32px; font-style: italic; fill: black; }
+    .label-sign { font-family: "Times New Roman", serif; font-size: 30px; fill: black; }
+    .arrow { fill: black; }
+  </style>
+
+  <!-- Bottom Wire -->
+  <line x1="150" y1="350" x2="800" y2="350" class="wire" />
+
+  <!-- Left Branch -->
+  <line x1="150" y1="100" x2="150" y2="120" class="wire" />
+  <circle cx="150" cy="150" r="30" class="component" />
+  <line x1="150" y1="120" x2="150" y2="180" class="wire" />
+  <text x="125" y="130" class="label-sign" text-anchor="end">−</text>
+  <text x="125" y="190" class="label-sign" text-anchor="end">+</text>
+  <text x="110" y="160" class="label" text-anchor="end">5V</text>
+  
+  <line x1="150" y1="180" x2="150" y2="210" class="wire" />
+  <rect x="135" y="210" width="30" height="80" class="component" />
+  <text x="120" y="260" class="label" text-anchor="end">1kΩ</text>
+  <line x1="150" y1="290" x2="150" y2="350" class="wire" />
+
+  <!-- Top Wire Left -->
+  <line x1="150" y1="100" x2="350" y2="100" class="wire" />
+
+  <!-- Switch Nodes -->
+  <circle cx="350" cy="100" r="6" class="node-open" />
+  <text x="350" y="80" class="label" text-anchor="middle">1</text>
+
+  <circle cx="350" cy="180" r="6" class="node-open" />
+  <text x="330" y="170" class="label" text-anchor="end">2</text>
+
+  <!-- Middle Branch -->
+  <line x1="350" y1="186" x2="350" y2="210" class="wire" />
+  <circle cx="350" cy="240" r="30" class="component" />
+  <line x1="350" y1="210" x2="350" y2="270" class="wire" />
+  <text x="325" y="220" class="label-sign" text-anchor="end">+</text>
+  <text x="325" y="280" class="label-sign" text-anchor="end">−</text>
+  <text x="310" y="250" class="label" text-anchor="end">10V</text>
+  <line x1="350" y1="270" x2="350" y2="350" class="wire" />
+
+  <!-- Switch Arm -->
+  <circle cx="450" cy="140" r="6" class="node-open" />
+  <line x1="444" y1="137" x2="356" y2="103" class="wire" />
+  
+  <!-- Switch Arrow -->
+  <path d="M 390 115 Q 410 140 375 160" stroke="black" stroke-width="3" fill="none" />
+  <polygon points="372,164 386,160 376,148" class="arrow" />
+
+  <!-- Right Circuit -->
+  <line x1="456" y1="140" x2="490" y2="140" class="wire" />
+  <rect x="490" y="125" width="80" height="30" class="component" />
+  <text x="530" y="110" class="label" text-anchor="middle">2kΩ</text>
+  <line x1="570" y1="140" x2="680" y2="140" class="wire" />
+  
+  <circle cx="680" cy="140" r="8" class="node" />
+  <line x1="680" y1="140" x2="800" y2="140" class="wire" />
+
+  <!-- Vertical 2kΩ Resistor -->
+  <line x1="680" y1="140" x2="680" y2="210" class="wire" />
+  <rect x="665" y="210" width="30" height="80" class="component" />
+  <text x="650" y="260" class="label" text-anchor="end">2kΩ</text>
+  <line x1="680" y1="290" x2="680" y2="350" class="wire" />
+
+  <!-- Vertical 4μF Capacitor -->
+  <line x1="800" y1="140" x2="800" y2="235" class="wire" />
+  <line x1="760" y1="235" x2="840" y2="235" class="comp-line" />
+  <line x1="760" y1="255" x2="840" y2="255" class="comp-line" />
+  <text x="750" y="255" class="label" text-anchor="end">4μF</text>
+  <line x1="800" y1="255" x2="800" y2="350" class="wire" />
+
+  <!-- u_C(t) labels -->
+  <text x="850" y="190" class="label-sign" text-anchor="start">+</text>
+  <text x="850" y="260" class="label-italic" text-anchor="start">u<tspan font-style="normal" font-size="24" baseline-shift="sub">C</tspan><tspan font-style="normal">(t)</tspan></text>
+  <text x="850" y="320" class="label-sign" text-anchor="start">−</text>
+
+</svg>

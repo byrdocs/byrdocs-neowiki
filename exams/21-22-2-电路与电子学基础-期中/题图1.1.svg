@@ -1,0 +1,39 @@
+<svg width="200" height="380" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .line { stroke: #000080; stroke-width: 3; fill: none; }
+    .bg { fill: white; }
+    .label { font-family: "Times New Roman", serif; font-size: 36px; font-style: italic; fill: black; }
+    .sign { font-family: "Times New Roman", serif; font-size: 36px; fill: black; }
+  </style>
+
+  <!-- Main wire -->
+  <line x1="60" y1="30" x2="60" y2="350" class="line"/>
+
+  <!-- Top circle (Voltage Source) -->
+  <circle cx="60" cy="110" r="32" class="line bg"/>
+  <line x1="60" y1="78" x2="60" y2="142" class="line"/>
+
+  <!-- Bottom circle (Current Source) -->
+  <circle cx="60" cy="250" r="32" class="line bg"/>
+  <line x1="28" y1="250" x2="92" y2="250" class="line"/>
+
+  <!-- Arrow for Current Source -->
+  <polygon points="60,335 50,305 60,312 70,305" fill="#000080"/>
+
+  <!-- Terminals -->
+  <circle cx="60" cy="30" r="6" class="line bg"/>
+  <circle cx="60" cy="350" r="6" class="line bg"/>
+
+  <!-- Labels for 10V -->
+  <text x="120" y="75" class="sign" text-anchor="middle">−</text>
+  <text x="120" y="120" class="label" text-anchor="middle"><tspan font-style="normal">10</tspan>V</text>
+  <text x="120" y="165" class="sign" text-anchor="middle">+</text>
+
+  <!-- Labels for u -->
+  <text x="120" y="205" class="sign" text-anchor="middle">+</text>
+  <text x="120" y="260" class="label" text-anchor="middle">u</text>
+  <text x="120" y="305" class="sign" text-anchor="middle">−</text>
+
+  <!-- Label for 2A -->
+  <text x="75" y="350" class="label" text-anchor="start"><tspan font-style="normal">2</tspan>A</text>
+</svg>
