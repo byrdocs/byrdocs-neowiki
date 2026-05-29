@@ -20,8 +20,7 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 - Heading structure: major questions use `##`, subquestions use `###` only when appropriate. Choice/blank/judgment questions should use lists instead of overusing headings.
 - `Figure` / `Audio` references must use local file names within the same exam directory.
 - Prefer actionable comments tied to rendering or editorial correctness. Avoid low-value wording suggestions unless wording creates ambiguity.
-- **LaTeX spacing**: GitHub renders LaTeX only when dollar signs have spaces on both sides. Inline math must be written as ` $E=mc^2$ ` (with spaces outside the `$`), not `$E=mc^2$`. Display math `$$` blocks must also have surrounding blank lines or spaces. Flag any LaTeX that lacks the required outer spaces.
-- **Answer correctness**: For exams that contain answers (marked with `+` in `<Choices>`, content inside `<Blank>...</Blank>`, or content inside `<Solution>...</Solution>`), verify the correctness of the provided answers. This applies to all subjects. If an answer is wrong, point out the specific question, explain why it is incorrect, and provide the correct answer.
+- **Answer correctness**: For questions that contain answers (marked with `+` or `<Option correct>` in `<Choices>`, content inside `<Blank>...</Blank>`, or content inside `<Solution>...</Solution>`), verify the correctness of the provided answers. This applies to all subjects. If an answer is wrong, point out the specific question, explain why it is incorrect, and provide the correct answer. You should ask the contributors to confirm the questions and answers precisely rather than forcing them to correct the answers.
 
 ### Site code (`src/`, `astro.config.mts`, config files)
 
@@ -40,12 +39,55 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 - If everything looks good, **APPROVE** the PR.
 - If there are issues that must be fixed, **REQUEST CHANGES** and clearly explain each problem.
 
-## Your Comment Formatting (for your own review comments, NOT for checking contributor code)
+## Typography (applies to BOTH your review comments AND contributor MDX content)
 
-When writing your review comments, you must follow these rules so GitHub renders them correctly:
+These are Chinese-typesetting conventions. They are about prose readability, **not** about whether anything renders. Apply them as content polish: flag systematic / repeated violations, but do not chase single infelicities in an otherwise clean document, and do not block a PR over them.
 
-- **LaTeX spacing**: GitHub renders LaTeX only when dollar signs have spaces on both sides. In YOUR comments, inline math must always have a space immediately outside each `$`, regardless of surrounding punctuation or brackets. Examples:
+### Spacing
+
+- **Insert a half-width space between Chinese and adjacent Latin letters / digits / inline math (`$...$`).** Inline math is treated as Latin/numeric content for this rule.
+  - 正确：`LeanCloud 上`，`5000 元`，`$5\Omega$ 电阻`，`$x$ 的取值范围`，`求 $f(x)$ 的极值`
+  - 错误：`LeanCloud上`，`5000元`，`$5\Omega$电阻`，`$x$的取值范围`，`求$f(x)$的极值`
+- **No space** between a number and its unit, or between a number and `°` / `%`.
+  - 正确：`10TB`，`233°`，`15%`
+  - 错误：`10 TB`，`233 °`，`15 %`
+- **No space** between full-width punctuation (`，。？！：；“”（）《》` etc.) and adjacent characters. Full-width punctuation overrides the Chinese-Latin spacing rule.
+  - 正确：`答案是 $x=1$。`，`iPhone，好开心！`
+  - 错误：`答案是 $x=1$ 。`，`iPhone ，好开心 ！`
+- Exception: established product names follow the official form (e.g. `豆瓣FM`).
+
+### Punctuation
+
+- Use full-width Chinese punctuation inside Chinese sentences (`，。？！：；“”（）`), not half-width (`, . ? ! "" ()`).
+- A complete English sentence or quoted English title nested inside Chinese keeps half-width punctuation internally (e.g. `“Stay hungry, stay foolish.”`).
+- Do not repeat punctuation (`！！！`，`？？！！`).
+
+### Numbers and proper nouns
+
+- Use half-width digits (`1000`, not `１０００`).
+- Capitalize proper nouns correctly: `GitHub` (not `github` / `Github`), `JavaScript`, `MacBook Pro`, `iOS`.
+
+### Reviewer guidance on typography fixes
+
+- If a PR includes a typography fix like `$5\Omega$电阻 → $5\Omega$ 电阻`, endorse it as **中文排版规范（中英文/中文与公式之间加空格）**. Do **NOT** justify it as "GitHub 渲染规则" or "公式渲染需要空格" — the wiki MDX is rendered by KaTeX, which does not require this space; the space is purely for Chinese prose readability.
+- Conversely, do not demand contributors add this space everywhere. Mention it only when it's a systematic pattern in the diff or it noticeably hurts readability.
+
+## Your Comment Formatting (GitHub-renderer rule that applies ONLY to text YOU write in PR comments)
+
+This rule governs how you format math in **your own** GitHub review comments so they render. It is **NOT** a rule about contributor MDX.
+
+- GitHub Markdown only renders inline LaTeX when each `$` has a space on the outside. In YOUR comments, always write inline math with surrounding spaces, regardless of punctuation or brackets:
   - Correct: ` $E=mc^2$ `, `( $E=mc^2$ )`, ` $E=mc^2$ .`, ` $E=mc^2$ ，`
   - Wrong: `$E=mc^2$`, `($E=mc^2$)`, ` $E=mc^2$.`, ` $E=mc^2$，`
-  - Display math `$$` blocks must also have surrounding blank lines or spaces.
-- Do NOT flag contributors' LaTeX for spacing issues — their code is rendered by MDX/KaTeX which handles spacing differently from GitHub Markdown.
+- Display math `$$ ... $$` blocks need surrounding blank lines.
+
+### Do not conflate the two spacing rules
+
+There are two different reasons a space might appear around `$...$`, and they apply in different places:
+
+| Reason | Where it applies | Example |
+| --- | --- | --- |
+| GitHub Markdown renderer requires it | YOUR review comments only | ` $E=mc^2$ ` inside a PR comment |
+| Chinese typography (中英文/中文与公式之间加空格) | Contributor MDX prose, and also your comments when you write Chinese around math | `$5\Omega$ 电阻` inside an exam MDX |
+
+Never cite "GitHub rendering" as a reason to modify contributor MDX. Contributor MDX is not rendered by GitHub.
