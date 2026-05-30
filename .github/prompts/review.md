@@ -19,8 +19,33 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 - Body must use standard Markdown and the repository's supported MDX components (`Blank`, `Slot`, `Choices`, `Option`, `Solution`, `Figure`, `Audio`). No custom JSX, scripts, or inline styles.
 - Heading structure: major questions use `##`, subquestions use `###` only when appropriate. Choice/blank/judgment questions should use lists instead of overusing headings.
 - `Figure` / `Audio` references must use local file names within the same exam directory.
+- **`<Figure float>` placement**: a `<Figure>` with the `float` attribute must live **inside** the section of the question it belongs to — i.e. *after* the question heading (`##` / `###`). It may sit immediately under the heading, between body paragraphs, or after the body; placement immediately under the heading is the recommended default. **Never** place a `<Figure float>` above its question heading: it would be parsed as belonging to the previous section, and on mobile the image gets rendered above the heading, breaking the question structure.
+
+  Wrong (the figure block appears before `## 三、计算题`):
+
+  ```mdx
+  <Figure src="第三题图.svg" float>
+      第三题图
+  </Figure>
+
+  ## 三、计算题
+  （5 分）已知线性无源网络 $N_0$……
+  ```
+
+  Correct:
+
+  ```mdx
+  ## 三、计算题
+
+  <Figure src="第三题图.svg" float>
+      第三题图
+  </Figure>
+
+  （5 分）已知线性无源网络 $N_0$……
+  ```
 - Prefer actionable comments tied to rendering or editorial correctness. Avoid low-value wording suggestions unless wording creates ambiguity.
 - **Answer correctness**: For questions that contain answers (marked with `+` or `<Option correct>` in `<Choices>`, content inside `<Blank>...</Blank>`, or content inside `<Solution>...</Solution>`), verify the correctness of the provided answers. This applies to all subjects. If an answer is wrong, point out the specific question, explain why it is incorrect, and provide the correct answer. You should ask the contributors to confirm the questions and answers precisely rather than forcing them to correct the answers.
+- **Inspect referenced images.** Whenever a question references an image via `<Figure src="...">`, open the image file with your image-viewing tool and check: (a) the figure actually depicts what the surrounding prose describes; (b) any numeric or structural detail the answer depends on (circuit topology, component values, geometric labels, axis orientation, waveform readings, etc.) is consistent with both the question text and the given answer. If the image is handwritten, blurry, or otherwise illegible, say so explicitly ("图片不清晰，无法核对") instead of silently skipping it.
 
 ### Site code (`src/`, `astro.config.mts`, config files)
 
@@ -34,10 +59,69 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
 - Before suggesting major structural changes, verify compatibility with the existing editor workflow for non-programmer contributors. Changes that make exam editing harder should be treated as a risk.
 - Prefer findings only when the change breaks the guide or likely harms reader experience.
 
+## Review Output Format
+
+**All review feedback must be organized under the three categories below.** Put each finding in exactly one category — do not duplicate. Always render all three category headings in the review summary, even when empty (write `无` under any empty category) so contributors can see the per-category counts at a glance.
+
+### 必须修改 (Must fix — blocks merge)
+
+Clear errors, clear rule violations, and anything that should not merge until resolved. Examples:
+- Answers that are clearly wrong, or self-contradictory with the question text
+- Typos (wrong / missing / extra characters)
+- Misplaced `<Figure float>` (see the Figure placement rule above)
+- Frontmatter format errors, missing fields, or values outside the allowed set
+- Broken file references (`<Figure src>` / `<Audio src>` pointing to a file that doesn't exist or lives in the wrong directory)
+- Question numbering or option numbering inconsistent within the same paper
+- Misuse of MDX components that breaks rendering or fails `pnpm check` / `pnpm build`
+- Directory names that violate the `学年开始-学年结束-学期-科目-阶段（备注）` convention
+
+### 建议修改 (Suggested — nice to fix, does not block merge)
+
+Typography and consistency issues. Don't block merge on these, but try to land them. Examples:
+- Spacing between Chinese and adjacent Latin letters / digits / inline math (see Typography below)
+- Mixing full-width and half-width punctuation
+- Inconsistent question / numbering style within the same paper (e.g. some `（1）` and some `(1)`, some `①` and some `1.`)
+- Proper noun capitalization (`GitHub`, `JavaScript`, `iOS`, ...)s
+
+### 请确认 (Please confirm — you can't verify it yourself)
+
+Knowledge or time-sensitive facts you **cannot reliably check**, but where something looks off. Examples:
+- Answers in subjects you are not confident about
+- Regulations, standards, version numbers, or textbook page references cited in the question that you cannot verify
+- Factual claims in the question prompt (people, events, years, figures) you cannot verify
+
+For this category: state your doubt and ask the contributor to confirm. Do not phrase it as "this is wrong, change it to X."
+
 ## Review Decision
 
-- If everything looks good, **APPROVE** the PR.
-- If there are issues that must be fixed, **REQUEST CHANGES** and clearly explain each problem.
+- 必须修改 **non-empty** → **REQUEST CHANGES**
+- 必须修改 empty, but 建议修改 or 请确认 non-empty → **APPROVE** (keep the suggestions as comments)
+- All three categories empty → **APPROVE**, optionally with a brief acknowledgement
+
+## Suggested Changes (one review summary + many inline suggestions)
+
+When you **REQUEST CHANGES** — and even when you **APPROVE** but have 建议修改 entries — **do not** dump every finding into one long top-level comment. Use the GitHub MCP to submit feedback as **one review summary plus many inline review comments**:
+
+1. **Pending review summary**: holds the three-section overview (必须修改 / 建议修改 / 请确认). Each entry is a one-line description pointing at a specific file and line range. The summary is an *index*, not a place for concrete patches.
+2. **Inline review comments**: attach a comment on the actual line(s) of each finding. **Whenever a fix can be expressed as a concrete textual replacement** (typo, spacing, punctuation, Figure attribute, frontmatter field value, answer correction, ...), include a GitHub `suggestion` block in that inline comment:
+
+   ````markdown
+   <Which category this finding belongs to (必须修改 / 建议修改 / 请确认), plus a short explanation of why this change.>
+
+   ```suggestion
+   <The exact replacement line(s) the contributor should commit.>
+   ```
+   ````
+
+   Contributors can then commit your suggestion with one click — especially valuable for non-programmer contributors.
+
+3. Submit the review with the appropriate event: `REQUEST_CHANGES` when 必须修改 is non-empty, otherwise `COMMENT` or `APPROVE`.
+
+Rules of thumb:
+- The `suggestion` block must contain the **complete final line(s)** as they should appear in the file. No diff markers, no `...` ellipses, no abbreviated indentation. A multi-line suggestion must cover all corresponding original lines.
+- If a finding cannot be expressed as a single concrete textual replacement (e.g. "请确认这道题的答案", or a request to re-typeset an entire section), write a plain inline comment **without** a `suggestion` block. Don't force one in.
+- For 建议修改 (typography polish), still prefer the inline `suggestion` form even when you ultimately APPROVE — it makes one-click adoption frictionless.
+- Don't post multiple `suggestion` blocks against the same line. If several edits land on the same line, merge them into a single `suggestion` block within one inline comment.
 
 ## Typography (applies to BOTH your review comments AND contributor MDX content)
 
