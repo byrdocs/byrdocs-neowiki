@@ -1,0 +1,249 @@
+---
+时间: 2025-2026学年第二学期
+科目: 电路与电子学基础
+阶段: 期中
+类型: 本科
+学院:
+- 计算机学院（国家示范性软件学院）
+答案完成度: 完整
+---
+## 一、单选题 （每空填一个选项，请选出最恰当的答案） （每题2分，共10分）
+
+1. 下列关于基尔霍夫定律适用范围的描述，说法错误的是 <Slot />。
+
+<Choices>
+    <Option>基尔霍夫定律既适用于直流电路，也适用于交流电路。</Option>
+    <Option correct>基尔霍夫定律只适用于由线性元件构成的电路。</Option>
+    <Option>基尔霍夫定律与电路元件的性质无关。</Option>
+    <Option>对于一个具有n个节点的电路，可以列出n-1个独立的KCL方程。</Option>
+</Choices>
+
+2. 线性不变系统中，当输入信号增加k倍，则增加k倍的响应为 <Slot />。
+
+<Choices>
+    <Option>零输入响应</Option>
+    <Option correct>零状态响应</Option>
+    <Option>全响应</Option>
+    <Option>暂态响应</Option>
+</Choices>
+
+3. 理想电压源和理想电流源之间 <Slot />。
+
+<Choices>
+    <Option>可以等效变换</Option>
+    <Option correct>不能等效变换</Option>
+    <Option>能有条件的等效变换</Option>
+    <Option>以上都不对</Option>
+</Choices>
+
+4. 在电阻电感电路RLC串联电路中，如果电感增大，则 <Slot />。
+
+<Choices>
+    <Option correct>电路的感性增大</Option>
+    <Option>电路的容性增强</Option>
+    <Option>电路的性质不变</Option>
+    <Option>以上都不对</Option>
+</Choices>
+
+5. 在换路瞬间，以下说法正确的是 <Slot />。
+
+<Choices>
+    <Option correct>电感电流不能跃变</Option>
+    <Option>电感电压必然跃变</Option>
+    <Option>电容电压必然跃变</Option>
+    <Option>电阻电压必然跃变</Option>
+</Choices>
+
+
+## 二、填空题 （每题2分，共20分）
+
+1. 在频率趋于无穷大的交流电路中，电容相当于<Blank>短路</Blank>，电感相当于<Blank>开路</Blank>。
+
+
+2. 某电路元件的电压和电流为非关联参考方向，电压为5V，电流为-1A，那么这个元件对外<Blank>吸收</Blank>（填吸收或提供）能量。
+
+
+3. 有一个长度为3000公里的实际交流电路，工作频率为50Hz，此电路中电流的速度为光速（每秒30万公里），则该电路为<Blank>分布参数</Blank>电路。
+
+<Figure src="题2-4图.svg" float>
+    第2-4题图
+</Figure>
+
+4. 如图（见第2-4题图）所示电路中，U为<Blank>5</Blank> V。
+
+5. 有电容元件电容值大小为0.1F，在两端加上20V电压达到稳态之后，电容内部存储的能量是<Blank>20</Blank>焦耳。
+
+6. 一个3A的电流源，一个 $5\Omega$ 的电阻，一个8V的电压源，3个元件串联，对外电路可等效为<Blank>3A的电流源</Blank>。
+
+7. 在正弦信号三要素中，反映信号振荡幅度的量是它的<Blank>振幅/最大值</Blank>，反映信号计时初始位置的是它的<Blank>初相角/初相/初相位</Blank>。
+
+8. 受控源本身不独立提供电能，其输出量随<Blank>控制量</Blank>变化。
+
+## 三、计算题
+
+<Figure src="第三题图.svg" float>
+    第三题图
+</Figure>
+
+（5分）已知线性无源网络$N_{0}$，左侧电流源电流为3A时，$5\Omega$ 电阻上消耗的功率为1W，当电流源电流由3A变为9A时，求 $5\Omega$ 电阻上消耗的功率。
+
+<Solution>
+    答：电流源变为9A时，$5\Omega$ 电阻上的电流变为之前的3倍（3分）
+
+    所以5Ω电阻上消耗的功率为之前9倍，功率为9W（2分）
+</Solution>
+
+## 四、计算题
+
+<Figure src="第四题图.png" float>
+    第四题图
+</Figure>
+
+（5分）如图所示电路，当 $R_{L}=3\Omega$ 时获得最大功率3W，求 $R$ 的大小和此时电流源供出的功率P。
+
+<Solution>
+    答：负载 $R_L$ 左边等效电阻为 $2 + R$。（1 分）
+
+    当 $2 + R = R_L = 3$ 时，有最大功率传输，故 $R = 1~\Omega$。（1 分）
+
+    $U_{\text{oc}} = R i_s$
+
+    $\dfrac{U_{\text{oc}}^2}{4 R_s} = \dfrac{(R\cdot i_s)^2}{4 R_L} = 3\ \text{W}$
+
+    所以$i_s$=6A(1 分),此时电流源右边纯电阻电路等效电阻为 $(2+3)\parallel 1 + 2 = \dfrac{17}{6}\ \Omega$，（1 分）
+
+    故功率 $P = i_s^2 \cdot \dfrac{17}{6} = 6^2 \cdot \dfrac{17}{6} = 102\ \text{W}$，（1 分）
+</Solution>
+
+## 五、计算题
+
+<Figure src="第五题图.svg" float>
+    第五题图
+</Figure>
+
+（12分）求如图所示ab两端的二端网络的戴维南等效电路和诺顿等效电路，给出计算过程并画出戴维南等效电路图和诺顿等效电路图。
+
+<Solution>
+    求开路电压（共 4 分，可以看步骤给分）
+
+    开路时， $10 i_1 * 3 - 12 + 6 i_1 = 0$， $i_1 = 1/3\ \ A$
+
+    $U_{OC}$ 为 3 欧电阻上的电压 $U_{OC} = U_{ab} = 10 i_1 * 3 = 10\ V$
+
+    求等效电阻两种方法：（共 4 分，可以看步骤给分）
+
+    方法 1：外加电压
+
+    $3 * (i + 10\, i_1) = u$， $u = -6\, i_1$
+
+    得到 $R_{eq} = u / i = 0.5\ \Omega$
+
+    方法 2：短路电流
+
+    把 ab 端用导线连起来求短路电流 $i_{1} = 12 / 6 = 2\ A$
+
+    3 $\Omega$ 电阻上电流为 0，因此 $i_{sc} = i_1 + 9 i_1 = 20 A$
+
+    $R_{eq} = U_{OC} / i_{sc} = 0.5\ \Omega$
+
+    画出电路图
+
+    戴维南电路：电压源和电阻串联：10 V 和 0.5 $\Omega$ 串联（2 分）
+
+    诺顿电路：电流源和电阻并联：20 A 和 0.5 $\Omega$ 并联（2 分）
+</Solution>
+
+## 六、计算题
+
+<Figure src="第六题图.svg" float>
+    第六题图
+</Figure>
+
+（15分）在如图所示的电路中，$t < 0$时电路处于稳态，$t = 0$时开关由1位切换到2位，求$t≥0$时的与电容连接的等效电阻，时间常数$τ$，$u_{C}(t)$的零输入响应，零状态响应和全响应。
+
+<Solution>
+    解：$u_C(0^+) = u_C(0^-) = -2/(1+2+2)*5 = -2\,V$ （3 分）
+
+    $u_C(\infty) = 2/(2+2)*10 = 5\,V$ （3 分）
+
+    等效电阻 $R = 2k\,\Omega \parallel 2k\,\Omega = 1k\,\Omega$ （2 分）
+
+    时间常数 $\tau = RC = 4*10^{-3}\,s$ （2 分）
+
+    零输入响应 $u_C(t)_{zir} = u_C(0^+) (e^{-\frac{t}{\tau}}) = -2(e^{-250t})\,V$ （2 分）
+
+    零状态响应 $u_C(t)_{zsr} = u_C(\infty)\,(1 - e^{-\frac{t}{\tau}}) = 5\,(1 - e^{-250t})\,V$ （2 分）
+
+    全响应 $u_C(t) = u_C(t)_{zir} + u_C(t)_{zsr} = (5 - 7e^{-250t})\,V$ （1 分）
+</Solution>
+
+## 七、计算题
+
+<Figure src="第七题图.svg" float>
+    第七题图
+</Figure>
+
+（5分）在如图所示的电路中，ab两端的激励为正弦信号，$ω$为$1000rad/s$，计算ab两端的阻抗$Z_{ab}$。
+
+<Solution>
+    解： $Z_L = j\omega L = j2\ \Omega$ （2 分）
+
+     $Z_C = 1/(j\omega C) = -j\ \Omega$ （2 分）
+
+     $Z_{ab} = Z_L \parallel Z_C + Z_R = (5 - 2j)\ \Omega$  或者是 $(5 + 2/j)\ \Omega$  （1 分）
+</Solution>
+
+## 八、计算题
+
+<Figure src="第八题图.svg" float>
+    第八题图
+</Figure>
+
+（5分）在如图所示的电路中，$u$为正弦信号，$i$的读数为10A，$i_{L}$的读数为6A，$i_{C}$的读数为12A，请用相量法绘制相量图，并求出$I_{R}$的读数。
+
+<Solution>
+    <Figure src="第八题解答.png" />
+
+    绘制如图所示的电路图，其中由矢量运算可以得知，$i^2=i_R^2+(i_C-i_L)^2$，故 $i_R=\sqrt{10^2-(12-6)^2}=8\,\mathrm{A}$。
+</Solution>
+
+## 九、计算题
+
+<Figure src="第九题图.svg" float>
+    第九题图
+</Figure>
+
+（15分）如图所示二端网络N，已知$u(t)=40\cos (100t+60°)V$，$i(t)=10\cos (100t+90°)A$。请写出网络N的瞬时功率P(t)的表达式，求网络N吸收的平均功率，无功功率Q，视在功率S和功率因素$λ$。
+
+<Solution>
+    解：$P(t) = 40\cos(100t + 60^\circ) * 10\cos(100t + 90^\circ)$  （3 分）
+
+    $P = UI\cos\varphi_{UI} = \frac{40}{\sqrt{2}} \frac{10}{\sqrt{2}} \cos(30^\circ) = 100\sqrt{3}\ \text{W}$  （3 分）
+
+    $Q = UI\sin\varphi_{UI} = \frac{40}{\sqrt{2}} \frac{10}{\sqrt{2}} \sin(-30^\circ) = -100\ \text{VAR}$  （3 分）
+
+    $S = UI = \frac{40}{\sqrt{2}} \frac{10}{\sqrt{2}} = 200\ \text{VA}$  （3 分）
+
+    $\lambda = \cos\varphi_{UI} = \cos(30^\circ) = \sqrt{3}/2$  （3 分）
+</Solution>
+
+## 十、计算题
+
+<Figure src="第十题图.svg" float>
+    第十题图
+</Figure>
+
+（8分）如图所示电路，其中激励为交流电$u(t)=100\sqrt{2} \cos(t)V$，电流$i$与电压$u$同相时，电路中会发生什么现象？测得电感两端电压的有效值为20V，电路中电流的有效值为2A，求电路中元件$R$,$L$,$C$的值。
+
+<Solution>
+    发生谐振现象。（2分）
+    
+    由题目知$\omega=1$
+
+    $R = 100/2 = 50\ \Omega$ （2 分）
+
+    $\omega L = 20/2 = 10,\ L = 10\,\text{H}$ （2 分）
+
+    $\omega = \frac{1}{\sqrt{LC}} = 1,\ C = 0.1\,\text{F}$ （2 分）
+</Solution>
+

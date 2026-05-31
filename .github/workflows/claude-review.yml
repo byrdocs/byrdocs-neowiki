@@ -59,7 +59,5 @@ jobs:
           ${REVIEW_PROMPT}" \
             --model opus \
             --mcp-config /tmp/mcp.json \
-            --allowedTools "Read,Glob,Grep,mcp__github" \
-            --disallowedTools "Bash,Edit,Write,NotebookEdit" \
             --output-format stream-json \
             --verbose
