@@ -244,10 +244,6 @@ $Y_2=AB+AC+BC$
 $Y_1$是和，$Y_2$是进位；加法器
 </Solution>
 
-<Figure src="题4.svg">
-    74LS138逻辑框图
-</Figure>
-
 ### 4.（10 分）
 
 试用一个 3 线--8 线译码器 74LS138 和适当的门电路设计一个组合逻辑电路，使其实现函数：
@@ -256,15 +252,15 @@ $$
 F=\overline{A}B\overline{C}+A\overline{B}\overline{C}+BC
 $$
 
+<Figure src="题4.svg" float>
+    74LS138逻辑框图
+</Figure>
+
 <Solution>
 $F=m_2+m_3+m_4+m_7$
 
 将$S_1$置1，$\overline{S_2}$和$\overline{S_3}$置0，$A$、$B$、$C$分别接$A_2$、$A_1$、$A_0$，$\overline{Y_2}$、$\overline{Y_3}$、$\overline{Y_4}$、$\overline{Y_7}$通过与非门连在一起，输出端接$F$即可。
 </Solution>
-
-<Figure src="题5.svg">
-    CC4512逻辑框图
-</Figure>
 
 ### 5.（12 分）
 
@@ -293,6 +289,10 @@ $F=m_2+m_3+m_4+m_7$
 | 0 | 1 | $A+B$ |
 | 1 | 0 | $A \oplus B$ |
 | 1 | 1 | $\overline{A}$ |
+
+<Figure src="题5.svg">
+    CC4512逻辑框图
+</Figure>
 
 <Solution>
 （答案不唯一，$D_n$处也可以接其他变量）
