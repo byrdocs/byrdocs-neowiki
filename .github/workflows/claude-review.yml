@@ -57,8 +57,11 @@ jobs:
           if [ -z "$REVIEW_PROMPT" ]; then
             if git fetch --no-tags origin ${{ github.event.pull_request.base.sha }} --depth=1 >/dev/null 2>&1; then
               REVIEW_PROMPT=$(git show "${{ github.event.pull_request.base.sha }}:.github/prompts/review.md" 2>/dev/null || true)
+              if [ -z "$REVIEW_PROMPT" ]; then
+                echo "Warning: .github/prompts/review.md was not found at base commit SHA." >&2
+              fi
             else
-              echo "Warning: failed to load .github/prompts/review.md from base commit SHA." >&2
+              echo "Warning: failed to fetch base commit SHA for prompt lookup." >&2
               REVIEW_PROMPT=""
             fi
           fi
