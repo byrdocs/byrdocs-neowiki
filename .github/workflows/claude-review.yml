@@ -59,12 +59,12 @@ jobs:
               curl -fsSL \
                 "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.pull_request.base.sha }}/.github/prompts/review.md"
             ); then
-              echo "Warning: failed to fetch .github/prompts/review.md from base commit SHA; check network access and whether the file exists on the base branch." >&2
+              echo "Warning: failed to fetch .github/prompts/review.md from base commit SHA; check network access and whether the file exists at that base commit." >&2
               REVIEW_PROMPT=""
             fi
           fi
           if [ -z "$REVIEW_PROMPT" ]; then
-            echo "Error: review prompt is unavailable in both PR head and base commit; ensure .github/prompts/review.md exists in the PR or base branch." >&2
+            echo "Error: review prompt is unavailable in both PR head and base commit; ensure .github/prompts/review.md exists in the PR or at the base commit." >&2
             exit 1
           fi
           PR_NUMBER=${{ github.event.pull_request.number }}
