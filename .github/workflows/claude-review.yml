@@ -27,8 +27,10 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Write MCP config
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cat > /tmp/mcp.json <<'JSON'
+          cat > /tmp/mcp.json <<JSON
           {
             "mcpServers": {
               "github": {
@@ -60,4 +62,5 @@ jobs:
             --model opus \
             --mcp-config /tmp/mcp.json \
             --output-format stream-json \
+            --permission-mode bypassPermissions \
             --verbose
