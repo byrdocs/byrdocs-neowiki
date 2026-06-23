@@ -8,7 +8,8 @@ type ExamDirectory = {
     path: string;
 };
 
-const isIgnoredEntry = (name: string) => name.startsWith(".");
+const isIgnoredEntry = (name: string) =>
+    name.startsWith(".") || name === "LICENSE";
 
 export function validateExamDirectories() {
     const entries = readdirSync(examsDir, { withFileTypes: true });

@@ -1,0 +1,113 @@
+<svg width="860" height="320" viewBox="0 0 860 320"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 背景 -->
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- 墙 -->
+  <rect x="40" y="58" width="22" height="147" fill="#d9d9d9"/>
+  <line x1="45" y1="58" x2="45" y2="183" stroke="#b5b5b5" stroke-width="2"/>
+  <line x1="52" y1="58" x2="52" y2="183" stroke="#b5b5b5" stroke-width="2"/>
+
+  <!-- 底座 -->
+  <rect x="60" y="183" width="610" height="22"
+        fill="#d9d9d9"/>
+
+  <!-- 上边缘 -->
+  <line x1="60" y1="183" x2="735" y2="183"
+        stroke="black" stroke-width="3"/>
+
+  <!-- 弹簧 -->
+  <path d="
+    M62 118
+    L82 118
+    C90 118, 92 95, 104 95
+    C116 95, 118 141, 130 141
+    C142 141, 144 95, 156 95
+    C168 95, 170 141, 182 141
+    C194 141, 196 95, 208 95
+    C220 95, 222 141, 234 141
+    C246 141, 248 95, 260 95
+    C272 95, 274 141, 286 141
+    L300 118"
+    fill="none"
+    stroke="#c9c9c9"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <!-- k -->
+  <text x="215" y="70"
+        font-size="44"
+        font-family="Times New Roman"
+        font-style="italic">
+    k
+  </text>
+
+  <!-- 物块 -->
+  <rect x="300" y="90"
+        width="90" height="90"
+        fill="#f8f8f8"
+        stroke="#444"
+        stroke-width="2"/>
+
+  <!-- m -->
+  <text x="330" y="145"
+        font-size="42"
+        font-family="Times New Roman"
+        font-style="italic">
+    m
+  </text>
+
+  <!-- 力箭头 -->
+  <line x1="390" y1="140"
+        x2="500" y2="140"
+        stroke="black"
+        stroke-width="3.5"/>
+
+  <polygon points="505,140 485,130 485,150"
+           fill="black"/>
+
+  <!-- 向量F -->
+  <text x="430" y="120"
+        font-size="42"
+        font-family="Times New Roman"
+        font-style="italic">
+    F
+  </text>
+
+  <!-- F上方的向量箭头 -->
+  <line x1="428" y1="88"
+        x2="456" y2="88"
+        stroke="black"
+        stroke-width="2"/>
+
+  <polygon points="456,88 448,84 448,92"
+           fill="black"/>
+
+  <!-- x轴 -->
+  <line x1="340" y1="185"
+        x2="735" y2="185"
+        stroke="black"
+        stroke-width="4"/>
+
+  <polygon points="745,185 713,164 713,206"
+           fill="black"/>
+
+  <!-- x -->
+  <text x="748" y="235"
+        font-size="42"
+        font-family="Times New Roman"
+        font-style="italic">
+    x
+  </text>
+
+  <!-- O -->
+  <text x="338" y="235"
+        font-size="44"
+        font-family="Times New Roman"
+        font-style="italic">
+    O
+  </text>
+
+</svg>

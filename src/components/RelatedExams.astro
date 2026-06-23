@@ -1,0 +1,129 @@
+---
+import type { RelatedExam } from "/src/utils/relatedExams";
+
+interface Props {
+  subject: string;
+  stage: string;
+  relatedExams: RelatedExam[];
+}
+
+const { subject, stage, relatedExams } = Astro.props;
+
+if (relatedExams.length === 0) return null;
+---
+
+<details
+  id="related-exams"
+  class="related-exams mt-8 overflow-hidden rounded-[8px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
+  open
+>
+  <summary
+    class="flex cursor-pointer list-none items-center justify-between px-4 py-3 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50"
+  >
+    <p
+      class="m-0 text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-300"
+    >
+      《{subject}》的{stage}试卷
+    </p>
+    <svg
+      class="related-exams-chevron h-4 w-4 flex-none text-slate-400 transition-transform duration-200 dark:text-slate-500"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </summary>
+  <ul class="divide-y divide-slate-200 text-sm dark:divide-slate-800">
+    {
+      relatedExams.map((exam) => (
+        <li
+          class:list={[
+            "flex min-h-14 items-center justify-between gap-3 px-4 py-2",
+          ]}
+        >
+          <div class="min-w-0">
+            {exam.isCurrent ? (
+              <span
+                class="block truncate leading-6 text-slate-700 dark:text-slate-300"
+                aria-current="page"
+              >
+                {exam.title}
+              </span>
+            ) : (
+              <a
+                href={exam.url}
+                class="block truncate leading-6 no-underline"
+                target={exam.isWiki ? undefined : "_blank"}
+                rel={exam.isWiki ? undefined : "noopener noreferrer"}
+              >
+                {exam.title}
+              </a>
+            )}
+          </div>
+          <div class="flex flex-none items-center gap-2">
+            {exam.isCurrent && (
+              <span class="inline-flex h-5 items-center rounded-md bg-sky-100 px-2 text-xs font-semibold leading-none text-sky-800 dark:bg-sky-900/60 dark:text-sky-200">
+                当前
+              </span>
+            )}
+            {!exam.isWiki && (
+              <span class="inline-flex h-5 items-center rounded-md bg-slate-100 px-2 text-xs font-medium leading-none text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                PDF
+              </span>
+            )}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  (function() {
+    var STORAGE_KEY = "relatedExamsExpanded";
+    var details = document.getElementById(
+      "related-exams",
+    ) as HTMLDetailsElement | null;
+    if (!details) return;
+
+    try {
+      // Restore saved state
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved !== null) {
+        details.open = saved === 'true';
+      }
+      // If no saved state, keep default (open)
+
+      // Save state on toggle
+      details.addEventListener("toggle", function() {
+        localStorage.setItem(STORAGE_KEY, String(details!.open));
+      });
+    } catch {
+      // localStorage may be disabled (private mode, etc.)
+    }
+  })();
+</script>
+
+<style>
+  .related-exams > summary::-webkit-details-marker {
+    display: none;
+  }
+  .related-exams > summary::marker {
+    content: "";
+  }
+  .related-exams[open] > summary {
+    border-bottom: 1px solid rgb(226 232 240);
+  }
+  .related-exams[open] .related-exams-chevron {
+    transform: rotate(180deg);
+  }
+  :global(.dark) .related-exams[open] > summary {
+    border-bottom-color: rgb(30 41 59);
+  }
+</style>

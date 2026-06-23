@@ -99,8 +99,8 @@ for(i=1;i<=n;i++){
 <Choices>
     - `T` 中叶结点的个数
     - `T` 中右孩子指针为空的结点个数
-    - `T` 中左孩子指针为空的结点个数
-    + `T` 中度为 1 的结点个数
+    + `T` 中左孩子指针为空的结点个数
+    - `T` 中度为 1 的结点个数
 </Choices>
 
 6. 下列说法不正确的是 <Slot />。
@@ -229,7 +229,7 @@ CQ*Q;
 
 假设以带头结点的单链表表示有序表，单链表的类型定义如下：
 
-```c
+```cpp
 typedef struct node{
 	DataType data;
 	struct node *next;
@@ -240,16 +240,25 @@ typedef struct node{
 
 <Solution>
 ```cpp
-LinkList pa = A;
-LinkList pb = B->next;
-while (pb!=NULL){
-    while (pa->next != NULL){
-        if (pa->next->data==pb->data){
-            pa->next=pa->next->next;
+void DeleteCommon(LinkList &A, LinkList B) {
+    LinkList pa, pb, prev, tmp;
+    pb = B->next;
+    while (pb != NULL) {
+        prev = A;
+        pa = A->next;
+        while (pa != NULL) {
+            if (pa->data == pb->data) {
+                prev->next = pa->next;
+                tmp = pa;
+                pa = pa->next;
+                free(tmp);
+            } else {
+                prev = pa;
+                pa = pa->next;
+            }
         }
-        pa=pa->next;
+        pb = pb->next;
     }
-    pb=pb->next;
 }
 ```
 </Solution>

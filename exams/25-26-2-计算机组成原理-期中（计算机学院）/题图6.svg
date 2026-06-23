@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 760" width="760" height="760">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 10 5 L 0 8 z" fill="#2b2f36" />
+    </marker>
+    <style>
+      .box { fill: #f7fbff; stroke: #2b2f36; stroke-width: 2; }
+      .mem { fill: #f5fff4; stroke: #4e8b55; stroke-width: 2; }
+      .alu { fill: #fffaf2; stroke: #2b2f36; stroke-width: 2; }
+      .wire { fill: none; stroke: #2b2f36; stroke-width: 2; marker-end: url(#arrow); }
+      .bus { stroke: #1f2933; stroke-width: 6; stroke-linecap: round; }
+      text { fill: #1f2933; font-family: "Noto Serif CJK SC", "SimSun", serif; font-size: 18px; text-anchor: middle; dominant-baseline: middle; }
+      .latin { font-family: "Times New Roman", "CMU Serif", "Computer Modern Serif", serif; }
+      .small { font-size: 14px; }
+      .tiny { font-size: 13px; }
+      .sub { font-size: 10px; baseline-shift: sub; }
+      .label-left { text-anchor: end; }
+      .label-right { text-anchor: start; }
+      .vertical { writing-mode: tb; glyph-orientation-vertical: 0; }
+    </style>
+  </defs>
+
+  <!-- 控制器，与寄存器组左边界对齐 -->
+  <text x="208" y="52" class="small label-left">控制信号</text>
+  <path d="M245 52 H216" class="wire" />
+  <rect x="245" y="30" width="190" height="44" rx="2" class="box" />
+  <text x="340" y="52">指令译码/控制器</text>
+  <path d="M340 105 V76" class="wire" />
+
+  <!-- 右侧单总线 -->
+  <line x1="560" y1="82" x2="560" y2="712" class="bus" />
+  <text x="588" y="70" class="label-left">总线</text>
+
+  <!-- IR -->
+  <rect x="245" y="105" width="190" height="42" class="box" />
+  <text x="340" y="126" class="latin">IR</text>
+  <path d="M560 116 H435" class="wire" />
+  <text x="497" y="108" class="tiny latin">IR<tspan class="sub">in</tspan></text>
+  <path d="M435 136 H560" class="wire" />
+  <text x="498" y="144" class="tiny latin">Addr<tspan class="sub">out</tspan></text>
+
+  <!-- PC -->
+  <text x="188" y="194" class="small label-left latin">PC+1</text>
+  <path d="M196 194 H245" class="wire" />
+  <rect x="245" y="170" width="190" height="42" class="box" />
+  <text x="340" y="191" class="latin">PC</text>
+  <path d="M560 183 H435" class="wire" />
+  <text x="498" y="175" class="tiny latin">PC<tspan class="sub">in</tspan></text>
+  <path d="M435 200 H560" class="wire" />
+  <text x="499" y="208" class="tiny latin">PC<tspan class="sub">out</tspan></text>
+
+  <!-- MAR -->
+  <rect x="245" y="235" width="190" height="42" class="box" />
+  <text x="340" y="256" class="latin">MAR</text>
+  <path d="M560 256 H435" class="wire" />
+  <text x="497" y="248" class="tiny latin">MAR<tspan class="sub">in</tspan></text>
+
+  <!-- MDR -->
+  <rect x="245" y="300" width="190" height="42" class="box" />
+  <text x="340" y="321" class="latin">MDR</text>
+  <path d="M560 312 H435" class="wire" />
+  <text x="500" y="304" class="tiny latin">MDR<tspan class="sub">in</tspan></text>
+  <path d="M435 330 H560" class="wire" />
+  <text x="501" y="338" class="tiny latin">MDR<tspan class="sub">out</tspan></text>
+
+  <!-- R0 -->
+  <rect x="245" y="365" width="190" height="42" class="box" />
+  <text x="340" y="386" class="latin">R<tspan class="sub">0</tspan></text>
+  <path d="M560 378 H435" class="wire" />
+  <text x="500" y="370" class="tiny latin">R<tspan class="sub">0in</tspan></text>
+  <path d="M435 396 H560" class="wire" />
+  <text x="501" y="404" class="tiny latin">R<tspan class="sub">0out</tspan></text>
+
+  <!-- 省略号 -->
+  <text x="340" y="424" class="latin" font-size="24">⋮</text>
+
+  <!-- Rn-1 -->
+  <rect x="245" y="440" width="190" height="42" class="box" />
+  <text x="340" y="461" class="latin">R<tspan class="sub">n-1</tspan></text>
+  <path d="M560 453 H435" class="wire" />
+  <text x="498" y="445" class="tiny latin">R<tspan class="sub">n-1in</tspan></text>
+  <path d="M435 471 H560" class="wire" />
+  <text x="499" y="479" class="tiny latin">R<tspan class="sub">n-1out</tspan></text>
+
+  <!-- Y -->
+  <rect x="245" y="515" width="190" height="42" class="box" />
+  <text x="340" y="536" class="latin">Y</text>
+  <path d="M560 536 H435" class="wire" />
+  <text x="493" y="528" class="tiny latin">Y<tspan class="sub">in</tspan></text>
+
+  <!-- ALU 与 Z -->
+  <path d="M285 590 H395 L374 645 H306 Z" class="alu" />
+  <text x="340" y="620" class="latin">ALU</text>
+  <path d="M300 557 V590" class="wire" />
+  <path d="M560 570 H382 V590" class="wire" />
+  <text x="493" y="562" class="tiny latin">ALU<tspan class="sub">in</tspan></text>
+  <text x="175" y="620" class="small label-left">控制信号</text>
+  <path d="M182 620 H295" class="wire" />
+
+  <rect x="245" y="675" width="190" height="42" class="box" />
+  <text x="340" y="696" class="latin">Z</text>
+  <path d="M340 645 V675" class="wire" />
+  <path d="M435 696 H560" class="wire" />
+  <text x="493" y="688" class="tiny latin">Z<tspan class="sub">out</tspan></text>
+
+  <!-- 主存与访存信号 -->
+  <rect x="115" y="250" width="58" height="114" rx="2" class="mem" />
+  <text x="148" y="307" class="vertical">主存</text>
+  <text x="88" y="279" class="small label-left latin">MemR</text>
+  <path d="M94 279 H115" class="wire" />
+  <text x="88" y="335" class="small label-left latin">MemW</text>
+  <path d="M94 335 H115" class="wire" />
+  <path d="M245 273 H173" class="wire" />
+  <text x="209" y="265" class="tiny latin">MAR<tspan class="sub">out</tspan></text>
+  <path d="M245 318 H173" class="wire" />
+  <text x="208" y="303" class="tiny latin">MDR<tspan class="sub">out</tspan></text>
+  <path d="M173 338 H245" class="wire" />
+  <text x="208" y="354" class="tiny latin">MDR<tspan class="sub">in</tspan></text>
+</svg>

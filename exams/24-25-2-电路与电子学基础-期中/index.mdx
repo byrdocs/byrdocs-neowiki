@@ -100,7 +100,7 @@
     填空5题图
 </Figure>
 
-5. 电路如图所示，$t=0$ 之前开关在位置 1，电路处于稳定状态，$t=0$ 时开关由位置 1 打向位置 2，求 $t>0$ 后的电感电压 $u_L=$<Blank>$-40\mathrm e^{-10t}$</Blank> V, $i=$<Blank>$10\mathrm e^{-10t}$</Blank> A。
+5. 电路如图所示，$t=0$ 之前开关在位置 1，电路处于稳定状态，$t=0$ 时开关由位置 1 打向位置 2，求 $t>0$ 后的电感电压 $u_L=$<Blank>$-40\mathrm e^{-4t}$</Blank> V, $i=$<Blank>$10\mathrm e^{-4t}$</Blank> A。
 
 <Figure src="题图3.6.svg" float>
     填空6题图
@@ -129,11 +129,11 @@
 <Solution>
     由于电感初始储能为 $0$，所以 $t>0$ 之后，$u(t)$ 为零状态响应。
 
-    则 $i(t)=\frac{U_s}R\left(1-\mathrm e^{-\frac t\tau}\right)$, $\tau=\frac LR$。
+    则 $i(t)=\frac{U_s}R\left(\mathrm e^{-\frac t\tau}-1\right)$, $\tau=\frac LR$。
 
-    则 $u(t)=L\frac{\mathrm di(t)}{\mathrm dt}=\frac{U_s}L\mathrm e^{-\frac RLt}$
+    则 $u(t)=L\frac{\mathrm di(t)}{\mathrm dt}=U_s\mathrm e^{-\frac RLt}$
 
-    则 $U_s=16\,\mathrm V$, $R=4\,\Omega$。
+    则 $U_s=8\,\mathrm V$, $R=4\,\Omega$。
 </Solution>
 
 ## 六、计算题（8分）

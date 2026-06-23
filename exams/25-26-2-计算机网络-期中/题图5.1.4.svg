@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="100%" height="100%">
+    <defs>
+        <!-- 定义箭头标记 -->
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto-start-reverse">
+            <polygon points="0 1, 10 5, 0 9" fill="#333"/>
+        </marker>
+        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <polygon points="0 1, 10 5, 0 9" fill="#333"/>
+        </marker>
+    </defs>
+
+    <!-- 阈值辅助虚线 -->
+    <line x1="150" y1="176" x2="720" y2="176" stroke="#889999" stroke-dasharray="4 4" stroke-width="1.2" />
+    <line x1="150" y1="232" x2="720" y2="232" stroke="#889999" stroke-dasharray="4 4" stroke-width="1.2" />
+
+    <!-- 坐标轴 -->
+    <line x1="150" y1="400" x2="740" y2="400" stroke="#333" stroke-width="1.2" />
+    <polygon points="738,396 746,400 738,404" fill="#333" />
+    
+    <line x1="150" y1="400" x2="150" y2="30" stroke="#333" stroke-width="1.2" />
+    <polygon points="146,32 150,24 154,32" fill="#333" />
+
+    <!-- Y轴刻度与标签 -->
+    <path d="M 150 400 L 145 400 M 150 344 L 145 344 M 150 288 L 145 288 M 150 232 L 145 232 M 150 176 L 145 176 M 150 120 L 145 120 M 150 64 L 145 64" stroke="#333" stroke-width="1.2" fill="none"/>
+    
+    <g font-family="sans-serif" font-size="14" fill="#333" text-anchor="end">
+        <text x="140" y="405">0</text>
+        <text x="140" y="349">4</text>
+        <text x="140" y="293">8</text>
+        <text x="140" y="237">12</text>
+        <text x="140" y="181">16</text>
+        <text x="140" y="125">20</text>
+        <text x="140" y="69">24</text>
+        
+        <!-- Y轴说明文字 -->
+        <text x="110" y="181">ssthresh 的初始值</text>
+        <text x="110" y="237">新的 ssthresh 值</text>
+    </g>
+
+    <!-- X轴刻度与标签 -->
+    <path d="M 150 400 L 150 405 M 175 400 L 175 405 M 200 400 L 200 405 M 225 400 L 225 405 M 250 400 L 250 405 M 275 400 L 275 405 M 300 400 L 300 405 M 325 400 L 325 405 M 350 400 L 350 405 M 375 400 L 375 405 M 400 400 L 400 405 M 425 400 L 425 405 M 450 400 L 450 405 M 475 400 L 475 405 M 500 400 L 500 405 M 525 400 L 525 405 M 550 400 L 550 405 M 575 400 L 575 405 M 600 400 L 600 405 M 625 400 L 625 405 M 650 400 L 650 405 M 675 400 L 675 405 M 700 400 L 700 405 M 725 400 L 725 405" stroke="#333" stroke-width="1.2" fill="none"/>
+    
+    <g font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">
+        <text x="150" y="420">0</text>
+        <text x="200" y="420">2</text>
+        <text x="250" y="420">4</text>
+        <text x="300" y="420">6</text>
+        <text x="350" y="420">8</text>
+        <text x="400" y="420">10</text>
+        <text x="450" y="420">12</text>
+        <text x="500" y="420">14</text>
+        <text x="550" y="420">16</text>
+        <text x="600" y="420">18</text>
+        <text x="650" y="420">20</text>
+        <text x="700" y="420">22</text>
+    </g>
+
+    <!-- 核心数据折线图 -->
+    <polyline points="150,386 175,372 200,344 225,288 250,176 275,162 300,148 325,134 350,120 375,106 400,92 425,78 450,64 475,386 500,372 525,344 550,288 575,232 600,218 625,204 650,190 675,176 700,162" fill="none" stroke="#517373" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- 数据节点圆点 -->
+    <g fill="#517373">
+        <circle cx="150" cy="386" r="3.5"/>
+        <circle cx="175" cy="372" r="3.5"/>
+        <circle cx="200" cy="344" r="3.5"/>
+        <circle cx="225" cy="288" r="3.5"/>
+        <circle cx="250" cy="176" r="3.5"/>
+        <circle cx="275" cy="162" r="3.5"/>
+        <circle cx="300" cy="148" r="3.5"/>
+        <circle cx="325" cy="134" r="3.5"/>
+        <circle cx="350" cy="120" r="3.5"/>
+        <circle cx="375" cy="106" r="3.5"/>
+        <circle cx="400" cy="92" r="3.5"/>
+        <circle cx="425" cy="78" r="3.5"/>
+        <circle cx="450" cy="64" r="3.5"/>
+        <circle cx="475" cy="386" r="3.5"/>
+        <circle cx="500" cy="372" r="3.5"/>
+        <circle cx="525" cy="344" r="3.5"/>
+        <circle cx="550" cy="288" r="3.5"/>
+        <circle cx="575" cy="232" r="3.5"/>
+        <circle cx="600" cy="218" r="3.5"/>
+        <circle cx="625" cy="204" r="3.5"/>
+        <circle cx="650" cy="190" r="3.5"/>
+        <circle cx="675" cy="176" r="3.5"/>
+        <circle cx="700" cy="162" r="3.5"/>
+    </g>
+
+    <!-- 文本标注 -->
+    <!-- 坐标轴标题 -->
+    <text x="150" y="18" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#333">拥塞窗口 cwnd</text>
+    <text x="735" y="385" text-anchor="end" font-family="sans-serif" font-size="14" fill="#333">传输轮次</text>
+
+    <!-- 图解箭头及指引线文字 -->
+    <g font-family="sans-serif" font-size="14" fill="#333">
+
+        <!-- 指数规律增长 -->
+        <text x="250" y="350" text-anchor="start">指数规律增长</text>
+        <line x1="245" y1="345" x2="208" y2="335" stroke="#333" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+
+        <!-- 网络拥塞 -->
+        <text x="480" y="40" text-anchor="start">网络拥塞</text>
+        <line x1="475" y1="36" x2="452" y2="58" stroke="#333" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+    </g>
+
+</svg>

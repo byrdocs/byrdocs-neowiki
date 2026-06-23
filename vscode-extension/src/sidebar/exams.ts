@@ -5,6 +5,7 @@ import {
   ANSWER_COMPLETENESS_VALUES,
   CONTENT_CONFIG_PATH,
   DEFAULT_TEMPLATE_PATH,
+  EXAM_FRONTMATTER_PATH,
   STAGE_VALUES,
   TERM_VALUES,
   TYPE_VALUES,
@@ -272,9 +273,22 @@ export function padAcademicYear(year: number): string {
 export function readSchoolOptions(
   workspaceFolder: vscode.WorkspaceFolder,
 ): string[] {
-  const configPath = path.join(workspaceFolder.uri.fsPath, CONTENT_CONFIG_PATH);
+  const candidatePaths = [EXAM_FRONTMATTER_PATH, CONTENT_CONFIG_PATH];
+  for (const relativePath of candidatePaths) {
+    const schools = readSchoolOptionsFromFile(
+      path.join(workspaceFolder.uri.fsPath, relativePath),
+    );
+    if (schools.length > 0) {
+      return schools;
+    }
+  }
+
+  return [];
+}
+
+function readSchoolOptionsFromFile(filePath: string): string[] {
   try {
-    const source = fs.readFileSync(configPath, "utf8");
+    const source = fs.readFileSync(filePath, "utf8");
     const blockMatch = source.match(/const SCHOOLS = \[([\s\S]*?)\] as const;/);
     if (!blockMatch) {
       return [];

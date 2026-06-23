@@ -16,13 +16,13 @@
 
 2. 若某连续线性时不变(LTI)系统的频率响应为 $H(\omega) = 3\mathrm{e}^{-\mathrm{j}2\omega}$ ，当输入信号为 $\cos(4t)$ 时，系统的稳态响应是 <Blank />
 
-3. 若信号 $f(t)$ 的傅里叶变换为 $F(\omega)$ ，则信号 $f(t) \cdot \cos (\omega_0 t)$ 的傅里叶变换为 <Blank>$F(\omega) \cdot \cos (\omega_0 t)$</Blank>。
+3. 若信号 $f(t)$ 的傅里叶变换为 $F(\omega)$ ，则信号 $f(t) \cdot \cos (\omega_0 t)$ 的傅里叶变换为 <Blank>$\frac12F(\omega-\omega_0)+\frac12F(\omega+\omega_0)$</Blank>。
 
-4. 一个理想低通滤波器的截止频率为 $f_{\mathrm{c}} = 1000\,\mathrm{Hz}$ ，通带内系统的幅频特性取值为1，相频特性为0，当输入信号为 $x(t) = \cos (1000\pi t) + \cos (3000\pi t)$ 时，系统的输出为 <Blank>$1$</Blank>
+4. 一个理想低通滤波器的截止频率为 $f_{\mathrm{c}} = 1000\,\mathrm{Hz}$ ，通带内系统的幅频特性取值为1，相频特性为0，当输入信号为 $x(t) = \cos (1000\pi t) + \cos (3000\pi t)$ 时，系统的输出为 <Blank>$\cos(1000\pi t)$</Blank>
 
-5. 已知信号 $x(t) = \mathrm{e}^{-t} u(t)$ ，其导函数 $x'(t)$ 的单边拉普拉斯变换为 $u'(t) e^{-t} - t u(t)$
+5. 已知信号 $x(t) = \mathrm{e}^{-t} u(t)$ ，其导函数 $x'(t)$ 的单边拉普拉斯变换为 <Blank>$\frac s{s+1}$</Blank>
 
-6. 已知某因果 LTI 系统的系统函数为 $H(s) = \frac{s + 5}{(s + 3)(s^2 + as + 10)}$ ，其中 $a$ 为实数。为使该系统稳定，参数 $a$ 的取值范围应为 <Blank>$a \geqslant 2\sqrt{10}$</Blank>。
+6. 已知某因果 LTI 系统的系统函数为 $H(s) = \frac{s + 5}{(s + 3)(s^2 + as + 10)}$ ，其中 $a$ 为实数。为使该系统稳定，参数 $a$ 的取值范围应为 <Blank>$a>0$</Blank>。
 
 7. 已知序列 $x[n]$ 的单边 $z$ 变换为 $X(z)$ ，则 $(0.5)^n \cdot x[n]$ 的单边 $z$ 变换为 <Blank />
 
@@ -34,7 +34,7 @@
 
 9. 题图所示信号流图中所有环路增益之和为 <Blank />
 
-10. 对于序列 $x\left\lbrack  n\right\rbrack   = {a}^{n}u\left\lbrack  n\right\rbrack$ , $a$ 的取值范围满足 <Blank>$a < 1$ , $a \neq  0$</Blank> 时该序列是绝对可和的。
+10. 对于序列 $x\left\lbrack  n\right\rbrack   = {a}^{n}u\left\lbrack  n\right\rbrack$ , $a$ 的取值范围满足 <Blank>$|a| < 1$ , $a \neq  0$</Blank> 时该序列是绝对可和的。
 
 ## 二、选择题（每空2分，共20分）
 
@@ -115,17 +115,17 @@
 <Choices>
     - 长通
     - 高通
-    + 带通
-    - 全通
+    - 带通
+    + 全通
 </Choices>
 
 10. 离散 LTI 系统稳定的充要条件是系统函数 $H\left( z\right)$ 的收敛域(ROC)<Slot />。
 
 <Choices>
-    - 包含单位圆 $\left| z\right|  = 1$
+    + 包含单位圆 $\left| z\right|  = 1$
     - 包含原点 $z = 0$
     - 包含无穷远点 $z = \infty$
-    + 包含整个Z平面
+    - 包含整个Z平面
 </Choices>
 
 ## 三、计算画图题（12分）

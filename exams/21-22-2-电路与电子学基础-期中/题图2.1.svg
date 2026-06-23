@@ -1,0 +1,77 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .source { stroke: #000080; stroke-width: 4; fill: white; }
+    .source-line { stroke: #000080; stroke-width: 4; fill: none; }
+    .block { stroke: black; stroke-width: 3; fill: white; }
+    .terminal { stroke: black; stroke-width: 2; fill: white; }
+    .arrow { fill: #000080; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 36px; font-style: italic; fill: black; }
+    .label-sign { font-family: "Times New Roman", serif; font-size: 32px; font-weight: bold; fill: black; }
+    .label-block { font-family: "Times New Roman", serif; font-size: 40px; font-weight: bold; fill: black; }
+  </style>
+
+  <!-- ==========================================
+       Central Network Block N0
+       ========================================== -->
+  <rect x="250" y="150" width="120" height="150" class="block" />
+  <text x="310" y="235" class="label-block" text-anchor="middle">N<tspan baseline-shift="sub" font-size="0.7em">0</tspan></text>
+
+  <!-- ==========================================
+       Left Side: Current Source I_S
+       ========================================== -->
+  <!-- Wires -->
+  <line x1="100" y1="170" x2="250" y2="170" class="wire" />
+  <line x1="100" y1="280" x2="250" y2="280" class="wire" />
+  <line x1="100" y1="170" x2="100" y2="280" class="wire" />
+  
+  <!-- Source Circle -->
+  <circle cx="100" cy="225" r="30" class="source" />
+  <!-- Source Horizontal Line -->
+  <line x1="70" y1="225" x2="130" y2="225" class="source-line" />
+  <!-- Current Arrow UP on wire above source -->
+  <polygon points="100,175 90,195 100,185 110,195" class="arrow" />
+
+  <!-- Label I_S -->
+  <text x="50" y="235" class="label-italic" text-anchor="end">I<tspan baseline-shift="sub" font-size="0.65em">S</tspan></text>
+
+  <!-- ==========================================
+       Top Side: Voltage Source u_S
+       ========================================== -->
+  <!-- Wires -->
+  <line x1="265" y1="150" x2="265" y2="80" class="wire" />
+  <line x1="355" y1="150" x2="355" y2="80" class="wire" />
+  <line x1="265" y1="80" x2="280" y2="80" class="wire" />
+  <line x1="340" y1="80" x2="355" y2="80" class="wire" />
+
+  <!-- Source Circle -->
+  <circle cx="310" cy="80" r="30" class="source" />
+  <!-- Source Horizontal Line -->
+  <line x1="280" y1="80" x2="340" y2="80" class="source-line" />
+
+  <!-- Labels + u_S - -->
+  <text x="250" y="90" class="label-sign" text-anchor="middle">+</text>
+  <text x="310" y="30" class="label-italic" text-anchor="middle">u<tspan baseline-shift="sub" font-size="0.65em">S</tspan></text>
+  <text x="370" y="90" class="label-sign" text-anchor="middle">−</text>
+
+  <!-- ==========================================
+       Right Side: Output Terminals a, b (u_ab)
+       ========================================== -->
+  <!-- Wires -->
+  <line x1="370" y1="180" x2="480" y2="180" class="wire" />
+  <line x1="370" y1="270" x2="480" y2="270" class="wire" />
+
+  <!-- Terminals -->
+  <circle cx="480" cy="180" r="6" class="terminal" />
+  <circle cx="480" cy="270" r="6" class="terminal" />
+
+  <!-- Terminal Labels a, b -->
+  <text x="475" y="160" class="label-italic" text-anchor="middle">a</text>
+  <text x="475" y="315" class="label-italic" text-anchor="middle">b</text>
+
+  <!-- Polarity and u_ab -->
+  <text x="510" y="190" class="label-sign" text-anchor="middle">+</text>
+  <text x="510" y="280" class="label-sign" text-anchor="middle">−</text>
+  <text x="550" y="240" class="label-italic" text-anchor="middle">u<tspan baseline-shift="sub" font-size="0.65em">ab</tspan></text>
+
+</svg>

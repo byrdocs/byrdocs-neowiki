@@ -2,7 +2,7 @@
   "name": "byrdocs-wiki-vscode",
   "displayName": "BYR Docs Wiki Tools",
   "description": "Workspace-specific authoring tools for the byrdocs-neowiki repository.",
-  "version": "0.2.2",
+  "version": "0.2.6",
   "publisher": "byrdocs",
   "license": "MIT",
   "icon": "media/icon.png",
