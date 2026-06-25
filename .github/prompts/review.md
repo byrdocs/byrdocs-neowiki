@@ -16,6 +16,11 @@ Treat `src/others/guide.mdx` as the source of truth for content rules, and use `
   - `阶段`: `期中` or `期末`
   - `类型`: `本科` or `研究生`
   - Optional fields (`学院`, `来源`, `答案完成度`) must follow the guide if present
+  - **`来源` 字段验证**：当 `来源` 字段包含 md5 值时，你**必须**主动验证该值是否正确，而不是要求贡献者自行确认。验证方法：
+    1. 用 Bash 执行 `curl -o /tmp/metadata.json https://data.byrdocs.org/metadata.json` 下载主站元数据（无需认证）。
+    2. 编写脚本（如 `node` 或 `python3`）读取该 JSON，根据试卷科目、学期等信息查找对应条目，比对其中的 md5 值。metadata.json 中的 md5 是权威值。
+    3. 如果 md5 匹配则无需提出任何意见；如果不匹配或找不到对应文件，在"请确认"类目中指出。
+    4. 如需读取主站文件内容进行进一步验证，可从 metadata.json 中获取文件的 url，使用 `curl -H "X-Byrdocs-Token: $BYRDOCS_SITE_TOKEN" <url> -o /tmp/<filename>` 下载文件。
 - Body must use standard Markdown and the repository's supported MDX components (`Blank`, `Slot`, `Choices`, `Option`, `Solution`, `Figure`, `Audio`). No custom JSX, scripts, or inline styles.
 - Heading structure: major questions use `##`, subquestions use `###` only when appropriate. Choice/blank/judgment questions should use lists instead of overusing headings.
 - `Figure` / `Audio` references must use local file names within the same exam directory.

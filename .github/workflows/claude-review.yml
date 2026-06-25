@@ -50,6 +50,7 @@ jobs:
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           ANTHROPIC_DEFAULT_OPUS_MODEL: "anthropic/claude-opus-4.7"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BYRDOCS_SITE_TOKEN: ${{ secrets.BYRDOCS_SITE_TOKEN }}
           DEBUG: "true"
         run: |
           REVIEW_PROMPT=$(cat .github/prompts/review.md)

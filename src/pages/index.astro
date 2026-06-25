@@ -4,22 +4,8 @@ import { getRecentlyChangedExams } from "/src/utils/gitHistory";
 
 const recentExams = getRecentlyChangedExams();
 
-function formatTime(timestamp: number): string {
+function formatDate(timestamp: number): string {
   const date = new Date(timestamp * 1000);
-  const now = new Date();
-
-  const isToday =
-    date.getFullYear() === now.getFullYear() &&
-    date.getMonth() === now.getMonth() &&
-    date.getDate() === now.getDate();
-
-  if (isToday) {
-    const hh = date.getHours().toString().padStart(2, "0");
-    const mm = date.getMinutes().toString().padStart(2, "0");
-    const ss = date.getSeconds().toString().padStart(2, "0");
-    return `${hh}:${mm}:${ss}`;
-  }
-
   const y = date.getFullYear();
   const m = (date.getMonth() + 1).toString().padStart(2, "0");
   const d = date.getDate().toString().padStart(2, "0");
@@ -91,15 +77,21 @@ function formatTime(timestamp: number): string {
             <li class="flex items-center justify-between gap-4 px-6 py-4">
               <a
                 href={`/exam/${exam.id}`}
-                class="text-slate-900 no-underline transition hover:text-sky-600 dark:text-slate-100 dark:hover:text-sky-400"
+                class="flex items-center gap-2 text-slate-900 no-underline transition hover:text-sky-600 dark:text-slate-100 dark:hover:text-sky-400"
               >
                 {exam.id}
+                {exam.uncommitted && (
+                  <span class="shrink-0 rounded-md bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">
+                    uncommitted
+                  </span>
+                )}
               </a>
               <time
                 class="shrink-0 text-sm text-slate-500 dark:text-slate-400"
                 datetime={new Date(exam.timestamp * 1000).toISOString()}
+                data-ts={exam.timestamp}
               >
-                {formatTime(exam.timestamp)}
+                {formatDate(exam.timestamp)}
               </time>
             </li>
           ))}
@@ -107,4 +99,35 @@ function formatTime(timestamp: number): string {
       </section>
     )
   }
+<script>
+  (function () {
+    document.querySelectorAll("time[data-ts]").forEach(function (el) {
+      var raw = el.getAttribute("data-ts");
+      if (!raw) return;
+      var d = new Date(parseInt(raw) * 1000);
+      var now = new Date();
+      if (
+        d.getFullYear() === now.getFullYear() &&
+        d.getMonth() === now.getMonth() &&
+        d.getDate() === now.getDate()
+      ) {
+        el.textContent =
+          [d.getHours(), d.getMinutes(), d.getSeconds()]
+            .map(function (n) {
+              return String(n).padStart(2, "0");
+            })
+            .join(":");
+      } else {
+        el.textContent =
+          d.getFullYear() +
+          "-" +
+          [d.getMonth() + 1, d.getDate()]
+            .map(function (n) {
+              return String(n).padStart(2, "0");
+            })
+            .join("-");
+      }
+    });
+  })();
+</script>
 </Layout>
