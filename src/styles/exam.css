@@ -606,7 +606,7 @@ html.dark .exam-audio-caption {
 }
 .exam-toc-panel,
 .exam-toc-mobile-panel {
-  background: rgb(255 255 255 / 0.98);
+  background: rgb(248 250 252 / 0.98);
   border: 1px solid rgb(226 232 240 / 0.95);
   border-radius: 0.8rem;
   box-shadow: 0 10px 30px rgb(15 23 42 / 0.08);
@@ -672,7 +672,7 @@ html.dark .exam-audio-caption {
   --exam-toc-row-gap: 0.2rem;
   --exam-toc-sublist-padding: 0.42rem;
   overflow: auto;
-  padding: 0.4rem;
+  padding: 0.5rem 0.6rem;
 }
 .exam-toc-nav-mobile {
   flex: 1;
@@ -748,17 +748,20 @@ html.dark .exam-audio-caption {
 }
 .exam-toc-link {
   border-radius: 0.3rem;
+  box-shadow: inset 0 0 0 1px transparent, 0 1px 2px 0 transparent;
   color: rgb(51 65 85 / 0.92);
   display: block;
   flex: 1;
   line-height: 2;
+  margin: 0.2rem 0;
   min-width: 0;
   padding: 0.34rem 0.6rem;
   text-decoration: none;
+  transform: translateY(0);
   transition:
     background-color 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease;
+    box-shadow 0.2s ease,
+    color 0.15s ease;
 }
 .exam-toc-link:hover {
   background: rgb(241 245 249 / 0.95);
@@ -780,9 +783,10 @@ html.dark .exam-audio-caption {
   color: rgb(51 65 85 / 0.96);
 }
 .exam-toc-link.is-active {
-  background: rgb(15 23 42 / 0.95);
-  box-shadow: 0 8px 18px rgb(15 23 42 / 0.16);
-  color: white;
+  background: white;
+  box-shadow: inset 0 0 0 1px rgb(226 232 240 / 0.95), 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  color: rgb(15 23 42 / 0.95);
+  transform: translateY(-0.5px);
 }
 .exam-toc-children {
   display: grid;
@@ -876,9 +880,10 @@ html.dark .exam-toc-link-level-2 {
   color: rgb(148 163 184 / 0.96);
 }
 html.dark .exam-toc-link.is-active {
-  background: rgb(30 41 59 / 0.98);
-  box-shadow: inset 0 0 0 1px rgb(96 165 250 / 0.32);
+  background: rgb(15 23 42 / 0.9);
+  box-shadow: inset 0 0 0 1px rgb(51 65 85 / 0.95), 0 1px 2px 0 rgb(0 0 0 / 0.2);
   color: rgb(248 250 252 / 0.98);
+  transform: translateY(-0.5px);
 }
 html.dark .exam-toc-sublist {
   border-left-color: rgb(51 65 85 / 0.95);
@@ -886,7 +891,7 @@ html.dark .exam-toc-sublist {
 html.dark .exam-toc-mobile-backdrop {
   background: rgb(2 6 23 / 0.52);
 }
-@media (min-width: 1680px) {
+@media (min-width: 1280px) {
   .exam-page-main {
     margin-inline: auto;
     width: min(100%, 72rem);

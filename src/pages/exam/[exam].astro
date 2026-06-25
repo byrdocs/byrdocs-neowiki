@@ -2,18 +2,29 @@
 import { getCollection, render } from "astro:content";
 import * as examComponents from "/src/components/exam";
 import ExamLayout from "/src/layouts/ExamLayout.astro";
+import {
+  buildRelatedExams,
+  fetchMetadata,
+} from "/src/utils/relatedExams";
+
 export async function getStaticPaths() {
-  const exams = await getCollection("exams");
+  const [exams, metadata] = await Promise.all([
+    getCollection("exams"),
+    fetchMetadata(),
+  ]);
+
   return exams.map((exam) => ({
     params: {
       exam: exam.id,
     },
     props: {
       exam,
+      relatedExams: buildRelatedExams(exam, exams, metadata),
     },
   }));
 }
-const { exam } = Astro.props;
+
+const { exam, relatedExams } = Astro.props;
 const { Content, headings } = await render(exam);
 ---
 
@@ -22,6 +33,7 @@ const { Content, headings } = await render(exam);
   title={exam.id}
   editPath={exam.filePath}
   headings={headings}
+  relatedExams={relatedExams}
 >
   <Content components={examComponents} />
 </ExamLayout>

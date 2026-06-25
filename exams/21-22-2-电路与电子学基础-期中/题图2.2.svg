@@ -1,0 +1,80 @@
+<svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .component { stroke: #000080; stroke-width: 4; fill: white; }
+    .comp-line { stroke: #000080; stroke-width: 4; fill: none; }
+    .switch-node { stroke: #000080; stroke-width: 2; fill: white; }
+    .node { fill: black; }
+    .arrow { fill: black; }
+    .blue-arrow { fill: #000080; }
+    .label { font-family: "Times New Roman", serif; font-size: 40px; fill: black; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 40px; font-style: italic; fill: black; }
+    .label-sign { font-family: "Times New Roman", serif; font-size: 36px; fill: black; }
+  </style>
+
+  <!-- Main Horizontal Wires -->
+  <line x1="80" y1="100" x2="480" y2="100" class="wire" />
+  <line x1="80" y1="350" x2="880" y2="350" class="wire" />
+  <line x1="680" y1="100" x2="880" y2="100" class="wire" />
+
+  <!-- Switch t=0 on Top Wire -->
+  <line x1="480" y1="100" x2="520" y2="100" class="wire" />
+  <line x1="640" y1="100" x2="680" y2="100" class="wire" />
+  <circle cx="520" cy="100" r="6" class="node" />
+  <circle cx="640" cy="100" r="6" fill="white" stroke="black" stroke-width="3" />
+  <line x1="520" y1="100" x2="620" y2="60" class="wire" />
+  <!-- Switch arrow (closing action) -->
+  <path d="M 550 60 Q 600 70 630 90" stroke="black" stroke-width="3" fill="none" />
+  <polygon points="633,95 622,88 632,82" class="arrow" />
+  <text x="580" y="45" class="label-italic" text-anchor="middle">t <tspan font-style="normal">=</tspan> 0</text>
+
+
+  <!-- Branch 1: 2A Current Source -->
+  <line x1="80" y1="100" x2="80" y2="350" class="wire" />
+  <circle cx="80" cy="225" r="35" class="component" />
+  <line x1="45" y1="225" x2="115" y2="225" class="comp-line" />
+  <polygon points="80,130 70,150 90,150" class="arrow" />
+  <text x="130" y="240" class="label" text-anchor="start">2A</text>
+
+  <!-- Branch 2: 20Ω Resistor & current i -->
+  <line x1="280" y1="100" x2="280" y2="350" class="wire" />
+  <!-- Current arrow i -->
+  <polygon points="280,140 272,120 288,120" class="arrow" />
+  <text x="310" y="135" class="label-italic" text-anchor="start">i</text>
+  <!-- Resistor -->
+  <rect x="265" y="185" width="30" height="80" class="component" />
+  <text x="310" y="240" class="label" text-anchor="start">20Ω</text>
+
+  <!-- Branch 3: 3μF Capacitor -->
+  <line x1="480" y1="100" x2="480" y2="215" class="wire" />
+  <line x1="480" y1="235" x2="480" y2="350" class="wire" />
+  <line x1="440" y1="215" x2="520" y2="215" class="comp-line" />
+  <line x1="440" y1="235" x2="520" y2="235" class="comp-line" />
+  <text x="560" y="190" class="label" text-anchor="end">3μF</text>
+
+  <!-- Branch 4: 2μF Capacitor & Voltage u -->
+  <line x1="680" y1="100" x2="680" y2="215" class="wire" />
+  <line x1="680" y1="235" x2="680" y2="350" class="wire" />
+  <line x1="640" y1="215" x2="720" y2="215" class="comp-line" />
+  <line x1="640" y1="235" x2="720" y2="235" class="comp-line" />
+  <text x="630" y="270" class="label" text-anchor="end">2μF</text>
+  
+  <text x="730" y="170" class="label-sign" text-anchor="start">+</text>
+  <text x="730" y="310" class="label-sign" text-anchor="start">−</text>
+  <text x="730" y="240" class="label-italic" text-anchor="start">u</text>
+
+  <!-- Branch 5: 10Ω Resistor -->
+  <line x1="880" y1="100" x2="880" y2="350" class="wire" />
+  <rect x="865" y="185" width="30" height="80" class="component" />
+  <text x="910" y="240" class="label" text-anchor="start">10Ω</text>
+
+
+  <!-- Solid connection nodes -->
+  <circle cx="280" cy="100" r="8" class="node" />
+  <circle cx="280" cy="350" r="8" class="node" />
+  <circle cx="480" cy="100" r="8" class="node" />
+  <circle cx="480" cy="350" r="8" class="node" />
+  <circle cx="680" cy="100" r="8" class="node" />
+  <circle cx="680" cy="350" r="8" class="node" />
+
+</svg>

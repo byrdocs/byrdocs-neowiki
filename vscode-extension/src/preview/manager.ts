@@ -43,6 +43,23 @@ import type {
   PreviewStatus,
 } from "./types";
 
+function isPowerShell(): boolean {
+  const shell = vscode.env.shell?.toLowerCase() ?? "";
+  return shell.includes("powershell") || shell.endsWith("pwsh.exe") || shell.endsWith("pwsh");
+}
+
+/**
+ * Joins two shell commands so the second runs only if the first succeeds.
+ * Uses `&&` for POSIX/PowerShell 7+, but falls back to `if ($?)` for
+ * Windows PowerShell 5.1, which does not support the `&&` operator.
+ */
+function chainCommands(first: string, second: string): string {
+  if (isPowerShell()) {
+    return `${first}; if ($?) { ${second} }`;
+  }
+  return `${first} && ${second}`;
+}
+
 export class ExamPreviewManager {
   private currentExam: ExamPreviewTarget | null = null;
   private readonly injectedPageScriptSource = buildPreviewSyncInjectedPageScript();
@@ -501,15 +518,13 @@ export class ExamPreviewManager {
     const host = serverUrl.hostname;
     const port = serverUrl.port || "4321";
     const previewConfigPath = await this.ensurePreviewSyncRuntime(workspaceFolder);
-    if (!previewConfigPath) {
-      return `pnpm i && pnpm exec astro dev --host ${host} --port ${port} --strictPort`;
-    }
+    const devCommand = previewConfigPath
+      ? `pnpm exec astro --config ${JSON.stringify(
+          path.relative(workspaceFolder.uri.fsPath, previewConfigPath),
+        )} dev --host ${host} --port ${port} --strictPort`
+      : `pnpm exec astro dev --host ${host} --port ${port} --strictPort`;
 
-    const relativeConfigPath = path.relative(
-      workspaceFolder.uri.fsPath,
-      previewConfigPath,
-    );
-    return `pnpm i && pnpm exec astro --config ${JSON.stringify(relativeConfigPath)} dev --host ${host} --port ${port} --strictPort`;
+    return chainCommands("pnpm i", devCommand);
   }
 
   private async ensurePreviewSyncRuntime(

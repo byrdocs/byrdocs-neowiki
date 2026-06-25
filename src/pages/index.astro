@@ -1,6 +1,16 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "/src/layouts/Layout.astro";
+import { getRecentlyChangedExams } from "/src/utils/gitHistory";
+
+const recentExams = getRecentlyChangedExams();
+
+function formatDate(timestamp: number): string {
+  const date = new Date(timestamp * 1000);
+  const y = date.getFullYear();
+  const m = (date.getMonth() + 1).toString().padStart(2, "0");
+  const d = date.getDate().toString().padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
 ---
 
 <Layout pageTitle="欢迎来到 BYR Docs 维基真题" editPath="src/pages/index.astro">
@@ -52,4 +62,72 @@ import Layout from "/src/layouts/Layout.astro";
       </div>
     </div>
   </section>
+  {
+    recentExams.length > 0 && (
+      <section class="mt-12">
+        <h2
+          class="mt-2 border-none p-0 text-xl font-semibold text-slate-950 dark:text-white"
+        >
+          最近更改
+        </h2>
+        <ul
+          class="mt-4 list-none space-y-0 divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-white pl-0 shadow-sm dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900"
+        >
+          {recentExams.map((exam) => (
+            <li class="flex items-center justify-between gap-4 px-6 py-4">
+              <a
+                href={`/exam/${exam.id}`}
+                class="flex items-center gap-2 text-slate-900 no-underline transition hover:text-sky-600 dark:text-slate-100 dark:hover:text-sky-400"
+              >
+                {exam.id}
+                {exam.uncommitted && (
+                  <span class="shrink-0 rounded-md bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">
+                    uncommitted
+                  </span>
+                )}
+              </a>
+              <time
+                class="shrink-0 text-sm text-slate-500 dark:text-slate-400"
+                datetime={new Date(exam.timestamp * 1000).toISOString()}
+                data-ts={exam.timestamp}
+              >
+                {formatDate(exam.timestamp)}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+<script>
+  (function () {
+    document.querySelectorAll("time[data-ts]").forEach(function (el) {
+      var raw = el.getAttribute("data-ts");
+      if (!raw) return;
+      var d = new Date(parseInt(raw) * 1000);
+      var now = new Date();
+      if (
+        d.getFullYear() === now.getFullYear() &&
+        d.getMonth() === now.getMonth() &&
+        d.getDate() === now.getDate()
+      ) {
+        el.textContent =
+          [d.getHours(), d.getMinutes(), d.getSeconds()]
+            .map(function (n) {
+              return String(n).padStart(2, "0");
+            })
+            .join(":");
+      } else {
+        el.textContent =
+          d.getFullYear() +
+          "-" +
+          [d.getMonth() + 1, d.getDate()]
+            .map(function (n) {
+              return String(n).padStart(2, "0");
+            })
+            .join("-");
+      }
+    });
+  })();
+</script>
 </Layout>

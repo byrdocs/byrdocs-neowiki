@@ -1,0 +1,42 @@
+<svg width="1100" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .line { stroke: black; stroke-width: 3; fill: none; }
+    .bg { fill: white; }
+    .label { font-family: "Times New Roman", serif; font-size: 44px; font-style: italic; fill: black; text-anchor: middle; }
+    .box-label { font-family: "Times New Roman", serif; font-size: 48px; fill: black; text-anchor: middle; }
+    .sign { font-family: "Times New Roman", serif; font-size: 44px; fill: black; text-anchor: middle; }
+    .arrow { fill: black; }
+  </style>
+
+  <!-- Box A -->
+  <line x1="47" y1="140" x2="200" y2="140" class="line"/>
+  <polygon points="140,140 110,128 117,140 110,152" class="arrow"/>
+  <text x="125" y="115" class="label">i</text>
+  <circle cx="40" cy="140" r="7" class="line bg"/>
+  
+  <rect x="200" y="80" width="160" height="120" class="line bg"/>
+  <text x="280" y="158" class="box-label">A</text>
+  
+  <line x1="360" y1="140" x2="513" y2="140" class="line"/>
+  <circle cx="520" cy="140" r="7" class="line bg"/>
+
+  <text x="200" y="260" class="sign">+</text>
+  <text x="280" y="260" class="label">u</text>
+  <text x="360" y="260" class="sign">−</text>
+
+  <!-- Box B -->
+  <line x1="587" y1="140" x2="740" y2="140" class="line"/>
+  <polygon points="645,140 675,128 668,140 675,152" class="arrow"/>
+  <text x="660" y="115" class="label">i</text>
+  <circle cx="580" cy="140" r="7" class="line bg"/>
+  
+  <rect x="740" y="80" width="160" height="120" class="line bg"/>
+  <text x="820" y="158" class="box-label">B</text>
+  
+  <line x1="900" y1="140" x2="1053" y2="140" class="line"/>
+  <circle cx="1060" cy="140" r="7" class="line bg"/>
+
+  <text x="740" y="260" class="sign">−</text>
+  <text x="820" y="260" class="label">u</text>
+  <text x="900" y="260" class="sign">+</text>
+</svg>

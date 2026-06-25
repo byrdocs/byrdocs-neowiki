@@ -105,7 +105,11 @@
     - 硅二极管正向导通电压为 $0.6 \sim 0.7 V$
 </Choices>
 
-7. 测量某硅三极管各电极对地的电压值图2-6所示，则该管的工作状态为：（）
+<Figure src="题图2.7.svg" float>
+    图2-7
+</Figure>
+
+7. 测量某硅三极管各电极对地的电压值图2-7所示，则该管的工作状态为：（）
 
 <Choices>
     - 放大
@@ -115,7 +119,7 @@
 </Choices>
 
 <Figure src="题图2.8.svg" float>
-    图2-7
+    图2-8
 </Figure>
 
 8. 如图2-8所示的放大电路，用示波器观察到输出电压 $u_o$ 的底部被削平，下列哪种措施能够消除这种失真：（）
@@ -155,23 +159,32 @@
 
 ## 三、填空题
 
+<Figure src="题图3.1.svg" float>
+    图3-1
+</Figure>
 1. 图3-1所示电路中，若 $v_{I1} = v_{I2} = 0 V$，则输出电压 $v_o=$ <Blank>0</Blank> V；若 $v_{I1}$ 和 $v_{I2}$ 其中一个为0V，另一个为5V，则输出电压 $v_o=$ <Blank>5 或 4.3</Blank> V。
 
+<Figure src="题图3.2.svg" float>
+    图3-2
+</Figure>
 2. 如图3-2所示的反馈放大电路框架图，系统的闭环放大倍数为 <Blank>$\frac{A}{1+AF}$</Blank>，若为负反馈，则闭环放大倍数和需满足的条件是 <Blank>$1 + \dot{A} \dot{F} > 1$</Blank>。
 
 3. 为了稳定放大电路的输出电压，应引入 <Blank>电压</Blank> 负反馈；为了增大放大电路的输入电阻，应引入 <Blank>串联</Blank> 负反馈（在下列四个选项中选择合适的填写：电压、电流、串联、并联）。
 
 4. 负反馈使放大电路的放大倍数 <Blank>降低</Blank>，但提高了放大倍数的 <Blank>稳定性</Blank>。串联负反馈使输入电阻 <Blank>增大</Blank>。
 
-5. 图3-3所示电路，$v_o$ 和 $v_i$ 的关系表达式为 <Blank>$v_o = -\frac{1}{RC} \int v_i dt$</Blank> 或 <Blank>$v_0 = - \frac{1}{R C} \int_{t_0}^{t} v_i dt + v_0 (t_0)$</Blank>。
+<Figure src="题图3.5.svg" float>
+    图3-5
+</Figure>
+5. 图3-5所示电路，$v_o$ 和 $v_i$ 的关系表达式为 <Blank>$v_o = -\frac{1}{RC} \int v_i dt$</Blank> 或 <Blank>$v_0 = - \frac{1}{R C} \int_{t_0}^{t} v_i dt + v_0 (t_0)$</Blank>。
 
 ## 四、计算题
 
 <Figure src="题图4.svg" float>
-    图4-1
+    图4
 </Figure>
 
-电路如图4-1所示，已知 $u_s = 16 \sqrt{2} \cos 10^4 t$，请写出 $u_s$ 的有效值相量，并求ab两端的戴维南等效电路。
+电路如图4所示，已知 $u_s = 16 \sqrt{2} \cos 10^4 t$，请写出 $u_s$ 的有效值相量，并求ab两端的戴维南等效电路。
 
 <Solution>
     $j \omega L = j 8 \Omega$
@@ -189,11 +202,11 @@
 
 ## 五、计算题
 
-<Figure src="题图5-1.svg" float>
-    图5-1
+<Figure src="题图5.svg" float>
+    图5
 </Figure>
 
-如图5-1所示电路，$t=0$ 时开关S由1打向2，求 $t>0$ 以后电压 $u_c(t)$ 的零输入响应，零状态响应，全响应。
+如图5所示电路，$t=0$ 时开关S由1打向2，求 $t>0$ 以后电压 $u_c(t)$ 的零输入响应，零状态响应，全响应。
 
 <Solution>
     $U_c(0_+) = U_c(0_-) = 8 V$
@@ -211,11 +224,11 @@
 
 ## 六、计算题
 
-<Figure src="题图6-1.svg" float>
-    图6-1
+<Figure src="题图6.svg" float>
+    图6
 </Figure>
 
-电路如图6-1所示的共射放大电路中，已知各元件参数为：$R_{B1}=80 k\Omega$，$R_{B2}=80 k\Omega$，$R_c=1 k\Omega$，$R_E=1 k\Omega$，$R_L=1 k\Omega$，$V_{cc}=15 V$，$\beta=50$，$r_{be}=1 k\Omega$。
+电路如图6所示的共射放大电路中，已知各元件参数为：$R_{B1}=80 k\Omega$，$R_{B2}=80 k\Omega$，$R_c=1 k\Omega$，$R_E=1 k\Omega$，$R_L=1 k\Omega$，$V_{cc}=15 V$，$\beta=50$，$r_{be}=1 k\Omega$。
 
 1. 使用估算法计算该放大电路的静态工作点 $(I_B, I_{CQ}, U_{CEQ})$
 <Solution>
@@ -242,7 +255,7 @@
 </Solution>
 4. 试分析该电路在温度升高时，稳定静态工作点的动态工程。
 <Solution>
-    温度升高时，静态工作点稳定的动态过程分析。
+    $T$升高使$I_{CQ}$升高，使$I_{EQ},V_{EQ}$升高。因为$V_B$固定，所以$U_{BE}$降低，使$I_B$降低，最终导致$I_C$降低。
 </Solution>
 5. 已知如果去掉电容C，则RE会形成交流通路中的电流串联负反馈，此时该电路的电压放大倍数如何变化。
 <Solution>
@@ -251,11 +264,11 @@
 
 ## 七、计算题
 
-<Figure src="题图7-1.svg" float>
-    图7-1
+<Figure src="题图7.svg" float>
+    图7
 </Figure>
 
-电路如图7-1所示，已知 $u_o = -55 u_I$，其余参数如图中所标注。试求出 $R_5$ 的值；并说明若 $u_I$ 与地接反，则输出电压与输入电压的放大倍数（比值）将产生什么变化。
+电路如图7所示，已知 $u_o = -55 u_I$，其余参数如图中所标注。试求出 $R_5$ 的值；并说明若 $u_I$ 与地接反，则输出电压与输入电压的放大倍数（比值）将产生什么变化。
 
 <Solution>
     如图所示，$A_1$ 构成同相比例运算电路，$A_2$ 构成反相比例运算电路。

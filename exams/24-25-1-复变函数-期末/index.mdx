@@ -18,7 +18,7 @@
 
 5. $\int_L \operatorname{Im}(z^2)\mathrm{d}z=$ <Blank>$6+2i$</Blank>，其中 $L$ 是从 $(0,0)$ 到 $(3,1)$ 的直线段。
 
-6. $\int_L e^{z}(\sin z + \cos z)\mathrm{d}z=$ <Blank>$0$</Blank>，其中 $L$ 是从 $(0,0)$ 到 $(0,\pi)$ 的直线段。
+6. $\int_L e^{z}(\sin z + \cos z)\mathrm{d}z=$ <Blank>$\frac{\mathrm i(\mathrm e^x-\mathrm e^{-x})}2$</Blank>，其中 $L$ 是从 $(0,0)$ 到 $(0,\pi)$ 的直线段。
 
 7. $\oint_{|z|=1}\dfrac{(1+z^2)\sin z+e^z}{z}\mathrm{d}z=$ <Blank>$2\pi i$</Blank>
 
@@ -35,15 +35,15 @@
 $\dfrac{z^2-2z+5}{(z-2)(z^2+1)},\ 2<|z|<+\infty$ 的洛朗展开。
 
 <Solution>
-    $\sum_{n=0}^{+\infty}\dfrac{2^n}{z^{n+1}}-\sum_{n=0}^{+\infty}(-1)^n\dfrac{1}{z^{n+2}},\ 2<|z|<+\infty$
+    $\sum_{n=0}^{+\infty}\dfrac{2^n}{z^{n+1}}-2\sum_{n=0}^{+\infty}(-1)^n\dfrac{1}{z^{2n+2}}$
 </Solution>
 
 ### 2. 计算题
 
-a. $\int_{0}^{+\infty}\dfrac{x\sin x}{(x^2+a^2)^2}\mathrm{d}x\ (m>0,a>0)$
+a. $\int_{0}^{+\infty}\dfrac{x\sin mx}{(x^2+a^2)^2}\mathrm{d}x\ (m>0,a>0)$
 
 <Solution>
-    $\dfrac{\pi m \mathrm{e}^{-am}}{a}$
+    $\dfrac{\pi m \mathrm{e}^{-am}}{4a}$
 </Solution>
 
 b. $\int_{0}^{+\infty}\dfrac{\cos 2\theta}{1-2\epsilon\cos\theta+\epsilon^2}\mathrm{d}\theta\ (0<\epsilon<1)$

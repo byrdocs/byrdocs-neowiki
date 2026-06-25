@@ -167,14 +167,45 @@ const hasToc = tocItems.length > 0;
     setMobileOpen(false);
     setAllDesktopBranchesExpanded();
 
+    var mobileManualState = {};
+    var mobileAutoExpanded = {};
+
+    var syncMobileBranch = function(slug) {
+      var manual = mobileManualState[slug];
+      var auto = mobileAutoExpanded[slug] || false;
+      var expanded;
+      if (manual === false) {
+        expanded = false;
+      } else if (manual === true || auto) {
+        expanded = true;
+      } else {
+        expanded = false;
+      }
+      setBranchExpanded(mobileItems, mobileBranchButtons, slug, expanded);
+    };
+
+    var syncAllMobileBranches = function() {
+      mobileItems.forEach(function(item) {
+        if (!(item instanceof HTMLElement) || !item.dataset.slug)
+          return;
+        if (item.querySelector(".exam-toc-children") === null)
+          return;
+        syncMobileBranch(item.dataset.slug);
+      });
+    };
+
     mobileItems.forEach(function(item) {
       if (!(item instanceof HTMLElement) || !item.dataset.slug)
         return;
+      var initialExpanded = item.dataset.expanded === "true";
+      if (initialExpanded) {
+        mobileManualState[item.dataset.slug] = true;
+      }
       setBranchExpanded(
         mobileItems,
         mobileBranchButtons,
         item.dataset.slug,
-        item.dataset.expanded === "true",
+        initialExpanded,
       );
     });
     window.addEventListener("examtocdesktopchange", syncDesktopVisibility);
@@ -228,13 +259,9 @@ const hasToc = tocItems.length > 0;
           );
         });
 
-        var nextExpanded = matchingItem?.dataset.expanded !== "true";
-        setBranchExpanded(
-          mobileItems,
-          mobileBranchButtons,
-          slug,
-          nextExpanded,
-        );
+        var isCurrentlyExpanded = matchingItem?.dataset.expanded === "true";
+        mobileManualState[slug] = !isCurrentlyExpanded;
+        syncMobileBranch(slug);
       });
     });
 
@@ -299,6 +326,26 @@ const hasToc = tocItems.length > 0;
       });
 
       setAllDesktopBranchesExpanded();
+
+      var newAutoExpanded = {};
+      activePath.forEach(function(slug) {
+        newAutoExpanded[slug] = true;
+      });
+      // Clear manual state for slugs whose auto state changed
+      mobileItems.forEach(function(item) {
+        if (!(item instanceof HTMLElement) || !item.dataset.slug)
+          return;
+        if (item.querySelector(".exam-toc-children") === null)
+          return;
+        var slug = item.dataset.slug;
+        var wasAuto = mobileAutoExpanded[slug] || false;
+        var isAuto = newAutoExpanded[slug] || false;
+        if (wasAuto !== isAuto) {
+          delete mobileManualState[slug];
+        }
+      });
+      mobileAutoExpanded = newAutoExpanded;
+      syncAllMobileBranches();
 
       if (activeSlug !== lastActiveSlug) {
         tocLinks.forEach(function(link) {

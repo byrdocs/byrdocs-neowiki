@@ -1,0 +1,67 @@
+name: Claude Auto Review
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head (read-only)
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Write MCP config
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cat > /tmp/mcp.json <<JSON
+          {
+            "mcpServers": {
+              "github": {
+                "command": "npx",
+                "args": ["-y", "@modelcontextprotocol/server-github"],
+                "env": {
+                  "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+                }
+              }
+            }
+          }
+          JSON
+
+      - name: Run Claude review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_DEFAULT_OPUS_MODEL: "anthropic/claude-opus-4.7"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BYRDOCS_SITE_TOKEN: ${{ secrets.BYRDOCS_SITE_TOKEN }}
+          DEBUG: "true"
+        run: |
+          REVIEW_PROMPT=$(cat .github/prompts/review.md)
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO=${{ github.repository }}
+
+          claude -p "You are reviewing PR #${PR_NUMBER} in ${REPO}.
+
+          ${REVIEW_PROMPT}" \
+            --model opus \
+            --mcp-config /tmp/mcp.json \
+            --output-format stream-json \
+            --permission-mode bypassPermissions \
+            --verbose

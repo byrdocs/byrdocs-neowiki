@@ -1,0 +1,29 @@
+<svg width="560" height="360" viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="560" height="360" fill="white"/>
+
+  <!-- circular loop -->
+  <circle cx="280" cy="180" r="95" fill="none" stroke="#111" stroke-width="3"/>
+
+  <!-- left and right straight wires -->
+  <line x1="80" y1="180" x2="185" y2="180" stroke="#111" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="375" y1="180" x2="480" y2="180" stroke="#111" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- current label -->
+  <text x="128" y="158" font-family="Times New Roman, serif" font-size="28" font-style="italic">I</text>
+
+  <!-- labels -->
+  <text x="70" y="170" font-family="Times New Roman, serif" font-size="26" font-style="italic">c</text>
+  <text x="193" y="170" font-family="Times New Roman, serif" font-size="26" font-style="italic">a</text>
+  <text x="358" y="170" font-family="Times New Roman, serif" font-size="26" font-style="italic">b</text>
+  <text x="486" y="170" font-family="Times New Roman, serif" font-size="26" font-style="italic">d</text>
+
+  <!-- clockwise arrows on loop: upper arc left to right -->
+  <path d="M225 103 A95 95 0 0 1 335 103" fill="none" stroke="#111" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- lower arc arrow: left to right -->
+  <path d="M225 257 A95 95 0 0 0 335 257" fill="none" stroke="#111" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>
