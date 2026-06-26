@@ -226,6 +226,7 @@ export type AnswerCompletenessValue =
   (typeof ANSWER_COMPLETENESS_VALUES)[number];
 
 export const DEFAULT_TEMPLATE_PATH = "templates/exam-page.mdx";
+export const EXAM_FRONTMATTER_PATH = "src/utils/examFrontmatter.ts";
 export const CONTENT_CONFIG_PATH = "src/content.config.ts";
 
 export const MARKER_DOCS: Readonly<Record<"+" | "-", string>> = {

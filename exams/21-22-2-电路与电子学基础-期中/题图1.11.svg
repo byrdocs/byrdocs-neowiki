@@ -1,0 +1,98 @@
+<svg width="1200" height="350" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .line { stroke: black; stroke-width: 2; fill: none; }
+    .axis { stroke: black; stroke-width: 2; fill: none; }
+    .graph-line { stroke: black; stroke-width: 2.5; fill: none; }
+    .dashed { stroke: black; stroke-width: 1.5; stroke-dasharray: 6 4; fill: none; }
+    .node { stroke: black; stroke-width: 2; fill: white; }
+    .arrow { fill: black; }
+    .label { font-family: "Times New Roman", serif; font-size: 32px; fill: black; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 32px; font-style: italic; fill: black; }
+    .label-small { font-family: "Times New Roman", serif; font-size: 26px; fill: black; }
+  </style>
+
+  <!-- ==========================================
+       Part 1: Component Diagram (Left)
+       ========================================== -->
+  <line x1="120" y1="50" x2="120" y2="250" class="line" />
+  <circle cx="120" cy="50" r="5" class="node" />
+  <circle cx="120" cy="250" r="5" class="node" />
+  <rect x="80" y="110" width="80" height="90" class="node" />
+
+  <!-- Current arrow -->
+  <polygon points="120,105 112,85 120,92 128,85" class="arrow" />
+  <text x="95" y="85" class="label-italic">i</text>
+
+  <!-- Voltage labels -->
+  <text x="200" y="90" class="label-small" text-anchor="middle">+</text>
+  <text x="200" y="165" class="label-italic" text-anchor="middle">u</text>
+  <text x="200" y="240" class="label-small" text-anchor="middle">−</text>
+
+
+  <!-- ==========================================
+       Part 2: u/V Graph (Middle)
+       ========================================== -->
+  <g transform="translate(260, 0)">
+    <!-- Axes -->
+    <line x1="50" y1="260" x2="450" y2="260" class="axis" />
+    <polygon points="455,260 435,252 442,260 435,268" class="arrow" />
+    
+    <line x1="100" y1="300" x2="100" y2="40" class="axis" />
+    <polygon points="100,35 92,55 100,48 108,55" class="arrow" />
+
+    <!-- Labels -->
+    <text x="120" y="60" class="label"><tspan font-style="italic">u</tspan>/V</text>
+    <text x="460" y="290" class="label"><tspan font-style="italic">t</tspan>/s</text>
+    <text x="75" y="295" class="label-italic">O</text>
+
+    <!-- Ticks & Dashed Lines -->
+    <text x="80" y="155" class="label">1</text>
+    <text x="245" y="295" class="label">1</text>
+    <text x="395" y="295" class="label">2</text>
+
+    <line x1="100" y1="145" x2="250" y2="145" class="dashed" />
+    <line x1="250" y1="145" x2="250" y2="260" class="dashed" />
+
+    <!-- Triangle waveform -->
+    <line x1="100" y1="260" x2="250" y2="145" class="graph-line" />
+    <line x1="250" y1="145" x2="400" y2="260" class="graph-line" />
+  </g>
+
+
+  <!-- ==========================================
+       Part 3: i/A Graph (Right)
+       ========================================== -->
+  <g transform="translate(740, 0)">
+    <!-- Axes -->
+    <line x1="50" y1="260" x2="350" y2="260" class="axis" />
+    <polygon points="355,260 335,252 342,260 335,268" class="arrow" />
+    
+    <line x1="100" y1="330" x2="100" y2="40" class="axis" />
+    <polygon points="100,35 92,55 100,48 108,55" class="arrow" />
+
+    <!-- Labels -->
+    <text x="120" y="60" class="label"><tspan font-style="italic">i</tspan>/A</text>
+    <text x="360" y="290" class="label"><tspan font-style="italic">t</tspan>/s</text>
+    <text x="110" y="295" class="label-italic">O</text>
+
+    <!-- X-axis Ticks -->
+    <text x="200" y="295" class="label">1</text>
+    <text x="290" y="295" class="label">2</text>
+
+    <!-- Y-axis Fractions -->
+    <text x="65" y="195" class="label-small">1</text>
+    <line x1="60" y1="202" x2="85" y2="202" class="line" />
+    <text x="65" y="230" class="label-small">2</text>
+
+    <text x="39" y="311" class="label-small" font-weight="900">−</text>
+    <text x="65" y="295" class="label-small">1</text>
+    <line x1="60" y1="302" x2="85" y2="302" class="line" />
+    <text x="65" y="330" class="label-small">2</text>
+
+    <!-- Square waveform -->
+    <line x1="100" y1="202" x2="200" y2="202" class="graph-line" />
+    <line x1="200" y1="202" x2="200" y2="302" class="graph-line" />
+    <line x1="200" y1="302" x2="300" y2="302" class="graph-line" />
+  </g>
+
+</svg>

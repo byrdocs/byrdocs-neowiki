@@ -1,0 +1,58 @@
+---
+时间: 2025-2026学年第二学期
+科目: 科学计算与最优化
+阶段: 期末
+类型: 本科
+学院:
+- 智能工程与自动化学院
+---
+
+
+## 一、计算题
+### 1.
+$\sqrt{20}$的近似值的相对误差限不大于0.1%，要取几位有效数字？
+<Solution>
+    设取$n$位有效数字，由定理，$\varepsilon_r^* \le \frac{1}{2a_1} \times 10^{-n+1}$，由于$\sqrt{20}=4.4\cdots$,知$a_1=4$，取$n=4$则 $\varepsilon_r^* \le 0.125 \times 10^{-3} < 10^{-3} = 0.1\%$, 
+    即取4位有效数字
+</Solution>
+
+### 2.
+求$f(x)=\sin x$在$x \in [0,\pi]$的$||f||_2$
+## 二、证明题
+### 1.
+证明对于连续函数空间内的范数$||f||_2(f \in C[a,b])$是一种范数
+
+### 2.
+设 $\varphi(x) \in C[a,b]$ 满足：$\forall x \in \mathbb{R}, |\varphi(x)-\varphi(y)| \leq L|x-y| (L<1)$。证明从任意初值出发都能迭代到$x^*=\varphi(x^*)$
+
+### 3.
+已知 $\mathbf{x}(k+1) = \mathbf{A} \mathbf{x}(k)$，证明$\lim_{k \to \infty} \mathbf{x}(k)=0$的充要条件是$\rho(\mathbf{A}) < 1$
+
+### 4.
+已知A是对称正交矩阵，特征值为$\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n$, 证明$cond_2(A)=\frac{\lambda_1}{\lambda_n}$
+
+## 三、算法题
+### 1.
+
+<Figure src="题图3.1.svg" float>
+    题图3.1
+</Figure>
+如图是LTI系统的结构图，其中 $a=1, b=1$
+1. 求该系统的阻尼系数。
+2. 将传递函数写成微分方程和微分方程组的形式。
+3. 用改进欧拉法迭代，写出算法说明。
+4. 写出MATLAB代码
+
+### 2.
+设$D: x^2 + y^2 \le 4, x \ge 0, y \ge 0$, 求 $\iint_{D} f(x,y) \mathrm{d}x\mathrm{d}y$ 
+1. 用蒙特卡洛法写出算法说明
+2. 写出MATLAB代码
+
+### 3.
+已知非线性方程组$f_1=2x_1+\cos x_2$, $f_2=\sin x_1-x_2$
+1. 求$f$的雅克比矩阵，
+2. 用牛顿法迭代，写出算法说明，
+3. 写出matlab代码，求迭代值。
+
+### 4.
+（此题为英文）证明$\sin x, \sin 2x, \sin 3x$在$[0,2\pi]$上是a family of orthogonal functions.

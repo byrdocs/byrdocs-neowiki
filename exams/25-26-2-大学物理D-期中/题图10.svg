@@ -1,0 +1,40 @@
+<svg width="560" height="300" viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="560" height="300" fill="white"/>
+
+  <!-- ground -->
+  <line x1="50" y1="210" x2="510" y2="210" stroke="#222" stroke-width="3"/>
+  <g stroke="#777" stroke-width="1.5">
+    <line x1="55" y1="235" x2="80" y2="210"/>
+    <line x1="85" y1="235" x2="110" y2="210"/>
+    <line x1="115" y1="235" x2="140" y2="210"/>
+    <line x1="145" y1="235" x2="170" y2="210"/>
+    <line x1="175" y1="235" x2="200" y2="210"/>
+    <line x1="205" y1="235" x2="230" y2="210"/>
+    <line x1="235" y1="235" x2="260" y2="210"/>
+    <line x1="265" y1="235" x2="290" y2="210"/>
+    <line x1="295" y1="235" x2="320" y2="210"/>
+    <line x1="325" y1="235" x2="350" y2="210"/>
+    <line x1="355" y1="235" x2="380" y2="210"/>
+    <line x1="385" y1="235" x2="410" y2="210"/>
+    <line x1="415" y1="235" x2="440" y2="210"/>
+    <line x1="445" y1="235" x2="470" y2="210"/>
+    <line x1="475" y1="235" x2="500" y2="210"/>
+  </g>
+
+  <!-- blocks -->
+  <rect x="90" y="145" width="90" height="65" fill="none" stroke="#222" stroke-width="3"/>
+  <rect x="380" y="145" width="90" height="65" fill="none" stroke="#222" stroke-width="3"/>
+
+  <!-- spring connectors -->
+  <line x1="180" y1="178" x2="210" y2="178" stroke="#222" stroke-width="3"/>
+  <line x1="350" y1="178" x2="380" y2="178" stroke="#222" stroke-width="3"/>
+
+  <!-- spring -->
+  <path d="M210 178 L220 158 L240 198 L260 158 L280 198 L300 158 L320 198 L340 158 L350 178" 
+        fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- labels -->
+  <text x="135" y="185" text-anchor="middle" font-family="Times New Roman, serif" font-size="28" font-style="italic">m₁</text>
+  <text x="425" y="185" text-anchor="middle" font-family="Times New Roman, serif" font-size="28" font-style="italic">m₂</text>
+  <text x="280" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="28" font-style="italic">k</text>
+</svg>

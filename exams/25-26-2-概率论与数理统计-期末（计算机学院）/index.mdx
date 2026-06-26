@@ -1,0 +1,220 @@
+---
+时间: 2025-2026学年第二学期
+科目: 概率论与数理统计
+阶段: 期末
+类型: 本科
+学院:
+- 计算机学院
+答案完成度: 残缺
+---
+
+## 一、选择题
+
+1. 袋中有 5 个红球和 5 个黑球，有放回地抽样 5 次。求“抽到红球和黑球的次数均至少为 2”的概率。
+
+<Choices>
+    - $0.33$
+    - $0.375$
+    - $0.66$
+    + $0.625$
+</Choices>
+
+2. （具体数据待确认） 设事件 $A,B,C$ 满足 $P(A-C)=0.4,\ P(A)=0.7, P(AB)=0.4,\ A\supset C,\ B\supset C$。求 $P(AB-C)$。
+
+<Choices>
+    + $0.1$
+</Choices>
+
+3. 设随机变量 $X\sim \pi(5)$，$Y\sim B\left(16,\frac12\right)$，且 $X,Y$ 相互独立。若 $D(2X-Y+1)=C$，求 $C$。
+
+<Choices>
+    + $24$
+</Choices>
+
+4. 设二维随机变量 $(X,Y)$ 服从二维正态分布 $N(\mu_1,\mu_2;\sigma_1^2,\sigma_2^2;\rho)$。若 $X$ 与 $Y$ 相互独立，则 $\rho=$<Slot />。
+
+<Choices>
+    - $-1$
+    + $0$
+    - $1$
+    - 以上均不对
+</Choices>
+
+5. 设连续型随机变量 $X$ 的概率密度 $f(x)$ 满足 $f(2+x)=f(2-x)$，且 $\int_1^3 f(x)\,\mathrm dx=0.6$。求 $P\{X<1\}$。
+
+<Choices>
+    + $0.2$
+    - $0.4$
+    - $0.6$
+    - $0.8$
+</Choices>
+
+6. 设随机变量 $X,Y$ 独立同分布，分布函数分别为 $F_X(x)$ 与 $F_Y(x)$。求随机变量 $\min\{X,Y\}$ 的分布函数 $F(x)$。
+
+<Choices>
+    - $F_X(x)+F_Y(x)$
+    - $F_X(x)F_Y(x)$
+    + $1-[1-F_X(x)]^2$
+    - $1-[1-F_X(x)][1-F_Y(y)]$
+</Choices>
+
+7. 设科学实验中每个测量值都按四舍五入保留 $k$ 位小数。若第 $i$ 次测量的精确值为 $x_i$，四舍五入后的记录值为 $X_i$，则第 $i$ 次测量产生的舍入误差为 $\varepsilon_i=X_i-x_i$，并假设
+
+$$
+\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n
+\overset{\text{i.i.d.}}{\sim}
+U\left(-\frac12\cdot 10^{-k},\frac12\cdot 10^{-k}\right).
+$$
+
+利用中心极限定理，近似求总舍入误差 $S_n=\sum_{i=1}^n\varepsilon_i$ 所服从的分布。
+
+<Choices>
+    + $\displaystyle N\left(0,\frac{n}{12}10^{-2k}\right)$
+</Choices>
+
+8. 设 $X_1,X_2,\ldots,X_5$ 是来自同一总体的简单随机样本，且 $E(X_1)=\alpha,\ D(X_1)=\beta$。求 $D(\overline X)$。
+
+<Choices>
+    - $\alpha+\beta$
+    + $0.2\beta$
+    - $\beta$
+    - $5\beta$
+</Choices>
+
+9. 设 $X_1,X_2,\ldots,X_n$ 为来自正态总体 $N(\mu,\sigma^2)$ 的简单随机样本，记
+
+$$
+\overline X=\frac1n\sum_{i=1}^n X_i,\quad
+S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\overline X)^2,\quad
+S=\sqrt{S^2}.
+$$
+
+判断下列说法中正确的是哪一项。
+
+<Choices>
+    - $\displaystyle \frac{\overline X-\mu}{\sigma/\sqrt n}\sim t(n-1)$
+    + $\displaystyle \frac{\overline X-\mu}{S/\sqrt n}\sim t(n-1)$
+    - $\displaystyle \frac{S^2}{\sigma^2}\sim \chi^2(n-1)$
+</Choices>
+
+10. 为测评手机的某项指标，取 $n$ 个样本。设
+
+$$
+X_1,\ldots,X_n\sim N(\mu_1,\sigma^2),\quad
+Y_1,\ldots,Y_n\sim N(\mu_2,\sigma^2),
+$$
+
+两样本相互独立，且总体方差相同。由样本得到 $\overline X,\overline Y$，两个样本方差均为 $S^2$。求 $\mu_1-\mu_2$ 置信水平为 $0.95$ 的置信区间。
+
+<Choices>
+    + $\left(\overline X-\overline Y-t_{0.025}(2n-2)\frac{\sqrt2S}{\sqrt n},\ \overline X-\overline Y+t_{0.025}(2n-2)\frac{\sqrt2S}{\sqrt n}\right)$
+    - $\left(\overline X-\overline Y-t_{0.025}(2n-2)\frac{S}{\sqrt n},\ \overline X-\overline Y+t_{0.025}(2n-2)\frac{S}{\sqrt n}\right)$
+    - $\left(\overline X-\overline Y-t_{0.05}(2n-2)\frac{\sqrt2S}{\sqrt n},\ \overline X-\overline Y+t_{0.05}(2n-2)\frac{\sqrt2S}{\sqrt n}\right)$
+    - $\left(\overline X-\overline Y-t_{0.05}(2n-2)\frac{S}{\sqrt n},\ \overline X-\overline Y+t_{0.05}(2n-2)\frac{S}{\sqrt n}\right)$
+</Choices>
+
+## 二、计算题
+
+设随机变量 $X$ 的概率密度为
+
+$$
+f(x)=
+\begin{cases}
+\displaystyle c\left(1-\frac{x}{10}\right),&0<x<10,\\
+0,&\text{其他}.
+\end{cases}
+$$
+
+1. 求常数 $c$；
+2. 求 $P\{X>5\}$；
+3. 求 $E(X)$ 与 $D(X)$。
+
+## 三、计算题
+
+设 $X\sim U(0,1)$，求随机变量 $Y=e^X$ 的概率密度。
+
+## 四、计算题
+
+设随机变量 $X$ 与 $Y$ 的分布律分别为
+
+$$
+X\sim
+\begin{bmatrix}
+-1&0&1\\
+\frac13&\frac13&\frac13
+\end{bmatrix},\quad
+Y\sim
+\begin{bmatrix}
+-1&1\\
+\frac12&\frac12
+\end{bmatrix},
+$$
+
+且 $P\{XY=1\}=0$。
+
+1. 求 $(X,Y)$ 的联合分布律；
+2. 求 $P\{\max\{ X,Y \} =1\}$；
+3. 求 $Y=1$ 条件下 $X$ 的条件分布律；
+4. 判断 $X$ 和 $Y$ 是否相互独立，并说明理由。
+
+## 五、计算题
+
+设 $X_1,X_2,\ldots,X_n$ 独立同分布，且均服从二项分布 $B(m,p)$。
+
+1. 求 $p$ 的最大似然估计量 $\widehat p$；
+2. 设 $\beta=\frac{1+p}{3}$，求 $\beta$ 的最大似然估计量 $\widehat\beta$。
+
+## 六、计算题
+
+某网红奶茶店声称超大杯容量为 $500\,\mathrm{mL}$。调查人员随机取样 36 杯，测得样本均值为 $490\,\mathrm{mL}$，样本标准差为 $12\,\mathrm{mL}$。
+
+根据这些数据，在显著性水平 $\alpha=0.05$ 下，检验是否能说明该奶茶的容量显著小于 $500\,\mathrm{mL}$，并给出检验过程。
+
+可能会用到的量：
+
+$$
+t_{0.05}(35)=1.6896,\quad
+t_{0.05}(36)=1.6883,\quad
+t_{0.025}(35)=2.0301,\quad
+t_{0.025}(36)=2.0281.
+$$
+
+## 七、计算题
+
+某冰淇淋店统计了气温与冰淇淋销售量的关系，共有 10 组数据如下。
+
+这些数据计算出
+
+$$
+\newcommand{\cell}[1]{\vcenter{\hbox{\rule[-1.6em]{0pt}{4.0em}$\displaystyle #1$}}}
+\begin{array}{|l|l|l|}
+\hline
+\cell{\sum_{i=1}^{10} x_i=110}
+&
+\cell{\sum_{i=1}^{10} y_i=160}
+&
+\cell{}
+\\
+\hline
+\cell{\sum_{i=1}^{10} x_i^2=1320}
+&
+\cell{\sum_{i=1}^{10} y_i^2=2678}
+&
+\cell{\sum_{i=1}^{10} x_i y_i=1870}
+\\
+\hline
+\end{array}
+$$
+
+1. 求线性回归方程 $\widehat y=\widehat a+\widehat b x$；
+2. 在显著性水平 $\alpha=0.05$ 下，对线性回归方程 $\widehat y=\widehat a+\widehat b x$ 进行显著性检验。
+
+可能会用到的量：
+
+$$
+F_{0.05}(1,8)=5.32,\quad
+F_{0.05}(1,9)=5.12,\quad
+t_{0.05}(8)=1.860,\quad
+t_{0.05}(9)=1.833.
+$$
+

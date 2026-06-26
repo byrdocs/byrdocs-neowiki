@@ -1,0 +1,66 @@
+<svg width="1000" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: black; stroke-width: 3; fill: none; }
+    .component { stroke: #000080; stroke-width: 4; fill: white; }
+    .comp-line { stroke: #000080; stroke-width: 4; fill: none; }
+    .inductor { stroke: #000080; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .node { fill: black; }
+    .terminal { stroke: black; stroke-width: 3; fill: white; }
+    .label-italic { font-family: "Times New Roman", serif; font-size: 48px; font-style: italic; fill: black; }
+    .label-sub { font-family: "Times New Roman", serif; font-size: 32px; fill: black; }
+  </style>
+
+  <!-- Wires -->
+  <!-- Main horizontal line segments -->
+  <line x1="80" y1="180" x2="160" y2="180" class="wire" />
+  <line x1="260" y1="180" x2="330" y2="180" class="wire" />
+  <line x1="510" y1="180" x2="600" y2="180" class="wire" />
+  <line x1="860" y1="180" x2="940" y2="180" class="wire" />
+
+  <!-- Parallel Branch Wires -->
+  <line x1="600" y1="180" x2="600" y2="100" class="wire" />
+  <line x1="600" y1="180" x2="600" y2="260" class="wire" />
+  <line x1="860" y1="180" x2="860" y2="100" class="wire" />
+  <line x1="860" y1="180" x2="860" y2="260" class="wire" />
+  
+  <!-- Top parallel branch wires (to L2) -->
+  <line x1="600" y1="100" x2="640" y2="100" class="wire" />
+  <line x1="820" y1="100" x2="860" y2="100" class="wire" />
+
+  <!-- Bottom parallel branch wires (to C) -->
+  <line x1="600" y1="260" x2="710" y2="260" class="wire" />
+  <line x1="750" y1="260" x2="860" y2="260" class="wire" />
+
+
+  <!-- Terminals -->
+  <circle cx="80" cy="180" r="8" class="terminal" />
+  <circle cx="940" cy="180" r="8" class="terminal" />
+
+  <!-- Solid connection nodes -->
+  <!-- <circle cx="600" cy="180" r="6" class="node" /> -->
+  <!-- <circle cx="860" cy="180" r="6" class="node" /> -->
+  <!-- Looking closely at image 9, there are no heavy black solid nodes at the junctions, just direct wire corners -->
+
+
+  <!-- Components -->
+  
+  <!-- Resistor R -->
+  <rect x="160" y="165" width="100" height="30" class="component" />
+  <text x="210" y="145" class="label-italic" text-anchor="middle">R</text>
+
+  <!-- Inductor L1 (3 upward arcs) -->
+  <path d="M 330 180 A 30 30 0 0 1 390 180 A 30 30 0 0 1 450 180 A 30 30 0 0 1 510 180" class="inductor" />
+  <!-- Label L1 -->
+  <text x="410" y="125" class="label-italic" text-anchor="middle">L<tspan class="label-sub" baseline-shift="sub">1</tspan></text>
+
+  <!-- Inductor L2 (Top parallel, 3 upward arcs) -->
+  <path d="M 640 100 A 30 30 0 0 1 700 100 A 30 30 0 0 1 760 100 A 30 30 0 0 1 820 100" class="inductor" />
+  <!-- Label L2 -->
+  <text x="730" y="45" class="label-italic" text-anchor="middle">L<tspan class="label-sub" baseline-shift="sub">2</tspan></text>
+
+  <!-- Capacitor C (Bottom parallel) -->
+  <line x1="710" y1="225" x2="710" y2="295" class="comp-line" />
+  <line x1="750" y1="225" x2="750" y2="295" class="comp-line" />
+  <text x="730" y="210" class="label-italic" text-anchor="middle">C</text>
+
+</svg>

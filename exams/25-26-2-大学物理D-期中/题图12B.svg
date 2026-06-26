@@ -1,0 +1,15 @@
+<svg width="520" height="380" viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#111"/></marker></defs>
+  <rect width="520" height="380" fill="white"/>
+  <line x1="70" y1="310" x2="465" y2="310" stroke="#111" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="70" y1="310" x2="70" y2="45" stroke="#111" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="478" y="317" font-family="Times New Roman, serif" font-size="24" font-style="italic">r</text>
+  <text x="58" y="35" font-family="Times New Roman, serif" font-size="24" font-style="italic">E</text>
+  <text x="54" y="333" font-family="Times New Roman, serif" font-size="22" font-style="italic">O</text>
+  <line x1="210" y1="304" x2="210" y2="316" stroke="#111" stroke-width="2"/>
+  <text x="202" y="340" font-family="Times New Roman, serif" font-size="22" font-style="italic">R</text>
+  <line x1="210" y1="310" x2="210" y2="150" stroke="#111" stroke-width="2" stroke-dasharray="7 6"/>
+  <line x1="70" y1="310" x2="210" y2="310" stroke="#111" stroke-width="4"/>
+  <path d="M 210.0 150.0 L 216.8 164.5 L 223.6 177.1 L 230.4 188.1 L 237.2 197.9 L 244.0 206.5 L 250.8 214.1 L 257.6 220.9 L 264.4 227.1 L 271.2 232.6 L 278.1 237.6 L 284.9 242.1 L 291.7 246.2 L 298.5 249.9 L 305.3 253.3 L 312.1 256.5 L 318.9 259.4 L 325.7 262.0 L 332.5 264.5 L 339.3 266.8 L 346.1 268.9 L 352.9 270.8 L 359.7 272.6 L 366.5 274.3 L 373.3 275.9 L 380.1 277.4 L 386.9 278.8 L 393.8 280.1 L 400.6 281.3 L 407.4 282.4 L 414.2 283.5 L 421.0 284.5 L 427.8 285.5 L 434.6 286.4 L 441.4 287.3 L 448.2 288.1 L 455.0 288.8" fill="none" stroke="#111" stroke-width="3"/>
+  <text x="285" y="132" font-family="Times New Roman, serif" font-size="22" font-style="italic">E ∝ 1/r²</text>
+</svg>
