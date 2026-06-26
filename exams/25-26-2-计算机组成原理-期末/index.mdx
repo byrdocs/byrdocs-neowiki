@@ -39,15 +39,13 @@
 3. 若每个标记项再增加 1 位有效位，忽略脏位跟其他标记位，则该 Cache 的实际总容量是多少？
 
 ## 六
-有一问是，寄存器间接寻址，然后目标地址的数为AB和CD，然后大端序
-
 某计算机指令字长为 16 位，按字节编址。指令分为 R、I、B 三类，寄存器编号字段长度为 3 位，`opcode` 字段长度为 4 位，R 型指令的 `func` 字段长度为 3 位，imm 和 offset 是有符号整数。指令格式与功能如下：
 
 | 类型 | 指令格式 | 功能说明 |
 | --- | --- | --- |
-| R 型 | `opcode(4) rs(3) rd(3) rt(3) func(3)` | `R[rt] $\leftarrow$ R[rs] op R[rd]` |
-| I 型 | `opcode(4) rs(3) rt(3) imm(6)` | `R[rt] $\leftarrow$ M[R[rs] + imm]` |
-| B 型 | `opcode(4) rs(3) offset(9)` | 若 `R[rs] = 0`，则 `PC $\leftarrow$ PC + 2 + 2 $\times$ offset` |
+| R 型 | opcode(4) rs(3) rd(3) rt(3) func(3) | R[rt] $\leftarrow$ R[rs] op R[rd] |
+| I 型 | opcode(4) rs(3) rt(3) imm(6) | R[rt] $\leftarrow$ M[R[rs] + imm] |
+| B 型 | opcode(4) rs(3) offset(9) | 若 R[rs] = 0，则 PC $\leftarrow$ PC + 2 + 2 $\times$ offset |
 
 部分指令编码如下：
 
@@ -65,6 +63,11 @@
 4. 某条 beqz 指令存放地址为 1000H，执行该指令时 PC = 2000H，目标寄存器为 R[3]，offset = -2。分别求当 R[3] = 0 和 R[3] = 1 时，指令执行后的 PC 值。
 
 ## 七
+
+<Figure src="题图7.svg" float>
+    题图7
+</Figure>
+
 某计算机采用单总线结构，主存按字节编址，指令字长为若干字。数据通路如图所示。
 图片描述：系统包含程序计数器 PC、指令寄存器 IR、主存地址寄存器 MAR、主存数据寄存器 MDR、主存 M、通用寄存器组 GPRs，其中包含 R0、R1 等通用寄存器。MDRinE 等信号从内部总线写 MDR。各寄存器通过控制信号如 PCout、PCin、MARin、MDRout、IRin、GPR0out、GPR1in 等与内部总线相连。主存由 Read、Write 等信号控制。ALU，A 输入端接暂存寄存器 Y，另一个输入端 B 直接接内部总线，ALU 运算结果先送入暂存寄存器 Z，再由 Zout 送回总线
 
