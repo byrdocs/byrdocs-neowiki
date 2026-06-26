@@ -1,0 +1,27 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="black" stroke-width="2" fill="none">
+    <!-- 上方水平导轨 -->
+    <line x1="50" y1="50" x2="320" y2="50" />
+    <!-- 下方水平导轨 -->
+    <line x1="50" y1="150" x2="320" y2="150" />
+    
+    <!-- 右侧电阻与连接线 -->
+    <line x1="320" y1="50" x2="320" y2="85" />
+    <rect x="315" y="85" width="10" height="30" />
+    <line x1="320" y1="115" x2="320" y2="150" />
+    
+    <!-- 虚线 -->
+    <line x1="200" y1="50" x2="200" y2="150" stroke-dasharray="6,6" />
+    
+    <!-- 倾斜导轨 -->
+    <line x1="200" y1="50" x2="80" y2="180" />
+    <line x1="200" y1="150" x2="80" y2="280" />
+    
+    <!-- 底部连接线 -->
+    <line x1="80" y1="180" x2="80" y2="280" />
+  </g>
+  
+  <!-- 文本标签 -->
+  <text x="250" y="40" font-size="24" font-family="Arial" fill="black">d</text>
+  <text x="150" y="240" font-size="24" font-family="Arial" fill="black">l</text>
+</svg>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" width="800" height="700">
+  <!-- 背景 -->
+  <rect width="800" height="700" fill="white"/>
+  
+  <!-- 标题 -->
+  <text x="400" y="35" text-anchor="middle" font-size="24" font-weight="bold" fill="#333">对应分析图</text>
+  
+  <!-- 坐标轴定义 -->
+  <!-- x轴范围: -0.6 ~ 0.6, y轴范围: -0.6 ~ 0.4 -->
+  <!-- 绘图区: 左80, 右120, 上60, 下80 -->
+  
+  <!-- 绘图区边框 -->
+  <rect x="80" y="60" width="600" height="560" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- X轴刻度和网格线 -->
+  <g font-size="14" fill="#333">
+    <!-- -0.6 -->
+    <line x1="80" y1="60" x2="80" y2="620" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="80" y1="620" x2="80" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="80" y="645" text-anchor="middle">-0.6</text>
+    
+    <!-- -0.4 -->
+    <line x1="180" y1="60" x2="180" y2="620" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="180" y1="620" x2="180" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="180" y="645" text-anchor="middle">-0.4</text>
+    
+    <!-- -0.2 -->
+    <line x1="280" y1="60" x2="280" y2="620" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="280" y1="620" x2="280" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="280" y="645" text-anchor="middle">-0.2</text>
+    
+    <!-- 0.0 -->
+    <line x1="380" y1="60" x2="380" y2="620" stroke="#999" stroke-width="0.8"/>
+    <line x1="380" y1="620" x2="380" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="380" y="645" text-anchor="middle">0.0</text>
+    
+    <!-- 0.2 -->
+    <line x1="480" y1="60" x2="480" y2="620" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="480" y1="620" x2="480" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="480" y="645" text-anchor="middle">0.2</text>
+    
+    <!-- 0.4 -->
+    <line x1="580" y1="60" x2="580" y2="620" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="580" y1="620" x2="580" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="580" y="645" text-anchor="middle">0.4</text>
+    
+    <!-- 0.6 -->
+    <line x1="680" y1="60" x2="680" y2="620" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="680" y1="620" x2="680" y2="625" stroke="#333" stroke-width="1.5"/>
+    <text x="680" y="645" text-anchor="middle">0.6</text>
+  </g>
+  
+  <!-- Y轴刻度和网格线 -->
+  <g font-size="14" fill="#333">
+    <!-- 0.4 -->
+    <line x1="80" y1="116" x2="680" y2="116" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="75" y1="116" x2="80" y2="116" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="121" text-anchor="end">0.4</text>
+    
+    <!-- 0.2 -->
+    <line x1="80" y1="228" x2="680" y2="228" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="75" y1="228" x2="80" y2="228" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="233" text-anchor="end">0.2</text>
+    
+    <!-- 0.0 -->
+    <line x1="80" y1="340" x2="680" y2="340" stroke="#999" stroke-width="0.8"/>
+    <line x1="75" y1="340" x2="80" y2="340" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="345" text-anchor="end">0.0</text>
+    
+    <!-- -0.2 -->
+    <line x1="80" y1="452" x2="680" y2="452" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="75" y1="452" x2="80" y2="452" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="457" text-anchor="end">-0.2</text>
+    
+    <!-- -0.4 -->
+    <line x1="80" y1="564" x2="680" y2="564" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="75" y1="564" x2="80" y2="564" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="569" text-anchor="end">-0.4</text>
+    
+    <!-- -0.6 -->
+    <line x1="75" y1="620" x2="80" y2="620" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="625" text-anchor="end">-0.6</text>
+  </g>
+  
+  <!-- X轴标签 -->
+  <text x="380" y="680" text-anchor="middle" font-size="22" font-weight="bold" fill="#333">Dimension 1</text>
+  
+  <!-- Y轴标签 -->
+  <text x="30" y="340" text-anchor="middle" font-size="22" font-weight="bold" fill="#333" transform="rotate(-90, 30, 340)">Dimension 2</text>
+  
+  <!-- 图例 -->
+  <g transform="translate(600, 90)">
+    <!-- 商品图例 -->
+    <circle cx="0" cy="0" r="10" fill="white" stroke="#333" stroke-width="2"/>
+    <text x="20" y="5" font-size="18" fill="#333">商品</text>
+    
+    <!-- 城市图例 -->
+    <polygon points="0,35 -10,50 10,50" fill="white" stroke="#333" stroke-width="2"/>
+    <text x="20" y="48" font-size="18" fill="#333">城市</text>
+  </g>
+  
+  <!-- 商品点（圆圈） -->
+  <!-- 食品: (-0.28, 0.32) -->
+  <circle cx="248" cy="140" r="7" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="265" y="135" font-size="18" fill="#333">食品</text>
+  
+  <!-- 服饰: (-0.15, -0.15) -->
+  <circle cx="313" cy="424" r="7" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="330" y="418" font-size="18" fill="#333">服饰</text>
+  
+  <!-- 图书: (-0.52, -0.42) -->
+  <circle cx="124" cy="575" r="7" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="140" y="565" font-size="18" fill="#333">图书</text>
+  
+  <!-- 家电: (0.42, -0.05) -->
+  <circle cx="590" cy="368" r="7" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="610" y="385" font-size="18" fill="#333">家电</text>
+  
+  <!-- 美妆: (0.48, -0.02) -->
+  <circle cx="600" cy="351" r="7" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="620" y="360" font-size="18" fill="#333">美妆</text>
+  
+  <!-- 城市点（三角形） -->
+  <!-- 北京: (-0.08, 0.38) -->
+  <polygon points="349,103 339,120 359,120" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="370" y="100" font-size="18" fill="#333">北京</text>
+  
+  <!-- 上海: (0.12, -0.27) -->
+  <polygon points="440,490 430,507 450,507" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="460" y="485" font-size="18" fill="#333">上海</text>
+  
+  <!-- 广州: (0.48, 0.02) -->
+  <polygon points="620,313 610,330 630,330" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="640" y="300" font-size="18" fill="#333">广州</text>
+  
+  <!-- 成都: (-0.55, -0.12) -->
+  <polygon points="105,408 95,425 115,425" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="125" y="395" font-size="18" fill="#333">成都</text>
+</svg>

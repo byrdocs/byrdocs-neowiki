@@ -1,0 +1,74 @@
+---
+时间: 2025-2026学年第二学期
+科目: 多元统计分析
+阶段: 期末
+类型: 本科
+学院:
+- 计算机学院
+---
+
+## 一、填空题（每小题4分，共16分）
+
+1. 设 $\mathbf{X}_{(\alpha)}=(X_{\alpha1},X_{\alpha2},\dots,X_{\alpha p})^T \sim N_p(\mu_\alpha,\Sigma),\ \alpha=1,2,\dots,n$ 且相互独立，则由 $\mathbf{X}_{(\alpha)}$ 组成的随机矩阵：$\displaystyle W_{p\times p}=\sum_{\alpha=1}^n \mathbf{X}_{(\alpha)}\mathbf{X}_{(\alpha)}^T$ 的分布称为<Blank />分布，它是一元统计里<Blank />分布的推广。
+
+2. 设 $\mathbf{X}_{(1)},\mathbf{X}_{(2)},\dots,\mathbf{X}_{(n)}$ 为来自 $p$ 元正态总体 $N_p(\mu,\Sigma)$ 的样本，$n>p,\ \Sigma>0$，均值向量 $\boldsymbol{\mu}$ 和协差阵 $\mathbf{\Sigma}$ 未知，则 $\boldsymbol{\mu}$ 和 $\mathbf{\Sigma}$ 的极大似然估计为 $\hat{\boldsymbol{\mu}}=$ <Blank />、$\hat{\mathbf{\Sigma}}=$ <Blank />。
+
+3. 设两个总体 $G_1,G_2$，对任意样品 $X$，记其到两类的马氏距离为 $d^2(X,G_1)$、$d^2(X,G_2)$，依据距离判别准则：
+    - 若 $d^2(X,G_1)<d^2(X,G_2)$，则将样品 $X$ 判归<Blank />；
+    - 若 $d^2(X,G_1)>d^2(X,G_2)$，则将样品 $X$ 判归<Blank />；
+    - 若 $d^2(X,G_1)=d^2(X,G_2)$，则<Blank />。
+
+4. 根据下面描述，依次是哪4种多元统计图形？<Blank />、<Blank />、<Blank />、<Blank />。
+    图形描述：观察两变量相关性；多维度辐射多边形；人脸映射多维指标；样本对应光滑曲线。
+    请从「折线图、雷达图、闪电图、散点图、调和曲线图、脸谱图、星座图」中选填。
+
+
+## 二、简答题（每小题10分，共60分）
+
+### 1.
+简述马氏距离？马氏距离与欧式距离的联系和区别？
+
+### 2.
+简述主成分分析（PCA）中的方差贡献率、被提取率（共同度）是什么？主成分分析的几何含义是什么（以二维为例）？
+
+### 3.
+简述因子分析（FA）的原理？什么是因子旋转，作用是什么？
+
+### 4.
+简述典型相关分析（CCA）的原理？冗余指数如何计算？冗余分析的作用？
+
+### 5.
+
+<Figure src="题图2.5.svg" float>
+    题图2.5
+</Figure>
+
+简述对应分析（CA）的原理？根据下面案例的"对应分析图"，阐述结论？
+     
+**案例**：调查 5 类商品（食品、服饰、家电、图书、美妆）在 4 个城市（北京、上海、广州、成都）的月销售额
+
+### 6.
+简述K-均值聚类和系统聚类（谱系）分析的原理？如何解读冰柱图和树状（谱系）图？
+
+---
+
+## 三、综合题（每小题12分，共24分）
+
+### 1.
+设 $p$ 维随机向量 $\mathbf{X}=(X_1,X_2,\dots,X_p)^T$，均值向量 $E(\mathbf{X})=(E(X_1),E(X_2),\dots,E(X_p))^T$，
+
+自协方差阵 $\mathbf{\Sigma}=\mathrm{Cov}(\mathbf{X},\mathbf{X})=E\left[(\mathbf{X}-E(\mathbf{X}))(\mathbf{X}-E(\mathbf{X}))^T\right]$，
+
+互协方差阵 $\mathrm{Cov}(\mathbf{X},\mathbf{Y})=E\left[(\mathbf{X}-E(\mathbf{X}))(\mathbf{Y}-E(\mathbf{Y}))^T\right]$。
+
+1. 判断 $\mathbf{\Sigma}$ 是否为对称非负定阵？
+2. 证明：$E(A\mathbf{X})=AE(\mathbf{X})$，其中 $A$ 为 $m\times p$ 常数矩阵，$A=(a_{ij})$。
+3. 证明：$\mathrm{Cov}(A\mathbf{X},B\mathbf{Y})=A\mathrm{Cov}(\mathbf{X},\mathbf{Y})B^T$，$A,B$ 为满足可乘条件的常数矩阵。
+
+### 2.
+抽取 6 个单变量样品，观测值依次为：1.2， 3， 4.8， 6， 8.5， 10，样品点间距采用绝对距离。
+
+1. 试用系统聚类法中的最长距离法对这 6 个样品做聚类分析，并绘制聚类谱系图。
+2. 什么是聚类分析的浓缩和扩张？本例最长距离法的聚类分析比最短距离法的聚类分析是浓缩，还是扩张？
+
+
