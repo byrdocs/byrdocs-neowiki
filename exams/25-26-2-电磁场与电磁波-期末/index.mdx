@@ -1,0 +1,258 @@
+---
+时间: 2025-2026学年第二学期
+科目: 电磁场与电磁波
+阶段: 期末
+类型: 本科
+学院:
+- 信息与通信工程学院
+- 电子工程学院
+---
+
+1. 柱坐标系梯度、散度、旋度及拉普拉斯方程表示式
+
+$$
+\nabla \varphi = e_r \frac{\partial \varphi}{\partial r} + \frac{e_\phi}{r}\frac{\partial \varphi}{\partial \phi} + e_z \frac{\partial \varphi}{\partial z}
+$$
+
+$$
+\nabla \cdot a = \frac{1}{r}\frac{\partial}{\partial r} (r a_r) + \frac{1}{r}\frac{\partial a_\phi}{\partial \phi} + \frac{\partial a_z}{\partial z}
+$$
+
+$$
+\begin{aligned}
+\nabla \times a =& e_r \left( \frac{1}{r}\frac{\partial a_z}{\partial \phi} - \frac{\partial a_\phi}{\partial z} \right)
++ e_\phi \left( \frac{\partial a_r}{\partial z} - \frac{\partial a_z}{\partial r} \right) + e_z \left( \frac{1}{r}\frac{\partial}{\partial r} (r a_\phi)- \frac{1}{r}\frac{\partial a_r}{\partial \phi} \right)
+\end{aligned}
+$$
+
+$$
+\nabla^2 \varphi = \Delta \varphi = \frac{1}{r}\frac{\partial}{\partial r}\left(r \frac{\partial \varphi}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 \varphi}{\partial \phi^2} + \frac{\partial^2 \varphi}{\partial z^2}
+$$
+
+---
+
+2. 球坐标系梯度、散度、旋度及拉普拉斯方程表示式
+
+$$
+\nabla \varphi = e_r \frac{\partial \varphi}{\partial r} + \frac{e_\theta}{r}\frac{\partial \varphi}{\partial \theta} + \frac{e_\phi}{r\sin\theta}\frac{\partial \varphi}{\partial \phi}
+$$
+
+$$
+\nabla \cdot a = \frac{1}{r^2}\frac{\partial}{\partial r} (r^2 a_r) + \frac{1}{r\sin\theta}\frac{\partial }{\partial \theta} (\sin\theta \,a_\theta) + \frac{1}{r\sin\theta}\frac{\partial a_\phi}{\partial \phi}
+$$
+
+$$
+\begin{aligned}
+\nabla \times a =& e_r \left( \frac{1}{r\sin\theta}\frac{\partial}{\partial \theta} (\sin\theta \,a_\phi) - \frac{1}{r\sin\theta}\frac{\partial a_\theta}{\partial \phi} \right) + e_\theta \left( \frac{1}{r\sin\theta}\frac{\partial a_r}{\partial \phi} - \frac{1}{r}\frac{\partial (r a_\phi)}{\partial r} \right) \\
+&+ e_\phi \left( \frac{1}{r}\frac{\partial}{\partial r} (r a_\theta) - \frac{1}{r}\frac{\partial a_r}{\partial \theta} \right)
+\end{aligned}
+$$
+
+$$
+\nabla^2 \varphi = \Delta \varphi = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2 \frac{\partial \varphi}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial \varphi}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2 \varphi}{\partial \phi^2}
+$$
+
+## 一、选择题（每题 1.5 分，共 15 分）
+
+1. 斯托克斯定理的形式是<Slot />
+<Choices>
+    - $\displaystyle \int_S (\nabla \times \mathbf{F}) \cdot \mathrm{d}\mathbf{S} = \int \mathbf{F} \cdot \mathrm{d}\mathbf{l}$
+
+    + $\displaystyle \int_S (\nabla \times \mathbf{F}) \cdot \mathrm{d}\mathbf{S} = \oint_C \mathbf{F} \cdot \mathrm{d}\mathbf{l}$
+
+    - $\displaystyle \oiint_S (\nabla \times \mathbf{F}) \cdot \mathrm{d}\mathbf{S} = \oint_C \mathbf{F} \cdot \mathrm{d}\mathbf{l}$
+
+    - $\displaystyle \int_V (\nabla \times \mathbf{F}) \cdot \mathrm{d}V = \oint_C \mathbf{F} \cdot \mathrm{d}\mathbf{l}$
+</Choices>
+
+2. 在时变场情况下根据位函数计算电场的形式为<Slot />
+<Choices>
+    - $\mathbf{E} = -\nabla\varphi$
+
+    - $\mathbf{E} = \nabla\varphi$
+
+    + $\mathbf{E} = -\nabla\varphi - \dfrac{\partial \mathbf{A}}{\partial t}$
+
+    - $\mathbf{E} = -\nabla\varphi + \dfrac{\partial \mathbf{A}}{\partial t}$
+</Choices>
+
+3. 电介质中极化电荷产生的附加电场 $\mathbf{E'}$ 与外电场 $\mathbf{E_0}$ 的关系为 <Slot />；
+<Choices>
+    + $\mathbf{E'}$ 与 $\mathbf{E_0}$ 方向相反
+
+    - $\mathbf{E'}$ 与 $\mathbf{E_0}$ 方向相同
+
+    - $\mathbf{E'}$ 与 $\mathbf{E_0}$ 相互抵消
+
+    - $\mathbf{E'}$ 为零
+
+</Choices>
+
+4. 关于理想导体表面，下面说法错误的是<Slot />；
+<Choices>
+    - 可以存在自由电荷
+
+    + 可以存在切向电场
+
+    - 可以存在法向电场
+
+    - 导体内外的电场可以发生突变
+</Choices>
+
+5. 电磁波入射到理想导体表面，分界面处反射波与入射波沿切线方向的电场之比（切向反射系数）正确的说法是 <Slot />
+<Choices>
+    - 垂直入射时为 $-1$，斜入射时为 $1$
+
+    + 垂直入射时为 $-1$，斜入射时为 $-1$
+
+    - 垂直入射时为 $1$，斜入射时为 $1$
+
+    - 垂直入射时为 $1$，斜入射时为 $-1$
+</Choices>
+
+6. 当电位为零的无限大导体平板被折成直角，则该区域内一点电荷的感应电荷的等效模型可以通过<Slot />个镜像电荷等效；
+<Choices>
+    - $1$
+
+    - $2$
+
+    + $3$
+
+    - $4$
+
+</Choices>
+
+7. 媒质分类的常用判据为损耗角正切，关于良介质的损耗角正切的说法正确的为 <Slot />
+<Choices>
+    - 略大于 $1$
+
+    - 远大于 $1$
+
+    + 远小于 $1$
+
+    - 近似为 $1$  
+</Choices>
+
+8. 趋肤效应是指高频电磁场入射到导体时，近似仅存在于良导体表面的一个薄层内，趋肤深度为电磁场衰减为表面场幅度 <Slot />的传播距离。
+<Choices>
+    - $1/10$
+
+    - $1/3$
+
+    - $1/8$
+
+    + $1/e$
+
+</Choices>
+
+9. 圆极化的均匀平面波以布儒斯特角入射到理想介质表面，下面说法正确的是 <Slot />
+<Choices>
+    - 折（透）射波是圆极化波
+
+    - 反射波是平行极化波
+
+    + 反射波是垂直极化波
+
+    - 折（透）射波是线极化波
+</Choices>
+
+10. 关于电偶极子的电磁辐射，下列说法正确的是<Slot />
+<Choices>
+    + 频率越高辐射能力越强
+
+    - 频率越低辐射能力越强
+
+    - 辐射能力与频率无关
+
+    - 辐射能力与波长无关
+</Choices>
+
+## 二、（共 10 分）分析题
+
+### 1.（5分）
+考虑到电磁波在有耗媒质中的传播特性，试定性分析导体的交流电阻和直流电阻的关系。
+
+### 2.（5分）
+分离变量法在电磁工程中具有重要意义。请问为什么在应用分离变量法时，通常从选择重复零点开始来建立分析模型？
+
+## 三、（共 10 分）
+<Figure src="题三图.svg" float>
+    题三图
+</Figure>
+
+在工程上，绕在磁芯上的导体线圈构成了电磁干扰滤波器。设某环形铁芯磁导率为 $\mu$（$\mu_r \gg 1$），其上密绕了 $N$ 匝线圈，并有一个弧长宽度为 $d$ 的很小的气隙（气隙内磁场方向不受影响），如题三图所示，假设线圈中电流为 $I$。试求：
+
+1. 气隙中的磁感应强度；
+2. 太大的电流会使铁芯内的磁场强度过大从而导致铁磁材料饱和，不利于滤波器工作。试从该角度分析气隙在工程上对控制磁芯饱和度的作用？
+
+## 四、（共 10 分）
+
+麦克斯韦方程组是无线通信的理论基础和基石。试写出空气中无源情况下麦克斯韦微分方程组的复数形式，并给出两个旋度方程在直角坐标系下的标量展开形式。
+
+## 五、（共 15 分）
+
+移动通信、卫星通信中的电磁波在远场情况下可近似为平面波。已知某通信基站在工作中向自由空间发射的电磁波在某区域可以看作均匀平面波，其磁场强度可表示为
+
+$$
+\mathbf{H} = (-\mathbf{e}_x A + \mathbf{e}_z 4)\, e^{-j\pi(4x+3z)}
+$$
+
+试求：
+
+1. 波矢量和波长；
+
+2. 常数 $A$；
+
+3. 电场强度；
+
+4. 平均坡印亭矢量；
+
+5. 波的传播方向和极化方式。
+
+---
+
+## 六、（共 15 分）
+
+在某雷达目标识别中，天线向空气中发射的一均匀平面波电场为
+
+$$
+\mathbf{E}^+ = \mathbf{e}_x E_{x0} \sin(\omega t - \beta z) - \mathbf{e}_y E_{y0} \cos(\omega t - \beta z)
+$$
+
+其中 $E_{x0} \neq E_{y0}$，设该波垂直入射到边界为 $z = 0$ 处的飞机蒙皮（近似为无限大理想导体边界）上。试求：
+
+1. 反射波的电场 $\mathbf{E}^-$ 和极化方式；
+
+2. $z < 0$ 区域的总磁场；
+
+3. 飞机蒙皮边界上的感应电流密度。
+
+---
+
+## 七、（共 15 分）
+
+已知某通信产品公司生产的空气填充的理想矩形波导横截面尺寸为 $a \times b = 7 \times 4\ \mathrm{mm^2}$，某运营商在项目施工中信号的工作频率为 30GHz，已知
+
+$$
+\beta = k\sqrt{1 - \left(\frac{f_c}{f}\right)^2} = k\sqrt{1 - \left(\frac{\lambda}{\lambda_c}\right)^2}
+$$
+
+试求：
+
+1. 该波导能否满足运营商项目 $\mathrm{TE_{10}}$ 模电磁波的传输？
+
+2. 若能传输，求波导波长、波速度。
+
+---
+
+## 八、（共 10 分）
+
+根据某地电磁环境监测发现，某微基站 A 发射的频率为 1000MHz 的信号构成了对重点设备 B 的电磁干扰，A、B 之间的距离为 $100$ 米。设该微基站的发射端可以近似为长度为 $0.01$ 米的电偶极子，B 处在 A 天线的赤道面上，敏感度阈值（承受的最大干扰电场）为 $1\ \mathrm{V/m}$。为了保护设备 B，试问 A 天线的最大发射电流大小是多少？已知 $k = \omega\sqrt{\mu_0\varepsilon_0}$，空气的波阻抗为 $120\pi$，空气中电偶极子的辐射场为：
+
+$$
+\begin{cases}
+E_r = \dfrac{2Ilk^3\cos\theta}{4\pi\omega\varepsilon_0} \left( \dfrac{1}{(kr)^2} - \dfrac{j}{(kr)^3} \right) e^{-jkr} \\[10pt]
+E_\theta = \dfrac{Ilk^3\sin\theta}{4\pi\omega\varepsilon_0} \left( \dfrac{j}{kr} + \dfrac{1}{(kr)^2} - \dfrac{j}{(kr)^3} \right) e^{-jkr} \\[6pt]
+E_\phi = 0
+\end{cases}
+$$
