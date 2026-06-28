@@ -142,7 +142,7 @@ COL_DONE        &emsp;&emsp;;R2=键值0\~15
 
 &emsp;&emsp;LDR     &emsp;&emsp;R3, =LED_TABLE
 
-&emsp;&emsp;LDR     &emsp;&emsp;R1, [$R_3, R_2$, <Blank />]; &emsp;查表
+&emsp;&emsp;LDR     &emsp;&emsp;R1, [R3, R2, <Blank />]; &emsp;查表
 
 &emsp;&emsp;STR     &emsp;&emsp;R1, [R4]
 
