@@ -30,15 +30,15 @@ PA4\~PA7 列线
 
 PB0\~PB7 a\~g, dp
 
-PB8 住选
+PB8 位选
 
 4. 填空（6分）
 
 KEY_SCAN PROC
 
-&emsp;&emsp;PUSH    &emsp; $\{R_0-R_4, LR\}$
+&emsp;&emsp;PUSH    &emsp; \{R0-R4, LR\}
     
-&emsp;&emsp;LDR     &emsp;&emsp;$\text{R}_4$, = GPIOB_ODR;&emsp;数码管显示寄存器
+&emsp;&emsp;LDR     &emsp;&emsp;R4, = GPIOB_ODR;&emsp;数码管显示寄存器
     
 &emsp;&emsp;; 行线全置低
     
@@ -58,7 +58,7 @@ KEY_SCAN PROC
 
 &emsp;&emsp;CMP     &emsp;&ensp; R1, #0xF0
 
-&emsp;&emsp;BEQ     &emsp;&emsp;<Blank />; 无按键接下，跳出
+&emsp;&emsp;BEQ     &emsp;&emsp;<Blank />; 无按键按下，跳出
 
 &emsp;&emsp;; 延时，二次扫描确认，代码省略
 
@@ -142,7 +142,7 @@ COL_DONE        &emsp;&emsp;;R2=键值0\~15
 
 &emsp;&emsp;LDR     &emsp;&emsp;R3, =LED_TABLE
 
-&emsp;&emsp;LDR     &emsp;&emsp;R1, [$R_3, R_2$, <Blank />]; &emsp;查表
+&emsp;&emsp;LDR     &emsp;&emsp;R1, [R3, R2, <Blank />]; &emsp;查表
 
 &emsp;&emsp;STR     &emsp;&emsp;R1, [R4]
 
