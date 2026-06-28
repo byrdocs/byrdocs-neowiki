@@ -30,15 +30,15 @@ PA4\~PA7 列线
 
 PB0\~PB7 a\~g, dp
 
-PB8 住选
+PB8 位选
 
 4. 填空（6分）
 
 KEY_SCAN PROC
 
-&emsp;&emsp;PUSH    &emsp; $\{R_0-R_4, LR\}$
+&emsp;&emsp;PUSH    &emsp; R0-R4, LR
     
-&emsp;&emsp;LDR     &emsp;&emsp;$\text{R}_4$, = GPIOB_ODR;&emsp;数码管显示寄存器
+&emsp;&emsp;LDR     &emsp;&emsp;R4, = GPIOB_ODR;&emsp;数码管显示寄存器
     
 &emsp;&emsp;; 行线全置低
     
