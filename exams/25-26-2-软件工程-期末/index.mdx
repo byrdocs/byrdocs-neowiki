@@ -32,12 +32,12 @@
 程序代码如下：
 ```SQL
 def calc_discount(member_level,order_total,is_birthday);
-    if mumber_level==1:
-        if is birthday:
+    if member_level==1:
+        if is_birthday:
             return order_total*0.7
         elif order_total>=200:
             return order_total*0.9
-        retun order_total
+        return order_total
     elif member_level==2:
         return order_total*0.8
     elif order_total>=200:
