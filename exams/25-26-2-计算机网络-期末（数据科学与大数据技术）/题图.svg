@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+  <rect width="100%" height="100%" fill="white"/>
+  <style>
+    text{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#111}
+    .red{fill:#d21f2b;font-weight:700;font-size:38px}
+    .big{font-size:38px}
+    .mid{font-size:32px}
+    .small{font-size:22px}
+    .tiny{font-size:18px}
+    .line{stroke:#999;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .thin{stroke:#aaa;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .router{fill:#050505;stroke:#222;stroke-width:3}
+    .oval{fill:#f7f7f7;stroke:#999;stroke-width:4}
+    .dash{fill:none;stroke:#999;stroke-width:3;stroke-dasharray:6 6}
+    .table{fill:white;stroke:#777;stroke-width:3}
+  </style>
+
+  <!-- Internet cloud -->
+  <path class="dash" d="M115 82 C92 62,132 38,168 46 C190 17,252 38,247 70 C285 82,270 124,231 119 C207 143,151 135,144 116 C104 124,82 103,115 82 Z"/>
+  <text x="180" y="95" class="mid" text-anchor="middle">互联网</text>
+
+  <!-- Link: Internet to R2 -->
+  <path class="line" d="M180 130 L180 165 L335 165"/>
+  <text x="255" y="162" class="mid">L1</text>
+  <text x="116" y="214" class="mid">130.11.120.1</text>
+
+  <!-- Router R2 -->
+  <ellipse class="router" cx="410" cy="165" rx="68" ry="55"/>
+  <text x="410" y="58" class="red" text-anchor="middle">R2</text>
+  <text x="477" y="163" class="mid">202.118.2.2</text>
+  <text x="474" y="215" class="mid">L0</text>
+  <text x="405" y="246" class="mid">E0</text>
+  <text x="346" y="244" class="small">...</text>
+
+  <!-- Link: R2 to R1 -->
+  <line class="line" x1="478" y1="165" x2="660" y2="165"/>
+
+  <!-- Router R1 -->
+  <ellipse class="router" cx="730" cy="165" rx="68" ry="55"/>
+  <text x="730" y="58" class="red" text-anchor="middle">R1</text>
+  <text x="640" y="214" class="mid">L0</text>
+  <text x="590" y="260" class="mid">202.118.2.1</text>
+
+  <!-- R1 to subnet 1 -->
+  <path class="line" d="M798 125 L840 125 L895 125"/>
+  <text x="832" y="100" class="big">E1</text>
+  <text x="834" y="125" class="tiny">#1</text>
+  <ellipse class="oval" cx="970" cy="125" rx="70" ry="42"/>
+  <text x="970" y="133" class="small" text-anchor="middle">局域网1</text>
+
+  <!-- R1 to subnet 2 -->
+  <path class="line" d="M798 220 L840 220 L895 220"/>
+  <text x="832" y="222" class="big">E2</text>
+  <ellipse class="oval" cx="970" cy="220" rx="70" ry="42"/>
+  <text x="970" y="228" class="small" text-anchor="middle">局域网2</text>
+
+  <!-- R2 to DNS server -->
+  <path class="line" d="M410 220 L410 423 L300 423"/>
+  <text x="300" y="316" class="mid">202.118.3.1</text>
+  <text x="96" y="360" class="mid">域名服务器</text>
+  <text x="310" y="465" class="mid">202.118.3.2</text>
+
+  <!-- DNS server icon -->
+  <g transform="translate(230,390)">
+    <polygon points="0,18 38,0 70,16 31,36" fill="#111" stroke="#777" stroke-width="2"/>
+    <polygon points="0,18 31,36 31,100 0,80" fill="#d7c9a4" stroke="#777" stroke-width="2"/>
+    <polygon points="31,36 70,16 70,76 31,100" fill="#f0e2bd" stroke="#777" stroke-width="2"/>
+    <circle cx="13" cy="55" r="5" fill="#777"/>
+    <rect x="9" y="69" width="13" height="6" fill="#777"/>
+  </g>
+
+  <!-- Caption -->
+  <text x="96" y="532" class="small">R1 和 R2 的路由表结构为：</text>
+
+  <!-- Routing table skeleton -->
+  <g transform="translate(300,555)">
+    <rect class="table" x="0" y="0" width="610" height="36"/>
+    <line class="table" x1="220" y1="0" x2="220" y2="36"/>
+    <line class="table" x1="350" y1="0" x2="350" y2="36"/>
+    <line class="table" x1="540" y1="0" x2="540" y2="36"/>
+    <text x="110" y="25" class="small" text-anchor="middle">目的网络 IP 地址</text>
+    <text x="285" y="25" class="small" text-anchor="middle">子网掩码</text>
+    <text x="445" y="25" class="small" text-anchor="middle">下一跳 IP 地址</text>
+    <text x="575" y="25" class="small" text-anchor="middle">接口</text>
+  </g>
+</svg>

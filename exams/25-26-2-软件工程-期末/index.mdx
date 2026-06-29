@@ -7,7 +7,82 @@
 - 计算机学院
 ---
 
-## 一、
+## 填空题
+1. 软件概要设计的主要目的是确认<Blank />并对其<Blank />。
+2. 衡量程序质量的重要标准是<Blank />。
+3. 控制器<Blank />系统事件和用例之间的关系。
+
+## 简答题
+
+### 1. 
+在软件框架基础确认以后，软件开发应该进行的工作是？
+
+### 2.
+软件开发的基本思想？
+<Solution>
+    （答案是自顶向下逐步细化那一块“软件设计基础部分的内容”）
+</Solution>
+
+### 3.
+你如何理解：“充分注意测试中的集群现象：经验表明，测试后程序中残存的错误数
+目与该程序中已发现的错误数目成正比"?
+
+## 应用题
+### 1.
+程序代码如下：
+```SQL
+def calc_discount(member_level,order_total,is_birthday);
+    if number_level==1:
+        if is birthday:
+            return order_total*0.7
+        elif order_total>=200:
+            return order_total*0.9
+        retun order_total
+    elifmember_level==2:
+        return order_total*0.8
+    eliforder_total>=200:
+        retum order_total*0.9
+    return order_total
+```
+
+1. 画出程序控制流程图
+2. 基本路径法计算环路复杂度
+3. 给出基本路径集
+
+### 2.
+平面直角系两个点，$a(x_1, y_1) \, b(x_2,y_2)$对其的限定条件为:
+
+1）a位于第一象限:
+
+2）b位于x轴
+
+3）ab间距大于3且不超过9
+
+假定测试程序能接受一切符合上述规定的坐标输入，根据a，b两点的规格说明，构建
+等价类划分类(黑盒测试)
+
+## 综合题
+某电商供应在线主流业务系统流程：(电商平台不参与类图和其他小题)
+
+用户创建订单(order)
+
+用户选择商品加入订单(Product)
+
+用户查找并显示优惠卷(coupon)
+
+用户选择并使用优惠卷
+
+用户完成订单支付(Payment)
+
+1. UML类图
+
+2. SSD图，要求重点体现出creatOrder(), addProduct(product, quantity),updateOrder(), showcoupon(), pickcoupon(couponid), pay()。
+
+3. 创建订单的操作契约，至少包括，操作，交叉引用及后置条件。
+
+4. 画一个OOD顺序图交互顺序图，体现控制层的两种聚合/委派模式，对应的GRASP 知识点。
+
+## 某题
 平面坐标系中存在两个点，分别为$a(x1,y1)$，$b(x2,y2)$，对其限定如下：
 
 - 点$a$位于第一象限
