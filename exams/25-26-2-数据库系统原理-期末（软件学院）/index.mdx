@@ -1,0 +1,70 @@
+---
+时间: 2025-2026学年第二学期
+科目: 数据库系统原理
+阶段: 期末
+类型: 本科
+学院:
+- 计算机学院
+---
+
+## 填空题（共十题）
+1. <Blank />是“数据的数据”
+2. 规范化的目的是消除<Blank />和减少<Blank />
+3. 一对多关系中“一”的那一方是<Blank />实体
+4. E.F.Codd的关系模型中关系的行被称作<Blank />
+5. SQL 关键字<Blank />表示某个值与集合中的值匹配
+6. <Blank />锁是任何其他事务都不能访问的锁
+
+## 选择题（共十题）
+
+## 简答题
+1. DBMS 环境的 5 个组件及各部分关系  
+2. 解释 ACID properties  
+3. system log 的作用  
+4. 2PL 锁的原则  
+5. query processing 的目标  
+
+## 大题
+FLIGHT(FlightNo,Airline,Seats,FlightName)
+
+ARRIVAL(FlightNo,Code,Date,Time)
+
+DEPARTURE(FlightNo,Code,Date,Time)
+
+AIRPORT(Code,Name,Runway)
+
+FlightNo是航班号，Airline是航司，FlightName是飞机型号
+
+Code是机场编号，Runway是跑道，Name是机场所在城市名
+
+### DDL
+建表，附带合理约束
+
+### 关系代数
+1. 查询 Seat 不小于 100 的航班的所有信息  
+2. 查询从名为 Beijing 的机场出发，时间为1st January 2007   between 10:00 and 12:00 的航班的 FlightNo 和 Airline  
+
+### DML
+1. (1) 向 FLIGHT 插入一条记录  
+
+   (2) 将 Code 是 PK01 的机场名字（或位置）改为Beijing, Runaway 改为 3  
+2. 查出发时间从名为 Beijing 的机场出发, 日期为 1st January 2007 的航班的信息, 按 FlightNo 排序  
+3. 从机场名为的 Beijing 在 2007 年 1 月 1 日出发的航班数量  
+
+## E-R
+Employee：ssn (唯一标识), employee name (复杂属性), salary, phone  
+
+Department：dno (唯一标识), dname, budget  
+
+Children of Employee：name, age  
+
+一个部门由一个员工管理，一个员工属于一个部门，一个 child 只有一个 parent 在 department 工作  
+
+画出 E-R 图并转换为关系模式
+
+## 规范化
+Order(CustomerId, Customer_name, Customer_card_level, Customer_card_fee, CommodityId（商品 id）, Quantity（商品数量）)  
+
+其中 Customer_card_fee 依赖于 Customer_card_level  
+
+根据常识写出依赖关系、1nf、2nf、3nf  

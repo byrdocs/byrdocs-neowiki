@@ -1,0 +1,161 @@
+---
+时间: 2025-2026学年第二学期
+科目: 微处理器与系统
+阶段: 期末
+类型: 本科
+学院:
+- 人工智能学院
+- 信息与通信工程学院
+---
+
+## 最后一题
+
+单片机输入端的外设接有4*4的输入键盘，默认高电平，逐行扫描，低电平的位置就是该行该列的按钮被按下了
+
+输入端4*4键盘为:
+$$
+\begin{pmatrix}
+0 & 1 & 2 & 3 \\
+4 & 5 & 6 & 7 \\
+8 & 9 & a & b \\
+c & d & e & f
+\end{pmatrix}
+$$
+
+使用端口为pa, pb接有输出外设, 数码管分别为a b c d e f g dp
+
+PA0\~PA3 行线
+
+PA4\~PA7 列线
+
+PB0\~PB7 a\~g, dp
+
+PB8 位选
+
+4. 填空（6分）
+
+KEY_SCAN PROC
+
+&emsp;&emsp;PUSH    &emsp; \{R0-R4, LR\}
+    
+&emsp;&emsp;LDR     &emsp;&emsp;R4, = GPIOB_ODR;&emsp;数码管显示寄存器
+    
+&emsp;&emsp;; 行线全置低
+    
+&emsp;&emsp;LDR     &emsp;&emsp;R0, = GPIOA_BSRR
+
+&emsp;&emsp;MOV     &emsp;&ensp;R1, #0xF0000
+
+&emsp;&emsp;STR     &emsp;&emsp; R1, [R0]
+
+&emsp;&emsp;; 读取列线状态
+
+&emsp;&emsp;LDR     &emsp;&emsp;R0, = <Blank />
+
+&emsp;&emsp;LDR     &emsp;&emsp;R1, [R0]
+
+&emsp;&emsp;AND     &emsp;&ensp; R1, #0xF0
+
+&emsp;&emsp;CMP     &emsp;&ensp; R1, #0xF0
+
+&emsp;&emsp;BEQ     &emsp;&emsp;<Blank />; 无按键按下，跳出
+
+&emsp;&emsp;; 延时，二次扫描确认，代码省略
+
+&emsp;&emsp;; 逐行扫描
+
+&emsp;&emsp;MOV     &emsp;&ensp;R2, #0;&emsp;行号计数器
+
+ROW_LP
+
+&emsp;&emsp;LDR     &emsp;&emsp;R0, =GPIOA_BSRR
+
+&emsp;&emsp;MOV     &emsp;&ensp;R1, #0x000F
+
+&emsp;&emsp;STR     &emsp;&emsp; R1, [R0];&emsp;行线全置高
+
+&emsp;&emsp;MOV     &emsp;&ensp;R3, #1
+
+&emsp;&emsp;LSL     &emsp;&emsp; R3, R3,R2
+
+&emsp;&emsp;LSL     &emsp;&emsp; R3, #0x10;&emsp;左移16位，复位当前行
+
+&emsp;&emsp;STR     &emsp;&emsp;R3, [R0];&emsp;输出当前行扫描信号
+
+&emsp;&emsp;LDR     &emsp;&emsp;R0, =<Blank />
+
+&emsp;&emsp;LDR     &emsp;&emsp;R1, [R0]
+
+&emsp;&emsp;AND     &emsp;&emsp;R1, #0xF0
+
+&emsp;&emsp;CMP     &emsp;&emsp;R1, #0xF0
+
+&emsp;&emsp;BNE     &emsp;&emsp;<Blank />;&emsp;检测到按键，跳出
+
+&emsp;&emsp;ADD     &emsp;&emsp;R2, #1
+
+&emsp;&emsp;CMP     &emsp;&emsp;R2, #4
+
+&emsp;&emsp;BLT     &emsp;&emsp;&ensp;ROW_LP
+
+COL_FND;&emsp;根据R2（行），R1（列），计算键值
+
+&emsp;&emsp;MOV     &emsp;&emsp;R0, #4
+
+&emsp;&emsp;MUL     &emsp;&emsp; R2, R2,R0
+    
+&emsp;&emsp;; 列号提取（按下=0，找出bit=0的列）
+
+&emsp;&emsp;TST     &emsp;&emsp;&ensp; R1, #0x10
+
+&emsp;&emsp;BNE     &emsp;&emsp;&ensp;SKIP_C0
+
+&emsp;&emsp;B       &emsp;&emsp;&emsp;&emsp;COL_DONE; &emsp;PA4按下，列号=0
+
+SKIP_C0
+
+&emsp;&emsp;ADD     &emsp;&emsp;R2, #1
+
+&emsp;&emsp;TST     &emsp;&emsp;&ensp;R1, #0x20
+
+&emsp;&emsp;BNE     &emsp;&emsp; SKIP_C1
+
+&emsp;&emsp;B       &emsp;&emsp;&emsp;&ensp;COL_DONE; &emsp;PA5按下，列号=1
+
+SKIP_C1
+
+&emsp;&emsp;ADD     &emsp;&emsp;R2, #1
+
+&emsp;&emsp;TST    &emsp;&emsp;&ensp;R1, #0x40
+
+&emsp;&emsp;BNE     &emsp;&emsp; SKIP_C2
+
+&emsp;&emsp;B       &emsp;&emsp;&emsp;&ensp;COL_DONE; &emsp;PA6按下，列号=2
+
+SKIP_C2
+
+&emsp;&emsp;ADD     &emsp;&emsp;R2, #1; &emsp;PA7按下，列号=3
+
+&emsp;&emsp;;延时50ms省略代码
+
+COL_DONE        &emsp;&emsp;;R2=键值0\~15
+
+&emsp;&emsp;LDR     &emsp;&emsp;R3, =LED_TABLE
+
+&emsp;&emsp;LDR     &emsp;&emsp;R1, [R3, R2, <Blank />]; &emsp;查表
+
+&emsp;&emsp;STR     &emsp;&emsp;R1, [R4]
+
+NO_KEY
+
+&emsp;&emsp;POP     &emsp;&emsp;\{R0-R4, PC\}
+
+&emsp;&emsp;ENDP
+
+; 数码管显示码表
+
+LED_TABLE       &emsp;&emsp;DCD     &emsp;&emsp;0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;DCD     &emsp;&emsp;0x7F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71
+
+5. 如果数码管要显示字母e，应该是哪几段亮起（从a-g、dp中选择）（1分）
