@@ -42,6 +42,15 @@ A,B,C 至少同时摁下两个时灯会亮（摁下为 1，亮为 1）
 
 ## ??
 
+RA、RB、RC均初始化为0，如果OF=0则将运算结果先打入RC再打入RB，OF为溢出标志。
+运行时如伪码所示
+while(1){
+    x->RA
+    RA+RB
+    if(!OF){
+        RA+RB->RC
+        RC->RB
+}}
 <Figure src="题图??.svg" float />
 
 1. 画 ASM 图，状态从 `S0` 到 `Sn`。
