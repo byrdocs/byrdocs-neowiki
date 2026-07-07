@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="350" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+        </marker>
+    </defs>
+
+    <!-- Principal Axis -->
+    <line x1="30" y1="200" x2="570" y2="200" stroke="black" stroke-width="2" stroke-dasharray="15, 8, 4, 8" />
+    <circle cx="250" cy="200" r="3" fill="black" />
+
+    <!-- Lens Box -->
+    <rect x="230" y="80" width="40" height="240" fill="none" stroke="black" stroke-width="2" stroke-dasharray="8, 6" />
+
+    <!-- Ray a (Incident): Steep downwards -->
+    <path d="M 140 50 L 185 80 L 230 110" fill="none" stroke="black" stroke-width="2" marker-mid="url(#arrow)" />
+    
+    <!-- Ray a (Emergent): Shallow downwards -->
+    <path d="M 270 130 L 385 175 L 560 243.5" fill="none" stroke="black" stroke-width="2" marker-mid="url(#arrow)" />
+
+    <!-- Ray b (Incident): Shallow upwards -->
+    <path d="M 90 170 L 160 157.5 L 230 145" fill="none" stroke="black" stroke-width="2" marker-mid="url(#arrow)" />
+    
+    <!-- Ray b (Emergent): Steep downwards -->
+    <path d="M 270 145 L 300 172.5 L 360 227.5" fill="none" stroke="black" stroke-width="2" marker-mid="url(#arrow)" />
+
+    <!-- Labels -->
+    <g font-family="serif" font-style="italic" font-size="24" font-weight="bold" fill="black">
+        <text x="155" y="45">a</text>
+        <text x="85" y="160">b</text>
+        <text x="30" y="230">M</text>
+        <text x="240" y="230">O</text>
+        <text x="320" y="230">P</text>
+        <text x="440" y="230">Q</text>
+        <text x="550" y="230">N</text>
+    </g>
+</svg>

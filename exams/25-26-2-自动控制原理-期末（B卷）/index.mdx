@@ -1,0 +1,155 @@
+---
+时间: 2025-2026学年第二学期
+科目: 自动控制原理
+阶段: 期末
+类型: 本科
+学院:
+- 人工智能学院
+- 智能工程与自动化学院
+---
+
+## 一、选择题（每题 2 分，共 20 分）
+
+1. 某控制系统的方框图如图 1 所示，其被控对象是<Slot />
+
+    <Figure src="题1.1图.svg" float>
+        图 1
+    </Figure>
+
+    <Choices>
+        <Option>阀门</Option>
+        <Option>发动机</Option>
+        <Option>轴速传感器</Option>
+        <Option>电机</Option>
+    </Choices>
+
+2. 下面关于自动控制系统的基本要求描述中，不正确的是<Slot />
+
+    <Choices>
+        <Option>稳定性是保证控制系统正常工作的首要条件</Option>
+        <Option>稳态精度是指系统响应进入稳态后的精度，通常用稳态误差来衡量</Option>
+        <Option>快速性是指系统响应过渡过程的持续时间，越短越好，与超调量无关</Option>
+        <Option>控制系统的基本要求通常可概括为稳、准、快</Option>
+    </Choices>
+
+3. 某系统的输出 $c(t)$ 和输入 $r(t)$ 之间满足微分方程：$\ddot{c}(t) + 2\dot{c}(t) + 5t^2c(t) = 2r(t)$，则该系统是<Slot />
+
+    <Choices>
+        <Option>线性定常系统</Option>
+        <Option>线性时变系统</Option>
+        <Option>非线性定常系统</Option>
+        <Option>非线性时变系统</Option>
+    </Choices>
+
+4. 对于一个稳定的线性定常系统，其稳态误差与<Slot />有关
+
+    <Choices>
+        <Option>系统的型别和开环增益以及输入信号的形式</Option>
+        <Option>仅与系统的型别有关</Option>
+        <Option>仅与开环增益有关</Option>
+        <Option>仅与输入信号的形式有关</Option>
+    </Choices>
+
+5. 下面关于传递函数说法错误的是<Slot />
+
+    <Choices>
+        <Option>传递函数只适用于线性系统</Option>
+        <Option>传递函数不仅取决于系统的结构参数，给定输入和扰动对传递函数也有影响</Option>
+        <Option>不同的物理系统可能有相同的传递函数</Option>
+        <Option>非定常的系统不具有传递函数</Option>
+    </Choices>
+
+6. 单位负反馈控制系统的开环传递函数 $G(s) = \dfrac{s+a}{s(s^2+2s+2)}$，绘制该系统随参数 $a$ 变化的根轨迹时需先得到参变量 $a$ 对应的等效传递函数<Slot />
+
+    <Choices>
+        <Option>$G_d(s) = \dfrac{a}{s(s^2+2s+3)}$</Option>
+        <Option>$G_d(s) = \dfrac{a}{s(s^2+2s+2)}$</Option>
+        <Option>$G_d(s) = \dfrac{a}{s(s^2+2s+4)}$</Option>
+        <Option>$G_d(s) = \dfrac{a}{s(s^2+2s+1)}$</Option>
+    </Choices>
+
+7. II 型控制系统开环对数幅频特性曲线的低频段斜率是<Slot />
+
+    <Choices>
+        <Option>$-60\,\mathrm{dB/dec}$</Option>
+        <Option>$-20\,\mathrm{dB/dec}$</Option>
+        <Option>$0\,\mathrm{dB/dec}$</Option>
+        <Option>$-40\,\mathrm{dB/dec}$</Option>
+    </Choices>
+
+8. 若控制系统的开环传递函数为 $\dfrac{50}{(2s+1)(s+5)}$，则它的开环增益和根轨迹增益分别为<Slot />
+
+    <Choices>
+        <Option>$50,\ 25$</Option>
+        <Option>$25,\ 50$</Option>
+        <Option>$10,\ 25$</Option>
+        <Option>$50,\ 10$</Option>
+    </Choices>
+
+9. 利用奈奎斯特稳定判据判断控制系统稳定性时，$Z=P+2N$ 中参数 $Z$ 表示为<Slot />
+
+    <Choices>
+        <Option>开环传递函数零点在 S 左半平面的个数</Option>
+        <Option>开环传递函数零点在 S 右半平面的个数</Option>
+        <Option>闭环传递函数极点在 S 左半平面的个数</Option>
+        <Option>闭环传递函数极点在 S 右半平面的个数</Option>
+    </Choices>
+
+10. 关于 PI 控制器作用，下列观点正确的有<Slot />
+
+    <Choices>
+        <Option>可使控制系统开环传递函数的型别提高，消除或减小稳态误差</Option>
+        <Option>积分部分主要是为了改善系统的动态性能</Option>
+        <Option>比例系数无论正负、大小如何变化，都不会影响系统稳定性</Option>
+        <Option>只要应用 PI 控制规律，系统的稳态误差就为零</Option>
+    </Choices>
+
+## 二、（15 分）
+
+为了综合利用机械手的力量优势与人的智力优势，人们发明了叫增强器（Extender）的有源机械手，戴着它可以使人手臂的力量倍增，如图 2 所示。假设人提供的输入为 $U(s)$，负载输入为 $F(s)$，增强器输出为 $P(s)$，请回答：
+
+<Figure src="题2图.svg" float>
+    图 2
+</Figure>
+
+1. 绘制以 $U(s)$ 为输入、$P(s)$ 为输出的信号流图；
+2. 利用梅森公式求机械手的传递函数 $P(s)/U(s)$。
+
+## 三、（15 分）
+
+已知控制系统的结构图及其单位阶跃响应如图 3 所示，请回答：
+
+<Figure src="题3图.svg" float>
+    图 3
+</Figure>
+
+1. 确定系统中参数 $K_1$、$K_2$ 与 $a$ 的值；
+2. 计算系统的上升时间 $t_r$ 和调整时间 $t_s$（误差带 $\Delta=5\%$）；
+3. 计算单位斜坡输入下系统的静态速度误差系数 $K_v$ 及稳态误差 $e_{ss}$。
+
+## 四、（15 分）
+
+设单位正反馈控制系统的开环传递函数为 $G(s) = \dfrac{K^*(1-s)}{s(s+2)}$，请回答：
+
+1. 绘制闭环系统的根轨迹图，要求写出详细步骤；
+2. 分别计算控制系统产生重实根和纯虚根时的 $K^*$ 值。
+
+## 五、（15 分）
+
+已知单位负反馈控制最小相位系统的 Bode 图如图 4 所示，请回答：
+
+<Figure src="题5图.svg" float>
+    图 4
+</Figure>
+
+1. 求系统的开环传递函数 $G_k(s)$；
+2. 绘制频率 $\omega$ 从 $0 \to \infty$ 变化时开环系统的奈氏图；
+3. 依据奈氏稳定判据，判断闭环系统的稳定性。
+
+## 六、（20 分）
+
+已知磁盘驱动读取系统的结构图如图 5 所示，其中，被控对象（电动机和臂）的传递函数为 $G_0(s) = \dfrac{5K_a}{s(s+20)}$，传感器的传递函数为 $H(s) = 1$，请设计串联超前校正环节 $G_c(s)$，使校正后系统满足如下指标：速度误差系数 $K_v \ge 125$，相位裕量 $\gamma \ge 55^\circ$，幅值裕量 $20\lg h_g \ge 10\,\mathrm{dB}$。要求绘制校正前、后系统的 Bode 图以及校正环节 $G_c(s)$ 的 Bode 图，并有详细的设计过程。
+
+<Figure src="题6图.svg" float>
+    图 5
+</Figure>

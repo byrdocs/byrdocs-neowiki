@@ -1,0 +1,256 @@
+---
+时间: 2025-2026学年第二学期
+科目: 计算机系统导论
+阶段: 期末
+类型: 本科
+学院:
+- 计算机学院（国家示范性软件学院）
+答案完成度: 残缺
+---
+
+## 一、单选题
+
+1. 下列有关图灵机模型的叙述，错误的是 <Slot />
+
+<Choices>
+    <Option></Option>
+    <Option>图灵机由纸带、读写头、状态转移规则和状态寄存器组成，是用来模拟人类逻辑思维和计算的机器</Option>
+    <Option>图灵机的停机问题是不可计算问题，不存在一台图灵机可以判断任意给定的程序是否会在有限步骤后停止</Option>
+    <Option correct>图灵机是一种模拟电路计算机，在二战时期用于破译密码</Option>
+</Choices>
+
+2. 以下程序的输出结果是 <Slot />
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    unsigned char x = 0x82;
+    printf("%d", x);
+    return 0;
+}
+```
+
+<Choices>
+    <Option correct>130</Option>
+    <Option>-130</Option>
+    <Option>82</Option>
+    <Option></Option>
+</Choices>
+
+
+3. x86-64 中，有一单精度浮点数十六进制表示为 `0xC7F00000`，则其对应的十进制数为 <Slot />
+
+<Choices>
+    <Option correct>-122880</Option>
+    <Option>122880</Option>
+    <Option></Option>
+    <Option></Option>
+</Choices>
+
+4. x86-64 中，函数若想使用 `%rbx` 寄存器则 <Slot />
+
+<Choices>
+    <Option>直接使用，无需保存</Option>
+    <Option correct>被调用者将 `%rbx` 寄存器的值压入栈中，在函数返回前恢复</Option>
+    <Option>调用者在调用函数前将 `%rbx` 寄存器的值压入栈中，在调用结束后恢复</Option>
+    <Option></Option>
+</Choices>
+
+5. 下列关于 gcc 的说法，错误的是 <Slot />
+
+<Choices>
+    <Option></Option>
+    <Option>`-o` 选项用于指定输出文件的名称</Option>
+    <Option correct>`-c` 选项使 `gcc` 经历预处理、编译、汇编和链接的完整过程</Option>
+    <Option>`gcc prog.c` 指令将默认生成名为 `a.out` 的可执行文件</Option>
+</Choices>
+
+6. 关于预处理、编译、汇编、链接四个阶段对应的过程的描述，选出错误的。
+
+7. 已知某次异常是由外部 I/O 设备产生的，该异常属于以下哪一类？<Slot />
+
+<Choices>
+    <Option correct>中断</Option>
+    <Option>陷阱</Option>
+    <Option>故障</Option>
+    <Option>终止</Option>
+</Choices>
+
+8. 关于 Linux 标准 I/O 和系统 I/O 比较的四句描述，错误的是 <Slot />
+
+<Choices>
+    <Option></Option>
+    <Option></Option>
+    <Option correct>系统 I/O 具有跨平台可移植性，而标准 I/O 的可移植性较差</Option>
+    <Option></Option>
+</Choices>
+
+## 二、判断题
+
+### 1.数的表示
+
+x86-64 中，给定 `int x`，`unsigned ux = x`，`float f` 且 `f` 不为 `NaN`。下列六句描述，一定正确的选 A，反之选 B。
+
+1. `(unsigned)-1 > -2`。
+2. 若 `x <= 0`，则 `-x >= 0`。
+3. `(x & (x - 1)) != 0`。
+4. 若 `(x & 7) == 7`，则 `(x << 29) < 0`。
+5. `ux >> 3 == ux / 8`。
+6. `-(-f) == f`。
+
+### 2.AT&T 汇编
+
+x86-64 中，以下六个命令中符合 AT&T 汇编格式的选 A，不符合的选 B。
+
+1. `movl $2,(%eax)`。
+2. `testq %eax,%eax`。
+
+（题目缺失，大体为 AT&T 后缀 `b w l q` 是否对应寄存器位数 `%al %ax %eax %rax` ，以及内存寻址格式是否正确）
+
+
+## 三、大题
+
+### 1.函数栈帧
+
+若调用函数时传入 8 个参数 `p1 ~ p8`，哪些参数是通过栈传递的？描述或画出栈帧的结构，以及这些传递的参数、函数返回地址和寄存器上下文在栈中的相对位置。
+
+### 2.强弱符号
+
+说明链接器在处理强弱符号时的规则(Weak/Common/Strong)。
+
+### 3.软件故障
+
+Therac-25 辐射治疗仪案例，是由什么软件故障原因造成的？（至少答出两点）
+
+### 4.链接与库
+
+有两可重定位目标文件 `main1.o` 和 `main2.o`，他们分别依赖相应的静态库文件：
+
+- `main1.o` 依赖 `libx.a`
+- `main2.o` 依赖 `liby.a`, `libz.a`
+- `libz.a` 依赖 `liby.a`
+- `liby.a` 依赖 `libz.a`
+
+1. `gcc -static -o main1 main.o ./libx.a` 命令会不会链接出错？如果会，分析原因并给出不会报错的正确写法。
+2. 写出生成可执行文件 `main2` 的 gcc 命令。
+
+### 5.除法优化
+
+用汇编语言或C语言，写出 `x * 32` 和 `x / 32` 通过移位操作完成的方法。
+
+### 6.二维数组
+```c
+long mul(long i, long j)
+{
+	return P[i][j] * Q[j][i];
+}
+```
+x86-64 中，已知数组定义为 `long P[m][n], Q[n][m]`。
+
+1. 若 `m = n = 10` 且 `P` 的起始地址为 `0x406080`，则 `P[7][9]` 的地址为？
+
+2. 根据以下汇编代码，回答 `m = ?`，`n = ?`。
+
+```asm
+mul:
+    leaq    (%rdi,%rdi,4), %rax 
+    addq    %rsi, %rax          
+    leaq    (,%rsi,8), %rdx     
+    subq    %rsi, %rdx          
+    addq    %rdi, %rdx          
+    movq    P(,%rax,8), %rax    
+    imulq   Q(,%rdx,8), %rax    
+    ret
+```
+
+### 7.执行追踪
+
+给定一连串的地址和寄存器，依次运行汇编语言命令后，结果如何？（题目具体数据缺失）
+
+### 8.函数调用与地址
+
+一个 main 函数，它需要通过传入 array 数组的地址和 sum 函数的地址补充汇编代码与机器代码，并分析 sum 函数执行后的返回值是多少。
+
+sum 的 C 语言表述为（试题中未给出）：
+
+```c
+int i, result;
+for (i = 0, result = 0; i < 2; i++) {
+    result += array[i];
+}
+return result;
+```
+
+### 9.Switch 语句逆向
+
+一个基于 switch 语句的 C 函数，它的 C 程序残缺（5个空），编译结果已知，通过汇编语言对应补全原 C 函数（给定了跳转表的地址及内容）。
+
+### 10.栈保护与缓冲区溢出
+
+给出了一个函数的 C 语言代码和汇编语言代码（根据效果回忆），回答如下问题。
+
+```c
+void func()
+{
+    int i;
+    int arr[6] = {0};
+    for (i = 0; i < 6; i++) {
+        arr[i] = 0;
+        printf("Hello World");
+    }
+    gets(arr);
+}
+```
+
+```asm
+func:
+    pushq   %rbp
+    movq    %rsp, %rbp
+    subq    $0x30, %rsp
+    movq    %fs:0x28, %rax
+    movq    %rax, -0x8(%rbp)
+    xorl    %eax, %eax
+    movq    $0, -0x20(%rbp)
+    movq    $0, -0x18(%rbp)
+    movq    $0, -0x10(%rbp)
+    movl    $0, -0x24(%rbp)
+
+.Lloop:
+    cmpl    $5, -0x24(%rbp)
+    jg      .Lafter_loop
+    movl    -0x24(%rbp), %eax
+    cltq
+    movl    $0, -0x20(%rbp,%rax,4)
+    leaq    .LC0(%rip), %rdi
+    movl    $0, %eax
+    call    printf@PLT
+    addl    $1, -0x24(%rbp)
+    jmp     .Lloop
+
+.Lafter_loop:
+    leaq    -0x20(%rbp), %rdi
+    call    gets@PLT
+    movq    -0x8(%rbp), %rax
+    subq    %fs:0x28, %rax
+    je      .Lreturn
+    call    __stack_chk_fail@PLT
+
+.Lreturn:
+    leave
+    ret
+
+.LC0:
+    .string "Hello World"
+```
+
+1. 分析开头附近 `movq    %fs:0x28, %rax`、`movq    %rax, -0x8(%rbp)` 两句和结尾附近 `movq    -0x8(%rbp), %rax`、`subq    %fs:0x28, %rax` 两句的作用。
+
+2. 分析 `i` 存在栈的哪个位置？（以 `%rbp` + 偏移量 的方式表示）
+
+3. 分析 `arr[3]` 的位置在哪里？（要求同上）
+
+4. 输入一段字母，请问输入多少个会使程序出现 Segmentation Fault？
+
+
