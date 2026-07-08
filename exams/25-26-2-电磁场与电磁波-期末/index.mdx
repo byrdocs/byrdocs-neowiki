@@ -227,6 +227,49 @@ $$
 
 3. 飞机蒙皮边界上的感应电流密度。
 
+<Solution>
+
+（1）电磁波垂直入射到理想导体边界时反射系数为 $-1$，反射波沿 $-z$ 方向传播，故
+
+$$
+E^- =-\mathbf{e}_x E_{x0} \sin(\omega t + \beta z) + \mathbf{e}_y E_{y0} \cos(\omega t + \beta z)
+$$
+
+$$
+E^- = -\mathbf{e}_x E_{x0} e^{j\beta z}  e^{-j\frac{\pi}{2}} + \mathbf{e}_y E_{y0} e^{j\beta z}=\mathbf{e}_x E_{x0} e^{j\beta z}  e^{j\frac{\pi}{2}} + \mathbf{e}_y E_{y0} e^{j\beta z}
+$$
+
+左旋椭圆极化 ……5分
+
+（2）入射波的磁场为
+
+$$
+H^+ = \mathbf{e}_z\times\frac{E^+}{\eta_0}=\mathbf{e}_y\frac{E_{x0}}{\eta_0} \sin(\omega t - \beta z) + \mathbf{e}_x \frac{E_{y0}}{\eta_0}\cos(\omega t - \beta z)
+$$
+
+反射波的磁场为
+
+$$
+H^- = -\mathbf{e}_z\times\frac{E^-}{\eta_0}=\mathbf{e}_y\frac{E_{x0}}{\eta_0} \sin(\omega t + \beta z) + \mathbf{e}_x \frac{E_{y0}}{\eta_0}\cos(\omega t + \beta z)
+$$
+
+故总磁场为
+
+$$
+H = H^+ + H^- = 2\mathbf{e}_y \frac{E_{x0}}{\eta_0} \cos(\beta z)\sin\omega t + 2\mathbf{e}_x \frac{E_{y0}}{\eta_0}\cos(\beta z)\cos\omega t
+$$
+
+其中，$\eta_0 = 120\pi$ 为真空中的波阻抗。 ……5分
+
+（3）
+
+$$
+J_s = -\mathbf{e}_z\times H|_{z=0} = 2\mathbf{e}_x \frac{E_{x0}}{\eta_0}\sin(\omega t) - 2\mathbf{e}_y \frac{E_{y0}}{\eta_0}\cos(\omega t)
+$$
+
+ ……5分
+</Solution>
+
 ---
 
 ## 七、（共 15 分）
