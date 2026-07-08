@@ -5,14 +5,14 @@
 类型: 本科
 学院:
 - 信息与通信工程学院
-答案完成度: 残缺
+答案完成度: 完整
 ---
 ## 一、单项选择题（本大题共10个小题，每小题3分，共30分）
 
 1. 二重极限 $\lim_{(x,y) \to (0,0)} \frac{x^2+y^2}{\sqrt{1+x^2+y^2}-1} =$ <Slot />
 <Choices>
     - $1$
-    - $2$
+    + $2$
     - $3$
     - $-2$
 </Choices>
@@ -22,12 +22,12 @@
     - $yx^{y-1} \mathrm{d}x + x^y \ln y \, \mathrm{d}y$
     - $yx^{y-1} \mathrm{d}x + x^y \, \mathrm{d}y$
     - $yx^{y-1} \mathrm{d}y + x^y \ln x \, \mathrm{d}x$
-    - $yx^{y-1} \mathrm{d}x + x^y \ln x \, \mathrm{d}y$
+    + $yx^{y-1} \mathrm{d}x + x^y \ln x \, \mathrm{d}y$
 </Choices>
 
 3. 设方程 $x^2 + 2y^2 + 3z^2 + 2xy - z = 7$ 确定隐函数 $z = z(x,y)$，则 $z_x =$ <Slot />
 <Choices>
-    - $\frac{2(x+y)}{1-6z}$
+    + $\frac{2(x+y)}{1-6z}$
     - $\frac{2(x+y)}{6z-1}$
     - $\frac{2(x+2y)}{1-6z}$
     - $\frac{2(x+2y)}{6z-1}$
@@ -49,28 +49,28 @@
     - ③ $\Rightarrow$ ① $\Rightarrow$ ④
     - ③ $\Rightarrow$ ② $\Rightarrow$ ①
     - ③ $\Rightarrow$ ④ $\Rightarrow$ ①
-    - ② $\Rightarrow$ ③ $\Rightarrow$ ①
+    + ② $\Rightarrow$ ③ $\Rightarrow$ ①
 </Choices>
 
 5. 设 $(\sigma) = \{(x,y) \in \mathbb{R}^2 \mid x^2 + y^2 \leq 1\}$，则 $\iint_{(\sigma)} e^{x^2+y^2} \mathrm{d}x\mathrm{d}y =$ <Slot />
 <Choices>
     - $2\pi(e-1)$
     - $\frac{\pi(e-1)}{2}$
-    - $\pi(e-1)$
+    + $\pi(e-1)$
     - $\pi e$
 </Choices>
 
 6. 设 $(S)$ 为球面 $x^2 + y^2 + z^2 = R^2 \ (R > 0)$，则 $\oiint_{(S)} (x^2 + z) \, \mathrm{d}S =$ <Slot />
 <Choices>
     - $\frac{4\pi R^2}{3}$
-    - $\frac{4\pi R^4}{3}$
+    + $\frac{4\pi R^4}{3}$
     - $4\pi R^4$
     - $2\pi R^2$
 </Choices>
 
 7. 已知向量 $\vec{A} = (x^2 - y^2,\ 2xy,\ 2x)$，则旋度 $\mathrm{rot}\vec{A} =$ <Slot />
 <Choices>
-    - $(0,\, -2,\, 4y)$
+    + $(0,\, -2,\, 4y)$
     - $(0,\, 2,\, 4y)$
     - $(0,\, 2,\, -4y)$
     - $4x+2$
@@ -80,7 +80,7 @@
 <Choices>
     - $\sum_{n=1}^{\infty} \frac{n^2}{(n^3+1)\sqrt{n^2+5}}$
     - $\sum_{n=1}^{\infty} \frac{2^n}{n!}$
-    - $\sum_{n=2}^{\infty} \frac{1}{n \ln n}$
+    + $\sum_{n=2}^{\infty} \frac{1}{n \ln n}$
     - $\sum_{n=1}^{\infty} \frac{n}{2^n}$
 </Choices>
 
@@ -88,7 +88,7 @@
 <Choices>
     - $(-4, 4)$
     - $(-5, 3)$
-    - $(-3, 5)$
+    + $(-3, 5)$
     - $(-5, 5)$
 </Choices>
 
@@ -99,7 +99,7 @@ $f(x) = \begin{cases} -x, & -\pi \leq x \leq 0, \\ x, & 0 < x < \pi, \end{cases}
 <Choices>
     - $-\frac{4}{n^2 \pi}$
     - $\frac{2[1-(-1)^n]}{\pi n^2}$
-    - $\frac{2[(-1)^n-1]}{\pi n^2}$
+    + $\frac{2[(-1)^n-1]}{\pi n^2}$
     - $\frac{2[1-(-1)^n]}{\pi n}$
 </Choices>
 
@@ -107,19 +107,83 @@ $f(x) = \begin{cases} -x, & -\pi \leq x \leq 0, \\ x, & 0 < x < \pi, \end{cases}
 
 1. 设 $f(u,v)$ 具有二阶连续偏导数，$z = f(2x-y,\, x+3y)$，计算 $\frac{\partial z}{\partial x}$ 及 $\frac{\partial^2 z}{\partial x \partial y}$
 
+<Solution>
+
+$$
+\frac{\partial z}{\partial x} = 2f_1' + f_2'
+$$
+
+$$
+\frac{\partial^2 z}{\partial x \partial y} = -2f_{11}'' + 5f_{12}'' + 3f_{22}''
+$$
+
+</Solution>
+
 2. 求曲面 $x^2 + y^2 + z^2 = 14$ 在点 $M(1,2,3)$ 处的切平面方程与法线方程．
+
+<Solution>
+
+切平面方程：$x + 2y + 3z = 14$
+
+法线方程：$\dfrac{x-1}{1} = \dfrac{y-2}{2} = \dfrac{z-3}{3}$
+
+</Solution>
 
 ## 三、（每小题7分，共14分）
 
 1. 设 $(C)$ 为螺旋线：$x = \sin t,\ y = \cos t,\ z = 2t,\ 0 \leq t \leq \pi$，计算线积分
 $$\int_{(C)} (x^2 + y^2 + z) \, \mathrm{d}s.$$
 
+<Solution>
+
+$$
+\sqrt{5}\,\pi(\pi+1)
+$$
+
+</Solution>
+
 2. 求函数 $f(x,y) = x^2 + y^2 + 12x + 16y$ 在圆周 $x^2 + y^2 = 25$ 上的最大值和最小值．
+
+<Solution>
+
+最大值：$125$，最小值：$-75$
+
+</Solution>
 
 ## 四、（10分）
 
 设一质点在力 $\vec{F} = (e^x \cos y - xy,\ -e^x \sin y - x^2)$ 的作用下沿上半圆周
 $(C): y = \sqrt{4-x^2}$ 从点 $A(2,0)$ 移动到点 $B(-2,0)$，求力 $\vec{F}$ 所做的功 $W$
+
+<Solution>
+
+记 $P = e^x \cos y - xy$，$Q = -e^x \sin y - x^2$，则 $W = \int_C P\,\mathrm{d}x + Q\,\mathrm{d}y$.
+
+补下方面直径 $L$（$B \to A$），则 $\oint P\,\mathrm{d}x + Q\,\mathrm{d}y = \int_C + \int_L$.
+
+由格林公式：
+
+$$
+\oint P\,\mathrm{d}x + Q\,\mathrm{d}y = \iint_D (Q_x - P_y)\,\mathrm{d}A
+$$
+
+其中 $Q_x = -e^x \sin y - 2x$，$P_y = -e^x \sin y - x$，故 $Q_x - P_y = -x$.
+
+由于 $D$ 关于 $y$ 轴对称：
+
+$$
+\iint_D (-x)\,\mathrm{d}A = 0
+$$
+
+又 $\displaystyle \int_L P\,\mathrm{d}x + Q\,\mathrm{d}y = \int_{-2}^{2} e^x\,\mathrm{d}x = e^2 - e^{-2}$.
+
+因此：
+
+$$
+W = \int_C P\,\mathrm{d}x + Q\,\mathrm{d}y = - \int_L P\,\mathrm{d}x + Q\,\mathrm{d}y = e^{-2} - e^2
+$$
+
+</Solution>
 
 ## 五、（10分）
 
@@ -127,11 +191,61 @@ $(C): y = \sqrt{4-x^2}$ 从点 $A(2,0)$ 移动到点 $B(-2,0)$，求力 $\vec{F}
 求向量场 $\vec{E} = (3xy^2,\, 3x^2y - 3yz^2,\, x + z^3)$ 穿过曲面 $(S)$ 的通量，即计算面积分
 $$\iint_{(S)} 3xy^2 \, \mathrm{d}y \wedge \mathrm{d}z + (3x^2y - 3yz^2) \, \mathrm{d}z \wedge \mathrm{d}x + (x + z^3) \, \mathrm{d}x \wedge \mathrm{d}y.$$
 
+<Solution>
+
+散度：
+
+$$
+\nabla \cdot \vec{E} = \frac{\partial(3xy^2)}{\partial x} + \frac{\partial(3x^2y - 3yz^2)}{\partial y} + \frac{\partial(x + z^3)}{\partial z} = 3y^2 + (3x^2 - 3z^2) + 3z^2 = 3(x^2 + y^2)
+$$
+
+补上底面 $S_1: z = 1$（$x^2 + y^2 \leq 1$，取上侧），由高斯公式：
+
+$$
+\Phi_S + \Phi_{S_1} = \iiint_V 3(x^2 + y^2)\,\mathrm{d}V
+$$
+
+柱坐标下：
+
+$$
+\iiint_V 3r^2\,\mathrm{d}V = \int_0^{2\pi} \int_0^1 \int_r^1 3r^3\,\mathrm{d}z\,\mathrm{d}r\,\mathrm{d}\theta = \frac{3\pi}{10}
+$$
+
+顶面通量：
+
+$$
+\Phi_{S_1} = \iint_{x^2 + y^2 \leq 1} (x + 1)\,\mathrm{d}A = \pi
+$$
+
+故：
+
+$$
+\Phi_S = \frac{3\pi}{10} - \pi = -\frac{7\pi}{10}
+$$
+
+</Solution>
+
 ## 六、（第1小题7分，第2小题3分，共10分）
 
 1. 求幂级数 $\sum_{n=1}^{\infty} \frac{x^n}{n}$ 的收敛域及其和函数；
 
+<Solution>
+
+收敛域：$[-1, 1)$，和函数：$-\ln(1-x)$
+
+</Solution>
+
 2. 求常数项级数 $\frac{2^2}{3} + \frac{1 \cdot 2^3}{2 \cdot 3^2} + \frac{1 \cdot 2^4}{3 \cdot 3^3} + \cdots + \frac1{n} \cdot \frac{2^{n+1}}{3^n} + \cdots$ 的和。
+
+<Solution>
+
+通项 $a_n = \dfrac{1}{n} \cdot \dfrac{2^{n+1}}{3^n} = \dfrac{2}{n}\left(\dfrac{2}{3}\right)^n$，故
+
+$$
+S = 2\sum_{n=1}^{\infty} \frac{(2/3)^n}{n} = -2\ln\!\left(1 - \frac{2}{3}\right) = 2\ln 3
+$$
+
+</Solution>
 
 ## 七、（6分）
 
@@ -140,3 +254,59 @@ $$\iint_{(S)} 3xy^2 \, \mathrm{d}y \wedge \mathrm{d}z + (3x^2y - 3yz^2) \, \math
 $$
 \displaystyle{\lim_{t \to 0^+} \iint_{t^2 \leq x^2 + y^2 \leq 1} \frac{x f_x + y f_y}{x^2 + y^2} \, \mathrm{d}x\mathrm{d}y}.
 $$
+
+<Solution>
+
+记 $I_t = \displaystyle \iint_{D_t} \dfrac{x f_x + y f_y}{x^2 + y^2}\,\mathrm{d}A$，其中 $D_t: t^2 \leq x^2 + y^2 \leq 1$.
+
+构造向量场如下
+
+$$
+P = -\frac{y f}{x^2 + y^2}, \quad Q = \frac{x f}{x^2 + y^2}
+$$
+
+即可使得旋度
+
+$$
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = \frac{x f_x + y f_y}{x^2 + y^2}
+$$
+
+由格林公式，区域 $D_t$ 的边界由外圆 $C_1: r = 1$ 和内圆 $C_2: r = t$ 组成：
+
+$$
+I_t = \int_{C_1} P\,\mathrm{d}x + Q\,\mathrm{d}y + \int_{C_2} P\,\mathrm{d}x + Q\,\mathrm{d}y
+$$
+
+取极坐标 $x = r\cos\theta,\ y = r\sin\theta$，则 $\mathrm{d}x = -r\sin\theta\,\mathrm{d}\theta,\ \mathrm{d}y = r\cos\theta\,\mathrm{d}\theta$：
+
+$$
+P = -\frac{y f}{x^2 + y^2} = -\frac{f\cdot\sin\theta}{r}
+$$
+
+$$
+Q = \frac{x f}{x^2 + y^2} = \frac{f \cdot \cos\theta}{r}
+$$
+
+代入得
+
+$$
+\begin{aligned}
+P\,\mathrm{d}x + Q\,\mathrm{d}y
+&= f\cdot\sin^2\theta\,\mathrm{d}\theta + f\cdot\cos^2\theta\,\mathrm{d}\theta \\
+&= f\,\mathrm{d}\theta
+\end{aligned}
+$$
+
+将 $r=1$（$C_1$）与 $r = t$（$C_2$）分别代入 $f(x, y) = f(r\cos\theta, r\sin\theta)$
+
+外圆（$C_1$，逆时针）：$\displaystyle \int_{C_1} f(\cos\theta, \sin\theta)\,\mathrm{d}\theta = \int_0^{2\pi} 0\,\mathrm{d}\theta = 0$
+
+内圆（$C_2$，顺时针）：$\displaystyle \int_{C_2} f(t\cos\theta, t\sin\theta)\,\mathrm{d}\theta = -\int_0^{2\pi} f(t\cos\theta, t\sin\theta)\,\mathrm{d}\theta$
+
+令 $t \to 0^+$，$f(t\cos\theta, t\sin\theta) \to f(0,0) = 1$，故：
+
+$$
+\lim_{t \to 0^+} I_t = -\int_0^{2\pi} 1\,\mathrm{d}\theta = -2\pi
+$$
+
+</Solution>
