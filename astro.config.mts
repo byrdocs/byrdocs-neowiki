@@ -15,7 +15,7 @@ const vitePlugins = [...tailwindcss(), viteExamAssets()] as unknown as AstroVite
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://wiki.byrdocs.org",
+    site: import.meta.env.WIKI_SITE_URL,
     integrations: [mdx()],
     markdown: {
         remarkPlugins: [remarkMath, remarkChoices],

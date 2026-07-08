@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#111;stroke-width:2.2}
+      .thin{fill:none;stroke:#111;stroke-width:1.8;marker-end:url(#arrow)}
+      .bus{stroke:#111;stroke-width:5;stroke-linecap:round}
+      .q{fill:none;stroke:#2f77b4;stroke-width:2}
+      text{font-family:Arial,"Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#111;font-size:22px}
+      .small{font-size:18px}.mid{font-size:28px}.big{font-size:36px}.blue{fill:#2f77b4}
+    </style>
+  </defs>
+
+  <line class="bus" x1="86" y1="431" x2="958" y2="431"/>
+
+  <rect class="box" x="105" y="154" width="195" height="194"/>
+  <text class="big" x="166" y="264">GPRS</text>
+  <line class="thin" x1="136" y1="431" x2="136" y2="349"/>
+  <text class="small" x="68" y="411">GPRin0</text>
+  <line class="thin" x1="160" y1="431" x2="160" y2="349"/>
+  <text class="small" x="168" y="411">GPRin1</text>
+  <line class="thin" x1="240" y1="348" x2="240" y2="431"/>
+  <text class="small" x="165" y="379">GPRout0</text>
+  <line class="thin" x1="265" y1="348" x2="265" y2="431"/>
+  <text class="small" x="273" y="379">GPRout1</text>
+
+  <line class="thin" x1="344" y1="199" x2="407" y2="199"/>
+  <text class="small" x="347" y="188">PC+1</text>
+  <rect class="box" x="407" y="183" width="94" height="42"/>
+  <text class="mid" x="435" y="211">PC</text>
+  <line class="thin" x1="438" y1="225" x2="438" y2="431"/>
+  <text class="small" x="385" y="326">PCout</text>
+  <line class="thin" x1="463" y1="431" x2="463" y2="226"/>
+  <text class="small" x="473" y="326">PCin</text>
+
+  <rect class="box" x="526" y="48" width="146" height="53"/>
+  <text class="mid" x="558" y="82">控制器</text>
+  <line class="q" x1="590" y1="101" x2="590" y2="160"/>
+  <text class="blue" x="584" y="184">?</text>
+
+  <rect class="box" x="544" y="286" width="115" height="73"/>
+  <text class="big" x="575" y="333">IR</text>
+  <line class="thin" x1="602" y1="431" x2="602" y2="360"/>
+  <text class="small" x="559" y="401">IRin</text>
+
+  <rect class="box" x="654" y="180" width="147" height="61"/>
+  <text class="big" x="699" y="218">MAR</text>
+  <line class="thin" x1="707" y1="431" x2="707" y2="242"/>
+  <text class="small" x="649" y="401">MARin</text>
+  <line class="thin" x1="802" y1="211" x2="988" y2="211"/>
+  <text class="small" x="852" y="200">Addr</text>
+
+  <rect class="box" x="763" y="284" width="146" height="73"/>
+  <text class="big" x="803" y="331">MDR</text>
+  <line class="thin" x1="814" y1="357" x2="814" y2="431"/>
+  <text class="small" x="730" y="401">MDRout</text>
+  <line class="thin" x1="849" y1="431" x2="849" y2="358"/>
+  <text class="small" x="859" y="401">MDRin</text>
+  <line class="thin" x1="988" y1="300" x2="910" y2="300"/>
+  <text class="small" x="920" y="287">MDRinE</text>
+  <line class="thin" x1="910" y1="328" x2="988" y2="328"/>
+  <text class="small" x="910" y="357">MDRoutE</text>
+
+  <rect class="box" x="988" y="197" width="180" height="178"/>
+  <text class="big" x="1062" y="293">M</text>
+  <line class="thin" x1="1039" y1="445" x2="1039" y2="376"/>
+  <text class="small" x="1014" y="466">Read</text>
+  <line class="thin" x1="1122" y1="445" x2="1122" y2="376"/>
+  <text class="small" x="1093" y="466">Write</text>
+
+  <line class="thin" x1="367" y1="431" x2="367" y2="515"/>
+  <text class="small" x="377" y="473">Yin</text>
+  <rect class="box" x="304" y="521" width="144" height="38"/>
+  <text class="big" x="386" y="553">Y</text>
+  <line class="thin" x1="376" y1="559" x2="376" y2="590"/>
+  <text class="small" x="387" y="586">A</text>
+
+  <line class="thin" x1="499" y1="431" x2="499" y2="590"/>
+  <text class="small" x="448" y="500">ALUin</text>
+  <text class="small" x="511" y="586">B</text>
+  <path d="M342 590 L406 590 L424 619 L442 590 L540 590 L504 650 L370 650 Z" fill="#fff" stroke="#111" stroke-width="2"/>
+  <text class="small" x="429" y="671">z</text>
+  <line class="thin" x1="424" y1="650" x2="424" y2="687"/>
+  <rect class="box" x="365" y="686" width="124" height="40"/>
+  <text class="big" x="407" y="718">Z</text>
+  <line class="thin" x1="489" y1="706" x2="562" y2="706"/>
+  <line class="thin" x1="562" y1="706" x2="562" y2="431"/>
+  <text class="small" x="573" y="500">Zout</text>
+</svg>

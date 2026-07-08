@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as vscode from "vscode";
@@ -315,7 +316,7 @@ export function readExamEntries(
   const examsRoot = path.join(workspaceFolder.uri.fsPath, "exams");
   try {
     const entries = fs.readdirSync(examsRoot, { withFileTypes: true });
-    return entries
+    const exams = entries
       .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
       .flatMap((entry): SidebarExamEntry[] => {
         const examName = entry.name;
@@ -355,17 +356,82 @@ export function readExamEntries(
         } catch {
           return [];
         }
-      })
-      .sort(compareSidebarExamEntries);
+      });
+
+    const editTimes = readExamLastEditTimes(workspaceFolder, examsRoot, exams);
+    return exams.sort((left, right) =>
+      compareSidebarExamEntries(left, right, editTimes),
+    );
   } catch {
     return [];
   }
 }
 
+function readExamLastEditTimes(
+  workspaceFolder: vscode.WorkspaceFolder,
+  examsRoot: string,
+  exams: readonly SidebarExamEntry[],
+): Map<string, number> {
+  const times = new Map<string, number>();
+
+  try {
+    const stdout = execFileSync(
+      "git",
+      ["-c", "core.quotePath=false", "log", "--format=%ct", "--name-only", "--", "exams"],
+      {
+        cwd: workspaceFolder.uri.fsPath,
+        encoding: "utf8",
+        maxBuffer: 64 * 1024 * 1024,
+      },
+    );
+
+    let currentTime = 0;
+    for (const rawLine of stdout.split(/\r?\n/u)) {
+      const line = rawLine.trim();
+      if (!line) {
+        continue;
+      }
+      if (/^\d+$/u.test(line)) {
+        currentTime = Number.parseInt(line, 10);
+        continue;
+      }
+      const match = /^exams\/([^/]+)\//u.exec(line);
+      const examName = match?.[1];
+      if (examName && !times.has(examName)) {
+        times.set(examName, currentTime);
+      }
+    }
+  } catch {
+  }
+
+  for (const exam of exams) {
+    if (times.has(exam.examName)) {
+      continue;
+    }
+    try {
+      const stats = fs.statSync(path.join(examsRoot, exam.examName));
+      times.set(exam.examName, Math.floor(stats.mtimeMs / 1000));
+    } catch {
+      times.set(exam.examName, 0);
+    }
+  }
+
+  return times;
+}
+
 export function compareSidebarExamEntries(
   left: SidebarExamEntry,
   right: SidebarExamEntry,
+  editTimes?: Map<string, number>,
 ): number {
+  if (editTimes) {
+    const leftTime = editTimes.get(left.examName) ?? 0;
+    const rightTime = editTimes.get(right.examName) ?? 0;
+    if (leftTime !== rightTime) {
+      return rightTime - leftTime;
+    }
+  }
+
   if (left.startYear !== right.startYear) {
     return right.startYear - left.startYear;
   }

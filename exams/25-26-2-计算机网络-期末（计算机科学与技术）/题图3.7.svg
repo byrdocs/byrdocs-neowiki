@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="100%" height="100%" fill="white"/>
+  <style>
+    .line{stroke:#111;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .node{fill:white;stroke:#111;stroke-width:3}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:40px;fill:#111}
+    .r{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:36px;fill:#111;font-style:italic}
+  </style>
+
+  <!-- arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L16,6 L0,12" fill="none" stroke="#111" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <!-- upper link A -->
+  <line class="line" x1="80" y1="175" x2="1030" y2="175" marker-end="url(#arrow)"/>
+
+  <!-- middle link B: broken around R2 area, as in the sketch -->
+  <line class="line" x1="80" y1="220" x2="265" y2="220"/>
+  <line class="line" x1="900" y1="220" x2="1030" y2="220" marker-end="url(#arrow)"/>
+
+  <!-- bottom link C -->
+  <line class="line" x1="80" y1="455" x2="1030" y2="455" marker-end="url(#arrow)"/>
+
+  <!-- diagonal/middle path from R1 to R5 -->
+  <path class="line" d="M260 220 L590 405 L900 405"/>
+
+  <!-- vertical path from R3 to R5 -->
+  <line class="line" x1="900" y1="205" x2="900" y2="455"/>
+
+  <!-- routers / nodes -->
+  <ellipse class="node" cx="260" cy="200" rx="28" ry="20"/>
+  <ellipse class="node" cx="590" cy="200" rx="28" ry="20"/>
+  <ellipse class="node" cx="900" cy="200" rx="28" ry="20"/>
+  <ellipse class="node" cx="250" cy="435" rx="28" ry="20"/>
+  <ellipse class="node" cx="900" cy="430" rx="28" ry="20"/>
+
+  <!-- router labels -->
+  <text class="r" x="245" y="155">R₁</text>
+  <text class="r" x="575" y="155">R₂</text>
+  <text class="r" x="885" y="155">R₃</text>
+  <text class="r" x="235" y="400">R₄</text>
+  <text class="r" x="940" y="410">R₅</text>
+
+  <!-- destination labels -->
+  <text class="txt" x="1070" y="190">A</text>
+  <text class="txt" x="1070" y="240">B</text>
+  <text class="txt" x="1070" y="475">C</text>
+</svg>

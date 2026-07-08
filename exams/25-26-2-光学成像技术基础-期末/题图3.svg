@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="850" height="950" viewBox="0 0 850 950" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrowSolid" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+        </marker>
+    </defs>
+
+    <style>
+        .axis { stroke: black; stroke-width: 2; }
+        .lens { stroke: black; stroke-width: 2; }
+        .tick { stroke: black; stroke-width: 3; }
+        .obj-solid { stroke: black; stroke-width: 3; }
+        .obj-dashed { stroke: black; stroke-width: 3; stroke-dasharray: 8,5; }
+        .label { font-family: serif; font-size: 24px; text-anchor: middle; font-weight: bold; }
+        .label-italic { font-family: serif; font-size: 24px; font-style: italic; text-anchor: middle; }
+    </style>
+
+    <!-- ================= 图 1 (上) ================= -->
+    <!-- 主光轴 -->
+    <line x1="20" y1="180" x2="830" y2="180" class="axis" />
+    
+    <!-- 透镜面 H1, H1' -->
+    <line x1="350" y1="80" x2="350" y2="280" class="lens" />
+    <line x1="450" y1="80" x2="450" y2="280" class="lens" />
+    
+    <!-- 焦点刻度 F1, F1' -->
+    <line x1="200" y1="172" x2="200" y2="188" class="tick" />
+    <line x1="600" y1="172" x2="600" y2="188" class="tick" />
+    
+    <!-- 坐标标记 -->
+    <text x="200" y="220" class="label-italic">F<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    <text x="330" y="220" class="label-italic">H<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    <text x="470" y="220" class="label-italic">H<tspan baseline-shift="sub" font-size="16">1</tspan>'</text>
+    <text x="600" y="220" class="label-italic">F<tspan baseline-shift="sub" font-size="16">1</tspan>'</text>
+    
+    <!-- 实物 (F1 与 H1 之间) -->
+    <line x1="275" y1="180" x2="275" y2="100" class="obj-solid" marker-end="url(#arrowSolid)" />
+    <text x="275" y="220" class="label">A</text>
+    <text x="275" y="85" class="label">B</text>
+
+
+    <!-- ================= 图 2 (中) ================= -->
+    <!-- 主光轴 -->
+    <line x1="20" y1="480" x2="830" y2="480" class="axis" />
+    
+    <!-- 透镜面 H1, H1' -->
+    <line x1="350" y1="380" x2="350" y2="580" class="lens" />
+    <line x1="450" y1="380" x2="450" y2="580" class="lens" />
+    
+    <!-- 焦点刻度 F1, F1' -->
+    <line x1="200" y1="472" x2="200" y2="488" class="tick" />
+    <line x1="600" y1="472" x2="600" y2="488" class="tick" />
+    
+    <!-- 坐标标记 -->
+    <text x="200" y="520" class="label-italic">F<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    <text x="330" y="520" class="label-italic">H<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    <text x="470" y="520" class="label-italic">H<tspan baseline-shift="sub" font-size="16">1</tspan>'</text>
+    <text x="600" y="520" class="label-italic">F<tspan baseline-shift="sub" font-size="16">1</tspan>'</text>
+    
+    <!-- 虚物 (F1' 右侧，距离同 H1'F1') -->
+    <line x1="750" y1="480" x2="750" y2="400" class="obj-dashed" marker-end="url(#arrowSolid)" />
+    <text x="750" y="520" class="label">A</text>
+    <text x="750" y="385" class="label">B</text>
+
+
+    <!-- ================= 图 3 (下) ================= -->
+    <!-- 主光轴 -->
+    <line x1="20" y1="780" x2="830" y2="780" class="axis" />
+    
+    <!-- 透镜面 H2, H2' -->
+    <line x1="350" y1="680" x2="350" y2="880" class="lens" />
+    <line x1="450" y1="680" x2="450" y2="880" class="lens" />
+    
+    <!-- 焦点刻度 F2, F2' -->
+    <line x1="200" y1="772" x2="200" y2="788" class="tick" />
+    <line x1="600" y1="772" x2="600" y2="788" class="tick" />
+    
+    <!-- 坐标标记 -->
+    <text x="200" y="820" class="label-italic">F<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+    <text x="330" y="820" class="label-italic">H<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+    <text x="470" y="820" class="label-italic">H<tspan baseline-shift="sub" font-size="16">2</tspan>'</text>
+    <text x="600" y="820" class="label-italic">F<tspan baseline-shift="sub" font-size="16">2</tspan>'</text>
+    
+    <!-- 实物 (F2 左侧较远处) -->
+    <line x1="80" y1="780" x2="80" y2="700" class="obj-solid" marker-end="url(#arrowSolid)" />
+    <text x="80" y="820" class="label">A</text>
+    <text x="80" y="685" class="label">B</text>
+
+</svg>
