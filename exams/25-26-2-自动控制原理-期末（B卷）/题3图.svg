@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="black" />
+        </marker>
+    </defs>
+    
+    <!-- 左侧 结构图 -->
+    <path d="M 30 120 L 90 120" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+    <text x="35" y="155" font-family="serif" font-style="italic" font-size="32">R(s)</text>
+
+    <!-- K1 -->
+    <rect x="100" y="85" width="70" height="70" fill="none" stroke="black" stroke-width="4" />
+    <text x="135" y="132" font-family="serif" font-style="italic" font-size="32" text-anchor="middle">K<tspan baseline-shift="sub" font-size="22">1</tspan></text>
+
+    <path d="M 170 120 L 210 120" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+
+    <!-- Sum point -->
+    <circle cx="235" cy="120" r="22" fill="none" stroke="black" stroke-width="3" />
+    <path d="M 219 104 L 251 136" stroke="black" stroke-width="2" />
+    <path d="M 219 136 L 251 104" stroke="black" stroke-width="2" />
+
+    <path d="M 257 120 L 305 120" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+
+    <!-- K2 box -->
+    <rect x="315" y="60" width="140" height="120" fill="none" stroke="black" stroke-width="4" />
+    <path d="M 335 115 L 435 115" stroke="black" stroke-width="3" />
+    <text x="385" y="95" font-family="serif" font-style="italic" font-size="32" text-anchor="middle">K<tspan baseline-shift="sub" font-size="22">2</tspan></text>
+    <text x="385" y="155" font-family="serif" font-style="italic" font-size="32" text-anchor="middle">s(s+a)</text>
+
+    <path d="M 455 120 L 530 120" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+    <text x="480" y="105" font-family="serif" font-style="italic" font-size="32">C(s)</text>
+
+    <!-- Feedback -->
+    <circle cx="510" cy="120" r="4" fill="black" />
+    <path d="M 510 120 L 510 200 L 235 200 L 235 152" fill="none" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+    <!-- Minus sign -->
+    <rect x="245" y="165" width="20" height="6" fill="black" />
+
+    <!-- 右侧 响应曲线 -->
+    <!-- Axes -->
+    <path d="M 650 220 L 650 10" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+    <path d="M 650 220 L 950 220" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+
+    <!-- Axis labels -->
+    <text x="635" y="245" font-family="serif" font-size="26">0</text>
+    <text x="665" y="45" font-family="serif" font-style="italic" font-size="28">c(t)</text>
+    <text x="920" y="255" font-family="serif" font-style="italic" font-size="28">t/s</text>
+
+    <!-- Ticks and dashed lines -->
+    <text x="615" y="160" font-family="serif" font-size="26">1</text>
+    <path d="M 650 152 L 660 152" stroke="black" stroke-width="3" /> <!-- tick line for 1 -->
+
+    <text x="615" y="98" font-family="serif" font-size="26">2</text>
+    <path d="M 650 90 L 930 90" stroke="black" stroke-width="3" stroke-dasharray="4,4" />
+
+    <text x="580" y="63" font-family="serif" font-size="26">2.18</text>
+    <path d="M 650 55 L 710 55" stroke="black" stroke-width="3" stroke-dasharray="4,4" />
+
+    <text x="690" y="255" font-family="serif" font-size="26">0.8</text>
+    <path d="M 710 220 L 710 55" stroke="black" stroke-width="3" stroke-dasharray="4,4" />
+
+    <!-- Response Curve -->
+    <path d="M 650 220 
+             C 670 100, 680 55, 710 55 
+             S 745 115, 760 115 
+             S 795 75, 810 75 
+             S 840 90, 850 90 
+             S 870 90, 930 90" 
+          fill="none" stroke="black" stroke-width="4" />
+
+    <!-- Title -->
+    <text x="500" y="320" font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle">图 3 控制系统的结构图（左图）和单位阶跃响应曲线（右图）</text>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c3e50" />
+        </marker>
+    </defs>
+
+    <!-- Container -->
+    <path d="M 120 120 L 120 240 L 130 250 L 270 250 L 280 240 L 275 120" fill="none" stroke="#2c3e50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Small Block -->
+    <rect x="245" y="240" width="25" height="10" fill="#2c3e50" />
+
+    <!-- Ray -->
+    <path d="M 70 70 L 157.5 155 L 245 240" fill="none" stroke="#2c3e50" stroke-width="2" marker-mid="url(#arrow)" />
+</svg>

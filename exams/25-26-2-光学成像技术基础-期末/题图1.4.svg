@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M 0 0 L 8 4 L 0 8 z" fill="black" />
+        </marker>
+    </defs>
+
+    <!-- Mirror Line -->
+    <line x1="180" y1="180" x2="180" y2="320" stroke="black" stroke-width="4" />
+
+    <!-- Mirror Hashing (left side) -->
+    <path d="M 165 195 L 180 180
+             M 165 215 L 180 200
+             M 165 235 L 180 220
+             M 165 255 L 180 240
+             M 165 275 L 180 260
+             M 165 295 L 180 280
+             M 165 315 L 180 300
+             M 165 335 L 180 320" stroke="black" stroke-width="3" />
+
+    <!-- Dashed Line -->
+    <line x1="180" y1="80" x2="180" y2="180" stroke="black" stroke-width="3" stroke-dasharray="10, 10" />
+
+    <!-- Arrow AB -->
+    <line x1="240" y1="120" x2="205" y2="95" stroke="black" stroke-width="3" marker-end="url(#arrowHead)" />
+
+    <!-- Point C -->
+    <circle cx="270" cy="250" r="5" fill="black" />
+
+    <!-- Labels -->
+    <g font-family="serif" font-size="28" font-weight="bold" fill="black">
+        <text x="120" y="200">M</text>
+        <text x="120" y="320">N</text>
+        <text x="190" y="80" font-size="22">A</text>
+        <text x="250" y="135" font-size="22">B</text>
+        <text x="290" y="260">C</text>
+    </g>
+</svg>
