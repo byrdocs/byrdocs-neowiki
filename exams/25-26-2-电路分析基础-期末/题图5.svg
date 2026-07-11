@@ -1,0 +1,38 @@
+<svg width="360" height="200" xmlns="http://www.w3.org/2000/svg" stroke="black" stroke-width="2" fill="none" font-family="'Times New Roman', 'Noto Serif CJK SC', SimSun, serif">
+    <!-- 样式定义 -->
+    <style>
+        .txt { stroke: none; fill: black; text-anchor: middle; font-size: 16px; }
+        /* 针对相量符号的斜体罗马字体 */
+        .phasor { stroke: none; fill: black; font-style: italic; font-family: "Times New Roman", Times, serif; font-size: 20px; }
+    </style>
+
+    <!-- 1. 左侧分支：交流电压源 -->
+    <line x1="100" y1="160" x2="100" y2="130" />
+    <circle cx="100" cy="110" r="20" fill="white" />
+    <text x="100" y="105" class="txt" font-size="14">+</text>
+    <text x="100" y="125" class="txt" font-size="14">-</text>
+    
+    <!-- 绘制电压相量 U 及其上方的点 (U ̇) -->
+    <text x="65" y="117" class="phasor">U</text>
+    <circle cx="72" cy="100" r="1.5" fill="black" stroke="none" />
+    
+    <line x1="100" y1="90" x2="100" y2="60" />
+
+    <!-- 2. 顶部导线 -->
+    <line x1="100" y1="60" x2="260" y2="60" />
+    
+    <!-- 3. 电流相量 I 及其箭头 (I ̇) -->
+    <polygon points="180,60 165,55 165,65" fill="black" stroke="none" />
+    <text x="170" y="45" class="phasor">I</text>
+    <circle cx="174" cy="30" r="1.5" fill="black" stroke="none" />
+
+    <!-- 4. 右侧分支：阻抗 Z -->
+    <line x1="260" y1="60" x2="260" y2="85" />
+    <!-- 阻抗用标准的空心矩形表示 -->
+    <rect x="245" y="85" width="30" height="50" fill="white" />
+    <text x="260" y="116" class="txt" font-size="18">Z</text>
+    <line x1="260" y1="135" x2="260" y2="160" />
+
+    <!-- 5. 底部闭合导线 -->
+    <line x1="260" y1="160" x2="100" y2="160" />
+</svg>

@@ -1,0 +1,50 @@
+<svg width="360" height="180" xmlns="http://www.w3.org/2000/svg" stroke="black" stroke-width="2" fill="none" font-family="'Times New Roman', 'Noto Serif CJK SC', SimSun, serif">
+    <style>
+        .txt { stroke: none; fill: black; text-anchor: middle; }
+        .node { fill: black; stroke: none; }
+    </style>
+    
+    <!-- 左侧输入端口 (空心圆) -->
+    <circle cx="55" cy="155" r="4" fill="white" />
+    <circle cx="319" cy="155" r="4" fill="white" />
+    
+    <!-- 顶部导线起点 -->
+    <line x1="54" y1="50" x2="100" y2="50" />
+    
+    <!-- L (电感) -->
+    <!-- 水平方向的线圈绘制 -->
+    <path d="M 100 50 Q 112 30 125 50 Q 137 30 150 50 Q 162 30 175 50" />
+    <text x="137" y="25" class="txt">L</text>
+    
+    <!-- 连接 L 和 R 的导线 -->
+    <line x1="175" y1="50" x2="220" y2="50" />
+    
+    <!-- R (电阻) -->
+    <rect x="220" y="40" width="60" height="20" />
+    <text x="250" y="25" class="txt">R</text>
+    
+    <!-- 顶部导线终点 -->
+    <line x1="280" y1="50" x2="320" y2="50" />
+    
+    <!-- 右侧闭合导线 -->
+    <line x1="319" y1="50" x2="319" y2="150" />
+
+    <line x1="55" y1="50" x2="55" y2="150" />
+    
+    <!-- V (电压表) 并联测量支路 -->
+    <!-- 从 L 的左侧接入 -->
+    <line x1="75" y1="50" x2="75" y2="100" />
+    <line x1="75" y1="100" x2="170" y2="100" />
+    
+    <!-- 电压表符号 -->
+    <circle cx="190" cy="100" r="20" fill="white" />
+    <text x="190" y="106" class="txt" font-size="18">V</text>
+    
+    <!-- 连接回 R 的右侧 -->
+    <line x1="210" y1="100" x2="300" y2="100" />
+    <line x1="300" y1="100" x2="300" y2="50" />
+    
+    <!-- 测量支路接驳处的实心节点 -->
+    <circle cx="75" cy="50" r="3" class="node" />
+    <circle cx="300" cy="50" r="3" class="node" />
+</svg>
