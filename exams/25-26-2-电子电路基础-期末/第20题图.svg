@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" width="520" height="320">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#111" />
+    </marker>
+  </defs>
+
+  <style>
+    .wire { fill: none; stroke: #111; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .thin { fill: none; stroke: #111; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .part { fill: #fff; stroke: #111; stroke-width: 3; stroke-linejoin: round; }
+    .label { font-family: "Times New Roman", serif; font-size: 22px; fill: #111; }
+    .small { font-family: "Times New Roman", serif; font-size: 18px; fill: #111; }
+  </style>
+
+  <!-- input node and R1 -->
+  <circle cx="38" cy="145" r="6" class="part" />
+  <path d="M44 145 H86" class="wire" />
+  <rect x="86" y="128" width="58" height="34" class="part" />
+  <path d="M144 145 H190" class="wire" />
+  <text x="95" y="119" class="label" font-style="italic">R<tspan baseline-shift="sub" font-size="14">1</tspan></text>
+  <text x="24" y="177" class="label" font-style="italic">v<tspan baseline-shift="sub" font-size="14">i</tspan></text>
+
+  <!-- inverting summing node and feedback capacitor -->
+  <path d="M165 145 V64 H268" class="wire" />
+  <path d="M292 64 H378 V156" class="wire" />
+  <path d="M268 40 V88" class="wire" />
+  <path d="M292 40 V88" class="wire" />
+  <circle cx="165" cy="145" r="4.5" fill="#111" />
+  <circle cx="378" cy="156" r="4.5" fill="#111" />
+  <text x="273" y="118" class="label" font-style="italic">C</text>
+
+  <!-- op amp -->
+  <path d="M190 102 L190 210 L354 156 Z" class="part" />
+  <text x="206" y="139" class="label">-</text>
+  <text x="204" y="193" class="label">+</text>
+  <text x="273" y="163" class="label" font-style="italic">A</text>
+
+  <!-- non-inverting input bias resistor R2 to ground -->
+  <path d="M190 184 H160 V219" class="wire" />
+  <rect x="143" y="219" width="34" height="54" class="part" />
+  <path d="M160 273 V286" class="wire" />
+  <path d="M126 286 H194" class="wire" />
+  <path d="M137 294 H183" class="thin" />
+  <path d="M148 301 H172" class="thin" />
+  <text x="181" y="251" class="label" font-style="italic">R<tspan baseline-shift="sub" font-size="14">2</tspan></text>
+
+  <!-- output -->
+  <path d="M354 156 H460" class="wire" />
+  <circle cx="468" cy="156" r="6" class="part" />
+  <path d="M382 184 H438" class="wire" marker-end="url(#arrow)" />
+  <text x="443" y="185" class="label" font-style="italic">v<tspan baseline-shift="sub" font-size="14">o</tspan></text>
+  <text x="400" y="214" class="label" font-style="italic">i<tspan baseline-shift="sub" font-size="14">o</tspan></text>
+</svg>

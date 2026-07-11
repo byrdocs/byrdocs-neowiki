@@ -8,20 +8,20 @@
 答案完成度: 残缺
 ---
 
-## ?????
+## 简答题
 
-从输出来看时序电路可以分为哪两类，有什么特点？
+1. 从输出来看时序电路可以分为哪两类，有什么特点？
 
-## ????
+## 时序电路设计
 
-时序电路设计：
-
-<Figure src="题图????.svg" float />
+<Figure src="时序逻辑.svg" float >
+    时序电路设计题图
+</Figure>
 
 $$
 \begin{cases}
     Q_1^{n+1}=A(Q_1^n+Q_0^n)\\
-    Q_0^{n+1}=\overline{Q_1^n}A\\
+    Q_0^{n+1}=A\overline{Q_1^n}\\
     T=AQ_1^n\overline{Q_0^n}
 \end{cases}
 $$
@@ -30,17 +30,22 @@ $$
 2. 画状态图
 3. 说明功能
 
-## ???
+## 组合电路设计
 
-<Figure src="题图???.svg" float />
-
-A,B,C 至少同时摁下两个时灯会亮（摁下为 1，亮为 1）
+<Figure src="双四选一.png" float >
+    组合电路设计题图
+</Figure>
+A、B、C 至少同时摁下两个时灯会亮（摁下为 1，亮为 1）
 
 1. 画真值表
 2. 写最简函数式
 3. 用双四选一实现
 
-## ??
+## 设计小型控制器
+
+<Figure src="设计小型控制器.svg" float >
+    设计小型控制器题图
+</Figure>
 
 RA、RB、RC 均初始化为 0，如果 OF=0 则将运算结果先打入 RC 再打入 RB，OF 为溢出标志。运行时如伪码所示：
 
@@ -53,17 +58,16 @@ while(1){
         RC->RB
 }}
 ```
-<Figure src="题图??.svg" float />
 
 1. 画 ASM 图，状态从 `S0` 到 `Sn`。
 2. 写出全部控制信号表达式。
 3. 写出触发器次态方程、激励函数。
 
-## ?
+## Verilog 设计二十进制计数器
 
-用 Verilog 设计 20 进制计数器：
-
-<Figure src="题图?.svg" float />
+<Figure src="二十进制计数器.svg" float >
+    设计二十进制计数器题图
+</Figure>
 
 （输入 `clr`, `clk`，输出 `qout` 和 `co`）
 
