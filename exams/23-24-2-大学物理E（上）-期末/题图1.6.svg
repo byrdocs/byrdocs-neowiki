@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L2,3.5 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="760" height="300" fill="#fff"/>
+  <!-- 第一电流元 -->
+  <line x1="270" y1="218" x2="246" y2="62"
+        stroke="#111" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <!-- 两电流元位置间的辅助虚线 -->
+  <line x1="259" y1="137" x2="557" y2="137"
+        stroke="#111" stroke-width="6" stroke-linecap="butt" stroke-dasharray="17 12"/>
+  <!-- 第二电流元，与第一电流元垂直 -->
+  <line x1="547" y1="147" x2="684" y2="117"
+        stroke="#111" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <!-- 标注 -->
+  <text x="42" y="166" fill="#111" font-family="Times New Roman, STIX Two Math, serif" font-size="56" font-style="italic">
+    I<tspan font-size="35" baseline-shift="sub">1</tspan><tspan baseline-shift="baseline">d</tspan><tspan>l</tspan><tspan font-size="35" baseline-shift="sub">1</tspan>
+  </text>
+  <text x="565" y="226" fill="#111" font-family="Times New Roman, STIX Two Math, serif" font-size="56" font-style="italic">
+    I<tspan font-size="35" baseline-shift="sub">2</tspan><tspan baseline-shift="baseline">d</tspan><tspan>l</tspan><tspan font-size="35" baseline-shift="sub">2</tspan>
+  </text>
+</svg>

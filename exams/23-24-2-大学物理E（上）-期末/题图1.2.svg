@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+  <defs>
+    <marker id="arrowSmall" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 光滑水平桌面 -->
+  <path d="M70 230 H650 V258 H70" fill="none" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+  <!-- 桌腿 -->
+  <path d="M120 258 V365 H148 V258 M572 258 V365 H600 V258" fill="none" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+  <!-- 小孔 -->
+  <ellipse cx="336" cy="230" rx="12" ry="5" fill="white" stroke="#111" stroke-width="5"/>
+  <!-- 桌面上的细绳 -->
+  <line x1="336" y1="226" x2="512" y2="185" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+  <!-- 穿过小孔后垂下的绳 -->
+  <line x1="336" y1="234" x2="336" y2="326" stroke="#111" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowSmall)"/>
+  <!-- 小物体 -->
+  <rect x="510" y="166" width="104" height="64" fill="white" stroke="#111" stroke-width="6"/>
+  <!-- 距离 R 的尺寸界线 -->
+  <line x1="336" y1="96" x2="336" y2="202" stroke="#111" stroke-width="5"/>
+  <line x1="562" y1="96" x2="562" y2="165" stroke="#111" stroke-width="5"/>
+  <!-- 双向尺寸箭头 -->
+  <line x1="344" y1="136" x2="554" y2="136" stroke="#111" stroke-width="4"
+        marker-start="url(#arrowSmall)" marker-end="url(#arrowSmall)"/>
+  <!-- 标签 -->
+  <text x="292" y="218" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">O</text>
+  <text x="429" y="91" font-family="Times New Roman, STIX Two Math, serif" font-size="52" font-style="italic">R</text>
+</svg>

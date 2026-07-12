@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 水平细杆 ab -->
+  <rect x="105" y="252" width="555" height="24" fill="white" stroke="#111" stroke-width="5"/>
+  <!-- 竖直转轴 O1O2 -->
+  <line x1="210" y1="66" x2="210" y2="390" stroke="#111" stroke-width="4" stroke-dasharray="12 11"/>
+  <!-- 转动方向 -->
+  <path d="M155 96 C176 118 209 129 236 112 C252 102 263 88 267 72" fill="none" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <!-- 匀强磁场方向 -->
+  <line x1="525" y1="208" x2="525" y2="126" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <!-- L/5 尺寸标注 -->
+  <line x1="105" y1="307" x2="210" y2="307" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="105" y1="278" x2="105" y2="336" stroke="#111" stroke-width="3"/>
+  <line x1="210" y1="278" x2="210" y2="336" stroke="#111" stroke-width="3"/>
+  <!-- 标注 -->
+  <text x="55" y="270" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">a</text>
+  <text x="676" y="274" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">b</text>
+  <text x="215" y="63" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">O<tspan font-size="28" baseline-shift="sub">1</tspan></text>
+  <text x="225" y="421" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">O<tspan font-size="28" baseline-shift="sub">2</tspan></text>
+  <text x="222" y="316" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">O</text>
+  <text x="282" y="117" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">ω</text>
+  <text x="566" y="172" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">B</text>
+  <text x="83" y="382" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">L/5</text>
+</svg>

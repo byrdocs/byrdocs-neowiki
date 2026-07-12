@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 坐标轴 -->
+  <line x1="170" y1="470" x2="650" y2="470" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="170" y1="470" x2="170" y2="55" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <!-- 刻度 -->
+  <line x1="240" y1="470" x2="240" y2="492" stroke="#111" stroke-width="4"/>
+  <line x1="405" y1="470" x2="405" y2="492" stroke="#111" stroke-width="4"/>
+  <line x1="570" y1="470" x2="570" y2="492" stroke="#111" stroke-width="4"/>
+  <line x1="148" y1="390" x2="170" y2="390" stroke="#111" stroke-width="4"/>
+  <line x1="148" y1="270" x2="170" y2="270" stroke="#111" stroke-width="4"/>
+  <line x1="148" y1="150" x2="170" y2="150" stroke="#111" stroke-width="4"/>
+  <!-- 虚线辅助线 -->
+  <line x1="170" y1="150" x2="240" y2="150" stroke="#111" stroke-width="3.5" stroke-dasharray="10 9"/>
+  <line x1="170" y1="390" x2="240" y2="390" stroke="#111" stroke-width="3.5" stroke-dasharray="10 9"/>
+  <line x1="240" y1="150" x2="240" y2="470" stroke="#111" stroke-width="3.5" stroke-dasharray="10 9"/>
+  <line x1="570" y1="390" x2="570" y2="470" stroke="#111" stroke-width="3.5" stroke-dasharray="10 9"/>
+  <!-- 循环过程 A-B-C-A -->
+  <path d="M240 150 L570 390" fill="none" stroke="#111" stroke-width="5"/>
+  <path d="M570 390 L240 390" fill="none" stroke="#111" stroke-width="5"/>
+  <path d="M240 390 L240 150" fill="none" stroke="#111" stroke-width="5"/>
+  <!-- 过程方向箭头 -->
+  <line x1="355" y1="234" x2="410" y2="274" stroke="#111" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="455" y1="390" x2="395" y2="390" stroke="#111" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="240" y1="330" x2="240" y2="275" stroke="#111" stroke-width="4" marker-end="url(#arrow)"/>
+  <!-- 标签 -->
+  <text x="205" y="45" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">p</text>
+  <text x="236" y="45" font-family="Times New Roman, STIX Two Math, serif" font-size="38">(Pa)</text>
+  <text x="668" y="482" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">V</text>
+  <text x="700" y="482" font-family="Times New Roman, STIX Two Math, serif" font-size="33">(m³)</text>
+  <text x="105" y="491" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">O</text>
+  <text x="224" y="531" font-family="Times New Roman, STIX Two Math, serif" font-size="38">1</text>
+  <text x="393" y="531" font-family="Times New Roman, STIX Two Math, serif" font-size="38">2</text>
+  <text x="558" y="531" font-family="Times New Roman, STIX Two Math, serif" font-size="38">3</text>
+  <text x="68" y="403" font-family="Times New Roman, STIX Two Math, serif" font-size="38">100</text>
+  <text x="68" y="283" font-family="Times New Roman, STIX Two Math, serif" font-size="38">200</text>
+  <text x="68" y="163" font-family="Times New Roman, STIX Two Math, serif" font-size="38">300</text>
+  <text x="250" y="130" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">A</text>
+  <text x="584" y="386" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">B</text>
+  <text x="250" y="379" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">C</text>
+</svg>
