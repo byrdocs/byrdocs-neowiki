@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="600" viewBox="0 0 700 600">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 无限长直导线 AB -->
+  <line x1="125" y1="60" x2="125" y2="535" stroke="#111" stroke-width="5" stroke-dasharray="13 10"/>
+  <line x1="125" y1="455" x2="125" y2="155" stroke="#111" stroke-width="7"/>
+  <line x1="125" y1="250" x2="125" y2="155" stroke="#111" stroke-width="6" marker-end="url(#arrow)"/>
+  <!-- 矩形线框 abcd -->
+  <rect x="275" y="205" width="210" height="245" fill="none" stroke="#111" stroke-width="5"/>
+  <!-- 线框速度 -->
+  <line x1="380" y1="165" x2="380" y2="95" stroke="#111" stroke-width="6" marker-end="url(#arrow)"/>
+  <!-- l0：导线到线框左边 -->
+  <line x1="132" y1="490" x2="268" y2="490" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="125" y1="458" x2="125" y2="515" stroke="#111" stroke-width="3"/>
+  <line x1="275" y1="452" x2="275" y2="515" stroke="#111" stroke-width="3"/>
+  <!-- l1：线框宽度 -->
+  <line x1="282" y1="490" x2="478" y2="490" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="485" y1="452" x2="485" y2="515" stroke="#111" stroke-width="3"/>
+  <!-- l2：线框高度 -->
+  <line x1="545" y1="212" x2="545" y2="443" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="488" y1="205" x2="575" y2="205" stroke="#111" stroke-width="3"/>
+  <line x1="488" y1="450" x2="575" y2="450" stroke="#111" stroke-width="3"/>
+  <!-- 标注 -->
+  <text x="55" y="158" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">A</text>
+  <text x="55" y="500" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">B</text>
+  <text x="68" y="330" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">i</text>
+  <text x="228" y="235" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">a</text>
+  <text x="500" y="192" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">b</text>
+  <text x="500" y="470" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">c</text>
+  <text x="230" y="470" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">d</text>
+  <text x="420" y="105" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">v</text>
+  <line x1="416" y1="62" x2="452" y2="62" stroke="#111" stroke-width="2.8" marker-end="url(#arrow)"/>
+  <text x="185" y="548" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">l<tspan font-size="27" baseline-shift="sub">0</tspan></text>
+  <text x="365" y="548" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">l<tspan font-size="27" baseline-shift="sub">1</tspan></text>
+  <text x="575" y="340" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">l<tspan font-size="27" baseline-shift="sub">2</tspan></text>
+</svg>

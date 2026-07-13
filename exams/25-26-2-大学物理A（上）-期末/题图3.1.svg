@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="500" viewBox="0 0 650 500">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 铰点 O -->
+  <circle cx="150" cy="105" r="18" fill="white" stroke="#111" stroke-width="5"/>
+  <circle cx="150" cy="105" r="5" fill="#111"/>
+  <!-- 水平虚线参考杆位置 -->
+  <rect x="168" y="94" width="340" height="22" fill="none" stroke="#111" stroke-width="3.5" stroke-dasharray="10 8"/>
+  <!-- 当前斜杆 -->
+  <g transform="rotate(38 150 105)">
+    <rect x="173" y="98" width="350" height="22" fill="white" stroke="#111" stroke-width="5"/>
+  </g>
+  <!-- 夹角 theta -->
+  <path d="M225 95 A60 65 0 0 1 211 145" fill="none" stroke="#111" stroke-width="3.5"/>
+  <text x="223" y="146" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">θ</text>
+  <!-- 重力 mg -->
+  <line x1="288" y1="216" x2="288" y2="310" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="251" y="357" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">mg</text>
+  <!-- 标签 -->
+  <text x="83" y="145" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">O</text>
+  <text x="205" y="260" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">l</text>
+</svg>
