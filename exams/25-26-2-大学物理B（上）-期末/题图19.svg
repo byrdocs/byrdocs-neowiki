@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="650" viewBox="0 0 760 650">
+  <defs>
+    <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- p-V 坐标轴 -->
+  <line x1="105" y1="560" x2="675" y2="560" stroke="#111" stroke-width="5" marker-end="url(#axisArrow)"/>
+  <line x1="105" y1="560" x2="105" y2="58" stroke="#111" stroke-width="5" marker-end="url(#axisArrow)"/>
+  <!-- 外侧循环 a-b-c-d-a -->
+  <path d="M185 155 C205 205 280 230 390 245 C500 260 555 257 575 260"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M575 260 C572 305 590 345 625 365 C642 375 648 374 655 374"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M655 374 C530 375 395 360 240 335"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M240 335 C207 299 188 248 185 155"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- 内侧/移位循环 a'-b'-c'-d'-a' -->
+  <path d="M315 155 C330 190 385 205 480 210"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M480 210 C478 298 482 400 530 505"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M530 505 C475 507 412 485 350 450"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M350 450 C325 375 312 270 315 155"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- 标签 -->
+  <text x="68" y="70" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">p</text>
+  <text x="684" y="608" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">V</text>
+  <text x="52" y="598" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">O</text>
+  <text x="153" y="145" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">a</text>
+  <text x="579" y="253" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">b</text>
+  <text x="647" y="406" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">c</text>
+  <text x="198" y="374" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">d</text>
+  <text x="284" y="145" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">a′</text>
+  <text x="488" y="204" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">b′</text>
+  <text x="538" y="538" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">c′</text>
+  <text x="300" y="482" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">d′</text>
+</svg>
