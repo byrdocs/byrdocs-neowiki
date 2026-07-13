@@ -1,0 +1,76 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg" stroke="black" stroke-width="2" fill="none" font-family="'Times New Roman', 'Noto Serif CJK SC', SimSun, serif">
+    
+    <!-- 全局样式设定，用于文字和实心节点 -->
+    <style>
+        .txt { stroke: none; fill: black; }
+        .node { fill: black; stroke: none; }
+    </style>
+
+    <!-- 1. 底部公共导线 -->
+    <line x1="50" y1="220" x2="350" y2="220" />
+
+    <!-- 2. 左侧支路：10V 独立电压源 -->
+    <line x1="50" y1="220" x2="50" y2="180" />
+    <circle cx="50" cy="160" r="20" />
+    <text x="50" y="152" text-anchor="middle" class="txt" font-size="14">+</text>
+    <text x="50" y="178" text-anchor="middle" class="txt" font-size="14">-</text>
+    <text x="20" y="165" text-anchor="end" class="txt">10V</text>
+    <line x1="50" y1="140" x2="50" y2="100" />
+    
+    <!-- 左上角电流 i 标识 -->
+    <line x1="30" y1="80" x2="70" y2="80" />
+    <polygon points="70,80 62,75 62,85" fill="black" stroke="none" /> <!-- 箭头 -->
+    <text x="50" y="70" text-anchor="middle" class="txt" font-style="italic">i</text>
+
+    <!-- 3. 顶部导线左段与开关 (t=0) -->
+    <!-- 开关左侧 -->
+    <line x1="50" y1="100" x2="80" y2="100" />
+    <circle cx="80" cy="100" r="3" class="node" />
+    <!-- 弹开的开关柄 -->
+    <line x1="80" y1="100" x2="105" y2="75" /> 
+    <!-- 开关右侧 -->
+    <circle cx="110" cy="100" r="3" class="node" />
+    <text x="95" y="60" class="txt" font-style="italic">t = 0</text>
+    <!-- 开关动作箭头 (使用二次贝塞尔曲线) -->
+    <path d="M 85 90 Q 95 75 105 85" stroke-width="1.5"/>
+    <polygon points="105,85 102,78 98,84" fill="black" stroke="none" />
+
+    <!-- 4. 5kΩ 电阻 -->
+    <line x1="110" y1="100" x2="120" y2="100" />
+    <rect x="120" y="90" width="40" height="20" />
+    <text x="140" y="80" text-anchor="middle" class="txt">5kΩ</text>
+    <line x1="160" y1="100" x2="200" y2="100" />
+
+    <!-- 5. 中间支路：受控电压源 (CCVS) -->
+    <circle cx="200" cy="100" r="3" class="node" />
+    <circle cx="200" cy="220" r="3" class="node" />
+    <line x1="200" y1="100" x2="200" y2="130" />
+    <!-- 菱形图案 -->
+    <polygon points="200,130 220,160 200,190 180,160" />
+    <text x="200" y="148" text-anchor="middle" class="txt" font-size="14">+</text>
+    <text x="200" y="185" text-anchor="middle" class="txt" font-size="14">-</text>
+    <!-- 带有上标的控制量：10^4 i -->
+    <text x="225" y="165" class="txt">10<tspan baseline-shift="super" font-size="10">4</tspan> i</text>
+    <line x1="200" y1="190" x2="200" y2="220" />
+
+    <!-- 6. 顶部导线中段与 20kΩ 电阻 -->
+    <line x1="200" y1="100" x2="240" y2="100" />
+    <rect x="240" y="90" width="40" height="20" />
+    <text x="260" y="80" text-anchor="middle" class="txt">20kΩ</text>
+    <line x1="280" y1="100" x2="350" y2="100" />
+
+    <!-- 7. 右侧支路：2μF 电容 -->
+    <line x1="350" y1="100" x2="350" y2="150" />
+    <!-- 电容极板 -->
+    <line x1="330" y1="150" x2="370" y2="150" />
+    <line x1="330" y1="170" x2="370" y2="170" />
+    <text x="295" y="165" class="txt">2μF</text>
+    <line x1="350" y1="170" x2="350" y2="220" />
+
+    <!-- 8. 输出电压 u_C(t) 极性及标签 -->
+    <text x="380" y="140" class="txt">+</text>
+    <!-- 带有下标的变量标签 -->
+    <text x="380" y="165" class="txt" font-style="italic">u<tspan baseline-shift="sub" font-size="10">C</tspan><tspan font-style="normal">(t)</tspan></text>
+    <text x="380" y="185" class="txt">-</text>
+
+</svg>

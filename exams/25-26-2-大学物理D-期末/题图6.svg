@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 390" role="img" aria-labelledby="title desc">
+  <title id="title">圆心处有负点电荷的圆</title>
+  <desc id="desc">负点电荷负 q 位于圆心 O，A、B、C、D 是圆周上的点，并从 A 向其余三点连线。</desc>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="265" cy="190" r="165"/>
+    <line x1="100" y1="190" x2="430" y2="190"/>
+    <line x1="100" y1="190" x2="401" y2="284"/>
+    <line x1="100" y1="190" x2="286" y2="354"/>
+  </g>
+  <circle cx="265" cy="190" r="5" fill="#111"/>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic" font-size="32">
+    <text x="58" y="201">A</text>
+    <text x="442" y="201">B</text>
+    <text x="409" y="301">C</text>
+    <text x="273" y="382">D</text>
+    <text x="275" y="223">O</text>
+    <text x="238" y="168">−q</text>
+  </g>
+</svg>
