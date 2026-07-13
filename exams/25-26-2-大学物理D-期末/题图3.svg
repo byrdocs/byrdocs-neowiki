@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 520" role="img" aria-labelledby="title desc">
+  <title id="title">弹簧秤悬挂滑轮与两个物体</title>
+  <desc id="desc">弹簧秤 S 悬挂一个定滑轮，绳两端分别连接质量为 m2 的物体 B 和质量为 m1 的物体 A。</desc>
+  <defs>
+    <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#111" stroke-width="3"/>
+    </pattern>
+  </defs>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="28" y="20" width="304" height="24" fill="url(#hatch)" stroke="none"/>
+    <line x1="28" y1="44" x2="332" y2="44"/>
+    <line x1="180" y1="44" x2="180" y2="68"/>
+    <rect x="142" y="68" width="76" height="166"/>
+    <path d="M180 68 L180 82 L161 94 L199 112 L161 130 L199 148 L161 166 L199 184 L161 202 L180 216 L180 234"/>
+    <line x1="180" y1="234" x2="180" y2="248"/>
+    <circle cx="180" cy="288" r="40"/>
+    <path d="M140 288 C140 268 158 248 180 248 C202 248 220 268 220 288"/>
+    <line x1="140" y1="288" x2="140" y2="394"/>
+    <line x1="220" y1="288" x2="220" y2="418"/>
+    <rect x="103" y="394" width="74" height="54"/>
+    <rect x="183" y="418" width="74" height="54"/>
+  </g>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic">
+    <text x="232" y="158" font-size="34">S</text>
+    <text x="72" y="425" font-size="34">B</text>
+    <text x="128" y="482" font-size="31">m₂</text>
+    <text x="273" y="452" font-size="34">A</text>
+    <text x="202" y="507" font-size="31">m₁</text>
+  </g>
+</svg>

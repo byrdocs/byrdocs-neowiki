@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400" role="img" aria-labelledby="title desc">
+  <title id="title">两个简谐振动的振动曲线</title>
+  <desc id="desc">位移 x 随时间 t 变化。两条同频反相的余弦曲线中，x1 从 A 开始，x2 从负 A 二分之一开始。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="76" y1="350" x2="76" y2="36" marker-end="url(#arrow)"/>
+    <line x1="76" y1="208" x2="628" y2="208" marker-end="url(#arrow)"/>
+    <line x1="76" y1="82" x2="600" y2="82" stroke-dasharray="9 9"/>
+    <line x1="76" y1="278" x2="600" y2="278" stroke-dasharray="9 9"/>
+    <path d="M76 82 C110 82 153 151 179 208 C205 265 248 334 282 334 C316 334 359 265 385 208 C411 151 454 82 488 82 C522 82 565 151 591 208 C599 225 607 239 615 248"/>
+    <path d="M76 278 C110 278 153 246 179 208 C205 170 248 138 282 138 C316 138 359 170 385 208 C411 246 454 278 488 278 C522 278 565 246 591 208 C599 198 607 190 615 184"/>
+  </g>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic">
+    <text x="49" y="42" font-size="31">x</text>
+    <text x="638" y="223" font-size="31">t</text>
+    <text x="42" y="95" font-size="29">A</text>
+    <text x="20" y="289" font-size="27">-A/2</text>
+    <text x="40" y="219" font-size="29">O</text>
+    <text x="474" y="64" font-size="29">x₁</text>
+    <text x="474" y="313" font-size="29">x₂</text>
+  </g>
+</svg>

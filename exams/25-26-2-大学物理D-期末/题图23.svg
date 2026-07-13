@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340" role="img" aria-labelledby="title desc">
+  <title id="title">平面简谐波在波密界面处反射</title>
+  <desc id="desc">x 轴从原点 O 指向波密界面 BC，在界面交点 E 左侧有 D 点，DE 等于六分之一波长，OE 等于四分之三波长。</desc>
+  <defs>
+    <pattern id="hatch" width="13" height="13" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="13" stroke="#111" stroke-width="2"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="47" y1="142" x2="556" y2="142" marker-end="url(#arrow)"/>
+    <rect x="438" y="39" width="24" height="239" fill="url(#hatch)" stroke="none"/>
+    <line x1="438" y1="39" x2="438" y2="278"/>
+    <line x1="351" y1="132" x2="351" y2="199"/>
+    <line x1="356" y1="190" x2="431" y2="190" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="47" y1="274" x2="431" y2="274" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="47" y1="258" x2="47" y2="290"/>
+  </g>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic">
+    <text x="28" y="166" font-size="31">O</text>
+    <text x="338" y="124" font-size="30">D</text>
+    <text x="467" y="132" font-size="30">E</text>
+    <text x="463" y="53" font-size="30">B</text>
+    <text x="463" y="286" font-size="30">C</text>
+    <text x="570" y="157" font-size="30">x</text>
+    <text x="374" y="175" font-size="29">λ/6</text>
+    <text x="218" y="267" font-size="29">3λ/4</text>
+  </g>
+</svg>
