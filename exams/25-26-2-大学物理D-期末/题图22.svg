@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 480" role="img" aria-labelledby="title desc">
+  <title id="title">带电导体球与同心导体球壳</title>
+  <desc id="desc">半径 R1 的导体球带电 Q，外有内半径 R2、外半径 R3 的同心导体球壳，空间分为 I、II、III、IV 四区。</desc>
+  <defs>
+    <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#111" stroke-width="2"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <path d="M260 26 A205 205 0 1 1 259.9 26 M260 91 A140 140 0 1 0 260.1 91" fill="url(#hatch)" fill-rule="evenodd" stroke="#111" stroke-width="3"/>
+  <circle cx="260" cy="231" r="70" fill="#eee" stroke="#111" stroke-width="3"/>
+  <circle cx="260" cy="231" r="5" fill="#111"/>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round">
+    <line x1="260" y1="231" x2="224" y2="171" marker-end="url(#arrow)"/>
+    <line x1="260" y1="231" x2="386.3" y2="170.7" marker-end="url(#arrow)"/>
+    <line x1="260" y1="231" x2="420.8" y2="358" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic">
+    <text x="270" y="216" font-size="29">O</text>
+    <text x="170" y="214" font-size="31">Q</text>
+    <text x="213" y="157" font-size="27">R₁</text>
+    <text x="392" y="165" font-size="27">R₂</text>
+    <text x="425" y="371" font-size="27">R₃</text>
+  </g>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-size="28">
+    <text x="247" y="272">Ⅰ</text>
+    <text x="190" y="332">Ⅱ</text>
+    <text x="136" y="385">Ⅲ</text>
+    <text x="80" y="428">Ⅳ</text>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="480" viewBox="0 0 760 480">
+  <defs>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+    <pattern id="ground" width="14" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.8" fill="#888"/><circle cx="9" cy="7" r="0.7" fill="#999"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 地面 -->
+  <line x1="90" y1="390" x2="680" y2="390" stroke="#111" stroke-width="6"/>
+  <rect x="90" y="393" width="590" height="22" fill="url(#ground)"/>
+  <!-- 凹形光滑轨道 -->
+  <path d="M170 78 L170 147 C184 235 236 332 350 382 C387 390 423 390 460 382 C574 332 626 235 640 147 L640 78"
+        fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+  <!-- 左右两侧竖直参照线及左侧顶端短横线 -->
+  <line x1="170" y1="147" x2="170" y2="390" stroke="#111" stroke-width="4"/>
+  <line x1="640" y1="147" x2="640" y2="390" stroke="#111" stroke-width="4"/>
+  <line x1="108" y1="147" x2="170" y2="147" stroke="#111" stroke-width="4"/>
+  <!-- 高度 h0 -->
+  <line x1="132" y1="154" x2="132" y2="382" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <!-- 初始位置小物块 -->
+  <g transform="rotate(-25 201 148)">
+    <rect x="172" y="112" width="64" height="72" fill="white" stroke="#111" stroke-width="5"/>
+  </g>
+  <!-- 标签 -->
+  <text x="245" y="145" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">m</text>
+  <text x="177" y="285" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">A</text>
+  <text x="597" y="285" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">B</text>
+  <text x="191" y="359" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">M</text>
+  <text x="574" y="359" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">M</text>
+  <text x="70" y="275" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">h<tspan font-size="29" baseline-shift="sub">0</tspan></text>
+</svg>

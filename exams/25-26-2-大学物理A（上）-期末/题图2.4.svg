@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="580" viewBox="0 0 620 580">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 水平圆形转台 -->
+  <ellipse cx="290" cy="205" rx="225" ry="78" fill="white" stroke="#111" stroke-width="5"/>
+  <path d="M65 205 C68 250 169 286 290 286 C411 286 512 250 515 205" fill="none" stroke="#111" stroke-width="5"/>
+  <!-- 盘心及竖直固定轴 OO' -->
+  <circle cx="290" cy="205" r="7" fill="#111"/>
+  <!-- 圆心右侧的虚线半径 r -->
+  <line x1="298" y1="205" x2="515" y2="205" stroke="#111" stroke-width="4" stroke-dasharray="11 9"/>
+  <path d="M298 221 V244 H414 V221" fill="none" stroke="#111" stroke-width="3.5"/>
+  <text x="350" y="239" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">r</text>
+  <!-- 距轴 r 处的人 -->
+  <circle cx="414" cy="157" r="12" fill="white" stroke="#111" stroke-width="4"/>
+  <path d="M414 169 V202 M414 178 L393 190 M414 178 L435 190 M414 202 L400 225 M414 202 L430 224" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="438" y="179" font-family="Times New Roman, STIX Two Math, serif" font-size="39" font-style="italic">m</text>
+  <!-- 转动方向 -->
+  <path d="M405 315 C458 307 493 278 498 236" fill="none" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="511" y="249" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">ω<tspan font-size="27" baseline-shift="sub">1</tspan></text>
+  <!-- 支柱与支架 -->
+  <rect x="262" y="286" width="56" height="190" fill="white" stroke="#111" stroke-width="5"/>
+  <path d="M262 378 L145 434 V489 H166 V449 L262 411 M318 378 L435 434 V489 H414 V449 L318 411" fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+  <!-- 轴端标注 -->
+  <text x="266" y="190" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">O</text>
+  <text x="270" y="535" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">O′</text>
+</svg>

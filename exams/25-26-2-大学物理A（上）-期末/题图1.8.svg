@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="500" viewBox="0 0 860 500">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 左侧方形载流导线 -->
+  <path d="M115 145 H315 V355 H115 Z" fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="115" y1="285" x2="115" y2="225" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="190" y1="145" x2="250" y2="145" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="315" y1="210" x2="315" y2="275" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="255" y1="355" x2="195" y2="355" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="72" y="268" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">I</text>
+  <circle cx="215" cy="250" r="7" fill="#111"/>
+  <text x="145" y="284" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">B<tspan font-size="27" baseline-shift="sub">1</tspan></text>
+  <!-- 右侧方形载流导线 -->
+  <path d="M500 145 H695 V355 H500 Z" fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="500" y1="205" x2="500" y2="270" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="145" x2="615" y2="145" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="695" y1="205" x2="695" y2="275" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="355" x2="615" y2="355" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <circle cx="598" cy="250" r="7" fill="#111"/>
+  <text x="535" y="285" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">B<tspan font-size="27" baseline-shift="sub">2</tspan></text>
+  <!-- 穿过 b、c 的斜直导线 -->
+  <line x1="458" y1="103" x2="500" y2="147" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="695" y1="355" x2="742" y2="405" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <!-- 标注 -->
+  <text x="380" y="100" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">a</text>
+  <text x="508" y="126" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">b</text>
+  <text x="674" y="397" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">c</text>
+  <text x="755" y="404" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">d</text>
+  <text x="421" y="170" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">I</text>
+  <text x="731" y="467" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">I</text>
+</svg>

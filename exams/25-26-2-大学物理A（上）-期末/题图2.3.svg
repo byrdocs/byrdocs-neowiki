@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520">
+  <defs>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 固定点 O 与直角连接端 -->
+  <circle cx="120" cy="110" r="5" fill="#111"/>
+  <path d="M120 110 H175 M120 110 V160" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+  <!-- 水平弹簧 -->
+  <path d="M175 110 L195 110 L210 88 L235 132 L260 88 L285 132 L310 88 L335 132 L360 88 L385 132 L410 88 L435 110 L470 110"
+        fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- 竖直弹簧 -->
+  <path d="M120 160 L120 178 L98 194 L142 218 L98 242 L142 266 L98 290 L142 314 L98 338 L142 362 L120 378 L120 400"
+        fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- 小球 A、B -->
+  <line x1="470" y1="110" x2="495" y2="110" stroke="#111" stroke-width="5"/>
+  <ellipse cx="530" cy="110" rx="35" ry="27" fill="white" stroke="#111" stroke-width="5"/>
+  <line x1="120" y1="400" x2="120" y2="420" stroke="#111" stroke-width="5"/>
+  <circle cx="120" cy="451" r="31" fill="white" stroke="#111" stroke-width="5"/>
+  <!-- 水平原长 l0 尺寸线 -->
+  <line x1="175" y1="55" x2="495" y2="55" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="175" y1="38" x2="175" y2="80" stroke="#111" stroke-width="3"/>
+  <line x1="495" y1="38" x2="495" y2="82" stroke="#111" stroke-width="3"/>
+  <!-- 竖直长度 l 尺寸线 -->
+  <line x1="58" y1="110" x2="58" y2="420" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="48" y1="110" x2="90" y2="110" stroke="#111" stroke-width="3"/>
+  <line x1="48" y1="420" x2="90" y2="420" stroke="#111" stroke-width="3"/>
+  <!-- 标签 -->
+  <text x="75" y="92" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">O</text>
+  <text x="315" y="42" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">l<tspan font-size="27" baseline-shift="sub">0</tspan></text>
+  <text x="35" y="282" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">l</text>
+  <text x="318" y="170" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">k</text>
+  <text x="579" y="124" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">A</text>
+  <text x="516" y="172" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">m</text>
+  <text x="164" y="462" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">B</text>
+  <text x="105" y="508" font-family="Times New Roman, STIX Two Math, serif" font-size="42" font-style="italic">m</text>
+</svg>

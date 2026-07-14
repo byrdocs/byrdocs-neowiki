@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 330" role="img" aria-labelledby="title desc">
+  <title id="title">长直导线旁转动的金属棒</title>
+  <desc id="desc">竖直长直导线通有向上的电流 I，金属棒绕距导线 a 的 O 点顺时针转动，棒与水平线夹角为 θ。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="70" y1="288" x2="70" y2="38" marker-end="url(#arrow)"/>
+    <line x1="70" y1="218" x2="490" y2="218" stroke-dasharray="11 10"/>
+    <line x1="70" y1="252" x2="328" y2="252" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M328 218 L479 117 L464 95 L313 196 Z" fill="#aaa"/>
+    <path d="M390 218 A62 62 0 0 0 380 183"/>
+    <path d="M482 98 C515 113 525 147 508 177" marker-end="url(#arrow)"/>
+  </g>
+  <circle cx="328" cy="218" r="5" fill="#111"/>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic">
+    <text x="88" y="98" font-size="34">I</text>
+    <text x="188" y="292" font-size="34">a</text>
+    <text x="333" y="249" font-size="31">O</text>
+    <text x="394" y="207" font-size="34">θ</text>
+  </g>
+</svg>

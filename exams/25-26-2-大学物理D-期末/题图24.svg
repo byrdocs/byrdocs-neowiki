@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img" aria-labelledby="title desc">
+  <title id="title">单缝夫琅禾费衍射装置</title>
+  <desc id="desc">宽度为 a 的单缝后紧贴会聚透镜 L，右侧焦平面屏距透镜焦距 f，屏上 P 点距光轴 O 为 x。</desc>
+  <defs>
+    <pattern id="screen" width="9" height="9" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="9" y2="9" stroke="#111" stroke-width="1.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="150" y1="216" x2="690" y2="216" stroke-dasharray="13 10"/>
+    <path d="M203 45 C162 113 162 319 203 387 C244 319 244 113 203 45 Z" fill="#666"/>
+    <line x1="203" y1="32" x2="203" y2="45"/>
+    <line x1="203" y1="387" x2="203" y2="402"/>
+    <rect x="82" y="58" width="30" height="107" fill="#444"/>
+    <rect x="82" y="267" width="30" height="107" fill="#444"/>
+    <line x1="57" y1="165" x2="57" y2="267" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="69" y1="165" x2="45" y2="165"/>
+    <line x1="69" y1="267" x2="45" y2="267"/>
+    <rect x="665" y="39" width="25" height="354" fill="url(#screen)"/>
+    <line x1="203" y1="406" x2="665" y2="406" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="665" y1="103" x2="627" y2="103"/>
+    <line x1="665" y1="216" x2="627" y2="216"/>
+    <line x1="642" y1="103" x2="642" y2="216" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <circle cx="665" cy="103" r="5" fill="#111"/>
+  <circle cx="665" cy="216" r="5" fill="#111"/>
+  <g fill="#111" font-family="Times New Roman, STIX Two Text, serif" font-style="italic">
+    <text x="193" y="28" font-size="31">L</text>
+    <text x="26" y="224" font-size="32">a</text>
+    <text x="424" y="395" font-size="32">f</text>
+    <text x="700" y="111" font-size="32">P</text>
+    <text x="700" y="227" font-size="32">O</text>
+    <text x="613" y="168" font-size="32">x</text>
+  </g>
+</svg>

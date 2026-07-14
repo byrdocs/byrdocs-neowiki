@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="500" viewBox="0 0 520 500">
+  <defs>
+    <pattern id="stipple" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.9" fill="#777"/>
+      <circle cx="7" cy="7" r="0.7" fill="#999"/>
+      <circle cx="9" cy="2" r="0.45" fill="#aaa"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 导体球壳 -->
+  <path d="M260 35 A210 210 0 1 1 259.9 35
+           M260 135 A110 110 0 1 0 260.1 135"
+        fill="url(#stipple)" fill-rule="evenodd" stroke="#111" stroke-width="4"/>
+  <!-- 内腔 -->
+  <circle cx="260" cy="245" r="110" fill="white" stroke="#111" stroke-width="4"/>
+  <!-- 球心 -->
+  <circle cx="260" cy="245" r="4" fill="#111"/>
+  <!-- 半径线 -->
+  <line x1="260" y1="245" x2="337.8" y2="167.2" stroke="#111" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="260" y1="245" x2="408.5" y2="393.5" stroke="#111" stroke-width="4" marker-end="url(#arrow)"/>
+  <!-- 标注 -->
+  <text x="260" y="180" font-family="Times New Roman, serif" font-size="42" font-style="italic">R₁</text>
+  <text x="320" y="290" font-family="Times New Roman, serif" font-size="42" font-style="italic">R₂</text>
+  <text x="230" y="230" font-family="Times New Roman, serif" font-size="42" font-style="italic">q</text>
+  <text x="478" y="253" font-family="Times New Roman, serif" font-size="42" font-style="italic">q</text>
+</svg>

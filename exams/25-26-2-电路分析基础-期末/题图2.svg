@@ -1,0 +1,50 @@
+<svg width="400" height="280" xmlns="http://www.w3.org/2000/svg" stroke="black" stroke-width="2" fill="none" font-family="'Times New Roman', 'Noto Serif CJK SC', SimSun, serif">
+    <style>
+        .txt { stroke: none; fill: black; text-anchor: middle; }
+        .node { fill: black; stroke: none; }
+    </style>
+    
+    <!-- 节点 a 和 b 标签 -->
+    <text x="140" y="30" class="txt" font-style="italic">a</text>
+    <text x="140" y="245" class="txt" font-style="italic">b</text>
+
+    <!-- 顶部和底部主导线 -->
+    <line x1="60" y1="50" x2="300" y2="50" />
+    <line x1="60" y1="210" x2="300" y2="210" />
+    
+    <!-- 左侧输入端口 (空心圆) -->
+    <circle cx="56" cy="50" r="4" fill="white" />
+    <circle cx="56" cy="210" r="4" fill="white" />
+
+    <!-- 输入电流 i(t) 及其箭头 -->
+    <line x1="80" y1="50" x2="110" y2="50" />
+    <polygon points="110,50 100,45 100,55" fill="black" stroke="none" />
+    <text x="85" y="40" class="txt" font-style="italic">i(t)</text>
+
+    <!-- R (电阻) 支路 -->
+    <line x1="140" y1="50" x2="140" y2="90" />
+    <rect x="130" y="90" width="20" height="80" />
+    <line x1="140" y1="170" x2="140" y2="210" />
+    <text x="115" y="135" class="txt">R</text>
+
+    <!-- C (电容) 支路 -->
+    <line x1="220" y1="50" x2="220" y2="120" />
+    <!-- 电容极板 -->
+    <line x1="200" y1="120" x2="240" y2="120" />
+    <line x1="200" y1="140" x2="240" y2="140" />
+    <line x1="220" y1="140" x2="220" y2="210" />
+    <text x="255" y="135" class="txt">C</text>
+
+    <!-- L (电感) 支路 -->
+    <line x1="300" y1="50" x2="300" y2="80" />
+    <!-- 使用贝塞尔曲线绘制电感线圈 -->
+    <path d="M 300 80 Q 330 90 300 100 Q 330 110 300 120 Q 330 130 300 140 Q 330 150 300 160 Q 330 170 300 180" />
+    <line x1="300" y1="180" x2="300" y2="210" />
+    <text x="335" y="135" class="txt">L</text>
+
+    <!-- 导线连接实心节点 -->
+    <circle cx="140" cy="50" r="3" class="node" />
+    <circle cx="220" cy="50" r="3" class="node" />
+    <circle cx="140" cy="210" r="3" class="node" />
+    <circle cx="220" cy="210" r="3" class="node" />
+</svg>

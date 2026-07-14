@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520">
+  <defs>
+    <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#111"/>
+    </marker>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 不规则物体轮廓 -->
+  <path d="M275 440 L277 100
+           C292 76 303 62 315 73
+           C329 84 326 102 343 107
+           C360 112 375 93 399 89
+           C425 85 446 89 458 101
+           C469 112 489 112 507 116
+           L504 440"
+        fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 底部不规则边界 -->
+  <path d="M275 385 C306 369 329 373 352 381 C376 389 411 383 440 387 C462 390 484 393 504 389"
+        fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+  <!-- x 轴 -->
+  <line x1="70" y1="265" x2="665" y2="265" stroke="#111" stroke-width="4" marker-end="url(#axisArrow)"/>
+  <!-- 三个点 -->
+  <circle cx="112" cy="265" r="8" fill="#111"/>
+  <circle cx="420" cy="265" r="8" fill="#111"/>
+  <circle cx="555" cy="265" r="8" fill="#111"/>
+  <!-- 距离 x 的尺寸线 -->
+  <line x1="277" y1="292" x2="420" y2="292" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="277" y1="270" x2="277" y2="316" stroke="#111" stroke-width="3"/>
+  <line x1="420" y1="270" x2="420" y2="316" stroke="#111" stroke-width="3"/>
+  <!-- 宽度 b 的尺寸线 -->
+  <line x1="277" y1="410" x2="504" y2="410" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="277" y1="390" x2="277" y2="444" stroke="#111" stroke-width="3"/>
+  <line x1="504" y1="390" x2="504" y2="444" stroke="#111" stroke-width="3"/>
+  <!-- 标签 -->
+  <text x="96" y="239" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">P<tspan font-size="30" baseline-shift="sub">1</tspan></text>
+  <text x="392" y="239" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">P</text>
+  <text x="526" y="239" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">P<tspan font-size="30" baseline-shift="sub">2</tspan></text>
+  <text x="218" y="327" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">O</text>
+  <text x="342" y="338" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">x</text>
+  <text x="380" y="465" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">b</text>
+  <text x="660" y="323" font-family="Times New Roman, STIX Two Math, serif" font-size="44" font-style="italic">x</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="480" viewBox="0 0 760 480">
+  <defs>
+    <pattern id="ground" width="12" height="12" patternUnits="userSpaceOnUse">
+      <line x1="2" y1="0" x2="0" y2="10" stroke="#777" stroke-width="1.5"/>
+      <line x1="8" y1="0" x2="5" y2="12" stroke="#999" stroke-width="1.2"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 水平地面 -->
+  <line x1="70" y1="390" x2="690" y2="390" stroke="#111" stroke-width="5"/>
+  <rect x="70" y="394" width="620" height="22" fill="url(#ground)"/>
+  <!-- 左侧高度 h1 -->
+  <line x1="210" y1="390" x2="210" y2="132" stroke="#111" stroke-width="4.5"/>
+  <!-- 高处观测者简图 -->
+  <circle cx="210" cy="132" r="12" fill="white" stroke="#111" stroke-width="4"/>
+  <path d="M210 120 L210 92 M210 92 L178 112 H242 Z M210 92 V48"
+        fill="white" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 视线至地面 M -->
+  <line x1="219" y1="140" x2="525" y2="390" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+  <!-- 地面上的人物，高度 h2 -->
+  <circle cx="344" cy="276" r="18" fill="white" stroke="#111" stroke-width="4"/>
+  <path d="M344 294 L344 345 M344 310 L316 330 M344 310 L365 334 M344 345 L320 390 M344 345 L370 390"
+        fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 标注 -->
+  <text x="101" y="296" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">h<tspan font-size="29" baseline-shift="sub">1</tspan></text>
+  <text x="390" y="371" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">h<tspan font-size="29" baseline-shift="sub">2</tspan></text>
+  <text x="548" y="367" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">M</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="560" viewBox="0 0 560 560">
+  <defs>
+    <pattern id="stipple" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.8" fill="#777"/>
+      <circle cx="7" cy="7" r="0.65" fill="#999"/>
+      <circle cx="9" cy="2" r="0.45" fill="#888"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 圆环区域 -->
+  <circle cx="280" cy="280" r="225" fill="url(#stipple)" stroke="#111" stroke-width="5"/>
+  <!-- 内部圆形空腔 -->
+  <circle cx="280" cy="280" r="145" fill="white" stroke="#111" stroke-width="5"/>
+  <!-- 空腔半径 R -->
+  <line x1="280" y1="280" x2="171" y2="184" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+  <!-- 圆心 O -->
+  <circle cx="280" cy="280" r="5" fill="#111"/>
+  <text x="251" y="331" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">O</text>
+  <!-- 偏心点电荷及距离 d -->
+  <line x1="280" y1="280" x2="377" y2="280" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="377" cy="280" r="7" fill="#111"/>
+  <text x="320" y="267" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">d</text>
+  <text x="370" y="310" font-family="Times New Roman, STIX Two Math, serif" font-size="45" font-style="italic">+q</text>
+  <text x="174" y="271" font-family="Times New Roman, STIX Two Math, serif" font-size="46" font-style="italic">R</text>
+</svg>

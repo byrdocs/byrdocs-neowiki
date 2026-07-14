@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="600" viewBox="0 0 520 600">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 圆筒上口 -->
+  <ellipse cx="260" cy="205" rx="145" ry="48" fill="white" stroke="#111" stroke-width="5"/>
+  <!-- 圆筒侧壁 -->
+  <line x1="115" y1="205" x2="115" y2="440" stroke="#111" stroke-width="5"/>
+  <line x1="405" y1="205" x2="405" y2="440" stroke="#111" stroke-width="5"/>
+  <!-- 圆筒下缘：前实后虚 -->
+  <path d="M115 440 A145 48 0 0 0 405 440" fill="none" stroke="#111" stroke-width="5"/>
+  <path d="M115 440 A145 48 0 0 1 405 440" fill="none" stroke="#111" stroke-width="4" stroke-dasharray="13 11"/>
+  <!-- 中心转轴 -->
+  <line x1="260" y1="75" x2="260" y2="548" stroke="#111" stroke-width="4" stroke-dasharray="12 11"/>
+  <!-- 转动方向 -->
+  <path d="M233 82 C184 84 171 120 206 134 C231 144 274 133 288 113" fill="none" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <!-- 紧靠内壁的物块 A -->
+  <rect x="360" y="282" width="45" height="55" fill="white" stroke="#111" stroke-width="5"/>
+  <text x="326" y="322" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">A</text>
+  <!-- 标注 -->
+  <text x="278" y="72" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">O</text>
+  <text x="300" y="131" font-family="Times New Roman, STIX Two Math, serif" font-size="40" font-style="italic">ω</text>
+  <text x="278" y="563" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">O′</text>
+</svg>
