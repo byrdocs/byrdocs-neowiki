@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="620" viewBox="0 0 520 620">
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 圆盘 -->
+  <circle cx="245" cy="230" r="112" fill="white" stroke="#111" stroke-width="5"/>
+  <!-- 圆心 -->
+  <circle cx="245" cy="230" r="7" fill="#111"/>
+  <!-- 半径 R -->
+  <line x1="245" y1="230" x2="357" y2="230" stroke="#111" stroke-width="4"/>
+  <text x="299" y="213" font-family="Times New Roman, STIX Two Math, serif" font-size="43" font-style="italic">R</text>
+  <!-- 圆盘质量 M -->
+  <text x="178" y="92" font-family="Times New Roman, STIX Two Math, serif" font-size="54" font-style="italic">M</text>
+  <!-- 与圆盘右侧相切的细绳 -->
+  <line x1="357" y1="230" x2="357" y2="448" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+  <!-- 悬挂物块 -->
+  <rect x="316" y="448" width="82" height="78" fill="white" stroke="#111" stroke-width="5"/>
+  <text x="339" y="505" font-family="Times New Roman, STIX Two Math, serif" font-size="48" font-style="italic">m</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520">
+  <defs>
+    <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#111"/>
+    </marker>
+    <marker id="curveArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 L1.8,3.5 Z" fill="#111"/>
+    </marker>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 圆周 L -->
+  <circle cx="310" cy="250" r="145" fill="none" stroke="#111" stroke-width="5"/>
+  <!-- 坐标轴 -->
+  <line x1="70" y1="250" x2="675" y2="250" stroke="#111" stroke-width="5" marker-end="url(#axisArrow)"/>
+  <line x1="310" y1="455" x2="310" y2="55" stroke="#111" stroke-width="5" marker-end="url(#axisArrow)"/>
+  <!-- 圆周方向箭头 -->
+  <path d="M325 106 C365 111 405 128 420 158" fill="none" stroke="#111" stroke-width="4.5" marker-end="url(#curveArrow)"/>
+  <!-- A、P、B 点 -->
+  <circle cx="310" cy="250" r="6" fill="#111"/>
+  <circle cx="455" cy="250" r="6" fill="#111"/>
+  <circle cx="600" cy="250" r="6" fill="#111"/>
+  <!-- 距离 a -->
+  <line x1="318" y1="320" x2="592" y2="320" stroke="#111" stroke-width="3.5" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="310" y1="270" x2="310" y2="345" stroke="#111" stroke-width="3"/>
+  <line x1="600" y1="270" x2="600" y2="345" stroke="#111" stroke-width="3"/>
+  <!-- 标签 -->
+  <text x="337" y="79" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">y</text>
+  <text x="682" y="292" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">x</text>
+  <text x="270" y="238" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">A</text>
+  <text x="466" y="235" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">P</text>
+  <text x="580" y="230" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">B</text>
+  <text x="448" y="141" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">L</text>
+  <text x="444" y="378" font-family="Times New Roman, STIX Two Math, serif" font-size="47" font-style="italic">a</text>
+</svg>

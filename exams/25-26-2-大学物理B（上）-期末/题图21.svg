@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560">
+  <defs>
+    <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(42)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#111" stroke-width="3"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- 水平地面 -->
+  <line x1="95" y1="468" x2="675" y2="468" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <rect x="95" y="472" width="580" height="28" fill="url(#hatch)"/>
+  <!-- 左侧固定支架 -->
+  <path d="M210 468 L210 105 L270 108" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 弧形轨道及右端支撑 -->
+  <path d="M270 108 C276 245 352 358 535 410 L535 468" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 顶部小物块 -->
+  <g transform="rotate(-5 286 130)">
+    <rect x="266" y="101" width="45" height="60" fill="white" stroke="#111" stroke-width="6"/>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 310" role="img" aria-labelledby="title desc">
+  <title id="title">正三角形水平轨道</title>
+  <desc id="desc">顶点为 A、B、C 的圆角正三角形双线轨道</desc>
+  <rect width="420" height="310" fill="white"/>
+  <path d="M210 35 Q220 35 227 47 L355 252 Q362 266 346 267 L73 267 Q57 266 65 252 L193 47 Q200 35 210 35Z" fill="none" stroke="#222" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M210 61 L329 242 L91 242 Z" fill="none" stroke="#555" stroke-width="3" stroke-linejoin="round"/>
+  <g font-family="Times New Roman, serif" font-size="25" font-style="italic" fill="#111">
+    <text x="199" y="27">A</text>
+    <text x="46" y="286">B</text>
+    <text x="360" y="286">C</text>
+  </g>
+</svg>
