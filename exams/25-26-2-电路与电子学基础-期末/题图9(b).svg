@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="320" viewBox="0 0 920 320" role="img" aria-labelledby="title desc">
+  <title id="title">输入方波波形</title>
+  <desc id="desc">纵轴为输入电压 u 下标 I，横轴为时间 t，单位为秒。波形幅值在正 10 伏和负 10 伏之间切换：0 到 1 秒为正 10 伏，1 到 3 秒为负 10 伏，3 到 5 秒为正 10 伏，5 到 7 秒为负 10 伏。横轴数字均置于留白区域，不与跳变线重叠。</desc>
+  <defs>
+    <style>
+      .axis { fill: none; stroke: #111; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+      .wave { fill: none; stroke: #111; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+      .transition { fill: none; stroke: #555; stroke-width: 1.8; stroke-dasharray: 8 7; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <g id="axes">
+    <path class="axis" d="M 100 275 V 32" marker-end="url(#axis-arrow)"/>
+    <path class="axis" d="M 100 155 H 825" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="94" y1="70" x2="106" y2="70"/>
+    <line class="axis" x1="94" y1="235" x2="106" y2="235"/>
+  </g>
+
+  <g id="waveform">
+    <path class="wave" d="M 100 70 H 190 M 190 235 H 380 M 380 70 H 570 M 570 235 H 760"/>
+    <path class="transition" d="M 190 70 V 235 M 380 235 V 70 M 570 70 V 235 M 760 235 V 155"/>
+  </g>
+
+  <g id="axis-labels" class="label">
+    <text x="49" y="38" font-style="italic">u<tspan baseline-shift="sub" font-size="16">I</tspan></text>
+    <text x="82" y="164" text-anchor="end" class="small">0</text>
+    <text x="82" y="78" text-anchor="end" class="small">10 V</text>
+    <text x="82" y="243" text-anchor="end" class="small">−10 V</text>
+    <text x="850" y="165" font-style="italic">t (s)</text>
+  </g>
+
+  <g id="time-label-backgrounds" fill="#fff">
+    <rect x="178" y="160" width="24" height="27" rx="3"/>
+    <rect x="273" y="160" width="24" height="27" rx="3"/>
+    <rect x="368" y="160" width="24" height="27" rx="3"/>
+    <rect x="463" y="160" width="24" height="27" rx="3"/>
+    <rect x="558" y="160" width="24" height="27" rx="3"/>
+    <rect x="653" y="160" width="24" height="27" rx="3"/>
+    <rect x="748" y="160" width="24" height="27" rx="3"/>
+  </g>
+
+  <g id="time-labels" class="label small" text-anchor="middle">
+    <text x="190" y="181">1</text>
+    <text x="285" y="181">2</text>
+    <text x="380" y="181">3</text>
+    <text x="475" y="181">4</text>
+    <text x="570" y="181">5</text>
+    <text x="665" y="181">6</text>
+    <text x="760" y="181">7</text>
+  </g>
+</svg>

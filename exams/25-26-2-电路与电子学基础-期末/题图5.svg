@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="330" viewBox="0 0 620 330" role="img" aria-labelledby="title desc">
+  <title id="title">双二极管直流电路</title>
+  <desc id="desc">电路下方为公共节点。左支路依次包含 2 伏电压源和朝上的二极管 D1。中间支路包含 1 千欧电阻和 3 伏电压源。上支路的二极管 D2 从左向右连接到右侧节点。右支路包含 1 千欧电阻和 5 伏电压源。三个电压源均为上正下负，输出电压 u 下标 o 取右侧上下节点，上正下负。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .terminal { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+    <g id="diode-right">
+      <path class="wire" d="M 0 0 H 10 M 35 0 H 48"/>
+      <polygon class="component" points="10,-13 10,13 34,0"/>
+      <line class="wire" x1="35" y1="-14" x2="35" y2="14"/>
+    </g>
+  </defs>
+
+  <g id="rails">
+    <path class="wire" d="M 100 65 H 330 M 378 65 H 520"/>
+    <path class="wire" d="M 100 280 H 520"/>
+  </g>
+
+  <g id="diode-D2">
+    <use href="#diode-right" transform="translate(330 65)"/>
+    <text class="label" x="345" y="34" font-style="italic">D<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+  </g>
+
+  <g id="left-branch">
+    <path class="wire" d="M 100 65 V 110 M 100 150 V 187 M 100 235 V 280"/>
+    <circle class="component" cx="100" cy="130" r="20"/>
+    <use href="#diode-right" transform="translate(100 235) rotate(-90)"/>
+    <text class="label small" x="54" y="111">+</text>
+    <text class="label" x="29" y="140">2 V</text>
+    <text class="label small" x="55" y="167">−</text>
+    <text class="label" x="43" y="232" font-style="italic">D<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+  </g>
+
+  <g id="middle-branch">
+    <path class="wire" d="M 270 65 V 102 M 270 152 V 200 M 270 240 V 280"/>
+    <rect class="component" x="260" y="102" width="20" height="50"/>
+    <circle class="component" cx="270" cy="220" r="20"/>
+    <text class="label" x="190" y="136">1 kΩ</text>
+    <text class="label small" x="230" y="207">+</text>
+    <text class="label" x="213" y="228">3 V</text>
+    <text class="label small" x="232" y="253">−</text>
+    <circle class="node" cx="270" cy="65" r="3.7"/>
+    <circle class="node" cx="270" cy="280" r="3.7"/>
+  </g>
+
+  <g id="right-branch">
+    <path class="wire" d="M 430 65 V 102 M 430 152 V 200 M 430 240 V 280"/>
+    <rect class="component" x="420" y="102" width="20" height="50"/>
+    <circle class="component" cx="430" cy="220" r="20"/>
+    <text class="label" x="350" y="136">1 kΩ</text>
+    <text class="label small" x="390" y="207">+</text>
+    <text class="label" x="373" y="228">5 V</text>
+    <text class="label small" x="392" y="253">−</text>
+    <circle class="node" cx="430" cy="65" r="3.7"/>
+    <circle class="node" cx="430" cy="280" r="3.7"/>
+  </g>
+
+  <g id="output">
+    <circle class="terminal" cx="522" cy="65" r="5"/>
+    <circle class="terminal" cx="522" cy="280" r="5"/>
+    <text class="label small" x="555" y="78">+</text>
+    <text class="label" x="552" y="185" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o</tspan></text>
+    <text class="label small" x="557" y="290">−</text>
+  </g>
+</svg>

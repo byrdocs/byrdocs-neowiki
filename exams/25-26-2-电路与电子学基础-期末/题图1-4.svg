@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" role="img" aria-labelledby="title desc">
+  <title id="title">一阶低通电路的幅频响应</title>
+  <desc id="desc">纵轴为幅值绝对值 H 括号 j 欧米伽，横轴为角频率欧米伽。响应从幅值 1 开始下降，在欧米伽等于 1 除以 RC 时幅值为 0.707。</desc>
+  <defs>
+    <style>
+      .axis { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+      .curve { fill: none; stroke: #111; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+      .guide { fill: none; stroke: #555; stroke-width: 1.4; stroke-dasharray: 6 5; }
+      .tick { stroke: #111; stroke-width: 1.8; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 22px; }
+      .small { font-size: 19px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <clipPath id="plot-clip">
+      <rect x="99" y="48" width="307" height="184"/>
+    </clipPath>
+  </defs>
+
+  <g id="axes">
+    <path class="axis" d="M 72 230 H 421" marker-end="url(#arrow)"/>
+    <path class="axis" d="M 104 258 V 39" marker-end="url(#arrow)"/>
+    <line class="tick" x1="98" y1="55" x2="110" y2="55"/>
+    <line class="tick" x1="98" y1="106" x2="110" y2="106"/>
+    <line class="tick" x1="220" y1="224" x2="220" y2="236"/>
+  </g>
+
+  <g id="construction-lines">
+    <path class="guide" d="M 104 106 H 220 V 230"/>
+  </g>
+
+  <g id="response-curve" clip-path="url(#plot-clip)">
+    <path class="curve" d="M 104 55 C 143 55, 181 69, 220 106 C 261 145, 310 177, 397 192"/>
+  </g>
+
+  <g id="labels" class="label">
+    <text x="117" y="32">|H(jω)|</text>
+    <text x="91" y="62" text-anchor="end" class="small">1</text>
+    <text x="91" y="112" text-anchor="end" class="small">0.707</text>
+    <text x="94" y="252" text-anchor="end" class="small">0</text>
+    <text x="426" y="254" font-style="italic">ω</text>
+    <g id="cutoff-label" transform="translate(220 254)">
+      <text x="0" y="0" text-anchor="middle" class="small">1</text>
+      <line x1="-15" y1="6" x2="15" y2="6" stroke="#111" stroke-width="1.4"/>
+      <text x="0" y="25" text-anchor="middle" class="small" font-style="italic">RC</text>
+    </g>
+  </g>
+</svg>

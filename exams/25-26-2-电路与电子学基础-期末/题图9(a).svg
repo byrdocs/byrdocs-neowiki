@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="340" viewBox="0 0 1120 340" role="img" aria-labelledby="title desc">
+  <title id="title">两级运算放大器与稳压限幅电路</title>
+  <desc id="desc">第一级运算放大器 A1 的反相端节点 N 经电阻 R 接地，并由电容 C 从输出反馈；同相端节点 P 由输入 u 下标 i 经电阻 R 驱动，并通过电容 C 接地。A1 输出 u 下标 o1 经电阻 R 接第二级运算放大器 A2 的同相端，A2 的反相端经电阻 R 从输出反馈。A2 输出 u 下标 o2 再经串联电阻 R 接最终输出 u 下标 o。输出节点通过阴极相对的稳压二极管 D 下标 Z1 与 D 下标 Z2 接地。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .terminal { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+    <g id="zener-right">
+      <path class="wire" d="M 0 0 H 10 M 35 0 H 48"/>
+      <polygon class="component" points="10,-13 10,13 34,0"/>
+      <path class="wire" d="M 28 -18 L 35 -11 V 11 L 42 18"/>
+    </g>
+  </defs>
+
+  <g id="opamp-A1">
+    <polygon class="component" points="315,110 315,245 435,180"/>
+    <text class="label small" x="330" y="161">−</text>
+    <text class="label small" x="330" y="218">+</text>
+    <text class="label" x="363" y="189" font-style="italic">A<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+  </g>
+
+  <g id="first-stage-inverting-network">
+    <path class="wire" d="M 315 155 H 180 M 120 155 H 50 V 180"/>
+    <rect class="component" x="120" y="144" width="60" height="22"/>
+    <line class="wire" x1="35" y1="180" x2="65" y2="180"/>
+    <text class="label" x="137" y="128" font-style="italic">R</text>
+
+    <path class="wire" d="M 245 155 V 88 H 340 M 355 88 H 455 V 180"/>
+    <line class="wire" x1="340" y1="72" x2="340" y2="104"/>
+    <line class="wire" x1="355" y1="72" x2="355" y2="104"/>
+    <text class="label" x="342" y="53" font-style="italic">C</text>
+
+    <circle class="node" cx="245" cy="155" r="3.7"/>
+    <text class="label small" x="231" y="181" font-style="italic">N</text>
+  </g>
+
+  <g id="first-stage-noninverting-network">
+    <circle class="terminal" cx="100" cy="215" r="5"/>
+    <path class="wire" d="M 105 215 H 145 M 205 215 H 315"/>
+    <rect class="component" x="145" y="204" width="60" height="22"/>
+    <text class="label" x="163" y="192" font-style="italic">R</text>
+    <text class="label" x="76" y="246" font-style="italic">u<tspan baseline-shift="sub" font-size="16">i</tspan></text>
+
+    <path class="wire" d="M 245 215 V 260 M 245 275 V 305"/>
+    <line class="wire" x1="229" y1="260" x2="261" y2="260"/>
+    <line class="wire" x1="229" y1="275" x2="261" y2="275"/>
+    <line class="wire" x1="230" y1="305" x2="260" y2="305"/>
+    <text class="label" x="274" y="286" font-style="italic">C</text>
+    <circle class="node" cx="245" cy="215" r="3.7"/>
+    <text class="label small" x="232" y="205" font-style="italic">P</text>
+  </g>
+
+  <g id="first-stage-output">
+    <path class="wire" d="M 435 180 H 500"/>
+    <circle class="node" cx="455" cy="180" r="3.7"/>
+    <text class="label" x="420" y="242" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o1</tspan></text>
+  </g>
+
+  <g id="opamp-A2">
+    <polygon class="component" points="610,90 610,230 730,160"/>
+    <text class="label small" x="625" y="132">−</text>
+    <text class="label small" x="625" y="196">+</text>
+    <text class="label" x="658" y="169" font-style="italic">A<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+  </g>
+
+  <g id="second-stage-input-and-feedback">
+    <path class="wire" d="M 500 180 H 510 M 570 185 H 610"/>
+    <rect class="component" x="510" y="169" width="60" height="22"/>
+    <text class="label" x="526" y="153" font-style="italic">R</text>
+
+    <path class="wire" d="M 610 125 H 580 V 72 H 680 M 740 72 H 790 V 160"/>
+    <rect class="component" x="680" y="61" width="60" height="22"/>
+    <text class="label" x="700" y="44" font-style="italic">R</text>
+  </g>
+
+  <g id="second-stage-output">
+    <path class="wire" d="M 730 160 H 840"/>
+    <circle class="node" cx="790" cy="160" r="3.7"/>
+    <text class="label" x="750" y="215" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o2</tspan></text>
+  </g>
+
+  <g id="output-resistor">
+    <path class="wire" d="M 900 160 H 1010"/>
+    <rect class="component" x="840" y="149" width="60" height="22"/>
+    <text class="label" x="857" y="132" font-style="italic">R</text>
+    <circle class="node" cx="960" cy="160" r="3.7"/>
+    <circle class="terminal" cx="1012" cy="160" r="5"/>
+    <text class="label" x="1031" y="174" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o</tspan></text>
+  </g>
+
+  <g id="zener-limiter">
+    <path class="wire" d="M 960 160 V 190 M 960 238 V 240 M 960 288 V 305"/>
+    <use href="#zener-right" transform="translate(960 190) rotate(90)"/>
+    <use href="#zener-right" transform="translate(960 288) rotate(-90)"/>
+    <line class="wire" x1="945" y1="305" x2="975" y2="305"/>
+    <text class="label small" x="862" y="224" font-style="italic">D<tspan baseline-shift="sub" font-size="14">Z1</tspan></text>
+    <text class="label small" x="862" y="285" font-style="italic">D<tspan baseline-shift="sub" font-size="14">Z2</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="330" viewBox="0 0 560 330" role="img" aria-labelledby="title desc">
+  <title id="title">双稳压二极管并联稳压电路</title>
+  <desc id="desc">左侧电压源标为 12.7，上正下负。电源经串联电阻 R 向右供电，电流 I 下标 Z 向右。输出节点与下方公共节点之间并联两条支路：中间支路为反向串联的稳压二极管 D 下标 Z1 和 D 下标 Z2，支路电流 I 下标 DZ 向下；右侧支路为负载电阻 R 下标 L，电流 I 下标 L 向下。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <g id="zener-right">
+      <path class="wire" d="M 0 0 H 10 M 35 0 H 48"/>
+      <polygon class="component" points="10,-13 10,13 34,0"/>
+      <path class="wire" d="M 28 -18 L 35 -11 V 11 L 42 18"/>
+    </g>
+  </defs>
+
+  <g id="source-and-rails">
+    <path class="wire" d="M 100 60 H 205 M 275 60 H 460"/>
+    <path class="wire" d="M 100 285 H 460"/>
+    <path class="wire" d="M 100 60 V 147 M 100 193 V 285"/>
+    <circle class="component" cx="100" cy="170" r="23"/>
+    <text class="label small" x="60" y="131">+</text>
+    <text class="label" x="25" y="182">12.7</text>
+    <text class="label small" x="61" y="255">−</text>
+  </g>
+
+  <g id="series-resistor-and-current">
+    <rect class="component" x="205" y="48" width="70" height="24"/>
+    <path class="wire" d="M 137 60 H 184" marker-end="url(#arrow)"/>
+    <text class="label" x="151" y="30" font-style="italic">I<tspan baseline-shift="sub" font-size="16">Z</tspan></text>
+    <text class="label" x="238" y="32" font-style="italic">R</text>
+  </g>
+
+  <g id="zener-branch">
+    <path class="wire" d="M 390 60 V 130 M 390 178 V 190 M 390 238 V 285"/>
+    <path class="wire" d="M 390 78 V 116" marker-end="url(#arrow)"/>
+    <use href="#zener-right" transform="translate(390 178) rotate(-90)"/>
+    <use href="#zener-right" transform="translate(390 190) rotate(90)"/>
+    <text class="label" x="292" y="116" font-style="italic">I<tspan baseline-shift="sub" font-size="16">DZ</tspan></text>
+    <text class="label" x="292" y="176" font-style="italic">D<tspan baseline-shift="sub" font-size="16">Z1</tspan></text>
+    <text class="label" x="292" y="237" font-style="italic">D<tspan baseline-shift="sub" font-size="16">Z2</tspan></text>
+    <circle class="node" cx="390" cy="60" r="3.7"/>
+    <circle class="node" cx="390" cy="285" r="3.7"/>
+  </g>
+
+  <g id="load-branch">
+    <path class="wire" d="M 460 60 V 112 M 460 182 V 285"/>
+    <rect class="component" x="450" y="112" width="20" height="70"/>
+    <path class="wire" d="M 460 76 V 104" marker-end="url(#arrow)"/>
+    <text class="label" x="484" y="101" font-style="italic">I<tspan baseline-shift="sub" font-size="16">L</tspan></text>
+    <text class="label" x="491" y="171" font-style="italic">R<tspan baseline-shift="sub" font-size="16">L</tspan></text>
+  </g>
+</svg>

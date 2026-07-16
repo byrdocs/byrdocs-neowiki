@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="title desc">
+  <title id="title">两级运算放大器电路</title>
+  <desc id="desc">输入电压 u 下标 i1 通过两只 25 千欧电阻分别接入第一级运算放大器 A1 的反相端和同相端。A1 的反相反馈电阻为 100 千欧，同相端另经 100 千欧电阻接地，输出为 u 下标 o1。u o1 经 10 千欧电阻接第二级运算放大器 A2 的反相端，A2 的反馈电阻为 10 千欧，同相端经 5 千欧电阻接地，最终输出为 u 下标 o2。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .terminal { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+  </defs>
+
+  <g id="opamp-A1">
+    <polygon class="component" points="310,95 310,250 430,172"/>
+    <text class="label small" x="325" y="145">−</text>
+    <text class="label small" x="325" y="222">+</text>
+    <text class="label" x="362" y="181" font-style="italic">A<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+  </g>
+
+  <g id="first-stage-inputs">
+    <circle class="terminal" cx="90" cy="140" r="5"/>
+    <circle class="terminal" cx="90" cy="230" r="5"/>
+
+    <path class="wire" d="M 95 140 H 150 M 205 140 H 310"/>
+    <rect class="component" x="150" y="129" width="55" height="22"/>
+    <text class="label small" x="155" y="112">25 kΩ</text>
+
+    <path class="wire" d="M 95 230 H 150 M 205 230 H 310"/>
+    <rect class="component" x="150" y="219" width="55" height="22"/>
+    <text class="label small" x="155" y="208">25 kΩ</text>
+
+    <text class="label" x="20" y="151" font-style="italic">u<tspan baseline-shift="sub" font-size="16">i1</tspan></text>
+    <circle class="node" cx="270" cy="140" r="3.7"/>
+    <circle class="node" cx="270" cy="230" r="3.7"/>
+  </g>
+
+  <g id="first-stage-feedback">
+    <path class="wire" d="M 270 140 V 75 H 350 M 410 75 H 490 V 172"/>
+    <rect class="component" x="350" y="64" width="60" height="22"/>
+    <text class="label small" x="351" y="46">100 kΩ</text>
+
+    <path class="wire" d="M 270 230 V 260 M 270 305 V 330"/>
+    <rect class="component" x="260" y="260" width="20" height="45"/>
+    <line class="wire" x1="246" y1="330" x2="294" y2="330"/>
+    <text class="label small" x="302" y="294">100 kΩ</text>
+  </g>
+
+  <g id="first-stage-output">
+    <path class="wire" d="M 430 172 H 560"/>
+    <circle class="node" cx="490" cy="172" r="3.7"/>
+    <text class="label" x="470" y="231" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o1</tspan></text>
+  </g>
+
+  <g id="opamp-A2">
+    <polygon class="component" points="730,135 730,278 850,207"/>
+    <text class="label small" x="745" y="187">−</text>
+    <text class="label small" x="745" y="251">+</text>
+    <text class="label" x="780" y="216" font-style="italic">A<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+  </g>
+
+  <g id="second-stage-inputs">
+    <path class="wire" d="M 560 172 H 625 M 690 177 H 730"/>
+    <rect class="component" x="625" y="161" width="65" height="22"/>
+    <text class="label small" x="628" y="143">10 kΩ</text>
+
+    <path class="wire" d="M 730 242 H 700 M 650 242 H 620 V 305"/>
+    <rect class="component" x="650" y="231" width="50" height="22"/>
+    <line class="wire" x1="605" y1="305" x2="635" y2="305"/>
+    <text class="label small" x="653" y="220">5 kΩ</text>
+    <circle class="node" cx="705" cy="177" r="3.7"/>
+  </g>
+
+  <g id="second-stage-feedback">
+    <path class="wire" d="M 705 177 V 92 H 835 M 900 92 H 935 V 207"/>
+    <rect class="component" x="835" y="81" width="65" height="22"/>
+    <text class="label small" x="839" y="64">10 kΩ</text>
+  </g>
+
+  <g id="second-stage-output">
+    <path class="wire" d="M 850 207 H 980"/>
+    <circle class="node" cx="935" cy="207" r="3.7"/>
+    <circle class="terminal" cx="982" cy="207" r="5"/>
+    <text class="label" x="1002" y="218" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o2</tspan></text>
+  </g>
+</svg>
