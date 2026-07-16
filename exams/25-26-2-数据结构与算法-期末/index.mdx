@@ -1,0 +1,481 @@
+---
+时间: 2025-2026学年第二学期
+科目: 数据结构与算法
+阶段: 期末
+类型: 本科
+学院:
+- 人工智能学院
+---
+
+## 一、单选题（每题 1 分，共 33 分）
+
+1. 某算法的时间复杂度为 $O(n^2)$，表明该算法的 <Slot />。
+
+<Choices>
+  <Option>问题规模是 $n^2$</Option>
+  <Option>执行时间等于 $n^2$</Option>
+  <Option>执行时间与 $n^2$ 成正比</Option>
+  <Option>问题规模与 $n^2$ 成正比</Option>
+</Choices>
+
+2. 线性表采用顺序存储结构时，其地址 <Slot />。
+
+<Choices>
+  <Option>必须是连续的</Option>
+  <Option>部分地址连续</Option>
+  <Option>一定不连续</Option>
+  <Option>连续与否均可</Option>
+</Choices>
+
+3. 关于栈和队列，下列说法错误的是 <Slot />。
+
+<Choices>
+  <Option>栈和队列都是线性结构</Option>
+  <Option>栈是后进先出，队列是先进先出</Option>
+  <Option>栈和队列的插入删除操作都受限制</Option>
+  <Option>栈和队列都不能应用于递归</Option>
+</Choices>
+
+4. 一个栈的输入序列为 1、2、3，则下列输出序列中不可能的是 <Slot />。
+
+<Choices>
+  <Option>1、2、3</Option>
+  <Option>3、2、1</Option>
+  <Option>2、3、1</Option>
+  <Option>3、1、2</Option>
+</Choices>
+
+5. 队列的“假溢出”现象发生在 <Slot />。
+
+<Choices>
+  <Option>顺序队列</Option>
+  <Option>链队列</Option>
+  <Option>循环队列</Option>
+  <Option>双端队列</Option>
+</Choices>
+
+6. 关于动态规划算法的基本思想，下列说法正确的是 <Slot />。
+
+<Choices>
+  <Option>动态规划通常用于求解具有最优子结构和重叠子问题性质的问题</Option>
+  <Option>动态规划与分治法一样，都是将问题分解为相互独立的子问题</Option>
+  <Option>动态规划只能用于求解最优化问题，不能用于计数或可行性问题</Option>
+  <Option>动态规划的时间复杂度总是优于贪心算法</Option>
+</Choices>
+
+7. 串的长度是指 <Slot />。
+
+<Choices>
+  <Option>串中不同字符的个数</Option>
+  <Option>串中字符的个数</Option>
+  <Option>串中字母的个数</Option>
+  <Option>串中非空格字符的个数</Option>
+</Choices>
+
+8. 关于静态链表的存储结构，下列说法错误的是 <Slot />。
+
+<Choices>
+  <Option>静态链表使用数组模拟链表，其指针域存储的是下一个结点的数组下标</Option>
+  <Option>静态链表必须在编译时确定最大长度，因此不能动态申请空间</Option>
+  <Option>静态链表的插入和删除操作不需要移动数据元素，只需修改游标（即数组下标）</Option>
+  <Option>静态链表的存储空间为 $n$，则查找某个元素的搜索算法的时间复杂度为 $O(1)$</Option>
+</Choices>
+
+9. 以下 <Slot /> 是稀疏矩阵常用的压缩存储方法。
+
+<Choices>
+  <Option>二叉链表</Option>
+  <Option>二维数组</Option>
+  <Option>邻接矩阵</Option>
+  <Option>三元组表</Option>
+</Choices>
+
+10. 设两个栈共享一个数组 `int space[m]`，栈 1 的栈底在数组左端（下标 0），栈 2 的栈底在数组右端（下标 $m-1$），栈 1 的栈顶指针为 `top1`，栈 2 的栈顶指针为 `top2`。初始时 `top1=-1`，`top2=m`。下列关于栈满的判断条件，正确的是 <Slot />。
+
+<Choices>
+  <Option>`top1 == top2`</Option>
+  <Option>`top1 - 1 == top2`</Option>
+  <Option>`top1 == top2 - 1`</Option>
+  <Option>`top1 + 1 >= top2`</Option>
+</Choices>
+
+11. 已知模式串 `char *T = "ababc"`，其部分匹配值（`next` 数组，通常定义 `next[0]=-1`、`next[1]=0`）的计算结果中，`next[4]` 的值为 <Slot />。
+
+<Choices>
+  <Option>1</Option>
+  <Option>2</Option>
+  <Option>3</Option>
+  <Option>4</Option>
+</Choices>
+
+12. 在带头结点的双向循环链表中，指针 `p` 指向某个非头结点的结点。若要从链表中摘除结点 `p`，正确的操作序列是 <Slot />。
+
+<Choices>
+  <Option>`p->next->prior = p->prior; p->prior->next = p;`</Option>
+  <Option>`p->prior->next = p->next; p->next->prior = p;`</Option>
+  <Option>`p->prior->next = p->next; p->next->prior = p->prior;`</Option>
+  <Option>`p->prior->next = p->next; p->next->next = p->prior;`</Option>
+</Choices>
+
+13. 已知一棵完全二叉树有 777 个结点，则该树中叶子结点个数为 <Slot />。
+
+<Choices>
+  <Option>388</Option>
+  <Option>389</Option>
+  <Option>390</Option>
+  <Option>391</Option>
+</Choices>
+
+14. 已知森林包含 3 棵树，结点数依次为 4、5、6。将其转为二叉树后，该二叉树的根结点的右子树结点数为 <Slot />。
+
+<Choices>
+  <Option>5</Option>
+  <Option>6</Option>
+  <Option>11</Option>
+  <Option>10</Option>
+</Choices>
+
+15. 下列关于哈夫曼树（最优二叉树）说法错误的是 <Slot />。
+
+<Choices>
+  <Option>不存在度为 1 的结点</Option>
+  <Option>带权路径长度 WPL 最小</Option>
+  <Option>权值越大的结点离根越远</Option>
+  <Option>哈夫曼树形态不唯一</Option>
+</Choices>
+
+16. 下列关于无向连通图特性的叙述中，正确的是 <Slot />。
+
+<Choices>
+  <Option>所有顶点的度之和为偶数</Option>
+  <Option>边数大于顶点数减 1</Option>
+  <Option>至少有一个顶点的度为 1</Option>
+  <Option>所有顶点的度之和为偶数且边数大于顶点数减 1</Option>
+</Choices>
+
+17. 若无向图 $G=(V,E)$ 中含有 7 个顶点，要保证图 $G$ 在任何情况下都是连通的，则需要的边数至少是 <Slot />。
+
+<Choices>
+  <Option>6</Option>
+  <Option>15</Option>
+  <Option>16</Option>
+  <Option>21</Option>
+</Choices>
+
+18. 一个有 $n$ 个顶点、$e$ 条边的有向图，采用邻接表存储，空间复杂度为 <Slot />。
+
+<Choices>
+  <Option>$O(n)$</Option>
+  <Option>$O(e)$</Option>
+  <Option>$O(n^2)$</Option>
+  <Option>$O(n+e)$</Option>
+</Choices>
+
+19. 图的深度优先遍历类似于二叉树的 <Slot />。
+
+<Choices>
+  <Option>先序遍历</Option>
+  <Option>中序遍历</Option>
+  <Option>后序遍历</Option>
+  <Option>层序遍历</Option>
+</Choices>
+
+20. 针对稠密图，求解最小生成树优先选择 <Slot />。
+
+<Choices>
+  <Option>Prim 算法</Option>
+  <Option>Kruskal 算法</Option>
+  <Option>深度优先遍历</Option>
+  <Option>广度优先遍历</Option>
+</Choices>
+
+21. 一个有 $n$ 个顶点的强连通有向图，最少包含的边数为 <Slot />。
+
+<Choices>
+  <Option>$n-1$</Option>
+  <Option>$n$</Option>
+  <Option>$n*(n-1)$</Option>
+  <Option>$2n$</Option>
+</Choices>
+
+22. 已知无向图 $G$ 有 10 条边，度数为 2 的顶点有 4 个，度数为 3 的顶点有 2 个，其余顶点度数均为 1。求图 $G$ 的顶点总数 <Slot />。
+
+<Choices>
+  <Option>10</Option>
+  <Option>12</Option>
+  <Option>14</Option>
+  <Option>15</Option>
+</Choices>
+
+23. 对长度为 $n$ 的无序顺序表进行顺序查找，若每个元素被查找的概率相等，则查找成功的平均查找长度为 <Slot />。
+
+<Choices>
+  <Option>$n$</Option>
+  <Option>$n/2$</Option>
+  <Option>$(n+1)/2$</Option>
+  <Option>$\log_2 n$</Option>
+</Choices>
+
+24. 对含有 31 个元素的有序顺序表进行折半查找，查找成功时最多比较 <Slot /> 次。
+
+<Choices>
+  <Option>4</Option>
+  <Option>5</Option>
+  <Option>6</Option>
+  <Option>31</Option>
+</Choices>
+
+25. 二叉排序树查找效率的高低主要取决于 <Slot />。
+
+<Choices>
+  <Option>结点个数</Option>
+  <Option>树的高度</Option>
+  <Option>叶子结点个数</Option>
+  <Option>根结点关键字大小</Option>
+</Choices>
+
+26. 在散列查找中，产生冲突的原因是 <Slot />。
+
+<Choices>
+  <Option>两个关键字完全相同</Option>
+  <Option>不同关键字被散列函数映射到同一地址</Option>
+  <Option>散列表长度过大</Option>
+  <Option>查找表中元素太少</Option>
+</Choices>
+
+27. 排序算法的稳定性是衡量其在多关键字排序或特定业务场景下适用性的重要指标。下列各组排序算法中，均属于不稳定排序的一组是 <Slot />。
+
+<Choices>
+  <Option>简单选择排序、堆排序、快速排序</Option>
+  <Option>直接插入排序、冒泡排序、归并排序</Option>
+  <Option>希尔排序、快速排序、冒泡排序</Option>
+  <Option>快速排序、归并排序、简单选择排序</Option>
+</Choices>
+
+28. 不同的排序算法在执行过程中对辅助存储空间的要求存在显著差异。下列常用排序算法中，其空间复杂度最大的是 <Slot />。
+
+<Choices>
+  <Option>快速排序</Option>
+  <Option>堆排序</Option>
+  <Option>归并排序</Option>
+  <Option>冒泡排序</Option>
+</Choices>
+
+29. 多关键字排序常用高位优先（MSD）和低位优先（LSD）两种策略。若采用 LSD 对三位十进制整数进行升序排序，则分配与收集的正确处理顺序应当是 <Slot />。
+
+<Choices>
+  <Option>先按百位分配收集，再按十位分配收集，最后按个位分配收集</Option>
+  <Option>先按个位分配收集，再按十位分配收集，最后按百位分配收集</Option>
+  <Option>先按十位分配收集，再按个位分配收集，最后按百位分配收集</Option>
+  <Option>先按百位分配收集，再按个位分配收集，最后按十位分配收集</Option>
+</Choices>
+
+30. 希尔排序（Shell Sort）实质上是一种分组插入排序，其性能很大程度上取决于增量序列的选择。为了确保整个待排序列最终能够达到全局完全有序的状态，其最后一趟的增量 $d$ 必须设定为 <Slot />。
+
+<Choices>
+  <Option>0</Option>
+  <Option>1</Option>
+  <Option>2</Option>
+  <Option>$\lfloor n/2\rfloor$</Option>
+</Choices>
+
+31. 在含有 $n$ 个元素的无序序列中，利用简单选择排序进行升序排序。在第一趟循环排序过程中，需要进行的关键字比较次数为 <Slot />。
+
+<Choices>
+  <Option>$n$</Option>
+  <Option>$n-1$</Option>
+  <Option>$n/2$</Option>
+  <Option>$n(n-1)/2$</Option>
+</Choices>
+
+32. 高度为 8 的平衡二叉树的结点数量最少和最多分别是 <Slot />。
+
+<Choices>
+  <Option>54、256</Option>
+  <Option>55、255</Option>
+  <Option>52、256</Option>
+  <Option>54、255</Option>
+</Choices>
+
+33. 计数排序中，若待排序序列为 $A=\{1,5,3,0,3,3,0,3\}$，按从小到大顺序统计 $A$ 中每个数字出现的次数得到 $C=\{2,1,0,4,0,1\}$；基于 $C$，重新计算 $A$ 中每个小于等于自己的元素个数，得到 $C=$ <Slot />，最后根据 $C$ 可以得到排序结果。
+
+<Choices>
+  <Option>$\{0,2,4,4,7,8\}$</Option>
+  <Option>$\{1,3,5,5,8,9\}$</Option>
+  <Option>$\{2,3,3,7,7,8\}$</Option>
+  <Option>$\{2,3,4,4,7,8\}$</Option>
+</Choices>
+
+## 二、填空题（每空 1 分，共 10 分）
+
+1. 数据结构主要研究数据的逻辑结构、<Blank /> 和对数据的操作或运算。
+2. 评价算法的性能指标，主要包括其时间复杂度和 <Blank />。
+3. 在长度为 $n$ 的单链表中，查找第 $i$ 个元素的时间复杂度为 <Blank />（用大 $O$ 表示）。
+4. 设循环队列的数组容量为 6，队头指针 `front=3`，队尾指针 `rear=1`（约定 `front` 指向队头元素的前一个位置，`rear` 指向队尾元素），则队列中的元素个数为 <Blank />。
+5. 串的朴素模式匹配算法（BF 算法）在最坏情况下的时间复杂度为 <Blank />（设主串长 $n$，模式串长 $m$）。
+6. 二维数组 `A[5][6]` 按行优先存储，每个元素占 2 字节，且 `A[0][0]` 地址为 100H（十六进制），则 `A[2][3]` 的地址为 <Blank />H。
+7. 在计算机中，多维数组的存储通常采用行优先或 <Blank /> 优先两种方式。
+8. 若一棵二叉树有 10 个度为 2 的结点、5 个度为 1 的结点，则该二叉树的结点数为 <Blank />。
+9. 一棵有 $n$ 个结点的二叉树，采用二叉链表存储，空指针域的个数为 <Blank />。
+10. 对二叉排序树进行 <Blank /> 遍历，可以得到一个递增有序序列。
+
+## 三、简答题（15 分）
+
+### 1.（3 分）
+
+已知二叉树后序序列为 `GDBEFCA`，中序序列为 `GDBAEFC`，画出该二叉树，并给出先序序列。
+
+### 2.（5 分）
+
+已知序列 $\{1,2,3,4,5,6\}$，构建一棵二叉平衡树，画出每一步的结果。
+
+### 3.（7 分）
+
+设散列表长度为 13，散列函数为 $H(key)=key \% 13$，关键字序列为 $\{26,38,15,44,20,31,07,52\}$，采用线性探测法解决冲突。请回答：
+
+1. 画出依次插入上述关键字后的散列表。（3 分）
+
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |
+
+2. 写出查找关键字 52 的查找过程，并计算比较次数。（2 分）
+3. 计算查找成功的平均查找长度 ASL。（2 分）
+
+## 四、综合题（30 分）
+
+### 1.（9 分）
+
+设一棵哈夫曼树，其叶子结点对应的权值集合为 $W=\{5,7,8,10,11,15,17,20\}$。
+
+1. 构造该哈夫曼树。（4 分）
+2. 若左支编 0、右支编 1，则最短编码是什么？最长编码是什么？（3 分）
+3. 计算该哈夫曼树的带权路径长度 WPL。（2 分）
+
+### 2.（11 分）
+
+<Figure src="题图4.2.svg" float>
+题图四-2
+</Figure>
+
+无向图 $G$ 如题图所示。
+
+1. 以顶点 1 作为起始点，按 Prim 算法执行顺序写出最小生成树的各条边（每条边用权值表示）。（3 分）
+2. 写出从顶点 1 开始的深度优先遍历和广度优先遍历序列（按数字顺序）。（2 分）
+3. 按 Dijkstra 算法顺序（$i$ 为算法迭代次数，每迭代一次，找出一个最短路径），写出从顶点 1 到其余各顶点的最短路径顶点序列及 `Dist` 数组值。（6 分）
+
+|  | $i=1$ | $i=2$ | $i=3$ | $i=4$ | $i=5$ | $i=6$ |
+| --- | --- | --- | --- | --- | --- | --- |
+| 最短路径 |  |  |  |  |  |  |
+| Dist |  |  |  |  |  |  |
+
+### 3.（10 分）
+
+已知待排序的初始关键字序列为 $(25,13,36,8,45,18,52,9)$，要求写出执行下列排序算法在特定阶段后的关键字序列状态（注意：序列格式请统一用圆括号及逗号隔开，例如 $(x,x,x,\ldots)$）。
+
+1. 直接插入排序：写出插入第 4 个元素 8 后的所有关键字序列状态。（2 分）
+2. 快速排序：以序列首个元素 25 为基准值（轴值），写出第一趟排序完成后的关键字序列状态。（2 分）
+3. 堆排序：将初始关键字序列构建为大根堆，写出初始建堆完成后的序列状态；写出第一趟堆排序完成后的序列状态。（4 分）
+4. 2-路归并排序：写出第一趟两两归并完成后的关键字序列状态。（2 分）
+
+## 五、编程题（12 分，每空 1 分）
+
+### 1.（6 分）
+
+<Figure src="题图5.1.svg" float>
+题图五-1
+</Figure>
+
+已知带头结点的单链表示意图如题图所示，公有成员 `first` 存储头结点地址。现有两个单链表对象 `La` 和 `Lb`，均按数据域 `data` 值非递减有序排列。请实现函数 `Merge`，将两个链表合并为一个非递减有序链表，结果链表仍使用原链表的结点（不额外申请新结点），并返回新链表的头指针。补充完整代码中的空缺。
+
+```cpp
+template<class T> // 模板类头，T 形式化参数
+struct Node {
+    T data;
+    Node<T>* next;
+};
+
+template<class T>
+Node<T>* Merge(LinkList<T>& La, LinkList<T>& Lb) {
+    Node<T>* p1 = La.first->next; // p1 指向 La 的第一个数据结点
+    Node<T>* p2 = Lb.first->next; // p2 指向 Lb 的第一个数据结点
+    _____(1)_____;                // 将 La、Lb 变为空链表
+
+    // 创建新链表的头结点
+    Node<T>* head = new Node<T>;
+    head->next = NULL;
+    Node<T>* tail = head;
+
+    while (p1 && p2) {
+        if (p1->data <= p2->data) {
+            tail->next = p1;
+            tail = p1;
+            p1 = _____(2)_____;
+        } else {
+            tail->next = p2;
+            tail = p2;
+            p2 = _____(3)_____;
+        }
+    }
+
+    // 连接剩余部分
+    if (p1) {
+        tail->next = _____(4)_____;
+    }
+    if (p2) {
+        tail->next = _____(5)_____;
+    }
+    return _____(6)_____;
+}
+```
+
+1. <Blank />
+2. <Blank />
+3. <Blank />
+4. <Blank />
+5. <Blank />
+6. <Blank />
+
+### 2.（6 分）
+
+给定一个无序整型数组，实现一个函数原地将数组内元素拆分，所有奇数放置在数组前半段，所有偶数放置在数组后半段。要求：仅在原数组上操作，不得额外开辟同等大小数组空间存储数据；补充完整代码中的空缺。（提示：可借鉴快速排序的分区算法。）
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void splitOddEven(int arr[], int n) {
+    int left = 0;
+    int right = n - 1;
+
+    while (_____(1)_____) {
+        while (_____(2)_____) // 左指针遇到奇数，正常右移
+            _____(3)_____;
+        while (_____(4)_____) // 右指针遇到偶数，正常左移
+            _____(5)_____;
+
+        if (left < right) {
+            int t = arr[left]; // 奇偶数交换位置
+            arr[left] = arr[right];
+            arr[right] = t;
+        }
+    }
+}
+
+int main() {
+    int nums[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int len = sizeof(nums) / sizeof(int);
+    splitOddEven(_____(6)_____);
+    cout << "奇数在前，偶数在后：";
+    for (int i = 0; i < len; i++)
+        cout << nums[i] << " ";
+    return 0;
+}
+```
+
+1. <Blank />
+2. <Blank />
+3. <Blank />
+4. <Blank />
+5. <Blank />
+6. <Blank />
