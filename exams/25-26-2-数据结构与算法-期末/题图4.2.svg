@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
   <title id="title">题图四-2：带权无向图</title>
-  <desc id="desc">含有顶点1至7的带权无向图。边及权值为：1—2为6，1—6为16，1—7为14，2—3为11，2—6为6，3—6为7，3—5为19，3—4为22，4—5为26，5—6为13，5—7为9，6—7为10。</desc>
+  <desc id="desc">含有顶点1至7的带权无向图。边及权值为：1—2为24，1—6为15，1—7为14，2—3为11，2—6为6，3—6为7，3—5为4，3—4为22，4—5为26，5—6为13，5—7为9，6—7为10。</desc>
   <defs>
     <style>
       .edge-line { fill: none; stroke: #111; stroke-width: 2.5; stroke-linecap: round; }
