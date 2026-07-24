@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+  <title id="title">题图四-2：带权无向图</title>
+  <desc id="desc">含有顶点1至7的带权无向图。边及权值为：1—2为24，1—6为15，1—7为14，2—3为11，2—6为6，3—6为7，3—5为4，3—4为22，4—5为26，5—6为13，5—7为9，6—7为10。</desc>
+  <defs>
+    <style>
+      .edge-line { fill: none; stroke: #111; stroke-width: 2.5; stroke-linecap: round; }
+      .edge-label { fill: #111; font: 20px "Times New Roman", "Noto Serif", serif; text-anchor: middle; dominant-baseline: middle; paint-order: stroke; stroke: #fff; stroke-width: 8px; stroke-linejoin: round; }
+      .vertex { fill: #111; }
+      .vertex-label { fill: #fff; font: 700 21px Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+
+  <rect width="900" height="500" fill="#fff"/>
+
+  <g id="edges">
+    <g id="edge-1-2"><line class="edge-line" x1="90" y1="250" x2="260" y2="70"/><text class="edge-label" x="170" y="151" transform="rotate(-46 170 151)">24</text></g>
+    <g id="edge-1-6"><line class="edge-line" x1="90" y1="250" x2="455" y2="250"/><text class="edge-label" x="274" y="250">15</text></g>
+    <g id="edge-1-7"><line class="edge-line" x1="90" y1="250" x2="260" y2="430"/><text class="edge-label" x="170" y="349" transform="rotate(46 170 349)">14</text></g>
+    <g id="edge-2-3"><line class="edge-line" x1="260" y1="70" x2="640" y2="70"/><text class="edge-label" x="450" y="70">11</text></g>
+    <g id="edge-2-6"><line class="edge-line" x1="260" y1="70" x2="455" y2="250"/><text class="edge-label" x="353" y="153" transform="rotate(43 353 153)">6</text></g>
+    <g id="edge-3-6"><line class="edge-line" x1="640" y1="70" x2="455" y2="250"/><text class="edge-label" x="552" y="153" transform="rotate(-44 552 153)">7</text></g>
+    <g id="edge-3-5"><line class="edge-line" x1="640" y1="70" x2="640" y2="430"/><text class="edge-label" x="640" y="250" transform="rotate(90 640 250)">4</text></g>
+    <g id="edge-3-4"><line class="edge-line" x1="640" y1="70" x2="810" y2="250"/><text class="edge-label" x="730" y="151" transform="rotate(46 730 151)">22</text></g>
+    <g id="edge-4-5"><line class="edge-line" x1="810" y1="250" x2="640" y2="430"/><text class="edge-label" x="730" y="349" transform="rotate(-46 730 349)">26</text></g>
+    <g id="edge-5-6"><line class="edge-line" x1="640" y1="430" x2="455" y2="250"/><text class="edge-label" x="552" y="347" transform="rotate(44 552 347)">13</text></g>
+    <g id="edge-5-7"><line class="edge-line" x1="640" y1="430" x2="260" y2="430"/><text class="edge-label" x="450" y="430">9</text></g>
+    <g id="edge-6-7"><line class="edge-line" x1="455" y1="250" x2="260" y2="430"/><text class="edge-label" x="353" y="347" transform="rotate(-43 353 347)">10</text></g>
+  </g>
+
+  <g id="vertices">
+    <g id="vertex-1"><circle class="vertex" cx="90" cy="250" r="28"/><text class="vertex-label" x="90" y="250">1</text></g>
+    <g id="vertex-2"><circle class="vertex" cx="260" cy="70" r="28"/><text class="vertex-label" x="260" y="70">2</text></g>
+    <g id="vertex-3"><circle class="vertex" cx="640" cy="70" r="28"/><text class="vertex-label" x="640" y="70">3</text></g>
+    <g id="vertex-4"><circle class="vertex" cx="810" cy="250" r="28"/><text class="vertex-label" x="810" y="250">4</text></g>
+    <g id="vertex-5"><circle class="vertex" cx="640" cy="430" r="28"/><text class="vertex-label" x="640" y="430">5</text></g>
+    <g id="vertex-6"><circle class="vertex" cx="455" cy="250" r="28"/><text class="vertex-label" x="455" y="250">6</text></g>
+    <g id="vertex-7"><circle class="vertex" cx="260" cy="430" r="28"/><text class="vertex-label" x="260" y="430">7</text></g>
+  </g>
+</svg>

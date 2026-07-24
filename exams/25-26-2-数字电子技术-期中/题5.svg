@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1028" height="615" viewBox="0 0 1028 615" role="img" aria-labelledby="title desc">
+  <title id="title">CC4512 数据选择器逻辑符号</title>
+  <desc id="desc">CC4512 八选一数据选择器。顶部为 D0 至 D7 数据输入，左侧为 A0 至 A2 地址输入，右侧为 DIS 和 INH 控制输入，底部为 Y 输出。</desc>
+  <defs>
+    <style>
+      .outline, .pin {
+        fill: none;
+        stroke: #111;
+        stroke-linecap: square;
+        stroke-linejoin: round;
+      }
+      .outline { stroke-width: 4.5; }
+      .pin { stroke-width: 4.2; }
+      .label {
+        fill: #111;
+        font-family: "Times New Roman", "Noto Serif CJK SC", serif;
+        font-size: 50px;
+        font-weight: 600;
+      }
+      .part-number {
+        fill: #111;
+        font-family: "Times New Roman", "Noto Serif CJK SC", serif;
+        font-size: 66px;
+        font-weight: 700;
+      }
+    </style>
+
+    <symbol id="top-input-pin" overflow="visible">
+      <line class="pin" x1="0" y1="0" x2="0" y2="83"/>
+    </symbol>
+  </defs>
+
+  <rect id="background" width="1028" height="615" fill="#fff"/>
+
+  <g id="data-input-pins" aria-label="八个数据输入引脚">
+    <use href="#top-input-pin" x="243" y="0"/>
+    <use href="#top-input-pin" x="323" y="0"/>
+    <use href="#top-input-pin" x="407" y="0"/>
+    <use href="#top-input-pin" x="491" y="0"/>
+    <use href="#top-input-pin" x="575" y="0"/>
+    <use href="#top-input-pin" x="658" y="0"/>
+    <use href="#top-input-pin" x="747" y="0"/>
+    <use href="#top-input-pin" x="830" y="0"/>
+  </g>
+
+  <rect id="multiplexer-body" class="outline" x="129" y="83" width="809" height="380" fill="#fff"/>
+
+  <g id="data-input-labels" aria-label="数据输入名称">
+    <text class="label" x="251" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">0</tspan></text>
+    <text class="label" x="335" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">1</tspan></text>
+    <text class="label" x="419" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">2</tspan></text>
+    <text class="label" x="503" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">3</tspan></text>
+    <text class="label" x="588" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">4</tspan></text>
+    <text class="label" x="672" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">5</tspan></text>
+    <text class="label" x="756" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">6</tspan></text>
+    <text class="label" x="844" y="155" text-anchor="middle">D<tspan baseline-shift="sub" font-size="30">7</tspan></text>
+  </g>
+
+  <g id="address-inputs" aria-label="三个地址输入">
+    <line class="pin" x1="20" y1="234" x2="129" y2="234"/>
+    <line class="pin" x1="20" y1="319" x2="129" y2="319"/>
+    <line class="pin" x1="20" y1="399" x2="129" y2="399"/>
+    <text class="label" x="169" y="239" text-anchor="middle">A<tspan baseline-shift="sub" font-size="30">0</tspan></text>
+    <text class="label" x="169" y="337" text-anchor="middle">A<tspan baseline-shift="sub" font-size="30">1</tspan></text>
+    <text class="label" x="169" y="418" text-anchor="middle">A<tspan baseline-shift="sub" font-size="30">2</tspan></text>
+  </g>
+
+  <g id="control-inputs" aria-label="两个控制输入">
+    <line class="pin" x1="938" y1="232" x2="1028" y2="232"/>
+    <line class="pin" x1="938" y1="321" x2="1028" y2="321"/>
+    <text class="label" x="853" y="244" text-anchor="middle">DIS</text>
+    <text class="label" x="860" y="342" text-anchor="middle">INH</text>
+  </g>
+
+  <text class="part-number" x="505" y="339" text-anchor="middle">CC4512</text>
+
+  <g id="output" aria-label="输出 Y">
+    <text class="label" x="533" y="424" text-anchor="middle">Y</text>
+    <line class="pin" x1="533" y1="463" x2="533" y2="601"/>
+  </g>
+</svg>

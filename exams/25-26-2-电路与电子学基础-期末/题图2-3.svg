@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="220" viewBox="0 0 390 220" role="img" aria-labelledby="title desc">
+  <title id="title">三二极管直流电路</title>
+  <desc id="desc">左侧为 5 伏直流电源，上支路串联两只朝右的二极管，下支路串联一只朝左的二极管。右侧为 5 千欧电阻，输出电压 u 下标 o 取电阻两端，上正下负。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .terminal { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+    <g id="diode-right">
+      <path class="wire" d="M 0 0 H 10 M 35 0 H 48"/>
+      <polygon class="component" points="10,-13 10,13 34,0"/>
+      <line class="wire" x1="35" y1="-14" x2="35" y2="14"/>
+    </g>
+  </defs>
+
+  <g id="battery-and-left-rail">
+    <path class="wire" d="M 65 45 V 82 M 65 101 V 165"/>
+    <line class="wire" x1="49" y1="82" x2="81" y2="82"/>
+    <line class="wire" x1="56" y1="101" x2="74" y2="101"/>
+    <text class="label" x="8" y="101">5 V</text>
+  </g>
+
+  <g id="top-branch">
+    <path class="wire" d="M 65 45 H 95 M 143 45 H 165 M 213 45 H 270"/>
+    <use href="#diode-right" transform="translate(95 45)"/>
+    <use href="#diode-right" transform="translate(165 45)"/>
+  </g>
+
+  <g id="bottom-branch">
+    <path class="wire" d="M 65 165 H 132 M 180 165 H 270"/>
+    <use href="#diode-right" transform="translate(180 165) scale(-1 1)"/>
+  </g>
+
+  <g id="load-resistor">
+    <path class="wire" d="M 270 45 V 72 M 270 138 V 165"/>
+    <rect class="component" x="260" y="72" width="20" height="66"/>
+    <text class="label" x="191" y="114">5 kΩ</text>
+    <circle class="node" cx="270" cy="45" r="3.7"/>
+    <circle class="node" cx="270" cy="165" r="3.7"/>
+  </g>
+
+  <g id="output-terminals">
+    <path class="wire" d="M 270 45 H 318 M 270 165 H 318"/>
+    <circle class="terminal" cx="320" cy="45" r="5"/>
+    <circle class="terminal" cx="320" cy="165" r="5"/>
+    <text class="label small" x="341" y="54">+</text>
+    <text class="label" x="340" y="115" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o</tspan></text>
+    <text class="label small" x="343" y="174">−</text>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="260" viewBox="0 0 640 260" role="img" aria-labelledby="title desc">
+  <title id="title">运算放大器反馈电路</title>
+  <desc id="desc">运算放大器同相输入端接地，输入电压 u 下标 i 直接接反相输入端。输入节点还经电阻 R 下标 i 接到电阻 R 下标 1 与 R 下标 2 的中点。R1 上端接运放输出，R2 下端接地。输出电压 u 下标 o 取自运放输出端与电阻中点之间，上正下负。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .terminal { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 24px; }
+      .small { font-size: 21px; }
+    </style>
+  </defs>
+
+  <g id="operational-amplifier">
+    <polygon class="component" points="220,45 220,145 340,95"/>
+    <text class="label small" x="232" y="77">+</text>
+    <text class="label small" x="232" y="120">−</text>
+    <text class="label" x="282" y="104" font-style="italic">A</text>
+  </g>
+
+  <g id="noninverting-input-ground">
+    <path class="wire" d="M 220 72 H 165 V 48"/>
+    <line class="wire" x1="150" y1="48" x2="180" y2="48"/>
+  </g>
+
+  <g id="input-network">
+    <circle class="terminal" cx="90" cy="112" r="5"/>
+    <path class="wire" d="M 95 112 H 220"/>
+    <path class="wire" d="M 150 112 V 175 H 300"/>
+    <rect class="component" x="300" y="164" width="56" height="22"/>
+    <path class="wire" d="M 356 175 H 445"/>
+    <circle class="node" cx="150" cy="112" r="3.7"/>
+    <text class="label" x="38" y="120" font-style="italic">u<tspan baseline-shift="sub" font-size="16">i</tspan></text>
+    <text class="label" x="317" y="218" font-style="italic">R<tspan baseline-shift="sub" font-size="16">i</tspan></text>
+  </g>
+
+  <g id="output-network">
+    <path class="wire" d="M 340 95 H 520"/>
+    <circle class="terminal" cx="522" cy="95" r="5"/>
+    <circle class="terminal" cx="522" cy="175" r="5"/>
+    <path class="wire" d="M 445 175 H 517"/>
+
+    <path class="wire" d="M 445 95 V 113 M 445 157 V 175"/>
+    <rect class="component" x="435" y="113" width="20" height="44"/>
+    <text class="label" x="397" y="139" font-style="italic">R<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+
+    <path class="wire" d="M 445 175 V 187 M 445 225 V 240"/>
+    <rect class="component" x="435" y="187" width="20" height="38"/>
+    <text class="label" x="397" y="211" font-style="italic">R<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+
+    <circle class="node" cx="445" cy="95" r="3.7"/>
+    <circle class="node" cx="445" cy="175" r="3.7"/>
+  </g>
+
+  <g id="lower-ground">
+    <line class="wire" x1="430" y1="240" x2="460" y2="240"/>
+  </g>
+
+  <g id="output-label" class="label">
+    <text class="small" x="550" y="103">+</text>
+    <text x="550" y="146" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o</tspan></text>
+    <text class="small" x="552" y="184">−</text>
+  </g>
+</svg>

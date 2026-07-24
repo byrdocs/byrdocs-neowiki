@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="457" height="315" viewBox="0 0 457 315" role="img" aria-labelledby="title desc">
+  <title id="title">74LS138 译码器逻辑符号</title>
+  <desc id="desc">一个 74LS138 三线—八线译码器。顶部为八个低有效输出，底部为三个使能输入和三个地址输入，其中 S2、S3 为低有效。</desc>
+  <defs>
+    <style>
+      .outline, .pin, .bar {
+        fill: none;
+        stroke: #111;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .outline { stroke-width: 3.4; }
+      .pin { stroke-width: 3.2; }
+      .bar { stroke-width: 2.5; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 3.2; }
+      .label {
+        fill: #111;
+        font-family: "Times New Roman", "Noto Serif CJK SC", serif;
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .part-number {
+        fill: #111;
+        font-family: "Times New Roman", "Noto Serif CJK SC", serif;
+        font-size: 27px;
+        font-weight: 700;
+      }
+    </style>
+
+    <symbol id="active-low-output" overflow="visible">
+      <line class="pin" x1="0" y1="0" x2="0" y2="62"/>
+      <circle class="bubble" cx="0" cy="71" r="8.5"/>
+    </symbol>
+
+    <symbol id="active-low-input" overflow="visible">
+      <circle class="bubble" cx="0" cy="0" r="8.5"/>
+      <line class="pin" x1="0" y1="8.5" x2="0" y2="73"/>
+    </symbol>
+  </defs>
+
+  <rect id="background" width="457" height="315" fill="#fff"/>
+
+  <g id="outputs" aria-label="八个低有效输出">
+    <use href="#active-low-output" x="61" y="0"/>
+    <use href="#active-low-output" x="102" y="0"/>
+    <use href="#active-low-output" x="143" y="0"/>
+    <use href="#active-low-output" x="184" y="0"/>
+    <use href="#active-low-output" x="225" y="0"/>
+    <use href="#active-low-output" x="266" y="0"/>
+    <use href="#active-low-output" x="307" y="0"/>
+    <use href="#active-low-output" x="348" y="0"/>
+  </g>
+
+  <path id="decoder-body" class="outline" fill="#fff" d="M20 81 H386 L391 237 H19 Z"/>
+
+  <g id="output-labels" aria-label="输出名称">
+    <g>
+      <line class="bar" x1="48" y1="90" x2="73" y2="90"/>
+      <text class="label" x="61" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">0</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="89" y1="90" x2="114" y2="90"/>
+      <text class="label" x="102" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="130" y1="90" x2="155" y2="90"/>
+      <text class="label" x="143" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="171" y1="90" x2="196" y2="90"/>
+      <text class="label" x="184" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="212" y1="90" x2="237" y2="90"/>
+      <text class="label" x="225" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">4</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="253" y1="90" x2="278" y2="90"/>
+      <text class="label" x="266" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">5</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="294" y1="90" x2="319" y2="90"/>
+      <text class="label" x="307" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">6</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="335" y1="90" x2="360" y2="90"/>
+      <text class="label" x="348" y="115" text-anchor="middle">Y<tspan baseline-shift="sub" font-size="16">7</tspan></text>
+    </g>
+  </g>
+
+  <text class="part-number" x="181" y="159" text-anchor="middle">74LS138</text>
+
+  <g id="input-labels" aria-label="输入名称">
+    <text class="label" x="49" y="219" text-anchor="middle">S<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    <g>
+      <line class="bar" x1="84" y1="194" x2="109" y2="194"/>
+      <text class="label" x="97" y="219" text-anchor="middle">S<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+    </g>
+    <g>
+      <line class="bar" x1="132" y1="194" x2="157" y2="194"/>
+      <text class="label" x="145" y="219" text-anchor="middle">S<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+    </g>
+    <text class="label" x="228" y="215" text-anchor="middle">A<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+    <text class="label" x="291" y="215" text-anchor="middle">A<tspan baseline-shift="sub" font-size="16">1</tspan></text>
+    <text class="label" x="354" y="215" text-anchor="middle">A<tspan baseline-shift="sub" font-size="16">0</tspan></text>
+  </g>
+
+  <g id="inputs" aria-label="六个输入引脚">
+    <line class="pin" x1="60" y1="237" x2="60" y2="315"/>
+    <use href="#active-low-input" x="101" y="244"/>
+    <use href="#active-low-input" x="143" y="244"/>
+    <line class="pin" x1="228" y1="237" x2="228" y2="315"/>
+    <line class="pin" x1="291" y1="237" x2="291" y2="315"/>
+    <line class="pin" x1="354" y1="237" x2="354" y2="315"/>
+  </g>
+</svg>

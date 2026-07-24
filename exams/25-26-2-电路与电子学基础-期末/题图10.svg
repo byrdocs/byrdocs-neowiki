@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="450" viewBox="0 0 780 450" role="img" aria-labelledby="title desc">
+  <title id="title">分压偏置共射极放大电路</title>
+  <desc id="desc">NPN 晶体管共射极放大电路。电源为正 V 下标 CC。基极由 R 下标 B2 和 R 下标 B1 分压偏置，集电极经 R 下标 C 接电源，发射极经 R 下标 E 接地并由电容旁路。信号源 u 下标 s 经源电阻 R 下标 s 和输入耦合电容接基极，输入电压为 u 下标 i。集电极信号经输出耦合电容接负载 R 下标 L，输出电压 u 下标 o 上正下负。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .component { fill: #fff; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #111; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif CJK SC", serif; font-size: 23px; }
+      .small { font-size: 20px; }
+    </style>
+  </defs>
+
+  <g id="supply-and-ground-rails">
+    <path class="wire" d="M 285 60 H 550"/>
+    <path class="wire" d="M 85 390 H 610"/>
+    <circle class="node" cx="430" cy="60" r="3.7"/>
+    <circle class="node" cx="430" cy="390" r="3.7"/>
+    <path class="wire" d="M 430 390 V 410 M 415 410 H 445"/>
+    <text class="label" x="575" y="85">+V<tspan baseline-shift="sub" font-size="16">CC</tspan></text>
+  </g>
+
+  <g id="input-source">
+    <path class="wire" d="M 85 390 V 362 M 85 318 V 290"/>
+    <circle class="component" cx="85" cy="340" r="22"/>
+    <rect class="component" x="75" y="240" width="20" height="50"/>
+    <text class="label" x="116" y="274" font-style="italic">R<tspan baseline-shift="sub" font-size="16">s</tspan></text>
+    <text class="label small" x="32" y="315">+</text>
+    <text class="label" x="12" y="352" font-style="italic">u<tspan baseline-shift="sub" font-size="16">s</tspan></text>
+    <text class="label small" x="34" y="392">−</text>
+  </g>
+
+  <g id="input-coupling-and-voltage">
+    <path class="wire" d="M 220 210 H 285"/>
+    <path class="wire" d="M 85 240 V 210 H 200"/>
+    <line class="wire" x1="200" y1="194" x2="200" y2="226"/>
+    <line class="wire" x1="220" y1="194" x2="220" y2="226"/>
+    <text class="label small" x="165" y="255">+</text>
+    <text class="label" x="176" y="300" font-style="italic">u<tspan baseline-shift="sub" font-size="16">i</tspan></text>
+    <text class="label small" x="163" y="351">−</text>
+  </g>
+
+  <g id="base-bias-network">
+    <path class="wire" d="M 285 60 V 108 M 285 158 V 260 M 285 310 V 390"/>
+    <rect class="component" x="275" y="108" width="20" height="50"/>
+    <rect class="component" x="275" y="260" width="20" height="50"/>
+    <text class="label" x="313" y="137" font-style="italic">R<tspan baseline-shift="sub" font-size="16">B2</tspan></text>
+    <text class="label" x="313" y="292" font-style="italic">R<tspan baseline-shift="sub" font-size="16">B1</tspan></text>
+    <circle class="node" cx="285" cy="210" r="3.7"/>
+    <circle class="node" cx="285" cy="390" r="3.7"/>
+  </g>
+
+  <g id="collector-network">
+    <path class="wire" d="M 430 60 V 105 M 430 155 V 175"/>
+    <rect class="component" x="420" y="105" width="20" height="50"/>
+    <text class="label" x="459" y="137" font-style="italic">R<tspan baseline-shift="sub" font-size="16">C</tspan></text>
+    <circle class="node" cx="430" cy="175" r="3.7"/>
+  </g>
+
+  <g id="npn-transistor">
+    <path class="wire" d="M 285 210 H 380"/>
+    <line class="wire" x1="380" y1="188" x2="380" y2="252"/>
+    <path class="wire" d="M 382 201 L 430 175"/>
+    <path class="wire" d="M 382 238 L 430 260"/>
+    <polygon points="423,257 408,256 412,246" fill="#111"/>
+    <circle class="node" cx="430" cy="260" r="3.7"/>
+  </g>
+
+  <g id="emitter-network">
+    <path class="wire" d="M 430 260 V 300 M 430 350 V 390"/>
+    <rect class="component" x="420" y="300" width="20" height="50"/>
+    <text class="label" x="378" y="324" font-style="italic">R<tspan baseline-shift="sub" font-size="16">E</tspan></text>
+
+    <path class="wire" d="M 430 260 H 490 V 302 M 490 318 V 390"/>
+    <line class="wire" x1="474" y1="302" x2="506" y2="302"/>
+    <line class="wire" x1="474" y1="318" x2="506" y2="318"/>
+  </g>
+
+  <g id="output-network">
+    <path class="wire" d="M 430 175 H 500 M 520 175 H 610 V 280 M 610 340 V 390"/>
+    <line class="wire" x1="500" y1="159" x2="500" y2="191"/>
+    <line class="wire" x1="520" y1="159" x2="520" y2="191"/>
+    <rect class="component" x="600" y="280" width="20" height="60"/>
+    <text class="label" x="548" y="315" font-style="italic">R<tspan baseline-shift="sub" font-size="16">L</tspan></text>
+    <text class="label small" x="667" y="282">+</text>
+    <text class="label" x="660" y="329" font-style="italic">u<tspan baseline-shift="sub" font-size="16">o</tspan></text>
+    <text class="label small" x="668" y="381">−</text>
+  </g>
+</svg>

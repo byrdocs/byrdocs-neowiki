@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="180" viewBox="0 0 1000 180" role="img" aria-labelledby="title desc">
+  <title id="title">题图五-1：带头结点的单链表</title>
+  <desc id="desc">front指向带斜线阴影数据域的头结点，头结点依次指向数据结点a1、a2，经过省略的中间结点后指向an，最后一个指针域为空指针。</desc>
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #111; stroke-width: 2; }
+      .divider { stroke: #111; stroke-width: 2; }
+      .arrow { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: round; marker-end: url(#arrowhead); }
+      .label { fill: #111; font: 29px "Times New Roman", "Noto Serif", serif; }
+      .node-text { fill: #111; font: italic 31px "Times New Roman", "Noto Serif", serif; text-anchor: middle; dominant-baseline: middle; }
+      .null-text { fill: #111; font: 26px "Times New Roman", "Noto Serif", serif; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#111"/>
+    </marker>
+    <pattern id="head-hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="9" height="9" fill="#e6e6e6"/>
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#777" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="180" fill="#fff"/>
+
+  <g id="front-pointer">
+    <text class="label" x="22" y="95">front</text>
+    <line class="arrow" x1="105" y1="85" x2="165" y2="85"/>
+  </g>
+
+  <g id="head-node">
+    <rect class="box" x="175" y="50" width="130" height="70"/>
+    <rect x="175" y="50" width="78" height="70" fill="url(#head-hatch)" stroke="none"/>
+    <line class="divider" x1="253" y1="50" x2="253" y2="120"/>
+  </g>
+  <line class="arrow" x1="275" y1="85" x2="345" y2="85"/>
+
+  <g id="node-a1">
+    <rect class="box" x="355" y="50" width="130" height="70"/>
+    <line class="divider" x1="433" y1="50" x2="433" y2="120"/>
+    <text class="node-text" x="394" y="84">a<tspan baseline-shift="sub" font-size="20">1</tspan></text>
+  </g>
+  <line class="arrow" x1="455" y1="85" x2="525" y2="85"/>
+
+  <g id="node-a2">
+    <rect class="box" x="535" y="50" width="130" height="70"/>
+    <line class="divider" x1="613" y1="50" x2="613" y2="120"/>
+    <text class="node-text" x="574" y="84">a<tspan baseline-shift="sub" font-size="20">2</tspan></text>
+  </g>
+  <line class="arrow" x1="635" y1="85" x2="700" y2="85"/>
+
+  <g id="ellipsis">
+    <text class="label" x="720" y="94">······</text>
+  </g>
+  <line class="arrow" x1="795" y1="85" x2="845" y2="85"/>
+
+  <g id="node-an">
+    <rect class="box" x="855" y="50" width="130" height="70"/>
+    <line class="divider" x1="933" y1="50" x2="933" y2="120"/>
+    <text class="node-text" x="894" y="84">a<tspan baseline-shift="sub" font-size="20">n</tspan></text>
+    <text class="null-text" x="959" y="85">∧</text>
+  </g>
+</svg>
