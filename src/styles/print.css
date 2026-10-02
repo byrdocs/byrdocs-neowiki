@@ -1,0 +1,131 @@
+.exam-print-document { display: none; }
+
+@media print {
+  @page { size: A4; margin: 18mm 15mm; }
+
+  html.exam-printing {
+    color-scheme: light;
+    --background: #fff;
+    --black: #111;
+  }
+  html.exam-printing body { background: #fff !important; }
+  html.exam-printing body > :not(.exam-print-document) { display: none !important; }
+  html.exam-printing .exam-print-document {
+    display: block !important;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #111 !important;
+    background: #fff !important;
+  }
+  .exam-print-document * {
+    color: #111 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .exam-print-document h1 { font-size: 19pt; margin-top: 0; }
+  .exam-print-document h2 { font-size: 14pt; margin: 1.2em 0 0.6em; }
+  .exam-print-document h3 { font-size: 12pt; margin: 0.8em 0 0.4em; }
+  .exam-print-document :is(h1, h2, h3, figcaption) { break-after: avoid; }
+  .exam-print-document p { margin: 0.5em 0; orphans: 3; widows: 3; }
+  .exam-print-questions :is(p, ol):has(+ :is(.exam-choices, .exam-figure)) { break-after: avoid; }
+  .exam-print-document .exam-page-main { min-width: 0; width: auto; }
+  .exam-print-document .exam-info-box {
+    float: none;
+    width: 100%;
+    margin: 0 0 1.5em;
+    break-inside: avoid;
+  }
+  .exam-print-document .exam-blank {
+    appearance: none;
+    border: 0 !important;
+    border-bottom: 0.5pt solid #777 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    min-width: 0 !important;
+  }
+  .exam-print-document .exam-blank.is-disabled {
+    color: transparent !important;
+    min-width: 6em !important;
+  }
+  .exam-print-document .exam-blank-placeholder,
+  .exam-print-document .exam-solution-summary,
+  .exam-print-document .exam-choice-input { display: none !important; }
+  .exam-print-document .exam-blank-answer { visibility: hidden !important; }
+  .exam-print-document[data-answer-mode="inline"] .exam-blank-answer,
+  .exam-print-document .print-answers-appendix .exam-blank-answer { visibility: visible !important; }
+  .exam-print-document .exam-solution {
+    overflow: visible;
+    border: 0.5pt solid #aaa;
+    border-radius: 3mm;
+    break-inside: avoid;
+  }
+  .exam-print-document .exam-solution-content { overflow: visible; padding: 0.8em; }
+  .exam-print-document .exam-choices { break-inside: avoid; margin: 0.5em 0 1em; }
+  .exam-print-document .exam-choices-options { gap: 0.1em; margin-bottom: 0; }
+  .exam-print-document .exam-choice-content > p { margin: 0; }
+  .exam-print-document .exam-choice-option {
+    padding: 0.2em 0.5em !important;
+    border-color: transparent !important;
+    outline: none !important;
+  }
+  .exam-print-document .exam-choice-indicator { border: 1pt solid #888 !important; }
+  .exam-print-document .exam-choice-indicator::after { content: none !important; }
+  .exam-print-document .exam-print-correct { outline: 0.7pt solid #111 !important; outline-offset: -1pt; }
+  .exam-print-document .exam-print-correct .exam-choice-indicator::after {
+    content: "" !important;
+    background: #111 !important;
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+  }
+  .exam-print-document :is(pre, .astro-code) {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    overflow: visible;
+  }
+  .exam-print-document :is(.katex-display, .exam-figure, table) { overflow: visible; max-width: 100%; }
+  .exam-print-document .exam-figure-trigger { border: 0 !important; padding: 0; }
+  /* Floats otherwise drift beside later questions across page boundaries. */
+  .exam-print-document .exam-figure-float {
+    float: none;
+    clear: both;
+    margin: 0.8em auto;
+    border: 0;
+    padding: 0;
+    width: 60mm;
+  }
+  .exam-print-document .exam-figure-float .exam-figure-image { width: auto; max-height: 75mm; }
+  .exam-print-document .exam-figure-media { padding: 0; }
+  .exam-print-document img { max-width: 100%; max-height: 220mm; object-fit: contain; }
+  .exam-print-document figure { break-inside: avoid; }
+  .exam-print-document .print-answers-appendix { break-before: page; }
+  .exam-print-document .print-answers-appendix-title { margin-top: 0; }
+  .exam-print-document .print-answer-section { margin-bottom: 1.3em; }
+  .exam-print-document .print-answer-item {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.2em 0.8em;
+    margin-bottom: 0.6em;
+    break-inside: avoid;
+  }
+  .exam-print-document .print-answer-label { max-width: 12em; font-weight: 600; overflow-wrap: anywhere; }
+  .exam-print-document .print-answer-body { min-width: 0; }
+  .exam-print-document .print-answer-body > :first-child { margin-top: 0; }
+  .exam-print-document .print-answer-body > :last-child { margin-bottom: 0; }
+  .exam-print-document .print-footer {
+    margin-top: 2em;
+    padding-top: 0.7em;
+    border-top: 0.5pt solid #aaa;
+    font-size: 8pt;
+    overflow-wrap: anywhere;
+    break-inside: avoid;
+  }
+}

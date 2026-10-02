@@ -13,6 +13,7 @@
     "check:wiki-templates": "node scripts/check-wiki-templates.mjs",
     "export:wiki": "node scripts/export-wiki-page.mjs",
     "check": "astro check",
+    "check:print": "node scripts/check-print.mjs",
     "build": "NODE_OPTIONS=--max-old-space-size=8192 astro build",
     "preview": "astro preview",
     "astro": "astro",

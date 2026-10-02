@@ -1,0 +1,184 @@
+---
+import "/src/styles/print.css";
+---
+
+<dialog
+  id="examPrintDialog"
+  class="exam-print-dialog"
+  aria-labelledby="examPrintDialogTitle"
+>
+  <div class="exam-print-dialog-panel">
+    <h2 id="examPrintDialogTitle" class="exam-print-dialog-title">打印选项</h2>
+    <p class="exam-print-dialog-desc">选择要包含在打印稿中的内容。</p>
+    <label class="exam-print-dialog-option">
+      <input
+        id="examPrintInfo"
+        type="checkbox"
+      />
+      <span>打印试题概要信息</span>
+    </label>
+    <label class="exam-print-dialog-option exam-print-dialog-option-spaced">
+      <input
+        id="examPrintAnswers"
+        type="checkbox"
+        checked
+      />
+      <span>打印答案</span>
+    </label>
+    <fieldset id="examPrintAnswerPlacement" class="exam-print-dialog-fieldset">
+      <legend>答案位置</legend>
+      <label class="exam-print-dialog-option">
+        <input type="radio" name="examPrintPlacement" value="end" checked />
+        <span>统一放在最后</span>
+      </label>
+      <label class="exam-print-dialog-option">
+        <input type="radio" name="examPrintPlacement" value="inline" />
+        <span>放在原题位置</span>
+      </label>
+    </fieldset>
+    <div class="exam-print-dialog-actions">
+      <button
+        id="examPrintDialogCancel"
+        class="exam-print-dialog-btn exam-print-dialog-btn-secondary"
+        type="button"
+      >
+        取消
+      </button>
+      <button
+        id="examPrintDialogConfirm"
+        class="exam-print-dialog-btn exam-print-dialog-btn-primary"
+        type="button"
+      >
+        打印
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<style is:global>
+  .exam-print-dialog {
+    background: none;
+    border: none;
+    margin: auto;
+    max-width: calc(100vw - 2rem);
+    padding: 0;
+    width: 24rem;
+  }
+  .exam-print-dialog::backdrop {
+    background: rgb(15 23 42 / 45%);
+    backdrop-filter: blur(2px);
+  }
+  .exam-print-dialog-panel {
+    border: 1px solid rgb(226 232 240);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+      0 10px 15px -3px rgb(15 23 42 / 12%),
+      0 4px 6px -4px rgb(15 23 42 / 10%);
+    color: rgb(15 23 42);
+    padding: 1.25rem;
+  }
+  .dark .exam-print-dialog-panel {
+    background: rgb(15 23 42);
+    border-color: rgb(30 41 59);
+    color: rgb(241 245 249);
+  }
+  .exam-print-dialog-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .exam-print-dialog-desc {
+    color: rgb(100 116 139);
+    font-size: 0.875rem;
+    margin: 0.4rem 0 1rem;
+  }
+  .dark .exam-print-dialog-desc {
+    color: rgb(148 163 184);
+  }
+  .exam-print-dialog-option {
+    align-items: center;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    gap: 0.65rem;
+    font-size: 0.95rem;
+    padding: 0.75rem 0.85rem;
+    user-select: none;
+  }
+  .exam-print-dialog-option-spaced {
+    margin-top: 0.75rem;
+  }
+  .dark .exam-print-dialog-option {
+    border-color: rgb(51 65 85);
+  }
+  .exam-print-dialog-option input {
+    accent-color: rgb(15 23 42);
+    height: 1rem;
+    margin: 0;
+    width: 1rem;
+  }
+  .dark .exam-print-dialog-option input {
+    accent-color: rgb(226 232 240);
+  }
+  .exam-print-dialog-actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    margin-top: 1.15rem;
+  }
+  .exam-print-dialog-btn {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0.95rem;
+  }
+  .exam-print-dialog-btn-secondary {
+    background: transparent;
+    border-color: rgb(226 232 240);
+    color: rgb(51 65 85);
+  }
+  .dark .exam-print-dialog-btn-secondary {
+    border-color: rgb(51 65 85);
+    color: rgb(203 213 225);
+  }
+  .exam-print-dialog-btn-secondary:hover {
+    background: rgb(248 250 252);
+  }
+  .dark .exam-print-dialog-btn-secondary:hover {
+    background: rgb(30 41 59);
+  }
+  .exam-print-dialog-btn-primary {
+    background: rgb(15 23 42);
+    color: #fff;
+  }
+  .dark .exam-print-dialog-btn-primary {
+    background: rgb(226 232 240);
+    color: rgb(15 23 42);
+  }
+  .exam-print-dialog-btn-primary:hover {
+    opacity: 0.92;
+  }
+  .exam-print-dialog-fieldset {
+    border: 0;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+  .exam-print-dialog-fieldset legend {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .exam-print-dialog-fieldset .exam-print-dialog-option + .exam-print-dialog-option {
+    margin-top: 0.5rem;
+  }
+  .exam-print-dialog-fieldset:disabled { opacity: 0.5; }
+</style>
+
+<script>
+  import { initExamPrint } from "/src/scripts/examPrint";
+  initExamPrint();
+</script>

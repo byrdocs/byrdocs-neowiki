@@ -26,3 +26,7 @@ pnpm-debug.log*
 .husky
 
 .tmp/
+
+# browser regression artifacts
+.playwright-cli/
+output/playwright/
