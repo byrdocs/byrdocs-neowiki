@@ -67,6 +67,7 @@ export class ExamPreviewManager {
     this.injectedPageScriptSource,
   );
   private localServerBaseUri: vscode.Uri | null = null;
+  private serverWorkspaceUri: string | null = null;
   private externalBaseUri: vscode.Uri | null = null;
   private panel: vscode.WebviewPanel | null = null;
   private previewViewColumn: vscode.ViewColumn | undefined = vscode.ViewColumn.Two;
@@ -312,7 +313,19 @@ export class ExamPreviewManager {
   }
 
   private async ensureServer(): Promise<void> {
-    if (this.localServerBaseUri && (await pingServer(this.localServerBaseUri))) {
+    const workspaceFolder =
+      this.currentExam?.workspaceFolder || getWikiWorkspaceFolderForUri();
+    if (!workspaceFolder) {
+      return;
+    }
+    const workspaceUri = workspaceFolder.uri.toString();
+    const isSameWorkspace = this.serverWorkspaceUri === workspaceUri;
+
+    if (
+      isSameWorkspace &&
+      this.localServerBaseUri &&
+      (await pingServer(this.localServerBaseUri))
+    ) {
       this.serverReady = true;
       this.statusDetail = "连接预览";
       if (!this.externalBaseUri) {
@@ -324,6 +337,7 @@ export class ExamPreviewManager {
     }
 
     if (
+      isSameWorkspace &&
       this.serverReady &&
       this.localServerBaseUri &&
       (await this.tryReconnectServer(this.localServerBaseUri))
@@ -343,13 +357,8 @@ export class ExamPreviewManager {
       this.terminal = null;
     }
 
-    const workspaceFolder =
-      this.currentExam?.workspaceFolder || getWikiWorkspaceFolderForUri();
-    if (!workspaceFolder) {
-      return;
-    }
-
     this.serverReady = false;
+    this.serverWorkspaceUri = workspaceUri;
     this.statusDetail = "";
     this.localServerBaseUri = null;
     this.externalBaseUri = null;

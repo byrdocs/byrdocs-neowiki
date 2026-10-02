@@ -47,10 +47,12 @@
   "scripts": {
     "build": "tsc -p ./tsconfig.json",
     "check": "tsc -p ./tsconfig.json --noEmit",
+    "test": "pnpm build && node --test test/*.test.cjs",
     "dev": "tsc -p ./tsconfig.json --watch"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
+    "@types/vscode": "~1.93.0",
     "typescript": "^6.0.2"
   },
   "contributes": {

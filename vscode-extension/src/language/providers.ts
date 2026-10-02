@@ -390,7 +390,7 @@ export async function toggleChoiceCorrectness(rawTarget: unknown): Promise<void>
 
       edit.delete(
         document.uri,
-        buildRange(document, removeStart, correctAttribute.end),
+        buildRange(document, removeStart, correctAttribute.fullEnd),
       );
     } else {
       const insertOffset = tag.end - (tag.selfClosing ? 2 : 1);
