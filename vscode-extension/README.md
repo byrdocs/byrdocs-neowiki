@@ -38,8 +38,6 @@ pnpm test
 
 `pnpm test` 会先编译扩展，再运行 Node.js 回归测试，覆盖选项正误切换、跨工作区预览服务器切换，以及终端 shell integration 不可用时的回退。单独检查类型可运行 `pnpm check`。编译使用项目声明的 `@types/vscode`，无需在固定路径安装 VS Code。
 
-实际宿主验证步骤见 [验证记录](./docs/authoring-preview-verification.md)，功能变更见 [变更记录](./CHANGELOG.md)。
-
 ## 许可证
 
 [MIT License](./LICENSE)

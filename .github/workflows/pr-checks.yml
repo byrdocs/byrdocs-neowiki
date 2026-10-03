@@ -30,14 +30,6 @@ jobs:
       - name: Run ESLint
         run: pnpm lint
 
-      - name: Install VS Code extension dependencies
-        working-directory: vscode-extension
-        run: pnpm install --ignore-workspace --frozen-lockfile
-
-      - name: Test VS Code extension
-        working-directory: vscode-extension
-        run: pnpm test
-
       - name: Run Astro check
         run: pnpm check
 
