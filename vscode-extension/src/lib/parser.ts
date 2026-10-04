@@ -13,6 +13,7 @@ export interface ParsedAttribute {
   readonly name: string;
   readonly start: number;
   readonly end: number;
+  readonly fullEnd: number;
   readonly value: string | null;
 }
 
@@ -93,6 +94,7 @@ export function parseDocumentSyntax(text: string): ParsedDocumentSyntax {
         attributes.push({
           start: attrStart,
           end: attrEnd,
+          fullEnd: attrStart + attrMatch[0].length,
           name: attrName,
           value: readAttributeValue(attrMatch[0]),
         });

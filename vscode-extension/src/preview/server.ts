@@ -180,30 +180,39 @@ export async function waitForTerminalShellIntegration(
   terminal: vscode.Terminal,
   timeoutMs: number,
 ): Promise<vscode.TerminalShellIntegration | null> {
-  if (terminal.shellIntegration) {
-    return terminal.shellIntegration;
+  try {
+    if (terminal.shellIntegration) {
+      return terminal.shellIntegration;
+    }
+  } catch {
+    return null;
   }
 
   return new Promise((resolve) => {
-    const disposable = vscode.window.onDidChangeTerminalShellIntegration(
-      (event) => {
-        if (event.terminal !== terminal) {
-          return;
-        }
-
-        cleanup();
-        resolve(event.shellIntegration);
-      },
-    );
-    const timeoutHandle = setTimeout(() => {
-      cleanup();
-      resolve(terminal.shellIntegration || null);
-    }, timeoutMs);
-
-    const cleanup = (): void => {
-      disposable.dispose();
-      clearTimeout(timeoutHandle);
+    let disposable: vscode.Disposable | undefined;
+    let timeoutHandle: NodeJS.Timeout | undefined;
+    const finish = (integration: vscode.TerminalShellIntegration | null): void => {
+      disposable?.dispose();
+      if (timeoutHandle) clearTimeout(timeoutHandle);
+      resolve(integration);
     };
+
+    try {
+      // In VS Code 1.90 this function exists, but calling the proposed API throws.
+      disposable = vscode.window.onDidChangeTerminalShellIntegration((event) => {
+        if (event.terminal === terminal) finish(event.shellIntegration);
+      });
+      timeoutHandle = setTimeout(() => {
+        try {
+          finish(terminal.shellIntegration || null);
+        } catch {
+          finish(null);
+        }
+      }, timeoutMs);
+    } catch {
+      // Let the caller use Terminal.sendText when shell integration is unavailable.
+      finish(null);
+    }
   });
 }
 

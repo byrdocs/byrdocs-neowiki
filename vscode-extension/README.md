@@ -26,6 +26,18 @@
 3. 填写表单
 4. 点击 `创建并预览`
 
+## 开发与测试
+
+在仓库根目录执行：
+
+```sh
+cd vscode-extension
+pnpm install --ignore-workspace --frozen-lockfile
+pnpm test
+```
+
+`pnpm test` 会先编译扩展，再运行 Node.js 回归测试，覆盖选项正误切换、跨工作区预览服务器切换，以及终端 shell integration 不可用时的回退。单独检查类型可运行 `pnpm check`。编译使用项目声明的 `@types/vscode`，无需在固定路径安装 VS Code。
+
 ## 许可证
 
 [MIT License](./LICENSE)
