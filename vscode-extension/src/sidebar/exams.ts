@@ -77,7 +77,7 @@ export async function createExamPageFromPayload(
     };
   }
 
-  await fs.promises.mkdir(examDirectory, { recursive: false });
+  await fs.promises.mkdir(examDirectory, { recursive: true });
   const template = await readExamTemplate(workspaceFolder);
   const content = renderExamTemplate(template, payload);
   await fs.promises.writeFile(filePath, content, {
