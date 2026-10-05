@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as vscode from "vscode";
 import { getDocumentState } from "../documentState";
+import type { ParsedAttribute } from "../lib/parser";
 import { buildRange } from "../utils/vscode";
 import { getUriExtension } from "../workspace";
 import { getExamPreviewTarget, isRelativeFigureSource } from "../preview/targets";
@@ -38,12 +39,15 @@ export function updateFigureDiagnostics(
     }
 
     const srcAttribute = tag.attributes.find((attribute) => attribute.name === "src");
-    const srcValue = srcAttribute?.value?.trim();
+    const srcValue = getStaticFigureSource(srcAttribute);
     if (!srcAttribute || !srcValue || !isRelativeFigureSource(srcValue)) {
       continue;
     }
 
-    const targetPath = path.resolve(path.dirname(document.uri.fsPath), srcValue);
+    const targetPath = path.resolve(
+      path.dirname(document.uri.fsPath),
+      srcValue.split(/[?#]/u, 1)[0] || srcValue,
+    );
     if (fs.existsSync(targetPath)) {
       continue;
     }
@@ -58,4 +62,36 @@ export function updateFigureDiagnostics(
   }
 
   collection.set(document.uri, diagnostics);
+}
+
+function getStaticFigureSource(
+  attribute: ParsedAttribute | undefined,
+): string | null {
+  if (!attribute?.value) {
+    return null;
+  }
+
+  const value = attribute.value.trim();
+  if (attribute.valueKind === "string") {
+    return value;
+  }
+
+  if (attribute.valueKind !== "expression") {
+    return null;
+  }
+
+  if (value.startsWith('"') && value.endsWith('"')) {
+    try {
+      const parsed = JSON.parse(value);
+      return typeof parsed === "string" ? parsed : null;
+    } catch {
+      return null;
+    }
+  }
+
+  if (value.startsWith("'") && value.endsWith("'")) {
+    return value.slice(1, -1).replace(/\\([\\'])/gu, "$1");
+  }
+
+  return null;
 }

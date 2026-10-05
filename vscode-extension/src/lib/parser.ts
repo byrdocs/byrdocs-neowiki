@@ -120,9 +120,9 @@ function skipExpression(text: string, start: number): number {
       depth--;
       if (depth === 0) return cursor + 1;
     }
-    if (/[\w$]/.test(character)) {
+    if (/[\p{L}\p{N}_$]/u.test(character)) {
       const wordStart = cursor;
-      while (/[\w$]/.test(text[cursor + 1] || "")) cursor++;
+      while (/[\p{L}\p{N}_$]/u.test(text[cursor + 1] || "")) cursor++;
       canStartRegex =
         /^(?:return|throw|case|delete|void|typeof|new|in|instanceof|yield|await)$/.test(
           text.slice(wordStart, cursor + 1),
@@ -250,27 +250,33 @@ function computeIgnoredRanges(text: string): IgnoredRange[] {
     });
   }
 
-  const fenceRegex = /^```.*$/gm;
-  const fenceMatches: IgnoredRange[] = [];
+  const fenceRegex = /^[ \t]*(`{3,}|~{3,}).*$/gm;
+  const fenceRanges: IgnoredRange[] = [];
+  let fenceStart: { readonly marker: string; readonly start: number } | null = null;
   let match: RegExpExecArray | null;
   while ((match = fenceRegex.exec(text))) {
-    fenceMatches.push({
-      start: match.index,
-      end: match.index + match[0].length,
-    });
-  }
-
-  for (let index = 0; index + 1 < fenceMatches.length; index += 2) {
-    const start = fenceMatches[index];
-    const end = fenceMatches[index + 1];
-    if (!start || !end) {
+    const marker = match[1] || "";
+    if (!fenceStart) {
+      fenceStart = { marker, start: match.index };
       continue;
     }
 
-    ranges.push({
-      start: start.start,
-      end: end.end,
-    });
+    if (marker[0] === fenceStart.marker[0] && marker.length >= fenceStart.marker.length) {
+      fenceRanges.push({
+        start: fenceStart.start,
+        end: match.index + match[0].length,
+      });
+      fenceStart = null;
+    }
+  }
+
+  ranges.push(...fenceRanges);
+
+  const inlineCodeRegex = /(`{1,2})(?!`)([^\n]*?)\1(?!`)/g;
+  while ((match = inlineCodeRegex.exec(text))) {
+    if (!isOffsetIgnored(match.index, fenceRanges)) {
+      ranges.push({ start: match.index, end: match.index + match[0].length });
+    }
   }
 
   return ranges.sort((left, right) => left.start - right.start);
@@ -334,9 +340,26 @@ function collectChoiceMarkers(
     const contentEnd = block.close.start;
     const content = text.slice(contentStart, contentEnd);
     const markerRegex = /^[ \t]*([+-])(?=\s+)/gm;
+    const candidates: Array<{
+      readonly indent: number;
+      readonly match: RegExpExecArray;
+    }> = [];
     let match: RegExpExecArray | null;
 
     while ((match = markerRegex.exec(content))) {
+      const linePrefix = match[0].slice(0, match[0].lastIndexOf(match[1] || ""));
+      candidates.push({ indent: linePrefix.length, match });
+    }
+
+    const baseIndent = candidates.reduce(
+      (minimum, candidate) => Math.min(minimum, candidate.indent),
+      Number.POSITIVE_INFINITY,
+    );
+    for (const candidate of candidates) {
+      if (candidate.indent !== baseIndent) {
+        continue;
+      }
+      match = candidate.match;
       const marker = match[1] as "+" | "-";
       const markerStart =
         contentStart + match.index + match[0].lastIndexOf(marker);
