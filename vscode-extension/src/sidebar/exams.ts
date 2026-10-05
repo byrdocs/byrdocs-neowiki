@@ -213,13 +213,20 @@ export function renderExamTemplate(
 
   return template
     .replaceAll("{{时间}}", payload.time)
-    .replaceAll("{{科目}}", payload.subject)
+    .replaceAll("{{科目}}", quoteYamlString(payload.subject))
     .replaceAll("{{阶段}}", payload.phase)
     .replaceAll("{{类型}}", payload.type)
     .replaceAll("{{学院块}}", collegeBlock)
     .replaceAll("{{来源块}}", sourceBlock)
     .replaceAll("{{答案完成度块}}", answerCompletenessBlock)
     .replaceAll("{{目录名}}", payload.examName);
+}
+
+function quoteYamlString(value: string): string {
+  if (value && !/^\s|\s$/u.test(value) && !/[:#[\]{}&,*!|>'"%@`]/u.test(value)) {
+    return value;
+  }
+  return JSON.stringify(value);
 }
 
 export function getDefaultCreateFormState(): CreateExamPageDefaults {
@@ -478,12 +485,13 @@ export function parseExamFrontmatter(source: string): {
     if (keyMatch) {
       currentKey = keyMatch[1] || "";
       const value = (keyMatch[2] || "").trim();
+      const normalizedValue = parseYamlString(value);
       if (currentKey === "时间") values.time = value;
-      if (currentKey === "科目") values.subject = value;
-      if (currentKey === "阶段") values.stage = value;
-      if (currentKey === "类型") values.type = value;
-      if (currentKey === "来源") values.source = value;
-      if (currentKey === "答案完成度") values.answerCompleteness = value;
+      if (currentKey === "科目") values.subject = normalizedValue;
+      if (currentKey === "阶段") values.stage = normalizedValue;
+      if (currentKey === "类型") values.type = normalizedValue;
+      if (currentKey === "来源") values.source = normalizedValue;
+      if (currentKey === "答案完成度") values.answerCompleteness = normalizedValue;
       continue;
     }
 
@@ -499,6 +507,23 @@ export function parseExamFrontmatter(source: string): {
     ...values,
     colleges,
   };
+}
+
+function parseYamlString(value: string): string {
+  if (value.startsWith('"') && value.endsWith('"')) {
+    try {
+      const parsed = JSON.parse(value);
+      return typeof parsed === "string" ? parsed : value;
+    } catch {
+      return value;
+    }
+  }
+
+  if (value.startsWith("'") && value.endsWith("'")) {
+    return value.slice(1, -1).replace(/''/gu, "'");
+  }
+
+  return value;
 }
 
 export function parseExamNameMetadata(examName: string): {

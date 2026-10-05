@@ -72,6 +72,22 @@ test('adding correctness keeps quoted > and component-like attribute text unchan
   await fixture.toggle();
   assert.equal(fixture.document.text, '<Choices>\n<Option aria-label="a > b <Option>" correct>A</Option>\n<Option correct>B</Option>\n</Choices>');
 });
+
+test('markdown code examples are not treated as editable components', () => {
+  const fixture = editingFixture('<Choices>\n<Option>A</Option>\n`<Option correct>示例</Option>`\n~~~mdx\n<Option correct>示例</Option>\n~~~\n<Option correct>B</Option>\n</Choices>');
+  assert.deepEqual(fixture.labels(), ['错误答案', '正确答案']);
+  assert.equal(fixture.syntax().tags.filter(tag => tag.name === 'Option').length, 4);
+});
+
+test('only top-level choice list markers receive answer hints', () => {
+  const fixture = editingFixture('<Choices>\n- 主选项 A\n  + 选项内说明\n+ 主选项 B\n</Choices>');
+  assert.deepEqual(fixture.labels(), ['错误答案', '正确答案']);
+});
+
+test('unicode identifiers followed by division do not stop tag parsing', () => {
+  const fixture = editingFixture('<Choices>\n<Option correct={得分 / 2}>A</Option>\n<Option correct>B</Option>\n</Choices>');
+  assert.deepEqual(fixture.labels(), ['移除答案标记', '正确答案']);
+});
 for (const attribute of ['correct={false}', 'correct="false"', "correct={'false'}", 'correct={null}', 'correct={0}']) {
   test(`${attribute} is false and toggles to true in one click`, async () => {
     const fixture = editingFixture(`<Choices>\n<Option ${attribute}>A</Option>\n<Option correct>B</Option>\n</Choices>`);
@@ -159,4 +175,47 @@ test('create an exam in an assets-only directory and preserve existing files', a
   fs.writeFileSync(path.join(directory, 'index.mdx'), 'Existing work');
   assert.equal((await load('sidebar/exams').createExamPageFromPayload(payload, manager)).kind, 'cancelled');
   assert.equal(fs.readFileSync(path.join(directory, 'index.mdx'), 'utf8'), 'Existing work');
+});
+
+test('figure diagnostics resolve static expressions and query strings', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'byrdocs-figure-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const examDirectory = path.join(root, 'exams', '25-26-1-数据结构-期末');
+  fs.mkdirSync(examDirectory, { recursive: true });
+  fs.writeFileSync(path.join(examDirectory, '图.svg'), '<svg/>');
+  const wiki = { uri: Uri.file(root) };
+  const load = loadExtension(
+    {
+      Uri,
+      DiagnosticSeverity: { Error: 0 },
+      Diagnostic: class { constructor(range, message, severity) { Object.assign(this, { range, message, severity }); } },
+    },
+    {
+      'workspace.js': {
+        getWikiWorkspaceFolderForUri: () => wiki,
+        getUriExtension: () => '.mdx',
+      },
+    },
+  );
+  const updateDiagnostics = load('language/diagnostics').updateFigureDiagnostics;
+  for (const [index, source] of ['<Figure src="图.svg" />', '<Figure src={"图.svg"} />', '<Figure src="图.svg?v=1" />'].entries()) {
+    const document = {
+      version: index + 1,
+      uri: Uri.file(path.join(examDirectory, 'index.mdx')),
+      fileName: path.join(examDirectory, 'index.mdx'),
+      getText: () => source,
+      positionAt: offset => new Position(0, offset),
+    };
+    let diagnostics;
+    updateDiagnostics({ set: (_uri, value) => { diagnostics = value; }, delete: () => {} }, document);
+    assert.deepEqual(diagnostics, []);
+  }
+});
+
+test('new exam frontmatter preserves YAML-special subject names', () => {
+  const exams = loadExtension({ SemanticTokensLegend: class {} })('sidebar/exams');
+  const payload = exams.normalizeCreateExamPayload({ startYear: '2025', term: '1', subject: '程序设计 #1', stage: '期末', type: '本科', colleges: [] }, []);
+  const source = exams.renderExamTemplate('---\n科目: {{科目}}\n---\n', payload);
+  assert.match(source, /科目: "程序设计 #1"/);
+  assert.equal(exams.parseExamFrontmatter(source).subject, '程序设计 #1');
 });
