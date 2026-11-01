@@ -1,0 +1,44 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="634" height="248" viewBox="0 0 634 248">
+
+  <rect width="634" height="248" fill="white"/>
+
+  <!-- 中间介质分界线 -->
+  <line x1="14" y1="120" x2="601" y2="120"
+        stroke="black" stroke-width="1.8"/>
+
+  <!-- 左侧斜线阴影 -->
+  <g stroke="black" stroke-width="2" stroke-linecap="round">
+    <path d="
+      M17 143 L39 124 M34 143 L57 123
+      M52 143 L75 123 M70 143 L93 123
+      M88 143 L111 123 M106 143 L129 123
+      M124 143 L147 123 M142 143 L165 123
+      M160 143 L183 123 M178 143 L201 123
+      M196 143 L211 130"/>
+  </g>
+
+  <!-- 右侧斜线阴影 -->
+  <g stroke="black" stroke-width="2" stroke-linecap="round">
+    <path d="
+      M376 143 L398 123 M394 143 L417 123
+      M412 143 L435 123 M430 143 L453 123
+      M448 143 L471 123 M466 143 L489 123
+      M484 143 L507 123 M502 143 L525 123
+      M520 143 L543 123 M538 143 L561 123
+      M556 143 L579 123 M574 143 L596 124"/>
+  </g>
+
+  <!-- 圆形 -->
+  <circle cx="290" cy="119" r="78"
+          fill="white" stroke="black" stroke-width="2.5"/>
+
+  <!-- 标注 -->
+  <g fill="black" font-family="serif" font-style="italic">
+    <text x="78" y="65" font-size="43">ε₁</text>
+    <text x="76" y="222" font-size="43">ε₂</text>
+    <text x="323" y="35" font-size="43">Q</text>
+  </g>
+
+</svg>
