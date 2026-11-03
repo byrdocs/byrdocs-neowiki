@@ -1,0 +1,234 @@
+name: AI Review
+
+# 安全模型：
+# - pull_request_target 的 workflow 与 prompt 都来自 master（可信）；checkout 的 PR head 只是数据。
+# - classify：只调 API 看改动了哪些文件。只改文档/图片 → review-auto；否则 → review-manual（需维护者批准）。
+# - review：Codex 在 codex-action 的沙箱里运行（drop-sudo、无网络、只能写工作区），没有 GitHub 写权限。
+#   模型凭据是用 OIDC 向 ai-review-gateway 换来的短期 token，只能调用指定模型。
+# - publish：不碰 PR 代码，只把 review job 产出的 JSON 当数据校验后发布，并在 head commit 上写 ai-review 状态。
+#   ruleset 要求 ai-review 状态为 success 才能合并。
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions: {}
+
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  STATUS_CONTEXT: ai-review
+  GATEWAY: https://ai-review-gateway.cpphusky.workers.dev
+  MODEL: deepseek-v4-flash
+
+jobs:
+  classify:
+    name: Classify changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
+      statuses: write
+    outputs:
+      gate: ${{ steps.classify.outputs.gate }}
+    steps:
+      - name: Mark status pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api -X POST "repos/$REPO/statuses/$SHA" -f state=pending -f context="$STATUS_CONTEXT" \
+            -f description="AI review 进行中" -f target_url="$RUN_URL" > /dev/null
+
+      # 只改文档（md/mdx）和图片的 PR 自动运行；其余（代码、配置、隐藏目录、AGENTS.md/CLAUDE.md 等
+      # 会影响 agent 或 CI 行为的文件）需要维护者在 review-manual environment 上批准。
+      - name: Classify changed files
+        id: classify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          total=$(gh api "repos/$REPO/pulls/$PR" --jq .changed_files)
+          gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '
+            .[] | .filename, .previous_filename | strings
+            | select(
+                (test("\\.(md|mdx|png|jpe?g|gif|svg|webp|avif|bmp)$"; "i")
+                 and (test("(^|/)\\.") | not)
+                 and (test("(^|/)(AGENTS|CLAUDE)(\\.override)?\\.md$"; "i") | not))
+                | not)
+            | @json' > "$RUNNER_TEMP/manual-paths.txt"
+          gate=auto
+          if [ "$total" -ge 3000 ]; then
+            echo "改动文件数 $total 超过 API 可列出的上限"
+            gate=manual
+          fi
+          if [ -s "$RUNNER_TEMP/manual-paths.txt" ]; then
+            echo "以下文件不是文档或图片："
+            cat "$RUNNER_TEMP/manual-paths.txt"
+            gate=manual
+          fi
+          echo "gate=$gate" | tee -a "$GITHUB_OUTPUT"
+
+  review:
+    name: Review
+    needs: classify
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: ${{ needs.classify.outputs.gate == 'auto' && 'review-auto' || 'review-manual' }}
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      review: ${{ steps.collect.outputs.review }}
+    steps:
+      - name: Checkout PR head (data only)
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+          allow-unsafe-pr-checkout: true
+
+      - name: Prepare review context
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: |
+          set -euo pipefail
+          # 符号链接可能指向 runner 上的其他文件；Codex 会读取的说明文件和配置来自 PR，不可信
+          find . -type l -not -path './.git/*' -print -delete
+          rm -rf AGENTS.md AGENTS.override.md .codex .agents .review-ctx .review-out
+          mkdir -p .review-ctx .review-out
+
+          # prompt 与校验脚本一律取 base 分支的版本
+          from_base() {
+            gh api -H "Accept: application/vnd.github.raw" "repos/$REPO/contents/$1?ref=$BASE_REF"
+          }
+          from_base .github/ai-review/validate.py > .review-ctx/validate.py
+          {
+            printf '你正在审查 GitHub 仓库 %s 的 PR #%s。\n\n' "$REPO" "$PR"
+            from_base .github/prompts/security-guardrails.md
+            echo
+            from_base .github/ai-review/instructions.md
+            printf '\n## 审查指引\n\n'
+            from_base .github/prompts/review.md
+          } > .review-ctx/prompt.md
+
+          if ! gh api -H "Accept: application/vnd.github.diff" "repos/$REPO/pulls/$PR" > .review-ctx/pr.diff; then
+            echo "::warning::无法获取 PR diff（可能太大），本次 review 无法发 inline 评论"
+            : > .review-ctx/pr.diff
+          fi
+          gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[] | "\(.status)\t\(.filename)"' > .review-ctx/changed-files.txt
+          curl -fsSL https://data.byrdocs.org/metadata.json | jq -c '.[]' > .review-ctx/metadata.jsonl
+          wc -c .review-ctx/*
+
+      - name: Get model gateway token
+        id: gateway
+        run: |
+          set -euo pipefail
+          oidc=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=ai-review-gateway" | jq -r .value)
+          token=$(curl -fsS -X POST "$GATEWAY/token" -H "Authorization: Bearer $oidc" | jq -r .token)
+          test -n "$token" && test "$token" != null
+          echo "::add-mask::$token"
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+
+      - name: Run Codex
+        uses: openai/codex-action@bdf19a4a223ec2549a3e2274a0cf61556bc07675 # v1.13
+        with:
+          openai-api-key: ${{ steps.gateway.outputs.token }}
+          responses-api-endpoint: ${{ env.GATEWAY }}/v1/responses
+          model: ${{ env.MODEL }}
+          codex-version: 0.166.0
+          permission-profile: ":workspace"
+          safety-strategy: drop-sudo
+          # 贡献者多为没有写权限的学生，必须允许所有人；凭据只能调用指定模型且每次 run 有次数上限
+          allow-users: "*"
+          prompt-file: .review-ctx/prompt.md
+
+      # Codex 之后不再运行任何持有凭据的步骤；这里只把产出读成 job output，由 publish 校验
+      - name: Collect review output
+        id: collect
+        run: |
+          set -euo pipefail
+          if ! jq -e 'type == "object"' .review-out/review.json > /dev/null 2>&1; then
+            echo "::error::Codex 没有产出有效的 .review-out/review.json"
+            exit 1
+          fi
+          echo "review=$(jq -c . .review-out/review.json)" >> "$GITHUB_OUTPUT"
+
+  publish:
+    name: Publish review
+    needs: [classify, review]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: write
+      statuses: write
+    steps:
+      - name: Publish review and set status
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REVIEW_RESULT: ${{ needs.review.result }}
+          REVIEW_JSON: ${{ needs.review.outputs.review }}
+        run: |
+          set -euo pipefail
+          status() {
+            gh api -X POST "repos/$REPO/statuses/$SHA" -f state="$1" -f context="$STATUS_CONTEXT" \
+              -f description="$2" -f target_url="$RUN_URL" > /dev/null
+            echo "status: $1 - $2"
+          }
+
+          if [ "$REVIEW_RESULT" != success ]; then
+            status failure "AI review 未完成（$REVIEW_RESULT）"
+            exit 1
+          fi
+
+          # review job 的产出不可信：用 base 分支的校验脚本和最新 diff 重新校验
+          dir=$RUNNER_TEMP
+          printf '%s' "$REVIEW_JSON" > "$dir/review.json"
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/$REPO/contents/.github/ai-review/validate.py?ref=$BASE_REF" > "$dir/validate.py"
+          gh api -H "Accept: application/vnd.github.diff" "repos/$REPO/pulls/$PR" > "$dir/pr.diff" || : > "$dir/pr.diff"
+          if ! python3 "$dir/validate.py" "$dir/review.json" "$dir/pr.diff"; then
+            status failure "AI review 输出格式无效"
+            exit 1
+          fi
+
+          jq --arg sha "$SHA" '{
+            commit_id: $sha,
+            event,
+            body,
+            comments: [.comments[] | {path, line, side: "RIGHT", body}
+                       + (if .start_line then {start_line, start_side: "RIGHT"} else {} end)]
+          }' "$dir/review.json" > "$dir/payload.json"
+          if ! gh api -X POST "repos/$REPO/pulls/$PR/reviews" --input "$dir/payload.json" > /dev/null; then
+            echo "::warning::带 inline 评论的 review 发布失败，改为把评论并入正文"
+            jq 'if (.comments | length) > 0 then
+                  .body += "\n\n---\n\n" + ([.comments[]
+                    | "**\(.path):\(if .start_line then "\(.start_line)-" else "" end)\(.line)**\n\n\(.body)"]
+                    | join("\n\n---\n\n"))
+                else . end
+                | .comments = []' "$dir/payload.json" > "$dir/fallback.json"
+            gh api -X POST "repos/$REPO/pulls/$PR/reviews" --input "$dir/fallback.json" > /dev/null
+          fi
+
+          if [ "$(jq -r .event "$dir/review.json")" = REQUEST_CHANGES ]; then
+            status failure "AI review 要求修改"
+          else
+            status success "AI review 通过"
+          fi
