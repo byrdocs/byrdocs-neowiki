@@ -20,7 +20,7 @@ concurrency:
 
 env:
   STATUS_CONTEXT: ai-review
-  GATEWAY: https://ai-review-gateway.cpphusky.workers.dev
+  GATEWAY: https://ai-gateway.byrdocs.org
   MODEL: deepseek-v4-flash
 
 jobs:
