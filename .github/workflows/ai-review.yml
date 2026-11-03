@@ -80,7 +80,10 @@ jobs:
     needs: classify
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    environment: ${{ needs.classify.outputs.gate == 'auto' && 'review-auto' || 'review-manual' }}
+    # 只借用 environment 的审批规则与 OIDC environment claim，不创建 deployment 记录
+    environment:
+      name: ${{ needs.classify.outputs.gate == 'auto' && 'review-auto' || 'review-manual' }}
+      deployment: false
     permissions:
       contents: read
       id-token: write
