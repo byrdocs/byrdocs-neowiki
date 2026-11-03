@@ -1,3 +1,4 @@
+// AI review 测试：非文档改动应需人工批准
 // @ts-check
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
