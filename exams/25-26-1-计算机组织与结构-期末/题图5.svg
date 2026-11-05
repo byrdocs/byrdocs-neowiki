@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1907" height="1115" viewBox="0 0 1907 1115" role="img" aria-labelledby="title desc">
+  <title id="title">Superscalar Pipeline Architecture with Lookahead Window</title>
+  <desc id="desc">Diagram showing a four-stage superscalar processor pipeline: Fetch stage, Decode stage, Execute stage with Multiplier, Adder, Logic, and Load units, and Store (write back) stage.</desc>
+
+  <defs>
+    <!-- Arrowhead marker for internal interconnect lines -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#1b1e23"/>
+    </marker>
+    <!-- Arrowhead marker for left inputs -->
+    <marker id="arrow-in" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#1b1e23"/>
+    </marker>
+    <!-- Slightly larger arrowhead for final outputs -->
+    <marker id="arrow-out" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 2 L 12 6 L 0 10 z" fill="#1b1e23"/>
+    </marker>
+  </defs>
+
+  <style>
+    .bg-canvas { fill: #ffffff; }
+    .stage-line { stroke: #1b1e23; stroke-width: 3; stroke-dasharray: 14, 14; }
+    .unit-box { fill: #b5cbc9; stroke: #1b1e23; stroke-width: 3.2; stroke-linejoin: miter; }
+    .lookahead-box { fill: #dee7e4; stroke: #1b1e23; stroke-width: 3.2; stroke-linejoin: miter; }
+    .conn-line { fill: none; stroke: #1b1e23; stroke-width: 3.2; stroke-linecap: square; stroke-linejoin: miter; }
+    .dot { fill: #1b1e23; }
+    .stage-title { font-family: "Times New Roman", Times, "Liberation Serif", serif; font-size: 44px; font-weight: bold; fill: #1b1e23; text-anchor: middle; }
+    .unit-title { font-family: "Times New Roman", Times, "Liberation Serif", serif; font-size: 38px; font-weight: bold; fill: #1b1e23; text-anchor: middle; }
+    .box-label { font-family: "Times New Roman", Times, "Liberation Serif", serif; font-size: 46px; font-weight: bold; fill: #1b1e23; text-anchor: middle; dominant-baseline: central; }
+    .lookahead-label { font-family: "Times New Roman", Times, "Liberation Serif", serif; font-size: 30px; font-weight: bold; fill: #1b1e23; text-anchor: middle; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1907" height="1115" class="bg-canvas"/>
+
+  <!-- Stage Dividers (vertical dashed lines) -->
+  <g id="stage-dividers">
+    <!-- Between Fetch and Decode -->
+    <line x1="434" y1="30" x2="434" y2="720" class="stage-line"/>
+    <!-- Between Decode and Execute -->
+    <line x1="685" y1="30" x2="685" y2="1080" class="stage-line"/>
+    <!-- Between Execute and Store -->
+    <line x1="1405" y1="30" x2="1405" y2="1080" class="stage-line"/>
+    <!-- Right side of Store -->
+    <line x1="1680" y1="30" x2="1680" y2="1080" class="stage-line"/>
+  </g>
+
+  <!-- Stage Column Titles -->
+  <g id="stage-titles">
+    <text x="290" y="70" class="stage-title">
+      <tspan x="290" dy="0">Fetch</tspan>
+      <tspan x="290" dy="50">stage</tspan>
+    </text>
+
+    <text x="555" y="70" class="stage-title">
+      <tspan x="555" dy="0">Decode</tspan>
+      <tspan x="555" dy="50">stage</tspan>
+    </text>
+
+    <text x="1050" y="70" class="stage-title">Execute stage</text>
+
+    <text x="1542" y="70" class="stage-title">
+      <tspan x="1542" dy="0">Store</tspan>
+      <tspan x="1542" dy="50">(write</tspan>
+      <tspan x="1542" dy="50">back)</tspan>
+    </text>
+  </g>
+
+  <!-- Lookahead Window Enclosure -->
+  <g id="lookahead-window-group">
+    <rect x="235" y="771" width="403" height="214" class="lookahead-box"/>
+    <text x="436.5" y="955" class="lookahead-label">Lookahead window</text>
+  </g>
+
+  <!-- Functional Unit Boxes -->
+  <g id="unit-boxes">
+    <!-- Fetch Units -->
+    <rect id="box-f1" x="259" y="324" width="118" height="118" class="unit-box"/>
+    <text x="318" y="383" class="box-label">f1</text>
+
+    <rect id="box-f2" x="259" y="560" width="118" height="118" class="unit-box"/>
+    <text x="318" y="619" class="box-label">f2</text>
+
+    <rect id="box-f3" x="259" y="796" width="118" height="118" class="unit-box"/>
+    <text x="318" y="855" class="box-label">f3</text>
+
+    <!-- Decode Units -->
+    <rect id="box-d1" x="495" y="324" width="118" height="118" class="unit-box"/>
+    <text x="554" y="383" class="box-label">d1</text>
+
+    <rect id="box-d2" x="495" y="560" width="118" height="118" class="unit-box"/>
+    <text x="554" y="619" class="box-label">d2</text>
+
+    <rect id="box-d3" x="495" y="796" width="118" height="118" class="unit-box"/>
+    <text x="554" y="855" class="box-label">d3</text>
+
+    <!-- Execute Unit: Multiplier -->
+    <text x="1050" y="160" class="unit-title">Multiplier</text>
+    <rect id="box-m1" x="873" y="205" width="118" height="118" class="unit-box"/>
+    <rect id="box-m2" x="991" y="205" width="118" height="118" class="unit-box"/>
+    <rect id="box-m3" x="1109" y="205" width="118" height="118" class="unit-box"/>
+    <text x="932" y="264" class="box-label">m1</text>
+    <text x="1050" y="264" class="box-label">m2</text>
+    <text x="1168" y="264" class="box-label">m3</text>
+
+    <!-- Execute Unit: Adder -->
+    <text x="1050" y="396" class="unit-title">Adder</text>
+    <rect id="box-a1" x="932" y="441" width="118" height="118" class="unit-box"/>
+    <rect id="box-a2" x="1050" y="441" width="118" height="118" class="unit-box"/>
+    <text x="991" y="500" class="box-label">a1</text>
+    <text x="1109" y="500" class="box-label">a2</text>
+
+    <!-- Execute Unit: Logic -->
+    <text x="1050" y="632" class="unit-title">Logic</text>
+    <rect id="box-e1" x="991" y="677" width="118" height="118" class="unit-box"/>
+    <text x="1050" y="736" class="box-label">e1</text>
+
+    <!-- Execute Unit: Load -->
+    <text x="1050" y="868" class="unit-title">Load</text>
+    <rect id="box-e2" x="991" y="913" width="118" height="118" class="unit-box"/>
+    <text x="1050" y="972" class="box-label">e2</text>
+
+    <!-- Store Units -->
+    <rect id="box-s1" x="1485" y="300" width="118" height="168" class="unit-box"/>
+    <text x="1544" y="384" class="box-label">s1</text>
+
+    <rect id="box-s2" x="1485" y="772" width="118" height="168" class="unit-box"/>
+    <text x="1544" y="856" class="box-label">s2</text>
+  </g>
+
+  <!-- Interconnections, Busses, Junctions, and Arrows -->
+  <g id="connections">
+    <!-- 1. Left inputs to Fetch Stage and Lookahead Window -->
+    <!-- Input line 1: horizontal line into f1 at y=378 -->
+    <line x1="62" y1="378" x2="257" y2="378" class="conn-line" marker-end="url(#arrow-in)"/>
+    <!-- Branch from Input 1 down to Lookahead Window top input (y=816) -->
+    <polyline points="188,378 188,816 233,816" class="conn-line" marker-end="url(#arrow)"/>
+    <circle cx="188" cy="378" r="6.5" class="dot"/>
+
+    <!-- Input line 2: horizontal line into f2 at y=615 -->
+    <line x1="62" y1="615" x2="257" y2="615" class="conn-line" marker-end="url(#arrow-in)"/>
+    <!-- Branch from Input 2 down to Lookahead Window bottom input (y=887) -->
+    <polyline points="141,615 141,887 233,887" class="conn-line" marker-end="url(#arrow)"/>
+    <circle cx="141" cy="615" r="6.5" class="dot"/>
+
+    <!-- 2. Fetch to Decode connections -->
+    <!-- f1 to d1 -->
+    <line x1="377" y1="383" x2="493" y2="383" class="conn-line" marker-end="url(#arrow)"/>
+    <!-- f2 to d2 -->
+    <line x1="377" y1="619" x2="493" y2="619" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- 3. Decode outputs to Execute Bus Trunks -->
+    <!-- d1 output line at y=383 -->
+    <line x1="613" y1="383" x2="731" y2="383" class="conn-line"/>
+    <circle cx="731" cy="383" r="6.5" class="dot"/>
+
+    <!-- d2 output line at y=619 -->
+    <line x1="613" y1="619" x2="779" y2="619" class="conn-line"/>
+    <circle cx="779" cy="619" r="6.5" class="dot"/>
+
+    <!-- Lookahead window (d3) output line at y=851 -->
+    <line x1="638" y1="851" x2="826" y2="851" class="conn-line"/>
+    <circle cx="826" cy="851" r="6.5" class="dot"/>
+
+    <!-- Vertical Bus Trunks from Decode Stage -->
+    <!-- Bus 1 (from d1, x=731): spans y=229 to 937 -->
+    <line x1="731" y1="229" x2="731" y2="937" class="conn-line"/>
+
+    <!-- Bus 2 (from d2, x=779): spans y=264 to 972 -->
+    <line x1="779" y1="264" x2="779" y2="972" class="conn-line"/>
+
+    <!-- Bus 3 (from d3, x=826): spans y=300 to 1008 -->
+    <line x1="826" y1="300" x2="826" y2="1008" class="conn-line"/>
+
+    <!-- Junction Dots on Vertical Bus Trunks -->
+    <!-- Adder input junctions on bus lines: -->
+    <circle cx="731" cy="465" r="6.5" class="dot"/>
+    <circle cx="779" cy="500" r="6.5" class="dot"/>
+    <circle cx="826" cy="536" r="6.5" class="dot"/>
+
+    <!-- Logic input junctions on bus lines: -->
+    <circle cx="731" cy="701" r="6.5" class="dot"/>
+    <circle cx="779" cy="736" r="6.5" class="dot"/>
+    <circle cx="826" cy="772" r="6.5" class="dot"/>
+
+    <!-- Input Lines to Multiplier (m1) -->
+    <line x1="731" y1="229" x2="871" y2="229" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="779" y1="264" x2="871" y2="264" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="826" y1="300" x2="871" y2="300" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- Input Lines to Adder (a1) -->
+    <line x1="731" y1="465" x2="930" y2="465" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="779" y1="500" x2="930" y2="500" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="826" y1="536" x2="930" y2="536" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- Input Lines to Logic (e1) -->
+    <line x1="731" y1="701" x2="989" y2="701" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="779" y1="736" x2="989" y2="736" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="826" y1="772" x2="989" y2="772" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- Input Lines to Load (e2) -->
+    <line x1="731" y1="937" x2="989" y2="937" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="779" y1="972" x2="989" y2="972" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="826" y1="1008" x2="989" y2="1008" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- 4. Execute Units to Store Stage Connections -->
+    <!-- Multiplier output (m3): leaves at y=264, reaches x=1357, goes down to y=801 and into s2 -->
+    <polyline points="1227,264 1357,264 1357,801 1483,801" class="conn-line" marker-end="url(#arrow)"/>
+    <!-- Multiplier branch into s1 at y=329 -->
+    <line x1="1357" y1="329" x2="1483" y2="329" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- Adder output (a2): leaves at y=500, connects to vertical line at x=1310 with dot -->
+    <line x1="1168" y1="500" x2="1310" y2="500" class="conn-line"/>
+    <circle cx="1310" cy="500" r="6.5" class="dot"/>
+    <!-- Adder vertical line from y=365 (into s1) down to y=837 (into s2) -->
+    <polyline points="1483,365 1310,365 1310,837 1483,837" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="1310" y1="365" x2="1483" y2="365" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- Logic output (e1): leaves at y=736, connects to vertical line at x=1262 with dot -->
+    <line x1="1109" y1="736" x2="1262" y2="736" class="conn-line"/>
+    <circle cx="1262" cy="736" r="6.5" class="dot"/>
+    <!-- Logic vertical line from y=400 (into s1) down to y=872 (into s2) -->
+    <polyline points="1483,400 1262,400 1262,872 1483,872" class="conn-line" marker-end="url(#arrow)"/>
+    <line x1="1262" y1="400" x2="1483" y2="400" class="conn-line" marker-end="url(#arrow)"/>
+
+    <!-- Load output (e2): leaves at y=972, goes right to x=1215, goes up to y=435 (into s1) -->
+    <polyline points="1109,972 1215,972 1215,435 1483,435" class="conn-line" marker-end="url(#arrow)"/>
+    <!-- Load branch into s2 at y=907 with dot -->
+    <line x1="1215" y1="907" x2="1483" y2="907" class="conn-line" marker-end="url(#arrow)"/>
+    <circle cx="1215" cy="907" r="6.5" class="dot"/>
+
+    <!-- 5. Outputs from Store Stage (s1 and s2) to the right -->
+    <!-- s1 output at y=384 -->
+    <line x1="1603" y1="384" x2="1860" y2="384" class="conn-line" marker-end="url(#arrow-out)"/>
+    <!-- s2 output at y=856 -->
+    <line x1="1603" y1="856" x2="1860" y2="856" class="conn-line" marker-end="url(#arrow-out)"/>
+  </g>
+</svg>
