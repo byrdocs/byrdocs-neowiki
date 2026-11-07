@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="220" viewBox="0 0 360 220">
+
+  <rect width="360" height="220" fill="white"/>
+
+  <!-- 坐标轴 -->
+  <line x1="40" y1="170" x2="330" y2="170" stroke="black" stroke-width="1.6"/>
+  <polygon points="330,170 319,165.5 319,174.5" fill="black"/>
+  <line x1="56" y1="192" x2="56" y2="40" stroke="black" stroke-width="1.6"/>
+  <polygon points="56,40 51.5,51 60.5,51" fill="black"/>
+
+  <!-- 辅助虚线 -->
+  <line x1="216" y1="80" x2="216" y2="170" stroke="black" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="56" y1="80" x2="216" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- 折线波形 -->
+  <polyline points="88,170 216,80 280,170" fill="none" stroke="black"
+            stroke-width="2.2" stroke-linejoin="round"/>
+
+  <!-- 刻度与标注 -->
+  <g font-family="serif" font-size="13" fill="black" text-anchor="middle">
+    <text x="88" y="188">1</text>
+    <text x="216" y="188">5</text>
+    <text x="280" y="188">7</text>
+    <text x="42" y="84">1</text>
+  </g>
+
+  <g font-family="serif" font-style="italic" font-size="15" fill="black">
+    <text x="334" y="190">t</text>
+    <text x="20" y="34">x(t)</text>
+  </g>
+
+</svg>
