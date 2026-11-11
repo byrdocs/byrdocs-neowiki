@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="510" viewBox="0 0 800 510" role="img" aria-labelledby="title desc">
+  <title id="title">74LS151 数据选择器接线图</title>
+  <desc id="desc">选择端 A2、A1、A0 分别接 X、A、B，输出 F 从顶部引出，G 经反相圆接地。D1 接 D2，D5 接 D6 后接地。C 与 D0 进入反相器，输出接 D2 和 D4。中间横线连接 D0、D3、D7；D2 与 D4 的竖线穿过该横线，交叉处没有结点。</desc>
+  <rect id="background" width="800" height="510" fill="#fff"/>
+  <defs>
+    <style>
+      .chip { fill: #fff; stroke: #111; stroke-width: 2.6; stroke-linejoin: miter; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.5; stroke-linecap: square; stroke-linejoin: miter; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.5; }
+      .ground { fill: #111; }
+      .dot { fill: #111; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 22px; font-weight: 700; }
+      .pin { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 18px; font-weight: 700; }
+      .part { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 26px; font-weight: 700; }
+      .sub { font-size: 13px; font-weight: 700; }
+    </style>
+  </defs>
+  <g id="diagram">
+    <rect id="chip" class="chip" x="180" y="52" width="500" height="240"/>
+
+    <g id="address">
+      <line id="wire-X" class="wire" x1="86" y1="76" x2="180" y2="76"/>
+      <line id="wire-A" class="wire" x1="86" y1="141" x2="180" y2="141"/>
+      <line id="wire-B" class="wire" x1="86" y1="194" x2="180" y2="194"/>
+    </g>
+
+    <g id="output-F">
+      <line id="wire-F" class="wire" x1="430" y1="28" x2="430" y2="52"/>
+    </g>
+
+    <g id="enable-G">
+      <line id="wire-G" class="wire" x1="680" y1="167" x2="738" y2="167"/>
+      <line id="wire-G-ground" class="wire" x1="738" y1="167" x2="738" y2="178"/>
+      <circle id="bubble-G" class="bubble" cx="696" cy="167" r="7"/>
+      <rect id="ground-G" class="ground" x="716" y="176" width="44" height="13" rx="2"/>
+    </g>
+
+    <g id="data-wires">
+      <line id="wire-D0" class="wire" x1="250" y1="292" x2="250" y2="432"/>
+      <polyline id="wire-D1" class="wire" points="304,292 304,332 358,332"/>
+      <line id="wire-D2" class="wire" x1="358" y1="292" x2="358" y2="432"/>
+      <line id="wire-D3" class="wire" x1="412" y1="292" x2="412" y2="374"/>
+      <line id="wire-D4" class="wire" x1="466" y1="292" x2="466" y2="432"/>
+      <polyline id="wire-D5" class="wire" points="520,292 520,332 574,332"/>
+      <line id="wire-D6" class="wire" x1="574" y1="292" x2="574" y2="348"/>
+      <line id="wire-D7" class="wire" x1="628" y1="292" x2="628" y2="374"/>
+      <line id="bus-middle" class="wire" x1="250" y1="374" x2="628" y2="374"/>
+      <rect id="ground-D6" class="ground" x="556" y="346" width="36" height="14" rx="2"/>
+    </g>
+
+    <g id="inverter-net">
+      <line id="wire-C" class="wire" x1="88" y1="432" x2="270" y2="432"/>
+      <rect id="inverter" class="chip" x="270" y="403" width="48" height="58"/>
+      <line id="wire-not-C" class="wire" x1="334" y1="432" x2="466" y2="432"/>
+      <circle id="bubble-not" class="bubble" cx="326" cy="432" r="8"/>
+    </g>
+
+    <g id="junctions">
+      <circle id="dot-D0-mid" class="dot" cx="250" cy="374" r="3.6"/>
+      <circle id="dot-D3-mid" class="dot" cx="412" cy="374" r="3.6"/>
+      <circle id="dot-D7-mid" class="dot" cx="628" cy="374" r="3.6"/>
+      <circle id="dot-D0-bot" class="dot" cx="250" cy="432" r="3.6"/>
+      <circle id="dot-D2-bot" class="dot" cx="358" cy="432" r="3.6"/>
+      <circle id="dot-D4-bot" class="dot" cx="466" cy="432" r="3.6"/>
+      <circle id="dot-D2-bridge" class="dot" cx="358" cy="332" r="3.6"/>
+      <circle id="dot-D6-bridge" class="dot" cx="574" cy="332" r="3.6"/>
+    </g>
+
+    <g id="labels">
+      <text class="label" x="42" y="83">X</text>
+      <text class="label" x="42" y="148">A</text>
+      <text class="label" x="44" y="201">B</text>
+      <text class="label" x="52" y="439">C</text>
+      <text class="pin" x="196" y="82">A<tspan class="sub" baseline-shift="sub">2</tspan></text>
+      <text class="pin" x="196" y="147">A<tspan class="sub" baseline-shift="sub">1</tspan></text>
+      <text class="pin" x="196" y="200">A<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      <text class="label" x="430" y="90" text-anchor="middle">F</text>
+      <text class="part" x="430" y="178" text-anchor="middle">74LS151</text>
+      <text class="pin" x="652" y="173" text-anchor="end">G</text>
+      <text class="pin" x="250" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      <text class="pin" x="304" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">1</tspan></text>
+      <text class="pin" x="358" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">2</tspan></text>
+      <text class="pin" x="412" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">3</tspan></text>
+      <text class="pin" x="466" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">4</tspan></text>
+      <text class="pin" x="520" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">5</tspan></text>
+      <text class="pin" x="574" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">6</tspan></text>
+      <text class="pin" x="628" y="272" text-anchor="middle">D<tspan class="sub" baseline-shift="sub">7</tspan></text>
+    </g>
+  </g>
+</svg>

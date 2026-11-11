@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="416" height="188" viewBox="68 774 416 188" role="img" aria-labelledby="title desc">
+  <title id="title">电路 D</title>
+  <desc id="desc">T 触发器，T 接 1，CP 为下降沿</desc>
+  <rect id="background" x="68" y="774" width="416" height="188" fill="#fff"/>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .dot { fill: #111; }
+      .tri { fill: none; stroke: #111; stroke-width: 2.2; stroke-linejoin: miter; }
+      .mark { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .bar { stroke: #111; stroke-width: 1.8; }
+      .txt { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 22px; }
+      .opt { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 22px; }
+      .radio { fill: #fff; stroke: #555; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <g id="option-d">
+    <g class="wire">
+      <line x1="112" y1="826" x2="230" y2="826"/>
+      <line x1="124" y1="868" x2="222" y2="868"/>
+      <line x1="398" y1="826" x2="468" y2="826"/>
+      <line x1="398" y1="910" x2="468" y2="910"/>
+    </g>
+    <rect class="box" x="230" y="790" width="168" height="156"/>
+    <circle class="bubble" cx="230" cy="868" r="7"/>
+    <polygon class="tri" points="240,856 240,880 260,868"/>
+    <circle class="bubble" cx="412" cy="910" r="7"/>
+    <line class="bar" x1="348" y1="896" x2="370" y2="896"/>
+    <text class="txt" x="86" y="832">1</text>
+    <text class="txt" x="84" y="876">CP</text>
+    <text class="txt" x="268" y="832">1T</text>
+    <text class="txt" x="268" y="876">C1</text>
+    <text class="txt" x="352" y="832">Q</text>
+    <text class="txt" x="352" y="916">Q</text>
+  </g>
+</svg>

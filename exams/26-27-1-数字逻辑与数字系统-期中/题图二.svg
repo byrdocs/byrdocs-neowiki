@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="920" viewBox="0 0 1240 920" role="img" aria-labelledby="title desc">
+  <title id="title">74LS138 与两片 74LS153 组成的数据选择电路</title>
+  <desc id="desc">74LS138 的 S1 接 1，S2、S3 和 A2 接地，A1、A0 分别接 A3、A2。Y0 至 Y3 依次接到两片 74LS153 的四个低有效使能端，Y4 至 Y7 悬空。D0 至 D15 接入两片选择器的数据端，A1、A0 为公共地址。四路输出进入下方带加号的或门，或门下方标为 Y，图中没有画出输出引线。</desc>
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.3; stroke-linecap: square; stroke-linejoin: miter; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.3; }
+      .dot { fill: #111; }
+      .bar { fill: none; stroke: #111; stroke-width: 1.35; stroke-linecap: butt; }
+      .pin { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 15px; }
+      .topin { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 13px; }
+      .sub { font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 11px; }
+      .ext { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 18px; }
+      .extsub { font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 13px; }
+      .chip { fill: #111; font-family: "Times New Roman", Arial, sans-serif; font-style: normal; font-weight: 700; font-size: 18px; }
+      .one { fill: #111; font-family: "Times New Roman", Arial, sans-serif; font-style: normal; font-weight: 700; font-size: 22px; }
+    </style>
+  </defs>
+  <g id="diagram">
+    <rect id="background" width="1240" height="920" fill="#fff"/>
+
+    <g id="chips">
+      <rect id="ic-138" class="box" x="96" y="24" width="156" height="408"/>
+      <rect id="ic-153-left" class="box" x="300" y="552" width="400" height="156"/>
+      <rect id="ic-153-right" class="box" x="808" y="552" width="400" height="156"/>
+    </g>
+
+    <g id="wires">
+      <!-- 138 enables and grounded A2 -->
+      <line id="wire-logic-1" class="wire" x1="38" y1="56" x2="96" y2="56"/>
+      <line id="rail-gnd" class="wire" x1="48" y1="104" x2="48" y2="270"/>
+      <line id="wire-s2" class="wire" x1="48" y1="104" x2="82" y2="104"/>
+      <line id="wire-s3" class="wire" x1="48" y1="152" x2="82" y2="152"/>
+      <line id="wire-138-a2" class="wire" x1="48" y1="248" x2="96" y2="248"/>
+      <g id="ground-symbol">
+        <line class="wire" x1="34" y1="270" x2="62" y2="270"/>
+        <line class="wire" x1="39" y1="276" x2="57" y2="276"/>
+        <line class="wire" x1="44" y1="282" x2="52" y2="282"/>
+      </g>
+      <line id="wire-a3" class="wire" x1="40" y1="344" x2="96" y2="344"/>
+      <line id="wire-a2" class="wire" x1="40" y1="392" x2="96" y2="392"/>
+
+      <!-- 138 active-low outputs. Y4-Y7 are open stubs. -->
+      <line id="stub-y7" class="wire" x1="266" y1="56" x2="308" y2="56"/>
+      <line id="stub-y6" class="wire" x1="266" y1="104" x2="308" y2="104"/>
+      <line id="stub-y5" class="wire" x1="266" y1="152" x2="308" y2="152"/>
+      <line id="stub-y4" class="wire" x1="266" y1="200" x2="308" y2="200"/>
+      <polyline id="wire-y3" class="wire" points="266,248 1018,248 1018,538"/>
+      <polyline id="wire-y2" class="wire" points="266,296 838,296 838,538"/>
+      <polyline id="wire-y1" class="wire" points="266,344 510,344 510,538"/>
+      <polyline id="wire-y0" class="wire" points="266,392 330,392 330,538"/>
+
+      <!-- shared address buses -->
+      <line id="bus-a1" class="wire" x1="42" y1="478" x2="772" y2="478"/>
+      <line id="bus-a0" class="wire" x1="42" y1="520" x2="742" y2="520"/>
+      <polyline id="tap-a1-left" class="wire" points="268,478 268,612 300,612"/>
+      <polyline id="tap-a0-left" class="wire" points="228,520 228,662 300,662"/>
+      <polyline id="tap-a1-right" class="wire" points="772,478 772,612 808,612"/>
+      <polyline id="tap-a0-right" class="wire" points="742,520 742,662 808,662"/>
+
+      <!-- data inputs D0-D15, crossing the select lines without junctions -->
+      <line id="wire-d0" class="wire" x1="366" y1="186" x2="366" y2="552"/>
+      <line id="wire-d1" class="wire" x1="402" y1="150" x2="402" y2="552"/>
+      <line id="wire-d2" class="wire" x1="438" y1="186" x2="438" y2="552"/>
+      <line id="wire-d3" class="wire" x1="474" y1="150" x2="474" y2="552"/>
+      <line id="wire-d4" class="wire" x1="546" y1="186" x2="546" y2="552"/>
+      <line id="wire-d5" class="wire" x1="582" y1="150" x2="582" y2="552"/>
+      <line id="wire-d6" class="wire" x1="618" y1="186" x2="618" y2="552"/>
+      <line id="wire-d7" class="wire" x1="654" y1="150" x2="654" y2="552"/>
+      <line id="wire-d8" class="wire" x1="874" y1="186" x2="874" y2="552"/>
+      <line id="wire-d9" class="wire" x1="910" y1="150" x2="910" y2="552"/>
+      <line id="wire-d10" class="wire" x1="946" y1="186" x2="946" y2="552"/>
+      <line id="wire-d11" class="wire" x1="982" y1="150" x2="982" y2="552"/>
+      <line id="wire-d12" class="wire" x1="1054" y1="186" x2="1054" y2="552"/>
+      <line id="wire-d13" class="wire" x1="1090" y1="150" x2="1090" y2="552"/>
+      <line id="wire-d14" class="wire" x1="1126" y1="186" x2="1126" y2="552"/>
+      <line id="wire-d15" class="wire" x1="1162" y1="150" x2="1162" y2="552"/>
+
+      <!-- four mux outputs into the OR gate, top side -->
+      <polyline id="out-left-y2" class="wire" points="600,708 600,740 796,740 796,804"/>
+      <polyline id="out-right-y1" class="wire" points="920,708 920,740 836,740 836,804"/>
+      <polyline id="out-left-y1" class="wire" points="410,708 410,772 760,772 760,804"/>
+      <polyline id="out-right-y2" class="wire" points="1108,708 1108,772 872,772 872,804"/>
+    </g>
+
+    <g id="bubbles">
+      <circle id="bub-s2" class="bubble" cx="89" cy="104" r="7"/>
+      <circle id="bub-s3" class="bubble" cx="89" cy="152" r="7"/>
+      <circle id="bub-y7" class="bubble" cx="259" cy="56" r="7"/>
+      <circle id="bub-y6" class="bubble" cx="259" cy="104" r="7"/>
+      <circle id="bub-y5" class="bubble" cx="259" cy="152" r="7"/>
+      <circle id="bub-y4" class="bubble" cx="259" cy="200" r="7"/>
+      <circle id="bub-y3" class="bubble" cx="259" cy="248" r="7"/>
+      <circle id="bub-y2" class="bubble" cx="259" cy="296" r="7"/>
+      <circle id="bub-y1" class="bubble" cx="259" cy="344" r="7"/>
+      <circle id="bub-y0" class="bubble" cx="259" cy="392" r="7"/>
+      <circle id="bub-ls1" class="bubble" cx="330" cy="545" r="7"/>
+      <circle id="bub-ls2" class="bubble" cx="510" cy="545" r="7"/>
+      <circle id="bub-rs1" class="bubble" cx="838" cy="545" r="7"/>
+      <circle id="bub-rs2" class="bubble" cx="1018" cy="545" r="7"/>
+    </g>
+
+    <g id="junctions">
+      <circle id="dot-s3" class="dot" cx="48" cy="152" r="3.6"/>
+      <circle id="dot-a2" class="dot" cx="48" cy="248" r="3.6"/>
+      <circle id="dot-a1" class="dot" cx="268" cy="478" r="3.6"/>
+      <circle id="dot-a0" class="dot" cx="228" cy="520" r="3.6"/>
+    </g>
+
+    <g id="or-gate">
+      <rect id="or-box" class="box" x="744" y="804" width="148" height="52"/>
+      <line class="wire" x1="818" y1="816" x2="818" y2="844"/>
+      <line class="wire" x1="804" y1="830" x2="832" y2="830"/>
+      <text class="ext" x="818" y="888" text-anchor="middle">Y</text>
+    </g>
+
+    <g id="labels">
+      <text class="one" x="16" y="64">1</text>
+      <text class="ext" x="14" y="350">A<tspan class="extsub" dy="5">3</tspan></text>
+      <text class="ext" x="14" y="398">A<tspan class="extsub" dy="5">2</tspan></text>
+      <text class="ext" x="12" y="484">A<tspan class="extsub" dy="5">1</tspan></text>
+      <text class="ext" x="12" y="526">A<tspan class="extsub" dy="5">0</tspan></text>
+
+      <g id="labels-138">
+        <text class="pin" x="108" y="61">S<tspan class="sub" dy="4">1</tspan></text>
+        <text class="pin" x="108" y="109">S</text>
+        <line class="bar" x1="108" y1="96" x2="118" y2="96"/>
+        <text class="sub" x="119" y="113">2</text>
+        <text class="pin" x="108" y="157">S</text>
+        <line class="bar" x1="108" y1="144" x2="118" y2="144"/>
+        <text class="sub" x="119" y="161">3</text>
+        <text class="pin" x="108" y="253">A<tspan class="sub" dy="4">2</tspan></text>
+        <text class="pin" x="108" y="349">A<tspan class="sub" dy="4">1</tspan></text>
+        <text class="pin" x="108" y="397">A<tspan class="sub" dy="4">0</tspan></text>
+
+        <g id="label-y7"><text class="pin" x="214" y="61">Y</text><line class="bar" x1="214" y1="48" x2="226" y2="48"/><text class="sub" x="227" y="65">7</text></g>
+        <g id="label-y6"><text class="pin" x="214" y="109">Y</text><line class="bar" x1="214" y1="96" x2="226" y2="96"/><text class="sub" x="227" y="113">6</text></g>
+        <g id="label-y5"><text class="pin" x="214" y="157">Y</text><line class="bar" x1="214" y1="144" x2="226" y2="144"/><text class="sub" x="227" y="161">5</text></g>
+        <g id="label-y4"><text class="pin" x="214" y="205">Y</text><line class="bar" x1="214" y1="192" x2="226" y2="192"/><text class="sub" x="227" y="209">4</text></g>
+        <g id="label-y3"><text class="pin" x="214" y="253">Y</text><line class="bar" x1="214" y1="240" x2="226" y2="240"/><text class="sub" x="227" y="257">3</text></g>
+        <g id="label-y2"><text class="pin" x="214" y="301">Y</text><line class="bar" x1="214" y1="288" x2="226" y2="288"/><text class="sub" x="227" y="305">2</text></g>
+        <g id="label-y1"><text class="pin" x="214" y="349">Y</text><line class="bar" x1="214" y1="336" x2="226" y2="336"/><text class="sub" x="227" y="353">1</text></g>
+        <g id="label-y0"><text class="pin" x="214" y="397">Y</text><line class="bar" x1="214" y1="384" x2="226" y2="384"/><text class="sub" x="227" y="401">0</text></g>
+        <text class="chip" x="174" y="250" text-anchor="middle" transform="rotate(-90 174 250)">74LS138</text>
+      </g>
+
+      <g id="labels-153-left">
+        <text class="topin" x="322" y="574">S</text>
+        <line class="bar" x1="322" y1="562" x2="330" y2="562"/>
+        <text class="sub" x="331" y="578">1</text>
+        <text class="topin" x="366" y="578" text-anchor="middle">D<tspan class="sub" dy="3">10</tspan></text>
+        <text class="topin" x="402" y="578" text-anchor="middle">D<tspan class="sub" dy="3">11</tspan></text>
+        <text class="topin" x="438" y="578" text-anchor="middle">D<tspan class="sub" dy="3">12</tspan></text>
+        <text class="topin" x="474" y="578" text-anchor="middle">D<tspan class="sub" dy="3">13</tspan></text>
+        <text class="topin" x="502" y="574">S</text>
+        <line class="bar" x1="502" y1="562" x2="510" y2="562"/>
+        <text class="sub" x="511" y="578">2</text>
+        <text class="topin" x="546" y="578" text-anchor="middle">D<tspan class="sub" dy="3">20</tspan></text>
+        <text class="topin" x="582" y="578" text-anchor="middle">D<tspan class="sub" dy="3">21</tspan></text>
+        <text class="topin" x="618" y="578" text-anchor="middle">D<tspan class="sub" dy="3">22</tspan></text>
+        <text class="topin" x="654" y="578" text-anchor="middle">D<tspan class="sub" dy="3">23</tspan></text>
+        <text class="pin" x="314" y="617">A<tspan class="sub" dy="4">1</tspan></text>
+        <text class="pin" x="314" y="667">A<tspan class="sub" dy="4">0</tspan></text>
+        <text class="chip" x="500" y="648" text-anchor="middle">74LS153</text>
+        <text class="pin" x="410" y="696" text-anchor="middle">Y<tspan class="sub" dy="4">1</tspan></text>
+        <text class="pin" x="600" y="696" text-anchor="middle">Y<tspan class="sub" dy="4">2</tspan></text>
+      </g>
+
+      <g id="labels-153-right">
+        <text class="topin" x="830" y="574">S</text>
+        <line class="bar" x1="830" y1="562" x2="838" y2="562"/>
+        <text class="sub" x="839" y="578">1</text>
+        <text class="topin" x="874" y="578" text-anchor="middle">D<tspan class="sub" dy="3">10</tspan></text>
+        <text class="topin" x="910" y="578" text-anchor="middle">D<tspan class="sub" dy="3">11</tspan></text>
+        <text class="topin" x="946" y="578" text-anchor="middle">D<tspan class="sub" dy="3">12</tspan></text>
+        <text class="topin" x="982" y="578" text-anchor="middle">D<tspan class="sub" dy="3">13</tspan></text>
+        <text class="topin" x="1010" y="574">S</text>
+        <line class="bar" x1="1010" y1="562" x2="1018" y2="562"/>
+        <text class="sub" x="1019" y="578">2</text>
+        <text class="topin" x="1054" y="578" text-anchor="middle">D<tspan class="sub" dy="3">20</tspan></text>
+        <text class="topin" x="1090" y="578" text-anchor="middle">D<tspan class="sub" dy="3">21</tspan></text>
+        <text class="topin" x="1126" y="578" text-anchor="middle">D<tspan class="sub" dy="3">22</tspan></text>
+        <text class="topin" x="1162" y="578" text-anchor="middle">D<tspan class="sub" dy="3">23</tspan></text>
+        <text class="pin" x="822" y="617">A<tspan class="sub" dy="4">1</tspan></text>
+        <text class="pin" x="822" y="667">A<tspan class="sub" dy="4">0</tspan></text>
+        <text class="chip" x="1008" y="648" text-anchor="middle">74LS153</text>
+        <text class="pin" x="920" y="696" text-anchor="middle">Y<tspan class="sub" dy="4">1</tspan></text>
+        <text class="pin" x="1108" y="696" text-anchor="middle">Y<tspan class="sub" dy="4">2</tspan></text>
+      </g>
+
+      <g id="labels-data" class="ext">
+        <text x="366" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">0</tspan></text>
+        <text x="402" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">1</tspan></text>
+        <text x="438" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">2</tspan></text>
+        <text x="474" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">3</tspan></text>
+        <text x="546" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">4</tspan></text>
+        <text x="582" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">5</tspan></text>
+        <text x="618" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">6</tspan></text>
+        <text x="654" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">7</tspan></text>
+        <text x="874" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">8</tspan></text>
+        <text x="910" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">9</tspan></text>
+        <text x="946" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">10</tspan></text>
+        <text x="982" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">11</tspan></text>
+        <text x="1054" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">12</tspan></text>
+        <text x="1090" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">13</tspan></text>
+        <text x="1126" y="178" text-anchor="middle">D<tspan class="extsub" dy="5">14</tspan></text>
+        <text x="1162" y="142" text-anchor="middle">D<tspan class="extsub" dy="5">15</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

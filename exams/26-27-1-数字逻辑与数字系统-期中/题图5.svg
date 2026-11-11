@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="318" viewBox="0 0 450 318" role="img" aria-labelledby="title desc">
+  <title id="title">数据选择器接 JK 触发器</title>
+  <desc id="desc">四选一数据选择器的输出 Y 同时接到 JK 触发器的 J 和 K。选通端 ST 低电平有效并接地。地址 A1、A0 外接 A、B。CP 经下降沿符号进入触发器，Q 非输出带反相圈。</desc>
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: butt; stroke-linejoin: miter; }
+      .ground-bar { fill: none; stroke: #111; stroke-width: 4.5; stroke-linecap: butt; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .clk { fill: #fff; stroke: #111; stroke-width: 2.2; stroke-linejoin: round; }
+      .dot { fill: #111; }
+      .bar { fill: none; stroke: #111; stroke-width: 1.6; stroke-linecap: butt; }
+      .cn { fill: #111; font-family: "SimHei", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: 700; font-size: 22px; }
+      .var { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-size: 20px; }
+      .pin { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-size: 18px; }
+      .big { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-size: 26px; }
+      .sub { font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="450" height="318" fill="#fff"/>
+  <g id="diagram">
+    <g id="mux">
+      <rect class="box" x="62" y="36" width="120" height="202"/>
+      <g id="mux-inputs" class="wire">
+        <line x1="34" y1="59" x2="62" y2="59"/>
+        <line x1="34" y1="91" x2="62" y2="91"/>
+        <line x1="34" y1="127" x2="62" y2="127"/>
+        <line x1="34" y1="162" x2="62" y2="162"/>
+      </g>
+      <g id="st-ground">
+        <line class="wire" x1="42" y1="207" x2="48" y2="207"/>
+        <line class="wire" x1="42" y1="207" x2="42" y2="231"/>
+        <line class="ground-bar" x1="28" y1="234" x2="56" y2="234"/>
+        <circle class="bubble" cx="55" cy="207" r="7"/>
+      </g>
+      <g id="mux-address" class="wire">
+        <line x1="118" y1="238" x2="118" y2="264"/>
+        <line x1="159" y1="238" x2="159" y2="264"/>
+      </g>
+      <line class="wire" id="wire-y" x1="182" y1="73" x2="272" y2="73"/>
+    </g>
+
+    <g id="ff">
+      <rect class="box" x="272" y="44" width="122" height="192"/>
+      <g id="clock">
+        <line class="wire" id="wire-cp" x1="244" y1="141" x2="244" y2="278"/>
+        <line class="wire" x1="244" y1="141" x2="258" y2="141"/>
+        <circle class="bubble" cx="265" cy="141" r="7"/>
+        <polygon class="clk" points="274,122 301,141 274,160"/>
+      </g>
+      <line class="wire" id="wire-k" x1="216" y1="73" x2="216" y2="197"/>
+      <line class="wire" x1="216" y1="197" x2="272" y2="197"/>
+      <circle class="dot" cx="216" cy="73" r="4.6"/>
+      <line class="wire" id="wire-q" x1="394" y1="79" x2="424" y2="79"/>
+      <g id="qbar-pin">
+        <circle class="bubble" cx="401" cy="201" r="7"/>
+        <line class="wire" x1="408" y1="201" x2="432" y2="201"/>
+      </g>
+    </g>
+
+    <g id="labels">
+      <text class="cn" x="122" y="20" text-anchor="middle" dominant-baseline="central">数据选择器</text>
+
+      <text class="pin" x="76" y="59" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      <text class="pin" x="76" y="91" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">1</tspan></text>
+      <text class="pin" x="76" y="127" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">2</tspan></text>
+      <text class="pin" x="76" y="162" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">3</tspan></text>
+
+      <g id="label-st">
+        <line class="bar" x1="74" y1="197" x2="98" y2="197"/>
+        <text class="pin" x="86" y="210" text-anchor="middle" dominant-baseline="central">ST</text>
+      </g>
+      <text class="var" x="152" y="73" text-anchor="middle" dominant-baseline="central">Y</text>
+      <text class="pin" x="112" y="220" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">1</tspan></text>
+      <text class="pin" x="160" y="220" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      <text class="big" x="118" y="288" text-anchor="middle" dominant-baseline="central">A</text>
+      <text class="big" x="159" y="288" text-anchor="middle" dominant-baseline="central">B</text>
+
+      <text class="var" x="290" y="73" dominant-baseline="central">J</text>
+      <text class="var" x="302" y="197" text-anchor="middle" dominant-baseline="central">K</text>
+      <text class="var" x="368" y="79" text-anchor="middle" dominant-baseline="central">Q</text>
+      <g id="label-qbar">
+        <line class="bar" x1="358" y1="189" x2="378" y2="189"/>
+        <text class="var" x="368" y="201" text-anchor="middle" dominant-baseline="central">Q</text>
+      </g>
+      <text class="big" x="258" y="286" dominant-baseline="central">CP</text>
+    </g>
+  </g>
+</svg>

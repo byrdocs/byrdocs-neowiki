@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="406" height="172" viewBox="62 544 406 172" role="img" aria-labelledby="title desc">
+  <title id="title">电路 C</title>
+  <desc id="desc">JK 触发器，J 与 K 接 1，CP 与连线交叉</desc>
+  <rect id="background" x="62" y="544" width="406" height="172" fill="#fff"/>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .dot { fill: #111; }
+      .tri { fill: none; stroke: #111; stroke-width: 2.2; stroke-linejoin: miter; }
+      .mark { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .bar { stroke: #111; stroke-width: 1.8; }
+      .txt { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 22px; }
+      .opt { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 22px; }
+      .radio { fill: #fff; stroke: #555; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <g id="option-c">
+    <g class="wire">
+      <line x1="108" y1="588" x2="200" y2="588"/>
+      <line x1="148" y1="588" x2="148" y2="672"/>
+      <line x1="148" y1="672" x2="200" y2="672"/>
+      <line x1="128" y1="630" x2="200" y2="630"/>
+      <line x1="370" y1="588" x2="448" y2="588"/>
+      <line x1="370" y1="672" x2="448" y2="672"/>
+    </g>
+    <rect class="box" x="200" y="560" width="170" height="140"/>
+    <circle class="bubble" cx="392" cy="672" r="7"/>
+    <circle class="dot" cx="148" cy="588" r="4.5"/>
+    <polyline class="mark" points="300,604 320,604 320,626"/>
+    <polyline class="mark" points="300,638 320,638 320,660"/>
+    <line class="bar" x1="328" y1="658" x2="350" y2="658"/>
+    <text class="txt" x="82" y="594">1</text>
+    <text class="txt" x="88" y="638">CP</text>
+    <text class="txt" x="214" y="594">1J</text>
+    <text class="txt" x="214" y="638">C1</text>
+    <text class="txt" x="214" y="678">1K</text>
+    <text class="txt" x="332" y="594">Q</text>
+    <text class="txt" x="332" y="678">Q</text>
+  </g>
+</svg>

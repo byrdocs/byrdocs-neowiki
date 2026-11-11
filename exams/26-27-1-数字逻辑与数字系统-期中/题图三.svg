@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="740" viewBox="0 0 860 740" role="img" aria-labelledby="title desc">
+  <title id="title">输入输出缓冲器与 3-8 译码器</title>
+  <desc id="desc">外设与计算机之间的输入输出缓冲器。D3 与 D0 各经一对反向三态缓冲器双向传送。左侧一对使能接到 3-8 译码器的 Y3，右侧一对接到 Y5。D2 与 D1 只接到缓冲器边界。译码器地址为 A7 A6 A5，门控为 A4、0 和 1。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; }
+      .dashbox { fill: none; stroke: #111; stroke-width: 1.6; stroke-dasharray: 7 7; stroke-linecap: butt; }
+      .enable { fill: none; stroke: #111; stroke-width: 1.6; stroke-dasharray: 2.5 3.5; stroke-linecap: butt; }
+      .body { fill: #fff; stroke: #111; stroke-width: 2; }
+      .buf { fill: #fff; stroke: #111; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: butt; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 1.7; }
+      .dot { fill: #111; stroke: none; }
+      .name { fill: #111; font-family: "SimSun", "Noto Serif CJK SC", "Songti SC", serif; font-size: 22px; }
+      .titletext { fill: #111; font-family: "SimSun", "Noto Serif CJK SC", "Songti SC", serif; font-size: 20px; }
+      .lab { fill: #111; font-family: "Times New Roman", "SimSun", serif; font-size: 18px; }
+      .pin { fill: #111; font-family: "Times New Roman", "SimSun", serif; font-size: 16px; }
+      .sub { fill: #111; font-family: "Times New Roman", serif; font-size: 12px; }
+      .chip { fill: #111; font-family: "SimSun", "Noto Serif CJK SC", serif; font-size: 18px; }
+    </style>
+  </defs>
+  <rect width="860" height="740" fill="#fff"/>
+  <g id="diagram">
+    <g id="io-buffer-frame">
+      <line class="dashbox" x1="168" y1="56" x2="336" y2="56"/>
+      <line class="dashbox" x1="524" y1="56" x2="692" y2="56"/>
+      <line class="dashbox" x1="168" y1="56" x2="168" y2="448"/>
+      <line class="dashbox" x1="692" y1="56" x2="692" y2="448"/>
+      <line class="dashbox" x1="168" y1="448" x2="692" y2="448"/>
+      <rect x="338" y="36" width="184" height="32" fill="#fff"/>
+      <text class="titletext" x="430" y="58" text-anchor="middle">输入输出缓冲器</text>
+    </g>
+
+    <g id="device-blocks">
+      <rect class="body" x="32" y="96" width="72" height="264"/>
+      <text class="name" x="68" y="210" text-anchor="middle">外</text>
+      <text class="name" x="68" y="242" text-anchor="middle">设</text>
+      <rect class="body" x="756" y="96" width="72" height="264"/>
+      <text class="name" x="792" y="198" text-anchor="middle">计</text>
+      <text class="name" x="792" y="230" text-anchor="middle">算</text>
+      <text class="name" x="792" y="262" text-anchor="middle">机</text>
+    </g>
+
+    <g id="bus-stubs">
+      <line class="wire" x1="104" y1="210" x2="168" y2="210"/>
+      <line class="wire" x1="692" y1="210" x2="756" y2="210"/>
+      <line class="wire" x1="104" y1="270" x2="168" y2="270"/>
+      <line class="wire" x1="692" y1="270" x2="756" y2="270"/>
+    </g>
+
+    <g id="channel-d3">
+      <line class="wire" x1="104" y1="150" x2="300" y2="150"/>
+      <polyline class="wire" points="220,150 220,106 452,106 452,150 488,150"/>
+      <polyline class="wire" points="372,150 400,150 400,196 612,196 612,150"/>
+      <line class="wire" x1="560" y1="150" x2="756" y2="150"/>
+      <polygon class="buf" points="300,122 372,150 300,178"/>
+      <polygon class="buf" points="560,122 488,150 560,178"/>
+      <circle class="bubble" cx="330" cy="168" r="5"/>
+      <circle class="bubble" cx="516" cy="164" r="5"/>
+    </g>
+
+    <g id="channel-d0">
+      <line class="wire" x1="104" y1="330" x2="300" y2="330"/>
+      <polyline class="wire" points="220,330 220,286 452,286 452,330 488,330"/>
+      <polyline class="wire" points="372,330 400,330 400,374 612,374 612,330"/>
+      <line class="wire" x1="560" y1="330" x2="756" y2="330"/>
+      <polygon class="buf" points="300,302 372,330 300,358"/>
+      <polygon class="buf" points="560,302 488,330 560,358"/>
+      <circle class="bubble" cx="330" cy="350" r="5"/>
+      <circle class="bubble" cx="516" cy="346" r="5"/>
+    </g>
+
+    <g id="rails">
+      <polyline class="wire" points="330,173 330,196 248,196 248,400 460,400 460,535"/>
+      <circle class="dot" cx="248" cy="362" r="4.2"/>
+      <polyline class="wire" points="248,362 330,362 330,355"/>
+      <polyline class="wire" points="516,169 516,214 590,214 590,478 344,478 344,535"/>
+      <polyline class="wire" points="516,351 516,364 590,364"/>
+      <circle class="dot" cx="590" cy="364" r="4.2"/>
+    </g>
+
+    <g id="data-labels">
+      <text class="lab" x="136" y="136" text-anchor="middle">D3</text>
+      <text class="lab" x="136" y="196" text-anchor="middle">D2</text>
+      <text class="lab" x="136" y="256" text-anchor="middle">D1</text>
+      <text class="lab" x="136" y="316" text-anchor="middle">D0</text>
+      <text class="lab" x="724" y="136" text-anchor="middle">D3</text>
+      <text class="lab" x="724" y="196" text-anchor="middle">D2</text>
+      <text class="lab" x="724" y="256" text-anchor="middle">D1</text>
+      <text class="lab" x="724" y="316" text-anchor="middle">D0</text>
+    </g>
+
+    <g id="decoder">
+      <rect class="body" x="200" y="540" width="480" height="108"/>
+      <text class="chip" x="440" y="604" text-anchor="middle">3-8译码器</text>
+
+      <g id="decoder-outputs">
+        <g id="pin-y7">
+          <line class="wire" x1="228" y1="518" x2="228" y2="535"/>
+          <circle class="bubble" cx="228" cy="540" r="5"/>
+          <text class="pin" x="224" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="217" y1="556" x2="231" y2="556"/>
+          <text class="sub" x="232" y="574">7</text>
+        </g>
+        <g id="pin-y6">
+          <line class="wire" x1="286" y1="518" x2="286" y2="535"/>
+          <circle class="bubble" cx="286" cy="540" r="5"/>
+          <text class="pin" x="282" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="275" y1="556" x2="289" y2="556"/>
+          <text class="sub" x="290" y="574">6</text>
+        </g>
+        <g id="pin-y5">
+          <circle class="bubble" cx="344" cy="540" r="5"/>
+          <text class="pin" x="340" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="333" y1="556" x2="347" y2="556"/>
+          <text class="sub" x="348" y="574">5</text>
+        </g>
+        <g id="pin-y4">
+          <line class="wire" x1="402" y1="518" x2="402" y2="535"/>
+          <circle class="bubble" cx="402" cy="540" r="5"/>
+          <text class="pin" x="398" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="391" y1="556" x2="405" y2="556"/>
+          <text class="sub" x="406" y="574">4</text>
+        </g>
+        <g id="pin-y3">
+          <circle class="bubble" cx="460" cy="540" r="5"/>
+          <text class="pin" x="456" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="449" y1="556" x2="463" y2="556"/>
+          <text class="sub" x="464" y="574">3</text>
+        </g>
+        <g id="pin-y2">
+          <line class="wire" x1="518" y1="518" x2="518" y2="535"/>
+          <circle class="bubble" cx="518" cy="540" r="5"/>
+          <text class="pin" x="514" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="507" y1="556" x2="521" y2="556"/>
+          <text class="sub" x="522" y="574">2</text>
+        </g>
+        <g id="pin-y1">
+          <line class="wire" x1="576" y1="518" x2="576" y2="535"/>
+          <circle class="bubble" cx="576" cy="540" r="5"/>
+          <text class="pin" x="572" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="565" y1="556" x2="579" y2="556"/>
+          <text class="sub" x="580" y="574">1</text>
+        </g>
+        <g id="pin-y0">
+          <line class="wire" x1="634" y1="518" x2="634" y2="535"/>
+          <circle class="bubble" cx="634" cy="540" r="5"/>
+          <text class="pin" x="630" y="568" text-anchor="middle">Y</text>
+          <line class="wire" x1="623" y1="556" x2="637" y2="556"/>
+          <text class="sub" x="638" y="574">0</text>
+        </g>
+      </g>
+
+      <g id="decoder-inputs">
+        <g id="pin-a2">
+          <text class="pin" x="256" y="632" text-anchor="middle">A2</text>
+          <line class="wire" x1="256" y1="648" x2="256" y2="684"/>
+          <text class="pin" x="256" y="706" text-anchor="middle">A7</text>
+        </g>
+        <g id="pin-a1">
+          <text class="pin" x="328" y="632" text-anchor="middle">A1</text>
+          <line class="wire" x1="328" y1="648" x2="328" y2="684"/>
+          <text class="pin" x="328" y="706" text-anchor="middle">A6</text>
+        </g>
+        <g id="pin-a0">
+          <text class="pin" x="400" y="632" text-anchor="middle">A0</text>
+          <line class="wire" x1="400" y1="648" x2="400" y2="684"/>
+          <text class="pin" x="400" y="706" text-anchor="middle">A5</text>
+        </g>
+        <g id="pin-g2a">
+          <text class="pin" x="476" y="632" text-anchor="middle">G</text>
+          <line class="wire" x1="468" y1="620" x2="484" y2="620"/>
+          <text class="sub" x="486" y="638">2A</text>
+          <line class="wire" x1="488" y1="648" x2="488" y2="684"/>
+          <text class="pin" x="488" y="706" text-anchor="middle">A4</text>
+        </g>
+        <g id="pin-g2b">
+          <text class="pin" x="564" y="632" text-anchor="middle">G</text>
+          <line class="wire" x1="556" y1="620" x2="572" y2="620"/>
+          <text class="sub" x="574" y="638">2B</text>
+          <line class="wire" x1="576" y1="648" x2="576" y2="684"/>
+          <text class="pin" x="576" y="706" text-anchor="middle">0</text>
+        </g>
+        <g id="pin-g1">
+          <text class="pin" x="648" y="632" text-anchor="middle">G1</text>
+          <line class="wire" x1="648" y1="648" x2="648" y2="684"/>
+          <text class="pin" x="648" y="706" text-anchor="middle">1</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

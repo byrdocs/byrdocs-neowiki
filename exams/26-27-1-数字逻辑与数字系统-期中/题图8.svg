@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="350" viewBox="0 0 560 350" role="img" aria-labelledby="title desc">
+  <title id="title">异或门驱动 JK 触发器</title>
+  <desc id="desc">A 与 B 进入异或门，输出经黑点同时接到 JK 触发器的 J 和 K。CP 向上再向右，接到框边带小圆和空心三角的时钟端；该线与 J、K 竖线交叉，交叉处没有结点。右侧引出 Q 和 Q 非。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 3.5; stroke-linecap: square; stroke-linejoin: miter; }
+      .box { fill: #fff; stroke: #111; stroke-width: 3.5; }
+      .mark { fill: none; stroke: #111; stroke-width: 3.2; }
+      .label { fill: #111; font-family: Arial, "Microsoft YaHei", sans-serif; font-size: 30px; }
+    </style>
+  </defs>
+  <rect width="560" height="350" fill="#fff"/>
+  <g id="wires">
+    <g id="net-a">
+      <line class="wire" x1="44" y1="54" x2="108" y2="54"/>
+    </g>
+    <g id="net-b">
+      <line class="wire" x1="44" y1="122" x2="108" y2="122"/>
+    </g>
+    <g id="net-jk">
+      <line class="wire" x1="184" y1="88" x2="268" y2="88"/>
+      <polyline class="wire" points="226,88 226,264 268,264"/>
+    </g>
+    <g id="net-cp">
+      <polyline class="wire" points="192,312 192,183 247,183"/>
+    </g>
+    <g id="net-q">
+      <line class="wire" x1="438" y1="88" x2="532" y2="88"/>
+    </g>
+    <g id="net-qbar">
+      <line class="wire" x1="438" y1="264" x2="532" y2="264"/>
+    </g>
+  </g>
+  <g id="xor-gate">
+    <rect class="box" x="108" y="20" width="76" height="136"/>
+    <circle class="mark" cx="146" cy="88" r="20"/>
+    <line class="mark" x1="126" y1="88" x2="166" y2="88"/>
+    <line class="mark" x1="146" y1="68" x2="146" y2="108"/>
+  </g>
+  <g id="jk-ff">
+    <rect class="box" x="268" y="48" width="170" height="270"/>
+    <polygon id="clock-triangle" class="mark" points="271,171 288,183 271,195"/>
+  </g>
+  <g id="clock-bubble">
+    <circle class="mark" cx="257" cy="183" r="10" fill="#fff"/>
+  </g>
+  <circle id="junction" cx="226" cy="88" r="7" fill="#111"/>
+  <g id="labels">
+    <text class="label" x="36" y="64" text-anchor="end">A</text>
+    <text class="label" x="36" y="132" text-anchor="end">B</text>
+    <text class="label" x="180" y="308" text-anchor="end">CP</text>
+    <text class="label" x="282" y="98">J</text>
+    <text class="label" x="282" y="274">K</text>
+    <text class="label" x="424" y="98" text-anchor="end">Q</text>
+    <g id="label-qbar">
+      <line class="mark" x1="400" y1="246" x2="425" y2="246"/>
+      <text class="label" x="424" y="274" text-anchor="end">Q</text>
+    </g>
+  </g>
+</svg>

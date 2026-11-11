@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="456" height="252" viewBox="68 244 456 252" role="img" aria-labelledby="title desc">
+  <title id="title">电路 B</title>
+  <desc id="desc">下降沿 JK 触发器，Q 非接到 J，Q 接到 K</desc>
+  <rect id="background" x="68" y="244" width="456" height="252" fill="#fff"/>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .dot { fill: #111; }
+      .tri { fill: none; stroke: #111; stroke-width: 2.2; stroke-linejoin: miter; }
+      .mark { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .bar { stroke: #111; stroke-width: 1.8; }
+      .txt { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 22px; }
+      .opt { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 22px; }
+      .radio { fill: #fff; stroke: #555; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <g id="option-b">
+    <g class="wire">
+      <line x1="420" y1="260" x2="420" y2="412"/>
+      <line x1="420" y1="260" x2="186" y2="260"/>
+      <line x1="186" y1="260" x2="186" y2="328"/>
+      <line x1="186" y1="328" x2="230" y2="328"/>
+      <line x1="398" y1="328" x2="508" y2="328"/>
+      <line x1="458" y1="328" x2="458" y2="480"/>
+      <line x1="458" y1="480" x2="186" y2="480"/>
+      <line x1="186" y1="480" x2="186" y2="412"/>
+      <line x1="186" y1="412" x2="230" y2="412"/>
+      <line x1="398" y1="412" x2="420" y2="412"/>
+      <line x1="124" y1="370" x2="222" y2="370"/>
+    </g>
+    <rect class="box" x="230" y="292" width="168" height="156"/>
+    <circle class="bubble" cx="230" cy="370" r="7"/>
+    <polygon class="tri" points="240,358 240,382 260,370"/>
+    <circle class="bubble" cx="406" cy="412" r="7"/>
+    <circle class="dot" cx="458" cy="328" r="4.5"/>
+    <line class="bar" x1="348" y1="398" x2="370" y2="398"/>
+    <text class="txt" x="84" y="378">CP</text>
+    <text class="txt" x="268" y="334">1J</text>
+    <text class="txt" x="268" y="378">C1</text>
+    <text class="txt" x="268" y="418">1K</text>
+    <text class="txt" x="352" y="334">Q</text>
+    <text class="txt" x="352" y="418">Q</text>
+  </g>
+</svg>

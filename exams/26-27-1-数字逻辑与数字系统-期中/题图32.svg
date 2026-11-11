@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="838" height="268" viewBox="0 0 838 268" role="img" aria-labelledby="title desc">
+  <title id="title">三级反相器环形振荡器</title>
+  <desc id="desc">G1、G2、G3 为串联反相器。v 下标 I1 标在 G1 输入，v 下标 I2 在 G1 与 G2 之间，v 下标 I3 在 G2 与 G3 之间。G3 输出经实心结点接到 v 下标 O，并从该结点向上反馈，再从左侧折回 G1 输入。左侧折角没有连接点。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 5.2; stroke-linecap: butt; stroke-linejoin: miter; }
+      .gate { fill: #fff; stroke: #111; stroke-width: 5.2; stroke-linejoin: miter; stroke-miterlimit: 2.5; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 5.2; }
+      .dot { fill: #111; }
+      .var { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-weight: 700; font-style: italic; font-size: 44px; }
+      .sub { font-size: 30px; font-weight: 700; }
+      .gname { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-weight: 700; font-style: normal; font-size: 40px; }
+      .gsub { font-size: 26px; font-weight: 700; font-style: normal; }
+    </style>
+  </defs>
+  <rect width="838" height="268" fill="#fff"/>
+  <g id="diagram">
+    <g id="wires" class="wire">
+      <polyline id="feedback" points="126,134 70,134 70,17 669,17 669,134"/>
+      <line id="wire-vI2" x1="211" y1="134" x2="331" y2="134"/>
+      <line id="wire-vI3" x1="416" y1="134" x2="535" y2="134"/>
+      <line id="wire-vO" x1="620" y1="134" x2="746" y2="134"/>
+    </g>
+    <g id="gates">
+      <g id="gate-G1" transform="translate(126,134)">
+        <polygon class="gate" points="0,-39 0,39 74,0"/>
+        <circle class="bubble" cx="74" cy="0" r="11"/>
+      </g>
+      <g id="gate-G2" transform="translate(331,134)">
+        <polygon class="gate" points="0,-39 0,39 74,0"/>
+        <circle class="bubble" cx="74" cy="0" r="11"/>
+      </g>
+      <g id="gate-G3" transform="translate(535,134)">
+        <polygon class="gate" points="0,-39 0,39 74,0"/>
+        <circle class="bubble" cx="74" cy="0" r="11"/>
+      </g>
+    </g>
+    <circle id="junction" class="dot" cx="669" cy="134" r="7.5"/>
+    <g id="labels">
+      <text class="var" x="16" y="139">v<tspan class="sub" dy="7">I1</tspan></text>
+      <text class="var" x="268" y="108">v<tspan class="sub" dy="6">I2</tspan></text>
+      <text class="var" x="474" y="110">v<tspan class="sub" dy="6">I3</tspan></text>
+      <text class="var" x="750" y="155" style="font-size:50px">v<tspan dy="8" style="font-size:38px">O</tspan></text>
+      <text class="gname" x="163" y="210" text-anchor="middle">G<tspan class="gsub" dy="7">1</tspan></text>
+      <text class="gname" x="370" y="212" text-anchor="middle">G<tspan class="gsub" dy="7">2</tspan></text>
+      <text class="gname" x="571" y="214" text-anchor="middle">G<tspan class="gsub" dy="7">3</tspan></text>
+    </g>
+  </g>
+</svg>
