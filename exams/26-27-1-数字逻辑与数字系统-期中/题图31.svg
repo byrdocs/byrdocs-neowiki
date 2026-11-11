@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="236" viewBox="0 0 490 236" role="img" aria-labelledby="title desc">
+  <title id="title">两级同或门</title>
+  <desc id="desc">两个输出带反相圈的异或门。第一级输入为 A 非和 B 非，其输出接到第二级上输入；第二级下输入为 A，输出为 y。</desc>
+  <defs>
+    <style>
+      .gate { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: miter; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: butt; stroke-linejoin: miter; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .bar { fill: none; stroke: #111; stroke-width: 1.7; stroke-linecap: butt; }
+      .var { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: italic; font-size: 26px; }
+    </style>
+  </defs>
+  <rect width="490" height="236" fill="#fff"/>
+  <g id="diagram">
+    <g id="wires" class="wire">
+      <line x1="62" y1="66" x2="133" y2="66"/>
+      <line x1="62" y1="98" x2="133" y2="98"/>
+      <polyline points="221.5,82 236,82 236,157 301,157"/>
+      <line x1="250" y1="186" x2="302" y2="186"/>
+      <line x1="389.5" y1="173" x2="430" y2="173"/>
+    </g>
+
+    <g id="gate-1">
+      <path class="gate" d="M 110,44 C 156,46 184,60 213,82 C 184,104 156,118 110,120 C 144,102 144,62 110,44"/>
+      <path class="gate" d="M 96,50 C 128,64 128,100 96,114"/>
+      <circle class="bubble" cx="213" cy="82" r="8.5"/>
+    </g>
+
+    <g id="gate-2">
+      <path class="gate" d="M 278,135 C 324,137 352,151 381,173 C 352,195 324,209 278,211 C 312,193 312,153 278,135"/>
+      <path class="gate" d="M 264,141 C 296,155 296,191 264,205"/>
+      <circle class="bubble" cx="381" cy="173" r="8.5"/>
+    </g>
+
+    <g id="labels" class="var">
+      <g id="label-a-bar">
+        <line class="bar" x1="30" y1="50" x2="50" y2="50"/>
+        <text x="37" y="66" text-anchor="middle" dominant-baseline="central">A</text>
+      </g>
+      <g id="label-b-bar">
+        <line class="bar" x1="30" y1="85" x2="54" y2="85"/>
+        <text x="39" y="98" text-anchor="middle" dominant-baseline="central">B</text>
+      </g>
+      <text x="218" y="186" text-anchor="middle" dominant-baseline="central">A</text>
+      <text x="448" y="173" text-anchor="middle" dominant-baseline="central">y</text>
+    </g>
+  </g>
+</svg>

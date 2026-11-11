@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="220" viewBox="0 0 480 220" role="img" aria-labelledby="title desc">
+  <title id="title">数据选择器输入接法</title>
+  <desc id="desc">数据选择器。地址输入 A 接 A1，B 接 A0。数据输入 D0 到 D3 依次接常数 0、1、0、1。输出为 Y。</desc>
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: butt; }
+      .var { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: italic; font-size: 24px; }
+      .bit { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: normal; font-size: 22px; }
+      .sub { font-size: 13px; font-style: normal; }
+    </style>
+  </defs>
+  <rect width="480" height="220" fill="#fff"/>
+  <g id="diagram">
+    <rect class="box" x="118" y="46" width="292" height="108"/>
+    <g id="wires" class="wire">
+      <line x1="260" y1="34" x2="260" y2="46"/>
+      <line x1="52" y1="78" x2="118" y2="78"/>
+      <line x1="52" y1="118" x2="118" y2="118"/>
+      <line x1="200" y1="154" x2="200" y2="182"/>
+      <line x1="256" y1="154" x2="256" y2="182"/>
+      <line x1="312" y1="154" x2="312" y2="182"/>
+      <line x1="368" y1="154" x2="368" y2="182"/>
+    </g>
+    <g id="labels">
+      <text class="var" x="260" y="28" text-anchor="middle">Y</text>
+      <text class="var" x="34" y="78" text-anchor="middle" dominant-baseline="central">A</text>
+      <text class="var" x="34" y="118" text-anchor="middle" dominant-baseline="central">B</text>
+      <text class="var" x="140" y="78" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">1</tspan></text>
+      <text class="var" x="140" y="118" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      <text class="var" x="200" y="138" text-anchor="middle" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      <text class="var" x="256" y="138" text-anchor="middle" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">1</tspan></text>
+      <text class="var" x="312" y="138" text-anchor="middle" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">2</tspan></text>
+      <text class="var" x="368" y="138" text-anchor="middle" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">3</tspan></text>
+      <text class="bit" x="200" y="204" text-anchor="middle">0</text>
+      <text class="bit" x="256" y="204" text-anchor="middle">1</text>
+      <text class="bit" x="312" y="204" text-anchor="middle">0</text>
+      <text class="bit" x="368" y="204" text-anchor="middle">1</text>
+    </g>
+  </g>
+</svg>

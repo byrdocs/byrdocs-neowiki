@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="556" height="352" viewBox="0 0 278 176" role="img" aria-labelledby="title desc">
+  <title id="title">两个与门经或门输出 Y</title>
+  <desc id="desc">A1 与 B1 进入上方与门，A0 与 B0 进入下方与门。两路输出分别接到或门的上下输入，或门输出为 Y。各输入端均无反相圆。</desc>
+  <defs>
+    <style>
+      .gate { fill: none; stroke: #111; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .wire { fill: none; stroke: #111; stroke-width: 3; stroke-linecap: butt; stroke-linejoin: miter; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-style: italic; font-weight: 700; font-size: 16px; }
+      .sub { font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-style: italic; font-weight: 700; font-size: 11px; }
+    </style>
+    <g id="and-shape">
+      <path class="gate" d="M 87,5 Q 96,32 87,59"/>
+      <path class="gate" d="M 87,5
+        C 109.1,5 127,17.1 127,32
+        C 127,46.9 109.1,59 87,59
+        C 92.5,59 97,46.9 97,32
+        C 97,17.1 92.5,5 87,5"/>
+    </g>
+  </defs>
+  <g id="diagram">
+    <g id="gates">
+      <use id="and-top" href="#and-shape"/>
+      <use id="and-bottom" href="#and-shape" transform="translate(5,96)"/>
+      <path id="or-gate" class="gate" d="M 161,53
+        C 186.4,53 207,65.1 207,80
+        C 207,94.9 186.4,107 161,107
+        C 166.5,107 171,94.9 171,80
+        C 171,65.1 166.5,53 161,53"/>
+    </g>
+    <g id="wires">
+      <line id="wire-A1" class="wire" x1="40" y1="15" x2="90" y2="15"/>
+      <line id="wire-B1" class="wire" x1="40" y1="49" x2="90" y2="49"/>
+      <line id="wire-A0" class="wire" x1="40" y1="111" x2="95" y2="111"/>
+      <line id="wire-B0" class="wire" x1="40" y1="145" x2="95" y2="145"/>
+      <polyline id="wire-and-top-or" class="wire" points="127,32 144,32 144,63 170,63"/>
+      <polyline id="wire-and-bottom-or" class="wire" points="132,128 144,128 144,95 170,95"/>
+      <line id="wire-Y" class="wire" x1="207" y1="80" x2="244" y2="80"/>
+    </g>
+    <g id="labels">
+      <text class="label" x="11" y="21">A<tspan class="sub" dx="1" dy="4">1</tspan></text>
+      <text class="label" x="12" y="55">B<tspan class="sub" dx="1" dy="4">1</tspan></text>
+      <text class="label" x="13" y="117">A<tspan class="sub" dx="1" dy="4">0</tspan></text>
+      <text class="label" x="13" y="151">B<tspan class="sub" dx="1" dy="4">0</tspan></text>
+      <text class="label" x="250" y="86">Y</text>
+    </g>
+  </g>
+</svg>

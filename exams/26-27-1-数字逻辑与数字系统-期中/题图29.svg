@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" role="img" aria-labelledby="title desc">
+  <title id="title">时钟 CP、异步置 0 端 RD、异步置 1 端 SD、控制端 Vi 与输出 Q 的时序图</title>
+  <desc id="desc">五路时序：CP 为 9 个正脉冲；RD、SD 为低有效异步复位与置位；Vi 为控制输入；Q 在部分时钟上升沿以及 RD、SD 有效沿上翻转。虚线标出同时发生变化的时刻。</desc>
+  <rect id="background" width="700" height="420" fill="#fff"/>
+  <defs>
+    <style>
+      .trace { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .guide { fill: none; stroke: #222; stroke-width: 1.35; stroke-dasharray: 6 4.5; stroke-linecap: butt; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Sans CJK SC", "Microsoft YaHei", serif; font-size: 22px; }
+      .sub { font-size: 15px; }
+    </style>
+  </defs>
+  <g id="guides">
+    <line class="guide" x1="148" y1="38" x2="148" y2="400"/>
+    <line class="guide" x1="202" y1="38" x2="202" y2="400"/>
+    <line class="guide" x1="238" y1="200" x2="238" y2="400"/>
+    <line class="guide" x1="346" y1="150" x2="346" y2="400"/>
+    <line class="guide" x1="526" y1="38" x2="526" y2="400"/>
+    <line class="guide" x1="580" y1="38" x2="580" y2="400"/>
+  </g>
+  <g id="traces">
+    <polyline id="cp" class="trace" points="99.4,88 148,88 148,50 166,50 166,88 202,88 202,50 220,50 220,88 256,88 256,50 274,50 274,88 310,88 310,50 328,50 328,88 364,88 364,50 382,50 382,88 418,88 418,50 436,50 436,88 472,88 472,50 490,50 490,88 526,88 526,50 544,50 544,88 580,88 580,50 598,50 598,88 634,88"/>
+    <polyline id="rd" class="trace" points="99.4,162 118.3,162 118.3,124 346,124 346,162 454,162 454,124 634,124"/>
+    <polyline id="sd" class="trace" points="99.4,198 238,198 238,236 292,236 292,198 634,198"/>
+    <polyline id="vi" class="trace" points="99.4,310 118.3,310 118.3,272 292,272 292,310 400,310 400,272 454,272 454,310 508,310 508,272 634,272"/>
+    <polyline id="q" class="trace" points="99.4,384 148,384 148,346 202,346 202,384 238,384 238,346 346,346 346,384 526,384 526,346 580,346 580,384 634,384"/>
+  </g>
+  <g id="labels">
+    <text class="label" x="22" y="76">CP</text>
+    <text class="label" x="22" y="150">R<tspan class="sub" baseline-shift="sub">D</tspan></text>
+    <text class="label" x="22" y="224">S<tspan class="sub" baseline-shift="sub">D</tspan></text>
+    <text class="label" x="22" y="298">V<tspan class="sub" baseline-shift="sub">i</tspan></text>
+    <text class="label" x="22" y="372">Q</text>
+  </g>
+</svg>

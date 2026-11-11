@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="644" height="416" viewBox="0 0 322 208" role="img" aria-labelledby="title desc">
+  <title id="title">或非门交叉耦合的 SR 锁存器</title>
+  <desc id="desc">G1、G2 为带输出反相圆的或门（≥1）。S_D 进入 G1 上输入，R_D 进入 G2 下输入。G1 输出为 Q 非，并反馈到 G2 上输入；G2 输出为 Q，并反馈到 G1 下输入。两根反馈线在中间交叉，交叉处没有连接点。</desc>
+  <defs>
+    <style>
+      .gate { fill: #7eb6dc; stroke: #111; stroke-width: 1.8; }
+      .wire { fill: none; stroke: #111; stroke-width: 1.8; stroke-linecap: butt; stroke-linejoin: miter; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 1.8; }
+      .label { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-style: italic; font-weight: 700; font-size: 16px; }
+      .sub { font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-style: italic; font-weight: 700; font-size: 10px; }
+      .qual { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-style: normal; font-weight: 700; font-size: 15px; }
+      .bar { stroke: #111; stroke-width: 1.6; }
+    </style>
+    <g id="nor-body">
+      <rect class="gate" x="0" y="0" width="34" height="44"/>
+      <text class="qual" x="17" y="28" text-anchor="middle">≥1</text>
+    </g>
+  </defs>
+  <g id="diagram">
+    <g id="gates">
+      <use id="gate-G1" href="#nor-body" x="101" y="34"/>
+      <use id="gate-G2" href="#nor-body" x="101" y="128"/>
+      <circle id="bubble-Qbar" class="bubble" cx="139.5" cy="57" r="4"/>
+      <circle id="bubble-Q" class="bubble" cx="139.5" cy="153" r="4"/>
+    </g>
+    <g id="wires">
+      <line id="wire-SD" class="wire" x1="46" y1="41" x2="101" y2="41"/>
+      <line id="wire-RD" class="wire" x1="48" y1="155" x2="101" y2="155"/>
+      <line id="wire-Qbar" class="wire" x1="135" y1="57" x2="135.4" y2="57"/>
+      <line id="wire-Qbar-out" class="wire" x1="143.6" y1="57" x2="198" y2="57"/>
+      <polyline id="wire-Qbar-to-G2" class="wire" points="160,57 160,92 86,118 86,138 101,138"/>
+      <line id="wire-Q" class="wire" x1="135" y1="153" x2="135.4" y2="153"/>
+      <line id="wire-Q-out" class="wire" x1="143.6" y1="153" x2="198" y2="153"/>
+      <polyline id="wire-Q-to-G1" class="wire" points="160,153 160,120 86,90 86,68 101,68"/>
+    </g>
+    <g id="labels">
+      <text class="label" x="118" y="28" text-anchor="middle">G<tspan class="sub" dx="0.4" dy="2">1</tspan></text>
+      <text class="label" x="118" y="190" text-anchor="middle">G<tspan class="sub" dx="0.4" dy="2">2</tspan></text>
+      <text class="label" x="18" y="46">S<tspan class="sub" dx="0.2" dy="1.5">D</tspan></text>
+      <text class="label" x="18" y="160">R<tspan class="sub" dx="0.2" dy="1.5">D</tspan></text>
+      <line class="bar" x1="208" y1="52" x2="219" y2="52"/>
+      <text class="label" x="207" y="65">Q</text>
+      <text class="label" x="206" y="160">Q</text>
+    </g>
+  </g>
+</svg>

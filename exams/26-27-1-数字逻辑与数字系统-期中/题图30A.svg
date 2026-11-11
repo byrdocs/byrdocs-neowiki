@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="268" viewBox="110 8 500 268" role="img" aria-labelledby="title desc">
+  <title id="title">选项 A</title>
+  <desc id="desc">下降沿 JK 触发器，Q 经框顶接到 K，J 接 D，时钟在右侧。</desc>
+  <rect id="background" x="110" y="8" width="500" height="268" fill="#fff"/>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .dot { fill: #111; }
+      .tri { fill: #fff; stroke: #111; stroke-width: 2.2; stroke-linejoin: miter; }
+      .bar { stroke: #111; stroke-width: 1.8; }
+      .txt { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 24px; font-style: italic; }
+      .gate { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 24px; text-anchor: middle; }
+      .opt { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 22px; }
+      .radio { fill: #fff; stroke: #555; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <g id="option-a">
+    <g class="wire">
+      <line x1="132" y1="108" x2="210" y2="108"/>
+      <line x1="132" y1="28" x2="132" y2="108"/>
+      <line x1="132" y1="28" x2="448" y2="28"/>
+      <line x1="448" y1="28" x2="448" y2="108"/>
+      <line x1="380" y1="108" x2="448" y2="108"/>
+      <line x1="132" y1="204" x2="210" y2="204"/>
+      <line x1="380" y1="204" x2="436" y2="204"/>
+      <line x1="396" y1="156" x2="524" y2="156"/>
+    </g>
+    <rect class="box" x="210" y="64" width="170" height="184"/>
+    <polygon class="tri" points="350,156 380,141 380,171"/>
+    <circle class="bubble" cx="388" cy="156" r="8"/>
+    <line class="bar" x1="226" y1="196" x2="246" y2="196"/>
+    <text class="txt" x="226" y="116">Q</text>
+    <text class="txt" x="338" y="116">K</text>
+    <text class="txt" x="292" y="164">C</text>
+    <text class="txt" x="226" y="212">Q</text>
+    <text class="txt" x="344" y="212">J</text>
+    <text class="txt" x="448" y="212">D</text>
+    <text class="txt" x="532" y="164">CP</text>
+  </g>
+</svg>

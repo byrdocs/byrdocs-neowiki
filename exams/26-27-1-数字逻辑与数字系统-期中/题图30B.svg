@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="548" height="290" viewBox="68 292 548 290" role="img" aria-labelledby="title desc">
+  <title id="title">选项 B</title>
+  <desc id="desc">下降沿 JK 触发器，D 接 1J，D 经反相器接 1K，Q 非输出端带小三角。</desc>
+  <rect id="background" x="68" y="292" width="548" height="290" fill="#fff"/>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: square; stroke-linejoin: miter; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.6; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .dot { fill: #111; }
+      .tri { fill: #fff; stroke: #111; stroke-width: 2.2; stroke-linejoin: miter; }
+      .bar { stroke: #111; stroke-width: 1.8; }
+      .txt { fill: #111; font-family: "Times New Roman", "Noto Serif", "SimSun", serif; font-size: 24px; font-style: italic; }
+      .gate { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 24px; text-anchor: middle; }
+      .opt { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-size: 22px; }
+      .radio { fill: #fff; stroke: #555; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <g id="option-b">
+    <g class="wire">
+      <line x1="116" y1="358" x2="248" y2="358"/>
+      <line x1="168" y1="358" x2="168" y2="376"/>
+      <line x1="168" y1="428" x2="168" y2="462"/>
+      <line x1="168" y1="462" x2="248" y2="462"/>
+      <line x1="210" y1="410" x2="238" y2="410"/>
+      <line x1="210" y1="410" x2="210" y2="536"/>
+      <line x1="420" y1="358" x2="518" y2="358"/>
+      <line x1="440" y1="462" x2="518" y2="462"/>
+    </g>
+    <rect class="box" x="142" y="376" width="52" height="52"/>
+    <circle class="bubble" cx="168" cy="436" r="7"/>
+    <rect class="box" x="248" y="312" width="172" height="196"/>
+    <circle class="bubble" cx="246" cy="410" r="8"/>
+    <polygon class="tri" points="248,396 248,424 274,410"/>
+    <polygon class="tri" points="420,452 420,472 440,462"/>
+    <circle class="dot" cx="168" cy="358" r="4.5"/>
+    <text class="gate" x="168" y="410">1</text>
+    <text class="txt" x="86" y="366">D</text>
+    <text class="txt" x="286" y="366">1J</text>
+    <text class="txt" x="292" y="418">C1</text>
+    <text class="txt" x="286" y="470">1K</text>
+    <text class="txt" x="528" y="366">Q</text>
+    <text class="txt" x="528" y="470">Q</text>
+    <line class="bar" x1="526" y1="452" x2="548" y2="452"/>
+    <text class="txt" x="188" y="560">CP</text>
+  </g>
+</svg>

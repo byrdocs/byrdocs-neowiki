@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="400" viewBox="0 0 660 400" role="img" aria-labelledby="title desc">
+  <title id="title">74HC283 加法器接法</title>
+  <desc id="desc">四位加法器 74HC283(0)。A3 到 A0 直接进入，B3 到 B0 经反相器进入。进位输入 C 下标 -1 接逻辑 1，进位输出为 CO，和输出 S3 到 S0 接到 D3 到 D0。</desc>
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #111; stroke-width: 2.4; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: butt; stroke-linejoin: miter; }
+      .gate { fill: #fff; stroke: #111; stroke-width: 2.2; stroke-linejoin: round; }
+      .bubble { fill: #fff; stroke: #111; stroke-width: 2.2; }
+      .var { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: italic; font-size: 22px; }
+      .pin { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: italic; font-size: 18px; }
+      .plain { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: normal; font-size: 20px; }
+      .one { fill: #111; font-family: "Times New Roman", "Noto Serif", serif; font-weight: 700; font-style: normal; font-size: 28px; }
+      .sub { font-size: 12px; font-style: normal; }
+    </style>
+  </defs>
+  <rect width="660" height="400" fill="#fff"/>
+  <g id="diagram">
+    <!-- columns: A3 88, B3 150, A2 212, B2 274, A1 336, B1 398, A0 460, B0 522 -->
+    <g id="inputs" class="wire">
+      <line x1="88" y1="48" x2="88" y2="186"/>
+      <line x1="212" y1="48" x2="212" y2="186"/>
+      <line x1="336" y1="48" x2="336" y2="186"/>
+      <line x1="460" y1="48" x2="460" y2="186"/>
+      <line x1="150" y1="48" x2="150" y2="76"/>
+      <line x1="150" y1="122" x2="150" y2="186"/>
+      <line x1="274" y1="48" x2="274" y2="76"/>
+      <line x1="274" y1="122" x2="274" y2="186"/>
+      <line x1="398" y1="48" x2="398" y2="76"/>
+      <line x1="398" y1="122" x2="398" y2="186"/>
+      <line x1="522" y1="48" x2="522" y2="76"/>
+      <line x1="522" y1="122" x2="522" y2="186"/>
+    </g>
+
+    <g id="inverters">
+      <g transform="translate(150,76)">
+        <polygon class="gate" points="-18,0 18,0 0,34"/>
+        <circle class="bubble" cx="0" cy="40" r="6"/>
+      </g>
+      <g transform="translate(274,76)">
+        <polygon class="gate" points="-18,0 18,0 0,34"/>
+        <circle class="bubble" cx="0" cy="40" r="6"/>
+      </g>
+      <g transform="translate(398,76)">
+        <polygon class="gate" points="-18,0 18,0 0,34"/>
+        <circle class="bubble" cx="0" cy="40" r="6"/>
+      </g>
+      <g transform="translate(522,76)">
+        <polygon class="gate" points="-18,0 18,0 0,34"/>
+        <circle class="bubble" cx="0" cy="40" r="6"/>
+      </g>
+    </g>
+
+    <g id="adder">
+      <rect class="box" x="52" y="186" width="520" height="148"/>
+      <line class="wire" x1="16" y1="258" x2="52" y2="258"/>
+      <line class="wire" x1="572" y1="258" x2="628" y2="258"/>
+      <g id="sum-wires" class="wire">
+        <line x1="119" y1="334" x2="119" y2="376"/>
+        <line x1="243" y1="334" x2="243" y2="376"/>
+        <line x1="367" y1="334" x2="367" y2="376"/>
+        <line x1="491" y1="334" x2="491" y2="376"/>
+      </g>
+    </g>
+
+    <g id="labels">
+      <g id="top-names" class="var">
+        <text x="88" y="30" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="150" y="30" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="212" y="30" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="274" y="30" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="336" y="30" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="398" y="30" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="460" y="30" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">0</tspan></text>
+        <text x="522" y="30" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+      <g id="pin-names" class="pin">
+        <text x="88" y="214" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="150" y="214" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="212" y="214" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="274" y="214" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="336" y="214" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="398" y="214" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="460" y="214" text-anchor="middle" dominant-baseline="central">A<tspan class="sub" baseline-shift="sub">0</tspan></text>
+        <text x="522" y="214" text-anchor="middle" dominant-baseline="central">B<tspan class="sub" baseline-shift="sub">0</tspan></text>
+        <text x="119" y="308" text-anchor="middle" dominant-baseline="central">S<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="243" y="308" text-anchor="middle" dominant-baseline="central">S<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="367" y="308" text-anchor="middle" dominant-baseline="central">S<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="491" y="308" text-anchor="middle" dominant-baseline="central">S<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+      <text class="plain" x="78" y="258" dominant-baseline="central">CO</text>
+      <text class="plain" x="312" y="258" text-anchor="middle" dominant-baseline="central">74HC283(0)</text>
+      <text class="pin" x="538" y="258" text-anchor="end" dominant-baseline="central">C<tspan class="sub" baseline-shift="sub">-1</tspan></text>
+      <text class="one" x="612" y="242" text-anchor="middle">1</text>
+      <g id="d-names" class="var">
+        <text x="132" y="368" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="256" y="368" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="380" y="368" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="504" y="368" dominant-baseline="central">D<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

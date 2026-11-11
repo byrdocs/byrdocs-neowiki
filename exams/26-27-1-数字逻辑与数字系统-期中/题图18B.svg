@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="186" viewBox="0 0 300 186" role="img" aria-labelledby="title desc">
+  <title id="title">或非门：上输入 A，下输入接地，输出 Y</title>
+  <desc id="desc">或门上输入为 A，下输入经折线接到下方接地横杠。输出端有反相圆，接到 Y。</desc>
+  <defs>
+    <style>
+    .gate { fill: #fff; stroke: #111; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+    .wire { fill: none; stroke: #111; stroke-width: 2.8; stroke-linecap: square; stroke-linejoin: miter; }
+    .bubble { fill: #fff; stroke: #111; stroke-width: 2.8; }
+    .gnd { fill: none; stroke: #111; stroke-width: 8; stroke-linecap: butt; }
+    .label { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 22px; }
+    .sub { font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 14px; }
+    .const { fill: #111; font-family: "Times New Roman", Arial, sans-serif; font-style: normal; font-weight: 700; font-size: 24px; }
+</style>
+  </defs>
+  <g id="diagram">
+    <rect width="300" height="186" fill="#fff"/>
+    
+    <path id="nor" class="gate" d="M 132.0,36.0 C 174.0,36.0 210.0,66.0 210.0,84.0 C 210.0,102.0 174.0,132.0 132.0,132.0 C 142.0,132.0 150.0,106.0 150.0,84.0 C 150.0,62.0 142.0,36.0 132.0,36.0 Z"/>
+    <line class="wire" x1="48" y1="60.0" x2="147.1" y2="60.0"/>
+    <polyline class="wire" points="70,108.0 147.1,108.0"/>
+    <line class="wire" x1="70" y1="108.0" x2="70" y2="156"/>
+    <line class="gnd" x1="50" y1="156" x2="90" y2="156"/>
+    <line class="wire" x1="226.0" y1="84.0" x2="252" y2="84.0"/>
+    <circle class="bubble" cx="218.0" cy="84.0" r="8"/>
+    <text class="label" x="22" y="67.0">A</text>
+    <text class="label" x="260" y="91.0">Y</text>
+
+  </g>
+</svg>

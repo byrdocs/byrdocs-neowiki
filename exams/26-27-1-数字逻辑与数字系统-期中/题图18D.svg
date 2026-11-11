@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="250" viewBox="0 0 320 250" role="img" aria-labelledby="title desc">
+  <title id="title">异或门：下输入 A，上输入经电阻接 +Ucc，输出 Y</title>
+  <desc id="desc">异或门下输入为 A。上输入向左后向上接到竖向电阻 R_L，电阻上方是空心圆，圆右侧标 +Ucc。输出端没有反相圆，直接接到 Y。</desc>
+  <defs>
+    <style>
+    .gate { fill: #fff; stroke: #111; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+    .wire { fill: none; stroke: #111; stroke-width: 2.8; stroke-linecap: square; stroke-linejoin: miter; }
+    .bubble { fill: #fff; stroke: #111; stroke-width: 2.8; }
+    .gnd { fill: none; stroke: #111; stroke-width: 8; stroke-linecap: butt; }
+    .label { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 22px; }
+    .sub { font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 14px; }
+    .const { fill: #111; font-family: "Times New Roman", Arial, sans-serif; font-style: normal; font-weight: 700; font-size: 24px; }
+</style>
+  </defs>
+  <g id="diagram">
+    <rect width="320" height="250" fill="#fff"/>
+    
+    <g id="xor-gate" transform="translate(0,56)">
+      <path id="xor" class="gate" d="M 132.0,36.0 C 174.0,36.0 210.0,66.0 210.0,84.0 C 210.0,102.0 174.0,132.0 132.0,132.0 C 142.0,132.0 150.0,106.0 150.0,84.0 C 150.0,62.0 142.0,36.0 132.0,36.0 Z"/>
+      <path id="xor-arc" class="gate" fill="none" d="M 117.0,132.0 C 127.0,132.0 135.0,106.0 135.0,84.0 C 135.0,62.0 127.0,36.0 117.0,36.0"/>
+    </g>
+    <line class="wire" x1="34" y1="164.0" x2="147.1" y2="164.0"/>
+    <line class="wire" x1="78" y1="116.0" x2="147.1" y2="116.0"/>
+    <line class="wire" x1="78" y1="96" x2="78" y2="116.0"/>
+    <rect id="resistor" class="gate" x="69" y="40" width="18" height="56"/>
+    <line class="wire" x1="78" y1="28" x2="78" y2="40"/>
+    <circle id="vcc-node" class="bubble" cx="78" cy="20" r="8"/>
+    <line class="wire" x1="210.0" y1="140.0" x2="258" y2="140.0"/>
+    <text class="label" x="12" y="171.0">A</text>
+    <text class="label" x="100" y="75">R<tspan class="sub" dy="5">L</tspan></text>
+    <text class="label" x="96" y="27">+U<tspan class="sub" dy="5">cc</tspan></text>
+    <text class="label" x="266" y="147.0">Y</text>
+
+  </g>
+</svg>

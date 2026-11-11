@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="310" height="160" viewBox="0 0 310 160" role="img" aria-labelledby="title desc">
+  <title id="title">与非门：输入 A 和 1，输出 Y</title>
+  <desc id="desc">与门上输入为 A，下输入为逻辑 1。输出端有反相圆，经短线接到 Y。</desc>
+  <defs>
+    <style>
+    .gate { fill: #fff; stroke: #111; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+    .wire { fill: none; stroke: #111; stroke-width: 2.8; stroke-linecap: square; stroke-linejoin: miter; }
+    .bubble { fill: #fff; stroke: #111; stroke-width: 2.8; }
+    .gnd { fill: none; stroke: #111; stroke-width: 8; stroke-linecap: butt; }
+    .label { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 22px; }
+    .sub { font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-style: italic; font-weight: 700; font-size: 14px; }
+    .const { fill: #111; font-family: "Times New Roman", Arial, sans-serif; font-style: normal; font-weight: 700; font-size: 24px; }
+</style>
+  </defs>
+  <g id="diagram">
+    <rect width="310" height="160" fill="#fff"/>
+    
+    <path id="nand" class="gate" d="M 120,28 H 168
+      A 48,48 0 0 1 168,124 H 120 Z"/>
+    <line class="wire" x1="46" y1="52" x2="120" y2="52"/>
+    <line class="wire" x1="46" y1="100" x2="120" y2="100"/>
+    <line class="wire" x1="232" y1="76" x2="262" y2="76"/>
+    <circle class="bubble" cx="224" cy="76" r="8"/>
+    <text class="label" x="22" y="59">A</text>
+    <text class="const" x="26" y="108">1</text>
+    <text class="label" x="270" y="83">Y</text>
+
+  </g>
+</svg>
