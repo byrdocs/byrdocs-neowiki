@@ -223,9 +223,6 @@ export function renderExamTemplate(
 }
 
 function quoteYamlString(value: string): string {
-  if (value && !/^\s|\s$/u.test(value) && !/[:#[\]{}&,*!|>'"%@`]/u.test(value)) {
-    return value;
-  }
   return JSON.stringify(value);
 }
 

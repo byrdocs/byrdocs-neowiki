@@ -6,6 +6,7 @@ import {
 
 export interface IgnoredRange {
   readonly start: number;
+  // Exclusive end, including for frontmatter and code spans.
   readonly end: number;
 }
 
@@ -51,6 +52,8 @@ export interface ParsedDocumentSyntax {
 }
 
 const COMPONENT_PATTERN = COMPONENT_NAMES.join("|");
+const ATTRIBUTE_NAME_REGEX = /[A-Za-z][\w:-]*/y;
+const ATTRIBUTE_VALUE_REGEX = /[^\s"'=<>`{}]+/y;
 const TAG_REGEX = new RegExp(`<(/?)(${COMPONENT_PATTERN})(?=[\\s/>])`, "g");
 
 // JSX attribute values can contain >, nested objects, strings and templates.
@@ -163,7 +166,8 @@ function readTag(text: string, match: RegExpExecArray): ParsedTag | null {
       if (cursor < 0) return null;
       continue;
     }
-    const attributeName = /^[A-Za-z][\w:-]*/.exec(text.slice(cursor))?.[0];
+    ATTRIBUTE_NAME_REGEX.lastIndex = cursor;
+    const attributeName = ATTRIBUTE_NAME_REGEX.exec(text)?.[0];
     if (!attributeName) return null;
     const attributeStart = cursor;
     cursor += attributeName.length;
@@ -182,7 +186,8 @@ function readTag(text: string, match: RegExpExecArray): ParsedTag | null {
         cursor = skipQuotedValue(text, cursor, false);
       }
       else {
-        const value = /^[^\s"'=<>`{}]+/.exec(text.slice(cursor))?.[0];
+        ATTRIBUTE_VALUE_REGEX.lastIndex = cursor;
+        const value = ATTRIBUTE_VALUE_REGEX.exec(text)?.[0];
         if (!value) return null;
         cursor += value.length;
       }
@@ -209,7 +214,10 @@ export function parseDocumentSyntax(text: string): ParsedDocumentSyntax {
   while ((match = TAG_REGEX.exec(text))) {
     if (isOffsetIgnored(match.index, ignoredRanges)) continue;
     const tag = readTag(text, match);
-    if (!tag) break;
+    if (!tag) {
+      TAG_REGEX.lastIndex = match.index + 1;
+      continue;
+    }
     tags.push(tag);
     TAG_REGEX.lastIndex = tag.end;
   }
@@ -261,7 +269,11 @@ function computeIgnoredRanges(text: string): IgnoredRange[] {
       continue;
     }
 
-    if (marker[0] === fenceStart.marker[0] && marker.length >= fenceStart.marker.length) {
+    if (
+      marker[0] === fenceStart.marker[0] &&
+      marker.length >= fenceStart.marker.length &&
+      /^[ \t\r]*$/.test(match[0].trimStart().slice(marker.length))
+    ) {
       fenceRanges.push({
         start: fenceStart.start,
         end: match.index + match[0].length,
@@ -270,9 +282,10 @@ function computeIgnoredRanges(text: string): IgnoredRange[] {
     }
   }
 
+  if (fenceStart) fenceRanges.push({ start: fenceStart.start, end: text.length });
   ranges.push(...fenceRanges);
 
-  const inlineCodeRegex = /(`{1,2})(?!`)([^\n]*?)\1(?!`)/g;
+  const inlineCodeRegex = /(?<!`)(`+)(?!`)[\s\S]*?(?<!`)\1(?!`)/g;
   while ((match = inlineCodeRegex.exec(text))) {
     if (!isOffsetIgnored(match.index, fenceRanges)) {
       ranges.push({ start: match.index, end: match.index + match[0].length });
@@ -287,7 +300,7 @@ export function isOffsetIgnored(
   ignoredRanges: readonly IgnoredRange[],
 ): boolean {
   return ignoredRanges.some(
-    (range) => offset >= range.start && offset <= range.end,
+    (range) => offset >= range.start && offset < range.end,
   );
 }
 
@@ -348,7 +361,9 @@ function collectChoiceMarkers(
 
     while ((match = markerRegex.exec(content))) {
       const linePrefix = match[0].slice(0, match[0].lastIndexOf(match[1] || ""));
-      candidates.push({ indent: linePrefix.length, match });
+      const offset = contentStart + match.index + linePrefix.length;
+      if (isOffsetIgnored(offset, ignoredRanges)) continue;
+      candidates.push({ indent: linePrefix.replace(/\t/g, "    ").length, match });
     }
 
     const baseIndent = candidates.reduce(
@@ -356,7 +371,7 @@ function collectChoiceMarkers(
       Number.POSITIVE_INFINITY,
     );
     for (const candidate of candidates) {
-      if (candidate.indent !== baseIndent) {
+      if (candidate.indent >= baseIndent + 2) {
         continue;
       }
       match = candidate.match;

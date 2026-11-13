@@ -170,7 +170,7 @@ test('create an exam in an assets-only directory and preserve existing files', a
   const result = await load('sidebar/exams').createExamPageFromPayload(payload, manager);
   assert.equal(result.kind, 'created');
   assert.equal(fs.readFileSync(path.join(directory, '题图.svg'), 'utf8'), '<svg/>');
-  assert.match(fs.readFileSync(path.join(directory, 'index.mdx'), 'utf8'), /科目: 数据结构/);
+  assert.match(fs.readFileSync(path.join(directory, 'index.mdx'), 'utf8'), /科目: "数据结构"/);
   assert.deepEqual(previews, [path.join(directory, 'index.mdx')]);
   fs.writeFileSync(path.join(directory, 'index.mdx'), 'Existing work');
   assert.equal((await load('sidebar/exams').createExamPageFromPayload(payload, manager)).kind, 'cancelled');
