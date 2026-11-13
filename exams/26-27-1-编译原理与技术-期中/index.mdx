@@ -1,0 +1,63 @@
+---
+时间: 2026-2027学年第一学期
+科目: 编译原理与技术
+阶段: 期中
+类型: 本科
+学院:
+- 计算机学院
+---
+
+## 一（20分）
+
+某自动机有如下状态转换图：
+
+<Figure src="题图1.svg" />
+
+1. 写出与之等价的右线性文法。
+
+2. 写出与之等价的正规表达式。
+
+## 二（30分）
+
+有如下文法 $G[S]$：
+
+$$
+\begin{aligned}
+S &\rightarrow AB \mid AC \mid m \\
+A &\rightarrow Aq \mid p \\
+B &\rightarrow rB \mid \varepsilon \\
+C &\rightarrow sC \mid n
+\end{aligned}
+$$
+
+1. 判断该文法是否为 LL(1) 文法，说明理由。若不是，继续做（2）；若是，继续做（3）。
+
+2. 将该文法变换为等价的 LL(1) 文法 $G'$。
+
+3. 计算文法中每个非终结符号的 FIRST 集合和 FOLLOW 集合。
+
+4. 为文法构造 LL(1) 分析表。
+
+## 三（50分）
+
+有如下文法 $G[S]$：
+
+$$
+\begin{aligned}
+S &\rightarrow S+T \mid T \\
+T &\rightarrow -N \mid N \mid (N) \\
+N &\rightarrow n
+\end{aligned}
+$$
+
+1. 给出该文法的拓广文法。
+
+2. 构造文法 $G$ 的 LR(1) 项目集规范族及识别其所有活前缀的 DFA。
+
+3. 判断该文法是否为 LR(1) 文法，简述理由。若是，继续做（4）。
+
+4. 构造该文法的 LR(1) 分析表。
+
+5. 判断该文法是否为 SLR(1) 文法，简述理由。
+
+6. 判断该文法是否为 LALR(1) 文法，简述理由。
