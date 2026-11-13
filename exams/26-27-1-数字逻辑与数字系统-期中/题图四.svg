@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="845" height="408" viewBox="0 0 845 408" role="img" aria-labelledby="title desc">
+  <title id="title">74283 加法器接法</title>
+  <desc id="desc">四位加法器 74283。和输出 S3 到 S0 向上引出，分别标为 Y3 到 Y0。A3 到 A0 向下接到 X3 到 X0。B3 到 B0 向下引出，图中没有外接标号。左侧进位 C3 先向左再向上引出。右侧进位 C0-1 接地。</desc>
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #111; stroke-width: 2.4; }
+      .wire { fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: butt; stroke-linejoin: miter; }
+      .gnd { fill: none; stroke: #111; stroke-width: 6; stroke-linecap: round; }
+      .var { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-weight: 700; font-style: italic; font-size: 28px; }
+      .pin { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-weight: 700; font-style: italic; font-size: 24px; }
+      .chip { fill: #111; font-family: "Times New Roman", "Noto Serif", SimSun, serif; font-weight: 700; font-style: normal; font-size: 22px; }
+      .sub { font-size: 0.68em; font-style: italic; }
+    </style>
+  </defs>
+  <rect id="background" width="845" height="408" fill="#fff"/>
+  <g id="diagram">
+    <rect id="ic-74283" class="box" x="105" y="103" width="598" height="180"/>
+
+    <g id="sum-wires" class="wire">
+      <line id="wire-y3" x1="238" y1="50" x2="238" y2="103"/>
+      <line id="wire-y2" x1="339" y1="50" x2="339" y2="103"/>
+      <line id="wire-y1" x1="440" y1="50" x2="440" y2="103"/>
+      <line id="wire-y0" x1="541" y1="50" x2="541" y2="103"/>
+    </g>
+
+    <g id="input-wires" class="wire">
+      <line id="wire-x3" x1="139" y1="283" x2="139" y2="328"/>
+      <line id="wire-x2" x1="208" y1="283" x2="208" y2="328"/>
+      <line id="wire-x1" x1="277" y1="283" x2="277" y2="328"/>
+      <line id="wire-x0" x1="345" y1="283" x2="345" y2="328"/>
+      <line id="stub-b3" x1="453" y1="283" x2="453" y2="328"/>
+      <line id="stub-b2" x1="522" y1="283" x2="522" y2="328"/>
+      <line id="stub-b1" x1="590" y1="283" x2="590" y2="328"/>
+      <line id="stub-b0" x1="659" y1="283" x2="659" y2="328"/>
+    </g>
+
+    <polyline id="wire-c3" class="wire" points="105,192 34,192 34,52"/>
+    <polyline id="wire-c0" class="wire" points="703,193 770,193 770,302"/>
+    <line id="ground" class="gnd" x1="747" y1="305" x2="793" y2="305"/>
+
+    <g id="labels">
+      <g id="sum-names" class="var">
+        <text x="238" y="44" text-anchor="middle">Y<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="339" y="44" text-anchor="middle">Y<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="440" y="44" text-anchor="middle">Y<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="541" y="44" text-anchor="middle">Y<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+      <g id="pin-s" class="pin">
+        <text x="238" y="134" text-anchor="middle">S<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="339" y="134" text-anchor="middle">S<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="440" y="134" text-anchor="middle">S<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="541" y="134" text-anchor="middle">S<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+      <text id="part" class="chip" x="404" y="200" text-anchor="middle">74283</text>
+      <text id="label-c3" class="pin" x="116" y="204">C<tspan class="sub" baseline-shift="sub">3</tspan></text>
+      <text id="label-c0" class="pin" x="688" y="202" text-anchor="end">C<tspan class="sub" baseline-shift="sub">0-1</tspan></text>
+      <g id="pin-a" class="pin">
+        <text x="139" y="274" text-anchor="middle">A<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="208" y="274" text-anchor="middle">A<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="277" y="274" text-anchor="middle">A<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="345" y="274" text-anchor="middle">A<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+      <g id="pin-b" class="pin">
+        <text x="453" y="274" text-anchor="middle">B<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="522" y="274" text-anchor="middle">B<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="590" y="274" text-anchor="middle">B<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="659" y="274" text-anchor="middle">B<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+      <g id="x-names" class="var">
+        <text x="139" y="362" text-anchor="middle">X<tspan class="sub" baseline-shift="sub">3</tspan></text>
+        <text x="208" y="362" text-anchor="middle">X<tspan class="sub" baseline-shift="sub">2</tspan></text>
+        <text x="277" y="362" text-anchor="middle">X<tspan class="sub" baseline-shift="sub">1</tspan></text>
+        <text x="345" y="362" text-anchor="middle">X<tspan class="sub" baseline-shift="sub">0</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
