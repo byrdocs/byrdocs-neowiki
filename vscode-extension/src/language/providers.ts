@@ -13,6 +13,7 @@ import {
   findTagAtOffset,
   findTagNameAtOffset,
   getEnclosingChoicesBlock,
+  getOptionCorrectness,
   isOffsetIgnored,
 } from "../lib/parser";
 import { getDocumentState, clearDocumentState } from "../documentState";
@@ -262,11 +263,10 @@ export function createInlayHintsProvider(): vscode.InlayHintsProvider {
           continue;
         }
 
-        const isCorrect = tag.attributes.some(
-          (attribute) => attribute.name === "correct",
-        );
+        const isCorrect = getOptionCorrectness(tag);
         if (
-          !isCorrect &&
+          isCorrect === false &&
+          !tag.attributes.some((attribute) => attribute.name === "correct") &&
           !hasExplicitAnswersInChoicesBlock(documentState, choicesBlock)
         ) {
           continue;
@@ -277,7 +277,10 @@ export function createInlayHintsProvider(): vscode.InlayHintsProvider {
           continue;
         }
 
-        const label = isCorrect ? "正确答案" : "错误答案";
+        const label =
+          isCorrect === undefined
+            ? "移除答案标记"
+            : isCorrect ? "正确答案" : "错误答案";
 
         hints.push(
           createToggleInlayHint(
@@ -378,7 +381,13 @@ export async function toggleChoiceCorrectness(rawTarget: unknown): Promise<void>
     const correctAttribute = tag.attributes.find(
       (attribute) => attribute.name === "correct",
     );
-    if (correctAttribute) {
+    if (correctAttribute && getOptionCorrectness(tag) === false) {
+      edit.replace(
+        document.uri,
+        buildRange(document, correctAttribute.start, correctAttribute.fullEnd),
+        "correct",
+      );
+    } else if (correctAttribute) {
       const source = document.getText();
       let removeStart = correctAttribute.start;
       while (
@@ -442,7 +451,7 @@ function hasExplicitAnswersInChoicesBlock(
       tag.name === "Option" &&
       tag.start >= contentStart &&
       tag.start < contentEnd &&
-      tag.attributes.some((attribute) => attribute.name === "correct"),
+      getOptionCorrectness(tag) === true,
   );
 }
 
