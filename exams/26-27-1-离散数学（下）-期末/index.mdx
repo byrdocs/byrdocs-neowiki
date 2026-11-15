@@ -13,7 +13,7 @@
 ## 二、
 设集合 $A=\{1,2,3\}$。
 1. 写出集合 $A$ 上的所有等价关系。
-2. 在集合 $A\times A$ 上定义二元关系 $R$：对任意 $(u,v),(x,y)\in A\times A$，$(u,v)R(x,y)$ 当且仅当 $u+x=v+y$。证明 $R$ 是 $A\times A$ 上的等价关系。
+2. 在集合 $A\times A$ 上定义二元关系 $R$：对任意 $(u,v),(x,y)\in A\times A$，$(u,v)R(x,y)$ 当且仅当 $u+y=v+x$。证明 $R$ 是 $A\times A$ 上的等价关系。
 3. 确定关系 $R$ 在集合 $A\times A$ 上的划分。
 
 ## 三、
@@ -24,20 +24,19 @@
 
 下图为关系 $R$ 的有向图。
 
-1）计算 $R^2$。
-2）求 $R$ 的对称闭包。
-3）用 Warshall 算法求 $R$ 的传递闭包。
+1. 计算 $R^2$。
+2. 求 $R$ 的对称闭包。
+3. 用 Warshall 算法求 $R$ 的传递闭包。
 
 ## 四、
 1. 设集合 $S=\{a,b,c\}$，在 $S$ 的幂集上定义偏序关系 $\{(A,B)\mid A\subseteq B\}$，求该偏序的覆盖关系。
 （注：设 $(P,\preceq)$ 是偏序集。若 $x \prec y$，且不存在元素 $z\in S$ 满足 $x \prec z \prec y$，则称元素 $y$ 覆盖元素 $x$。所有满足“$y$ 覆盖 $x$”的有序对 $(x,y)$ 构成的集合，称为 $(P,\preceq)$ 的覆盖关系）
 
-2）画出幂集 $\mathcal{P}(S)$ 的 Hasse 图。设 $W=\{\emptyset,\{a\},\{b\},\{c\}\}$（其中 $W\subseteq \mathcal{P}(S)$），求集合 $W$ 的极大元、极小元、最小上界和最大下界。
+2. 画出幂集 $\mathcal{P}(S)$ 的 Hasse 图。设 $W=\{\emptyset,\{a\},\{b\},\{c\}\}$（其中 $W\subseteq \mathcal{P}(S)$），求集合 $W$ 的极大元、极小元、最小上界和最大下界。
 
 ## 五、
 设集合 $G=\{1,2,3,4\}$，定义二元运算 $\odot$：
-$$a\odot b=(a\cdot b)\bmod 5,\quad \forall a,b\in G$$
-， $\cdot$ 为普通乘法。证明 $(G,\odot)$ 是阿贝尔群。
+$a\odot b=(a\cdot b)\bmod 5,\quad \forall a,b\in G$，$\cdot$ 为普通乘法。证明 $(G,\odot)$ 是阿贝尔群。
 
 ## 六、
 设 $S=\{a,b\}$ 和 $T=\{u,v\}$ 是两个半群，各自的二元运算如下：
