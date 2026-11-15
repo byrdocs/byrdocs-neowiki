@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Combinational Logic Circuit (Full Adder)</title>
+  <desc id="desc">Three-input logic circuit with inputs A, B, and C feeding two XOR gates (=1) to produce F1, and an AND-OR-INVERT gate (&amp;, &gt;=1) followed by an inverter (1) to produce F2.</desc>
+  <defs>
+    <style>
+      .wire {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .gate-box {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 4;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
+      }
+      .gate-divider {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 3.5;
+      }
+      .bubble {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 3.5;
+      }
+      .junction {
+        fill: #111111;
+        stroke: none;
+      }
+      .gate-label {
+        fill: #111111;
+        font-family: "Noto Sans CJK SC", "Microsoft YaHei", "Segoe UI Symbol", Arial, sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        text-anchor: middle;
+      }
+      .var-label {
+        fill: #111111;
+        font-family: "Times New Roman", "STIX Two Text", Georgia, serif;
+        font-size: 36px;
+        font-style: italic;
+        font-weight: 700;
+      }
+      .sub-label {
+        font-style: normal;
+        font-size: 24px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+
+  <g id="circuit">
+    <!-- Signal wires -->
+    <g id="wires">
+      <!-- Primary input C and branch to AOI -->
+      <line id="wire-C-main" class="wire" x1="122" y1="50" x2="428" y2="50"/>
+      <polyline id="wire-C-branch" class="wire" points="398,50 398,232 428,232"/>
+
+      <!-- Primary input B and branch to AOI -->
+      <line id="wire-B-main" class="wire" x1="122" y1="112" x2="245" y2="112"/>
+      <polyline id="wire-B-branch" class="wire" points="215,112 215,325 428,325"/>
+
+      <!-- Primary input A and branch to AOI -->
+      <line id="wire-A-main" class="wire" x1="122" y1="172" x2="245" y2="172"/>
+      <polyline id="wire-A-branch" class="wire" points="184,172 184,378 428,378"/>
+
+      <!-- XOR1 output and branches to XOR2 and AOI -->
+      <line id="wire-xor1-out" class="wire" x1="325" y1="143" x2="366" y2="143"/>
+      <polyline id="wire-xor1-to-xor2" class="wire" points="366,143 366,114 428,114"/>
+      <polyline id="wire-xor1-to-aoi" class="wire" points="366,143 366,285 428,285"/>
+
+      <!-- XOR2 output F1 -->
+      <line id="wire-F1-out" class="wire" x1="508" y1="84" x2="830" y2="84"/>
+
+      <!-- AOI bubble to inverter -->
+      <line id="wire-aoi-to-inv" class="wire" x1="596" y1="305" x2="637" y2="305"/>
+
+      <!-- Inverter output F2 -->
+      <line id="wire-F2-out" class="wire" x1="731" y1="305" x2="820" y2="305"/>
+    </g>
+
+    <!-- Junction dots (only where wires electrically connect) -->
+    <g id="junctions">
+      <circle id="dot-A" class="junction" cx="184" cy="172" r="7"/>
+      <circle id="dot-B" class="junction" cx="215" cy="112" r="7"/>
+      <circle id="dot-xor1" class="junction" cx="366" cy="143" r="7"/>
+      <circle id="dot-C" class="junction" cx="398" cy="50" r="7"/>
+    </g>
+
+    <!-- Left XOR gate (=1) -->
+    <g id="gate-xor-1">
+      <rect class="gate-box" x="245" y="80" width="80" height="126"/>
+      <text class="gate-label" x="285" y="130">=1</text>
+    </g>
+
+    <!-- Top XOR gate (=1) -->
+    <g id="gate-xor-2">
+      <rect class="gate-box" x="428" y="21" width="80" height="126"/>
+      <text class="gate-label" x="468" y="71">=1</text>
+    </g>
+
+    <!-- AND-OR-INVERT gate (& / >=1) -->
+    <g id="gate-aoi">
+      <rect class="gate-box" x="428" y="210" width="152" height="190"/>
+      <line class="gate-divider" x1="506" y1="210" x2="506" y2="400"/>
+      <line class="gate-divider" x1="428" y1="305" x2="506" y2="305"/>
+      <text class="gate-label" x="467" y="268">&amp;</text>
+      <text class="gate-label" x="467" y="364">&amp;</text>
+      <text class="gate-label" x="543" y="272">&#x2A7E;1</text>
+      <circle id="aoi-output-bubble" class="bubble" cx="588" cy="305" r="8"/>
+    </g>
+
+    <!-- Inverter gate (1 with output inversion bubble) -->
+    <g id="gate-inverter">
+      <rect class="gate-box" x="637" y="241" width="78" height="128"/>
+      <text class="gate-label" x="676" y="289">1</text>
+      <circle id="inv-output-bubble" class="bubble" cx="723" cy="305" r="8"/>
+    </g>
+
+    <!-- Input and output labels -->
+    <g id="labels">
+      <text id="label-C" class="var-label" x="76" y="56">C</text>
+      <text id="label-B" class="var-label" x="76" y="118">B</text>
+      <text id="label-A" class="var-label" x="74" y="179">A</text>
+      <text id="label-F1" class="var-label" x="794" y="66">F<tspan class="sub-label" dy="7">1</tspan></text>
+      <text id="label-F2" class="var-label" x="786" y="285">F<tspan class="sub-label" dy="7">2</tspan></text>
+    </g>
+  </g>
+</svg>

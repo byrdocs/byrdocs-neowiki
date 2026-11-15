@@ -1,0 +1,331 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="960" viewBox="0 0 1060 960" role="img" aria-labelledby="title desc">
+  <title id="title">74LS85 Comparators and Multiplexers Circuit</title>
+  <desc id="desc">Two 4-bit magnitude comparators (74LS85) and two columns of four 2-to-1 multiplexers (MUX) selecting outputs Y0 to Y3 from inputs a0-a3, b0-b3, and c0-c3.</desc>
+  <defs>
+    <style>
+      .wire {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .box {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.4;
+        stroke-linejoin: miter;
+      }
+      .brace {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .terminal {
+        fill: #ffffff;
+        stroke: #111111;
+        stroke-width: 2;
+      }
+      .junction {
+        fill: #111111;
+      }
+      .chip-text {
+        fill: #111111;
+        font-family: "Times New Roman", "Liberation Serif", "Noto Serif CJK SC", Georgia, serif;
+        font-size: 23px;
+        font-weight: 700;
+      }
+      .pin-text {
+        fill: #111111;
+        font-family: "Times New Roman", "Liberation Serif", "Noto Serif CJK SC", Georgia, serif;
+        font-size: 21px;
+        font-weight: 600;
+      }
+      .var-text {
+        fill: #111111;
+        font-family: "Times New Roman", "Liberation Serif", "Noto Serif CJK SC", Georgia, serif;
+        font-size: 22px;
+        font-style: italic;
+        font-weight: 600;
+      }
+      .sub-text {
+        font-style: normal;
+        font-size: 15px;
+      }
+      .const-text {
+        fill: #111111;
+        font-family: "Times New Roman", "Liberation Serif", "Noto Serif CJK SC", Georgia, serif;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .dot-text {
+        fill: #111111;
+        font-family: "Times New Roman", Georgia, serif;
+        font-size: 26px;
+        font-weight: 700;
+      }
+    </style>
+
+    <!-- Reusable 4-bit Magnitude Comparator (74LS85) block: 180 x 350 -->
+    <g id="com-74ls85">
+      <rect class="box" x="0" y="0" width="180" height="350"/>
+      <!-- Left P pins -->
+      <text class="pin-text" x="12" y="34">0</text>
+      <text class="pin-text" x="12" y="62">1</text>
+      <text class="pin-text" x="12" y="90">2</text>
+      <text class="pin-text" x="12" y="118">3</text>
+      <path class="brace" d="M 27,22 C 33,22 33,26 33,36 L 33,57 C 33,65 36,69 41,70 C 36,71 33,75 33,83 L 33,104 C 33,114 33,118 27,118"/>
+      <text class="pin-text" x="46" y="77">P</text>
+
+      <!-- Left cascade pins -->
+      <text class="pin-text" x="12" y="150">&gt;</text>
+      <text class="pin-text" x="12" y="180">=</text>
+      <text class="pin-text" x="12" y="210">&lt;</text>
+
+      <!-- Left Q pins -->
+      <text class="pin-text" x="12" y="242">0</text>
+      <text class="pin-text" x="12" y="270">1</text>
+      <text class="pin-text" x="12" y="298">2</text>
+      <text class="pin-text" x="12" y="326">3</text>
+      <path class="brace" d="M 27,230 C 33,230 33,234 33,244 L 33,265 C 33,273 36,277 41,278 C 36,279 33,283 33,291 L 33,312 C 33,322 33,326 27,326"/>
+      <text class="pin-text" x="46" y="285">Q</text>
+
+      <!-- Right chip title, outputs, and model -->
+      <text class="chip-text" x="156" y="34" text-anchor="end">COM</text>
+      <text class="pin-text" x="172" y="151" text-anchor="end">P&gt;Q</text>
+      <text class="pin-text" x="172" y="188" text-anchor="end">P=Q</text>
+      <text class="pin-text" x="172" y="226" text-anchor="end">P&lt;Q</text>
+      <text class="chip-text" x="166" y="332" text-anchor="end">74LS85</text>
+    </g>
+
+    <!-- Reusable 2-to-1 Multiplexer (MUX) block: 104 x 136 -->
+    <g id="mux-block">
+      <rect class="box" x="0" y="0" width="104" height="136"/>
+      <text class="chip-text" x="62" y="29" text-anchor="middle">MUX</text>
+      <text class="pin-text" x="10" y="53">D<tspan class="sub-text" baseline-shift="sub">1</tspan></text>
+      <text class="pin-text" x="10" y="85">D<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+      <text class="pin-text" x="10" y="119">A</text>
+      <text class="pin-text" x="95" y="85" text-anchor="end">Y</text>
+    </g>
+  </defs>
+
+  <!-- Background -->
+  <rect id="background" x="0" y="0" width="1060" height="960" fill="#ffffff"/>
+
+  <!-- Comparator Instances -->
+  <g id="comparators">
+    <use id="com-top" href="#com-74ls85" x="240" y="80"/>
+    <use id="com-bot" href="#com-74ls85" x="240" y="500"/>
+  </g>
+
+  <!-- Left Multiplexer Column (a_i, b_i) -->
+  <g id="mux-left-column">
+    <use id="mux-l0" href="#mux-block" x="554" y="26"/>
+    <use id="mux-l1" href="#mux-block" x="554" y="260"/>
+    <use id="mux-l2" href="#mux-block" x="554" y="500"/>
+    <use id="mux-l3" href="#mux-block" x="554" y="716"/>
+  </g>
+
+  <!-- Right Multiplexer Column (c_i, MUX_L_i -> Y_i) -->
+  <g id="mux-right-column">
+    <use id="mux-r0" href="#mux-block" x="796" y="26"/>
+    <use id="mux-r1" href="#mux-block" x="796" y="260"/>
+    <use id="mux-r2" href="#mux-block" x="796" y="500"/>
+    <use id="mux-r3" href="#mux-block" x="796" y="716"/>
+  </g>
+
+  <!-- Wires and Connections -->
+  <g id="wires">
+    <!-- COM_top P inputs (a0..a3) -->
+    <line class="wire" x1="190" y1="107" x2="240" y2="107"/>
+    <line class="wire" x1="190" y1="135" x2="240" y2="135"/>
+    <line class="wire" x1="190" y1="163" x2="240" y2="163"/>
+    <line class="wire" x1="190" y1="191" x2="240" y2="191"/>
+
+    <!-- COM_top cascade inputs (>, =, <) -->
+    <polyline class="wire" points="240,223 114,223 114,310"/>
+    <line class="wire" x1="98" y1="310" x2="130" y2="310"/>
+    <line class="wire" x1="84" y1="253" x2="240" y2="253"/>
+    <line class="wire" x1="114" y1="283" x2="240" y2="283"/>
+
+    <!-- COM_top Q inputs (b0..b3) -->
+    <line class="wire" x1="190" y1="315" x2="240" y2="315"/>
+    <line class="wire" x1="190" y1="343" x2="240" y2="343"/>
+    <line class="wire" x1="190" y1="371" x2="240" y2="371"/>
+    <line class="wire" x1="190" y1="399" x2="240" y2="399"/>
+
+    <!-- COM_top P=Q unconnected stub -->
+    <line class="wire" x1="420" y1="260" x2="444" y2="260"/>
+
+    <!-- COM_top P<Q driving left MUX select bus (MUX_L0..L3 pin A) -->
+    <line class="wire" x1="420" y1="299" x2="478" y2="299"/>
+    <polyline class="wire" points="554,138 478,138 478,828 554,828"/>
+    <line class="wire" x1="478" y1="372" x2="554" y2="372"/>
+    <line class="wire" x1="478" y1="612" x2="554" y2="612"/>
+
+    <!-- COM_bot P inputs (c0..c3) -->
+    <line class="wire" x1="190" y1="527" x2="240" y2="527"/>
+    <line class="wire" x1="190" y1="555" x2="240" y2="555"/>
+    <line class="wire" x1="190" y1="583" x2="240" y2="583"/>
+    <line class="wire" x1="190" y1="611" x2="240" y2="611"/>
+
+    <!-- COM_bot cascade inputs (>, =, <) -->
+    <polyline class="wire" points="240,643 114,643 114,730"/>
+    <line class="wire" x1="98" y1="730" x2="130" y2="730"/>
+    <line class="wire" x1="84" y1="673" x2="240" y2="673"/>
+    <line class="wire" x1="114" y1="703" x2="240" y2="703"/>
+
+    <!-- COM_bot P<Q driving right MUX select bus (MUX_R0..R3 pin A) -->
+    <polyline class="wire" points="420,719 446,719 446,448 726,448"/>
+    <polyline class="wire" points="796,138 726,138 726,828 796,828"/>
+    <line class="wire" x1="726" y1="372" x2="796" y2="372"/>
+    <line class="wire" x1="726" y1="612" x2="796" y2="612"/>
+
+    <!-- Left MUX inputs (a0..a3, b0..b3) -->
+    <line class="wire" x1="532" y1="72" x2="554" y2="72"/>
+    <line class="wire" x1="532" y1="104" x2="554" y2="104"/>
+    <line class="wire" x1="532" y1="306" x2="554" y2="306"/>
+    <line class="wire" x1="532" y1="338" x2="554" y2="338"/>
+    <line class="wire" x1="532" y1="546" x2="554" y2="546"/>
+    <line class="wire" x1="532" y1="578" x2="554" y2="578"/>
+    <line class="wire" x1="532" y1="762" x2="554" y2="762"/>
+    <line class="wire" x1="532" y1="794" x2="554" y2="794"/>
+
+    <!-- MUX_L outputs Y to MUX_R inputs D0 -->
+    <line class="wire" x1="658" y1="104" x2="796" y2="104"/>
+    <line class="wire" x1="658" y1="338" x2="796" y2="338"/>
+    <line class="wire" x1="658" y1="578" x2="796" y2="578"/>
+    <line class="wire" x1="658" y1="794" x2="796" y2="794"/>
+
+    <!-- Feedback bus from MUX_L0..L3 outputs back to COM_bot Q0..Q3 -->
+    <polyline class="wire" points="712,104 712,922 166,922 166,735 240,735"/>
+    <polyline class="wire" points="698,338 698,906 182,906 182,763 240,763"/>
+    <polyline class="wire" points="684,578 684,890 198,890 198,791 240,791"/>
+    <polyline class="wire" points="670,794 670,874 214,874 214,819 240,819"/>
+
+    <!-- Right MUX D1 inputs (c0..c3) -->
+    <line class="wire" x1="770" y1="72" x2="796" y2="72"/>
+    <line class="wire" x1="770" y1="306" x2="796" y2="306"/>
+    <line class="wire" x1="770" y1="546" x2="796" y2="546"/>
+    <line class="wire" x1="770" y1="762" x2="796" y2="762"/>
+
+    <!-- Right MUX Y outputs (Y0..Y3) -->
+    <line class="wire" x1="900" y1="104" x2="948" y2="104"/>
+    <line class="wire" x1="900" y1="338" x2="948" y2="338"/>
+    <line class="wire" x1="900" y1="578" x2="948" y2="578"/>
+    <line class="wire" x1="900" y1="794" x2="948" y2="794"/>
+  </g>
+
+  <!-- Junction Dots -->
+  <g id="junctions">
+    <!-- Ground ties -->
+    <circle class="junction" cx="114" cy="283" r="6"/>
+    <circle class="junction" cx="114" cy="703" r="6"/>
+    <!-- Left MUX select bus -->
+    <circle class="junction" cx="478" cy="299" r="6"/>
+    <circle class="junction" cx="478" cy="372" r="6"/>
+    <circle class="junction" cx="478" cy="612" r="6"/>
+    <!-- Feedback taps on MUX_L outputs -->
+    <circle class="junction" cx="712" cy="104" r="6"/>
+    <circle class="junction" cx="698" cy="338" r="6"/>
+    <circle class="junction" cx="684" cy="578" r="6"/>
+    <circle class="junction" cx="670" cy="794" r="6"/>
+    <!-- Right MUX select bus -->
+    <circle class="junction" cx="726" cy="448" r="6"/>
+    <circle class="junction" cx="726" cy="372" r="6"/>
+    <circle class="junction" cx="726" cy="612" r="6"/>
+  </g>
+
+  <!-- Hollow Input/Output Terminal Circles -->
+  <g id="terminals">
+    <!-- COM_top P -->
+    <circle class="terminal" cx="186" cy="107" r="4.5"/>
+    <circle class="terminal" cx="186" cy="135" r="4.5"/>
+    <circle class="terminal" cx="186" cy="163" r="4.5"/>
+    <circle class="terminal" cx="186" cy="191" r="4.5"/>
+    <!-- COM_top '=' -->
+    <circle class="terminal" cx="80" cy="253" r="4.5"/>
+    <!-- COM_top Q -->
+    <circle class="terminal" cx="186" cy="315" r="4.5"/>
+    <circle class="terminal" cx="186" cy="343" r="4.5"/>
+    <circle class="terminal" cx="186" cy="371" r="4.5"/>
+    <circle class="terminal" cx="186" cy="399" r="4.5"/>
+
+    <!-- COM_bot P -->
+    <circle class="terminal" cx="186" cy="527" r="4.5"/>
+    <circle class="terminal" cx="186" cy="555" r="4.5"/>
+    <circle class="terminal" cx="186" cy="583" r="4.5"/>
+    <circle class="terminal" cx="186" cy="611" r="4.5"/>
+    <!-- COM_bot '=' -->
+    <circle class="terminal" cx="80" cy="673" r="4.5"/>
+
+    <!-- Left MUX a_i, b_i -->
+    <circle class="terminal" cx="528" cy="72" r="4.5"/>
+    <circle class="terminal" cx="528" cy="104" r="4.5"/>
+    <circle class="terminal" cx="528" cy="306" r="4.5"/>
+    <circle class="terminal" cx="528" cy="338" r="4.5"/>
+    <circle class="terminal" cx="528" cy="546" r="4.5"/>
+    <circle class="terminal" cx="528" cy="578" r="4.5"/>
+    <circle class="terminal" cx="528" cy="762" r="4.5"/>
+    <circle class="terminal" cx="528" cy="794" r="4.5"/>
+
+    <!-- Right MUX c_i -->
+    <circle class="terminal" cx="766" cy="72" r="4.5"/>
+    <circle class="terminal" cx="766" cy="306" r="4.5"/>
+    <circle class="terminal" cx="766" cy="546" r="4.5"/>
+    <circle class="terminal" cx="766" cy="762" r="4.5"/>
+
+    <!-- Right MUX Y_i -->
+    <circle class="terminal" cx="952" cy="104" r="4.5"/>
+    <circle class="terminal" cx="952" cy="338" r="4.5"/>
+    <circle class="terminal" cx="952" cy="578" r="4.5"/>
+    <circle class="terminal" cx="952" cy="794" r="4.5"/>
+  </g>
+
+  <!-- External Signal Labels -->
+  <g id="labels">
+    <!-- COM_top P labels -->
+    <text class="var-text" x="172" y="112" text-anchor="end">a<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="dot-text" x="164" y="138" text-anchor="middle">.</text>
+    <text class="dot-text" x="164" y="166" text-anchor="middle">.</text>
+    <text class="var-text" x="172" y="196" text-anchor="end">a<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+    <text class="const-text" x="80" y="232" text-anchor="middle">‘1’</text>
+
+    <!-- COM_top Q labels -->
+    <text class="var-text" x="172" y="320" text-anchor="end">b<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="dot-text" x="164" y="346" text-anchor="middle">.</text>
+    <text class="dot-text" x="164" y="374" text-anchor="middle">.</text>
+    <text class="var-text" x="172" y="404" text-anchor="end">b<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+
+    <!-- COM_bot P labels -->
+    <text class="var-text" x="172" y="532" text-anchor="end">c<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="dot-text" x="164" y="558" text-anchor="middle">.</text>
+    <text class="dot-text" x="164" y="586" text-anchor="middle">.</text>
+    <text class="var-text" x="172" y="616" text-anchor="end">c<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+    <text class="const-text" x="80" y="652" text-anchor="middle">‘1’</text>
+
+    <!-- Left MUX input labels -->
+    <text class="var-text" x="518" y="77" text-anchor="end">a<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="var-text" x="518" y="109" text-anchor="end">b<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="var-text" x="518" y="311" text-anchor="end">a<tspan class="sub-text" baseline-shift="sub">1</tspan></text>
+    <text class="var-text" x="518" y="343" text-anchor="end">b<tspan class="sub-text" baseline-shift="sub">1</tspan></text>
+    <text class="var-text" x="518" y="551" text-anchor="end">a<tspan class="sub-text" baseline-shift="sub">2</tspan></text>
+    <text class="var-text" x="518" y="583" text-anchor="end">b<tspan class="sub-text" baseline-shift="sub">2</tspan></text>
+    <text class="var-text" x="518" y="767" text-anchor="end">a<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+    <text class="var-text" x="518" y="799" text-anchor="end">b<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+
+    <!-- Right MUX c_i input labels -->
+    <text class="var-text" x="758" y="63" text-anchor="end">c<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="var-text" x="758" y="297" text-anchor="end">c<tspan class="sub-text" baseline-shift="sub">1</tspan></text>
+    <text class="var-text" x="758" y="537" text-anchor="end">c<tspan class="sub-text" baseline-shift="sub">2</tspan></text>
+    <text class="var-text" x="758" y="753" text-anchor="end">c<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+
+    <!-- Right MUX Y_i output labels -->
+    <text class="var-text" x="966" y="109" text-anchor="start">Y<tspan class="sub-text" baseline-shift="sub">0</tspan></text>
+    <text class="var-text" x="966" y="343" text-anchor="start">Y<tspan class="sub-text" baseline-shift="sub">1</tspan></text>
+    <text class="var-text" x="966" y="583" text-anchor="start">Y<tspan class="sub-text" baseline-shift="sub">2</tspan></text>
+    <text class="var-text" x="966" y="799" text-anchor="start">Y<tspan class="sub-text" baseline-shift="sub">3</tspan></text>
+  </g>
+</svg>
