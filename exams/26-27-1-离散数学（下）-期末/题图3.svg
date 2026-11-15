@@ -1,0 +1,37 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 顶点 -->
+  <circle cx="250" cy="200" r="6" fill="black"/>
+  <text x="250" y="188" font-size="20" text-anchor="middle">5</text>
+
+  <circle cx="180" cy="260" r="6" fill="black"/>
+  <text x="162" y="266" font-size="20" text-anchor="middle">4</text>
+
+  <circle cx="320" cy="260" r="6" fill="black"/>
+  <text x="338" y="266" font-size="20" text-anchor="middle">1</text>
+
+  <circle cx="140" cy="320" r="6" fill="black"/>
+  <text x="122" y="326" font-size="20" text-anchor="middle">3</text>
+
+  <circle cx="250" cy="340" r="6" fill="black"/>
+  <text x="250" y="372" font-size="20" text-anchor="middle">2</text>
+
+  <circle cx="360" cy="170" r="6" fill="black"/>
+  <text x="378" y="176" font-size="20" text-anchor="middle">6</text>
+
+  <!-- 箭头样式：使用marker定义标准箭头 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- 边 -->
+  <!-- 5 → 4 -->
+  <line x1="242" y1="206" x2="188" y2="254" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- 5 → 1 -->
+  <line x1="258" y1="206" x2="312" y2="254" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- 2 → 5 -->
+  <line x1="250" y1="332" x2="250" y2="208" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- 1 → 3 -->
+  <line x1="312" y1="260" x2="148" y2="320" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+</svg>
