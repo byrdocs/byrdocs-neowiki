@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="870" height="578" viewBox="60 0 580 385" role="img" aria-labelledby="title desc">
+  <title id="title">CMOS Two-Input Logic Gate with Open-Drain Output Stage</title>
+  <desc id="desc">A two-input CMOS NAND stage (inputs A and B) driving a CMOS inverter stage, which drives an open-drain NMOS output transistor at terminal F with an optional dashed pull-up resistor RL to VDD1.</desc>
+  <defs>
+    <style>
+      .wire {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .dashed-wire {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.3;
+        stroke-dasharray: 7 5;
+        stroke-linecap: butt;
+        stroke-linejoin: round;
+      }
+      .channel {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.6;
+        stroke-linecap: butt;
+      }
+      .arrow-head {
+        fill: #111111;
+        stroke: none;
+      }
+      .junction {
+        fill: #111111;
+        stroke: none;
+      }
+      .terminal {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.2;
+      }
+      .ground {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.8;
+        stroke-linecap: round;
+      }
+      .label {
+        fill: #111111;
+        font-family: "Times New Roman", "STIX Two Text", Georgia, serif;
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 700;
+      }
+      .sub {
+        font-size: 16px;
+        font-style: italic;
+      }
+      .sub-num {
+        font-size: 16px;
+        font-style: normal;
+      }
+    </style>
+
+    <!-- Reusable 3-segment enhancement channel + gate bar + drain/source horizontal leads
+         Origin (0, 0) is the center of the middle channel segment. -->
+    <g id="mos-core">
+      <!-- Vertical gate electrode bar -->
+      <line class="wire" x1="-10" y1="-24" x2="-10" y2="24"/>
+      <!-- 3-segment broken channel -->
+      <line class="channel" x1="0" y1="-29" x2="0" y2="-19"/>
+      <line class="channel" x1="0" y1="-5" x2="0" y2="5"/>
+      <line class="channel" x1="0" y1="19" x2="0" y2="29"/>
+      <!-- Top & bottom drain/source leads -->
+      <line class="wire" x1="0" y1="-24" x2="22" y2="-24"/>
+      <line class="wire" x1="0" y1="24" x2="22" y2="24"/>
+    </g>
+
+    <!-- PMOS bulk arrow (pointing outward/right toward bulk line at x=36) -->
+    <g id="pmos-sym">
+      <use href="#mos-core"/>
+      <line class="wire" x1="0" y1="0" x2="22" y2="0"/>
+      <polygon class="arrow-head" points="20,-6 36,0 20,6"/>
+    </g>
+
+    <!-- NMOS bulk arrow (pointing inward/left toward channel at x=0) -->
+    <g id="nmos-sym">
+      <use href="#mos-core"/>
+      <polygon class="arrow-head" points="0,0 16,-6 16,6"/>
+      <line class="wire" x1="16" y1="0" x2="36" y2="0"/>
+    </g>
+  </defs>
+
+  <g id="circuit">
+    <!-- Supply rail and input/interconnect wires -->
+    <g id="wires">
+      <!-- VDD rail -->
+      <line id="wire-vdd-rail" class="wire" x1="222" y1="20" x2="446" y2="20"/>
+
+      <!-- Input A and branch to PMOS2 -->
+      <line id="wire-A" class="wire" x1="114" y1="227" x2="264" y2="227"/>
+      <polyline id="wire-A-to-pmos2" class="wire" points="250,227 250,61 264,61"/>
+
+      <!-- Input B and branch to PMOS1 -->
+      <line id="wire-B" class="wire" x1="114" y1="309" x2="264" y2="309"/>
+      <polyline id="wire-B-to-pmos1" class="wire" points="176,309 176,61 190,61"/>
+
+      <!-- PMOS1 source/bulk/drain -->
+      <line class="wire" x1="222" y1="61" x2="222" y2="20"/>
+      <polyline class="wire" points="236,85 236,37 222,37"/>
+      <polyline class="wire" points="222,109 222,144 296,144"/>
+
+      <!-- PMOS2 source/bulk/drain -->
+      <line class="wire" x1="296" y1="61" x2="296" y2="20"/>
+      <polyline class="wire" points="310,85 310,37 296,37"/>
+      <line class="wire" x1="296" y1="109" x2="296" y2="179"/>
+
+      <!-- NAND NMOS1 & NMOS2 drain/source/bulk -->
+      <line class="wire" x1="296" y1="227" x2="296" y2="261"/>
+      <line class="wire" x1="296" y1="309" x2="296" y2="361"/>
+      <polyline class="wire" points="310,203 310,335 296,335"/>
+
+      <!-- NAND output to Inverter gate bus -->
+      <polyline id="wire-nand-to-inv" class="wire" points="296,144 331,144 331,225 355,225"/>
+      <polyline id="wire-inv-gates" class="wire" points="384,161 355,161 355,292 384,292"/>
+
+      <!-- Inverter PMOS3 source/bulk/drain -->
+      <line class="wire" x1="414" y1="161" x2="414" y2="20"/>
+      <polyline class="wire" points="430,185 430,136 414,136"/>
+      <line class="wire" x1="414" y1="209" x2="414" y2="244"/>
+
+      <!-- Inverter NMOS3 source/bulk -->
+      <line class="wire" x1="414" y1="292" x2="414" y2="361"/>
+      <polyline class="wire" points="430,268 430,318 414,318"/>
+
+      <!-- Inverter output to Output NMOS4 gate -->
+      <line id="wire-inv-to-out" class="wire" x1="414" y1="226" x2="498" y2="226"/>
+
+      <!-- Output NMOS4 drain/source/bulk -->
+      <polyline id="wire-out-drain" class="wire" points="528,178 528,148 560,148"/>
+      <line class="wire" x1="528" y1="226" x2="528" y2="361"/>
+      <polyline class="wire" points="544,202 544,252 528,252"/>
+    </g>
+
+    <!-- Optional dashed pull-up resistor RL to VDD1 -->
+    <g id="pullup-load">
+      <line class="dashed-wire" x1="564" y1="32" x2="564" y2="68"/>
+      <rect class="dashed-wire" x="556" y="68" width="16" height="36"/>
+      <line class="dashed-wire" x1="564" y1="104" x2="564" y2="144"/>
+    </g>
+
+    <!-- MOSFET transistor cores -->
+    <g id="transistors">
+      <use id="pmos-1" href="#pmos-sym" x="200" y="85"/>
+      <use id="pmos-2" href="#pmos-sym" x="274" y="85"/>
+      <use id="nmos-1" href="#nmos-sym" x="274" y="203"/>
+      <use id="nmos-2" href="#nmos-sym" x="274" y="285"/>
+      <use id="pmos-3" href="#pmos-sym" x="394" y="185"/>
+      <use id="nmos-3" href="#nmos-sym" x="394" y="268"/>
+      <use id="nmos-4" href="#nmos-sym" x="508" y="202"/>
+    </g>
+
+    <!-- Ground bars -->
+    <g id="grounds">
+      <line id="gnd-nand" class="ground" x1="285" y1="361" x2="307" y2="361"/>
+      <line id="gnd-inv" class="ground" x1="403" y1="361" x2="425" y2="361"/>
+      <line id="gnd-out" class="ground" x1="517" y1="361" x2="539" y2="361"/>
+    </g>
+
+    <!-- Junction dots -->
+    <g id="junctions">
+      <!-- VDD rail T-junctions -->
+      <circle class="junction" cx="296" cy="20" r="3.5"/>
+      <circle class="junction" cx="414" cy="20" r="3.5"/>
+      <!-- Bulk-to-source ties -->
+      <circle class="junction" cx="222" cy="37" r="3.5"/>
+      <circle class="junction" cx="296" cy="37" r="3.5"/>
+      <circle class="junction" cx="414" cy="136" r="3.5"/>
+      <circle class="junction" cx="310" cy="285" r="3.5"/>
+      <circle class="junction" cx="296" cy="335" r="3.5"/>
+      <circle class="junction" cx="414" cy="318" r="3.5"/>
+      <circle class="junction" cx="528" cy="252" r="3.5"/>
+      <!-- Signal branch nodes -->
+      <circle class="junction" cx="250" cy="227" r="3.5"/>
+      <circle class="junction" cx="176" cy="309" r="3.5"/>
+      <circle class="junction" cx="296" cy="144" r="3.5"/>
+      <circle class="junction" cx="355" cy="225" r="3.5"/>
+      <circle class="junction" cx="414" cy="226" r="3.5"/>
+    </g>
+
+    <!-- External terminals -->
+    <g id="terminals">
+      <circle id="term-A" class="terminal" cx="110" cy="227" r="4"/>
+      <circle id="term-B" class="terminal" cx="110" cy="309" r="4"/>
+      <circle id="term-VDD" class="terminal" cx="450" cy="20" r="4"/>
+      <circle id="term-VDD1" class="terminal" cx="564" cy="28" r="4"/>
+      <circle id="term-F" class="terminal" cx="564" cy="148" r="4"/>
+    </g>
+
+    <!-- Labels -->
+    <g id="labels">
+      <text id="label-A" class="label" x="108" y="211" text-anchor="middle">A</text>
+      <text id="label-B" class="label" x="108" y="293" text-anchor="middle">B</text>
+      <text id="label-VDD" class="label" x="462" y="38">V<tspan class="sub" dy="5">DD</tspan></text>
+      <text id="label-VDD1" class="label" x="574" y="34">V<tspan class="sub" dy="5">DD<tspan class="sub-num">1</tspan></tspan></text>
+      <text id="label-RL" class="label" x="580" y="92">R<tspan class="sub" dy="5">L</tspan></text>
+      <text id="label-F" class="label" x="564" y="177" text-anchor="middle">F</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="510" height="205" viewBox="30 15 510 205" role="img" aria-labelledby="title desc">
+  <title id="title">Tri-State Inverting Buffer Driving a Two-Input NOR Gate</title>
+  <desc id="desc">A tri-state inverting buffer (inputs B and active-low EN) whose output connects to one input of a two-input NOR gate with second input A and output F.</desc>
+  <defs>
+    <style>
+      .wire, .gate-box, .bubble, .tri, .overbar {
+        fill: none;
+        stroke: #111111;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .bubble {
+        fill: #ffffff;
+      }
+      .gate-sym {
+        fill: #111111;
+        font-family: "Times New Roman", "STIX Two Text", Georgia, serif;
+        font-size: 24px;
+        text-anchor: middle;
+      }
+      .pin-label {
+        fill: #111111;
+        font-family: "Times New Roman", "STIX Two Text", Georgia, serif;
+        font-size: 21px;
+        text-anchor: middle;
+      }
+      .label {
+        fill: #111111;
+        font-family: "Times New Roman", "STIX Two Text", Georgia, serif;
+        font-size: 24px;
+        font-style: italic;
+      }
+    </style>
+  </defs>
+
+  <g id="diagram">
+    <!-- Wires -->
+    <g id="wires">
+      <line id="wire-B" class="wire" x1="104" y1="105" x2="158" y2="105"/>
+      <line id="wire-EN" class="wire" x1="104" y1="166" x2="147" y2="166"/>
+      <line id="wire-mid" class="wire" x1="256" y1="140" x2="340" y2="140"/>
+      <line id="wire-A" class="wire" x1="292" y1="74" x2="340" y2="74"/>
+      <line id="wire-F" class="wire" x1="440" y1="106" x2="500" y2="106"/>
+    </g>
+
+    <!-- Gate 1: Tri-state inverting buffer -->
+    <g id="gate-tristate">
+      <rect class="gate-box" x="158" y="77" width="86" height="125"/>
+      <text class="gate-sym" x="201" y="111">1</text>
+      <text class="pin-label" x="184" y="174">EN</text>
+      <line class="overbar" x1="168" y1="152" x2="200" y2="152"/>
+      <polygon id="tristate-tri" class="tri" points="214,127 234,127 224,145"/>
+      <circle id="bubble-EN" class="bubble" cx="152" cy="166" r="5.5"/>
+      <circle id="bubble-G1-out" class="bubble" cx="250" cy="140" r="5.5"/>
+    </g>
+
+    <!-- Gate 2: Two-input NOR gate -->
+    <g id="gate-nor">
+      <rect class="gate-box" x="340" y="44" width="88" height="125"/>
+      <text class="gate-sym" x="384" y="90">≥1</text>
+      <circle id="bubble-G2-out" class="bubble" cx="434" cy="106" r="5.5"/>
+    </g>
+
+    <!-- External labels -->
+    <g id="labels">
+      <text id="label-B" class="label" x="96" y="113" text-anchor="end">B</text>
+      <text id="label-EN" class="label" x="96" y="174" text-anchor="end">EN</text>
+      <line id="overbar-EN" class="overbar" x1="60" y1="151" x2="98" y2="151"/>
+      <text id="label-A" class="label" x="284" y="82" text-anchor="end">A</text>
+      <text id="label-F" class="label" x="476" y="97" text-anchor="middle">F</text>
+    </g>
+  </g>
+</svg>
