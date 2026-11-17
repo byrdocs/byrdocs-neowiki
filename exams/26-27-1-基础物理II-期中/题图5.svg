@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="480" viewBox="0 0 440 480" role="img" aria-labelledby="title desc">
+  <title id="title">Air-wedge interference fringes for testing surface flatness</title>
+  <desc id="desc">Top circular field of view showing six vertical interference fringes with semicircular leftward bends; bottom side view showing an inclined reference glass plate resting on the left edge of a horizontal tested surface with a narrow indentation and a thin spacer on the right.</desc>
+  <defs>
+    <style>
+      .stroke-main { fill: none; stroke: #111111; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+      .label { fill: #111111; font-family: Georgia, "Times New Roman", serif; font-size: 31px; font-weight: 700; }
+    </style>
+    <clipPath id="fov-clip">
+      <circle cx="218" cy="186" r="95" />
+    </clipPath>
+  </defs>
+
+  <g id="interference-pattern">
+    <g id="fringes" clip-path="url(#fov-clip)">
+      <path class="stroke-main" d="M 157 85 L 157 161 A 23 21 0 0 0 157 203 L 157 287" />
+      <path class="stroke-main" d="M 183 85 L 183 161 A 23 21 0 0 0 183 203 L 183 287" />
+      <path class="stroke-main" d="M 208 85 L 208 161 A 23 21 0 0 0 208 203 L 208 287" />
+      <path class="stroke-main" d="M 231 85 L 231 161 A 23 21 0 0 0 231 203 L 231 287" />
+      <path class="stroke-main" d="M 255 85 L 255 161 A 23 21 0 0 0 255 203 L 255 287" />
+      <path class="stroke-main" d="M 278 85 L 278 161 A 23 21 0 0 0 278 203 L 278 287" />
+    </g>
+    <circle class="stroke-main" cx="218" cy="186" r="95" />
+  </g>
+
+  <g id="air-wedge-setup">
+    <polygon class="stroke-main" points="92,331 350,275 359,327 101,383" />
+    <path class="stroke-main" d="M 101 383 L 284 381 L 286 389 L 289 381 L 362 379 L 363 439 L 102 442 Z" />
+    <line class="stroke-main" x1="289" y1="342" x2="286" y2="389" />
+    <line class="stroke-main" x1="304" y1="338" x2="299" y2="381" />
+  </g>
+
+  <g id="labels">
+    <text class="label" x="112" y="422">Tested surface</text>
+  </g>
+</svg>

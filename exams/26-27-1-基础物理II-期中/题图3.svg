@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360" role="img" aria-labelledby="title desc">
+  <title id="title">Young's double-slit interference setup with a thin film over slit S2</title>
+  <desc id="desc">Double-slit barrier on the left with slits S1 and S2, a thin film placed immediately behind slit S2, two dashed light paths converging at the central tick on the right observation screen.</desc>
+  <defs>
+    <style>
+      .barrier { fill: none; stroke: #111111; stroke-width: 6; stroke-linecap: butt; }
+      .screen { fill: none; stroke: #111111; stroke-width: 3.5; stroke-linecap: butt; }
+      .tick { fill: none; stroke: #111111; stroke-width: 3; stroke-linecap: butt; }
+      .tick-center { fill: none; stroke: #111111; stroke-width: 5.5; stroke-linecap: butt; }
+      .ray { fill: none; stroke: #111111; stroke-width: 2.5; stroke-dasharray: 5 4; }
+      .film { fill: none; stroke: #111111; stroke-width: 2.5; stroke-linejoin: miter; }
+      .leader { fill: none; stroke: #111111; stroke-width: 2; }
+      .label { fill: #111111; font-family: Arial, Helvetica, sans-serif; font-size: 26px; font-weight: 700; }
+      .sub { font-size: 18px; }
+    </style>
+  </defs>
+
+  <g id="double-slit-barrier">
+    <line class="barrier" x1="82" y1="74" x2="82" y2="147" />
+    <line class="barrier" x1="82" y1="159" x2="82" y2="235" />
+    <line class="barrier" x1="82" y1="247" x2="82" y2="322" />
+  </g>
+
+  <g id="thin-film">
+    <rect class="film" x="85" y="232" width="16" height="19" />
+    <line class="leader" x1="101" y1="251" x2="105" y2="258" />
+  </g>
+
+  <g id="light-paths">
+    <line class="ray" x1="82" y1="153" x2="438" y2="198" />
+    <line class="ray" x1="82" y1="241" x2="438" y2="198" />
+  </g>
+
+  <g id="observation-screen">
+    <line class="screen" x1="438" y1="74" x2="438" y2="322" />
+    <line class="tick" x1="438" y1="132" x2="458" y2="132" />
+    <line class="tick" x1="438" y1="154" x2="458" y2="154" />
+    <line class="tick" x1="438" y1="176" x2="458" y2="176" />
+    <line class="tick-center" x1="438" y1="198" x2="460" y2="198" />
+    <line class="tick" x1="438" y1="220" x2="458" y2="220" />
+    <line class="tick" x1="438" y1="242" x2="458" y2="242" />
+    <line class="tick" x1="438" y1="264" x2="458" y2="264" />
+  </g>
+
+  <g id="labels">
+    <text class="label" x="48" y="160">S<tspan class="sub" dy="5">1</tspan></text>
+    <text class="label" x="48" y="248">S<tspan class="sub" dy="5">2</tspan></text>
+    <text class="label" x="104" y="284">Thin film</text>
+    <text class="label" x="438" y="62" text-anchor="middle">Screen</text>
+  </g>
+</svg>
