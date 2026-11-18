@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <style>
+    .line { stroke: #111111; stroke-width: 1.8; fill: none; }
+    .box { stroke: #111111; stroke-width: 1.8; fill: #ffffff; }
+    .math { font-family: "Times New Roman", Times, serif; font-size: 20px; fill: #111111; }
+    .italic { font-style: italic; }
+    .sub { font-size: 14px; }
+    .small { font-size: 13px; }
+  </style>
+
+  <!-- H(f) span lines and arrows -->
+  <line x1="255" y1="30" x2="255" y2="94" class="line" />
+  <line x1="565" y1="30" x2="565" y2="94" class="line" />
+  <line x1="382" y1="54" x2="257" y2="54" class="line" marker-end="url(#arrow)" />
+  <line x1="438" y1="54" x2="563" y2="54" class="line" marker-end="url(#arrow)" />
+  <text x="410" y="61" text-anchor="middle" class="math">
+    <tspan class="italic">H</tspan>(<tspan class="italic">f</tspan>)
+  </text>
+
+  <!-- Left input signal s_A(t) -->
+  <text x="92" y="102" text-anchor="end" class="math">
+    <tspan class="italic">s</tspan><tspan dy="4" class="sub">A</tspan><tspan dy="-4">(<tspan class="italic">t</tspan>) =</tspan>
+  </text>
+  <text x="108" y="106" text-anchor="middle" class="math" style="font-size: 25px;">∑</text>
+  <text x="108" y="83" text-anchor="middle" class="math small">∞</text>
+  <text x="108" y="122" text-anchor="middle" class="math small">
+    <tspan class="italic">n</tspan>=−∞
+  </text>
+  <text x="124" y="102" text-anchor="start" class="math">
+    <tspan class="italic">b</tspan><tspan dy="4" class="sub italic">n</tspan><tspan dy="-4"> δ(<tspan class="italic">t</tspan> − <tspan class="italic">nT</tspan></tspan><tspan dy="4" class="sub">b</tspan><tspan dy="-4">)</tspan>
+  </text>
+
+  <!-- Main horizontal line through A to adder -->
+  <line x1="26" y1="142" x2="342" y2="142" class="line" marker-end="url(#arrow)" />
+
+  <!-- Node A -->
+  <circle cx="255" cy="142" r="3" fill="#111111" />
+  <text x="255" y="124" text-anchor="middle" class="math">A</text>
+
+  <!-- Delay branch T_b -->
+  <polyline points="255,142 255,212 280,212" class="line" />
+  <rect x="280" y="190" width="54" height="44" class="box" />
+  <text x="307" y="218" text-anchor="middle" class="math">
+    <tspan class="italic">T</tspan><tspan dy="4" class="sub">b</tspan>
+  </text>
+  <polyline points="334,212 360,212 360,160" class="line" marker-end="url(#arrow)" />
+
+  <!-- Adder -->
+  <circle cx="360" cy="142" r="16" class="box" />
+  <line x1="344" y1="142" x2="376" y2="142" class="line" />
+  <line x1="360" y1="126" x2="360" y2="158" class="line" />
+
+  <!-- a_n to g(t) -->
+  <line x1="376" y1="142" x2="436" y2="142" class="line" marker-end="url(#arrow)" />
+  <text x="406" y="124" text-anchor="middle" class="math">
+    <tspan class="italic">a</tspan><tspan dy="4" class="sub italic">n</tspan>
+  </text>
+
+  <!-- g(t) block -->
+  <rect x="438" y="110" width="76" height="64" class="box" />
+  <text x="476" y="148" text-anchor="middle" class="math">
+    <tspan class="italic">g</tspan>(<tspan class="italic">t</tspan>)
+  </text>
+
+  <!-- Output through node B -->
+  <line x1="514" y1="142" x2="660" y2="142" class="line" marker-end="url(#arrow)" />
+  <circle cx="565" cy="142" r="3" fill="#111111" />
+  <text x="565" y="124" text-anchor="middle" class="math">B</text>
+
+  <!-- Output formula s_B(t) -->
+  <text x="586" y="202" text-anchor="end" class="math">
+    <tspan class="italic">s</tspan><tspan dy="4" class="sub">B</tspan><tspan dy="-4">(<tspan class="italic">t</tspan>) =</tspan>
+  </text>
+  <text x="602" y="206" text-anchor="middle" class="math" style="font-size: 25px;">∑</text>
+  <text x="602" y="183" text-anchor="middle" class="math small">∞</text>
+  <text x="602" y="222" text-anchor="middle" class="math small">
+    <tspan class="italic">n</tspan>=−∞
+  </text>
+  <text x="618" y="202" text-anchor="start" class="math">
+    <tspan class="italic">a</tspan><tspan dy="4" class="sub italic">n</tspan><tspan dy="-4"> <tspan class="italic">g</tspan>(<tspan class="italic">t</tspan> − <tspan class="italic">nT</tspan></tspan><tspan dy="4" class="sub">b</tspan><tspan dy="-4">)</tspan>
+  </text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 190" width="660" height="190">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <style>
+    .line { stroke: #111111; stroke-width: 1.8; fill: none; }
+    .box { stroke: #111111; stroke-width: 1.8; fill: #ffffff; }
+    .math { font-family: "Times New Roman", Times, serif; font-size: 20px; fill: #111111; }
+    .italic { font-style: italic; }
+    .sub { font-size: 14px; }
+    .zh { font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif; font-size: 18px; fill: #111111; }
+  </style>
+
+  <!-- Input s(t) -->
+  <text x="22" y="74" text-anchor="start" class="math">
+    <tspan class="italic">s</tspan>(<tspan class="italic">t</tspan>)
+  </text>
+  <line x1="58" y1="68" x2="100" y2="68" class="line" marker-end="url(#arrow)" />
+
+  <!-- Adder -->
+  <circle cx="118" cy="68" r="16" class="box" />
+  <line x1="102" y1="68" x2="134" y2="68" class="line" />
+  <line x1="118" y1="52" x2="118" y2="84" class="line" />
+
+  <!-- Noise n_w(t) -->
+  <line x1="118" y1="138" x2="118" y2="86" class="line" marker-end="url(#arrow)" />
+  <text x="118" y="162" text-anchor="middle" class="math">
+    <tspan class="italic">n</tspan><tspan dy="4" class="sub italic">w</tspan><tspan dy="-4">(<tspan class="italic">t</tspan>)</tspan>
+  </text>
+
+  <!-- BPF -->
+  <line x1="134" y1="68" x2="180" y2="68" class="line" marker-end="url(#arrow)" />
+  <rect x="182" y="38" width="118" height="60" class="box" />
+  <text x="241" y="62" text-anchor="middle" class="zh" style="font-size: 19px;">BPF</text>
+  <text x="241" y="86" text-anchor="middle" class="zh">带宽为2<tspan class="math italic" style="font-size: 18px;">W</tspan></text>
+
+  <!-- To multiplier -->
+  <line x1="300" y1="68" x2="346" y2="68" class="line" marker-end="url(#arrow)" />
+
+  <!-- Multiplier -->
+  <circle cx="364" cy="68" r="16" class="box" />
+  <line x1="352.7" y1="56.7" x2="375.3" y2="79.3" class="line" />
+  <line x1="352.7" y1="79.3" x2="375.3" y2="56.7" class="line" />
+
+  <!-- Local carrier -->
+  <line x1="364" y1="138" x2="364" y2="86" class="line" marker-end="url(#arrow)" />
+  <text x="364" y="162" text-anchor="middle" class="math">
+    cos(2π<tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan><tspan dy="-4" class="italic">t</tspan>)
+  </text>
+
+  <!-- To LPF -->
+  <line x1="380" y1="68" x2="426" y2="68" class="line" marker-end="url(#arrow)" />
+
+  <!-- LPF -->
+  <rect x="428" y="38" width="118" height="60" class="box" />
+  <text x="487" y="62" text-anchor="middle" class="zh" style="font-size: 19px;">LPF</text>
+  <text x="487" y="86" text-anchor="middle" class="zh">带宽为<tspan class="math italic" style="font-size: 18px;">W</tspan></text>
+
+  <!-- Output -->
+  <line x1="546" y1="68" x2="626" y2="68" class="line" marker-end="url(#arrow)" />
+</svg>

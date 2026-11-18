@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#111111" />
+    </marker>
+  </defs>
+
+  <style>
+    .axis { stroke: #111111; stroke-width: 1.8; fill: none; }
+    .curve { stroke: #111111; stroke-width: 2; fill: none; stroke-linejoin: round; }
+    .dashed { stroke: #111111; stroke-width: 1.6; stroke-dasharray: 7,6; fill: none; }
+    .math { font-family: "Times New Roman", Times, serif; font-size: 20px; fill: #111111; }
+    .italic { font-style: italic; }
+    .sub { font-size: 14px; }
+  </style>
+
+  <!-- Axes -->
+  <line x1="36" y1="220" x2="604" y2="220" class="axis" marker-end="url(#arrow)" />
+  <line x1="320" y1="220" x2="320" y2="30" class="axis" marker-end="url(#arrow)" />
+
+  <!-- Vertical axis labels -->
+  <text x="334" y="48" text-anchor="start" class="math">
+    <tspan class="italic">P</tspan><tspan dy="4" class="sub italic">s</tspan><tspan dy="-4">(<tspan class="italic">f</tspan>)</tspan>
+  </text>
+  <text x="308" y="88" text-anchor="end" class="math">1</text>
+  <text x="320" y="246" text-anchor="middle" class="math">0</text>
+
+  <!-- Dashed level line at 1 -->
+  <line x1="202" y1="92" x2="438" y2="92" class="dashed" />
+
+  <!-- Left V-shape: [-f_c - W, -f_c + W] -->
+  <polyline points="82,220 82,92 142,220 202,92 202,220" class="curve" />
+  <line x1="142" y1="220" x2="142" y2="242" class="axis" />
+  <text x="80" y="246" text-anchor="middle" class="math">
+    −<tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan><tspan dy="-4"> − </tspan><tspan class="italic">W</tspan>
+  </text>
+  <text x="142" y="268" text-anchor="middle" class="math">
+    −<tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan>
+  </text>
+  <text x="206" y="246" text-anchor="middle" class="math">
+    −<tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan><tspan dy="-4"> + </tspan><tspan class="italic">W</tspan>
+  </text>
+
+  <!-- Right V-shape: [f_c - W, f_c + W] -->
+  <polyline points="438,220 438,92 498,220 558,92 558,220" class="curve" />
+  <line x1="498" y1="220" x2="498" y2="242" class="axis" />
+  <text x="436" y="246" text-anchor="middle" class="math">
+    <tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan><tspan dy="-4"> − </tspan><tspan class="italic">W</tspan>
+  </text>
+  <text x="498" y="268" text-anchor="middle" class="math">
+    <tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan>
+  </text>
+  <text x="560" y="246" text-anchor="middle" class="math">
+    <tspan class="italic">f</tspan><tspan dy="4" class="sub italic">c</tspan><tspan dy="-4"> + </tspan><tspan class="italic">W</tspan>
+  </text>
+</svg>
