@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" width="760" height="250">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#111111" />
+    </marker>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <style>
+    .line { stroke: #111111; stroke-width: 1.8; fill: none; }
+    .box { stroke: #111111; stroke-width: 1.8; fill: #ffffff; }
+    .math { font-family: "Times New Roman", Times, serif; font-size: 20px; fill: #111111; }
+    .italic { font-style: italic; }
+    .sub { font-size: 14px; }
+    .zh { font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif; font-size: 18px; fill: #111111; }
+  </style>
+
+  <!-- Left waveform g(t) = h(t) -->
+  <text x="98" y="42" text-anchor="middle" class="math">
+    <tspan class="italic">g</tspan>(<tspan class="italic">t</tspan>) = <tspan class="italic">h</tspan>(<tspan class="italic">t</tspan>)
+  </text>
+  <line x1="78" y1="190" x2="78" y2="62" class="line" marker-end="url(#arrow)" />
+  <line x1="78" y1="190" x2="212" y2="190" class="line" marker-end="url(#arrow)" />
+  <text x="224" y="195" text-anchor="start" class="math italic">t</text>
+
+  <!-- Rectangular pulse -->
+  <polyline points="78,106 156,106 156,190" class="line" />
+  <text x="64" y="112" text-anchor="end" class="math">1</text>
+  <text x="156" y="214" text-anchor="middle" class="math">1</text>
+
+  <!-- Right receiver diagram -->
+  <text x="298" y="128" text-anchor="middle" class="math">
+    <tspan class="italic">s</tspan><tspan dy="4" class="sub italic">i</tspan><tspan dy="-4">(<tspan class="italic">t</tspan>)</tspan>
+  </text>
+  <text x="298" y="156" text-anchor="middle" class="math" style="font-size: 17px;">
+    <tspan class="italic">i</tspan> = 1, 2
+  </text>
+
+  <line x1="324" y1="134" x2="356" y2="134" class="line" marker-end="url(#arrow)" />
+
+  <!-- Adder -->
+  <circle cx="374" cy="134" r="16" class="box" />
+  <line x1="358" y1="134" x2="390" y2="134" class="line" />
+  <line x1="374" y1="118" x2="374" y2="150" class="line" />
+
+  <!-- Noise n_w(t) -->
+  <line x1="374" y1="196" x2="374" y2="152" class="line" marker-end="url(#arrow)" />
+  <text x="374" y="220" text-anchor="middle" class="math">
+    <tspan class="italic">n</tspan><tspan dy="4" class="sub italic">w</tspan><tspan dy="-4">(<tspan class="italic">t</tspan>)</tspan>
+  </text>
+
+  <!-- r(t) to h(t) -->
+  <line x1="390" y1="134" x2="438" y2="134" class="line" marker-end="url(#arrow)" />
+  <text x="414" y="116" text-anchor="middle" class="math">
+    <tspan class="italic">r</tspan>(<tspan class="italic">t</tspan>)
+  </text>
+
+  <!-- h(t) block -->
+  <rect x="440" y="106" width="66" height="56" class="box" />
+  <text x="473" y="140" text-anchor="middle" class="math">
+    <tspan class="italic">h</tspan>(<tspan class="italic">t</tspan>)
+  </text>
+
+  <!-- y(t) to sampler switch -->
+  <line x1="506" y1="134" x2="554" y2="134" class="line" marker-end="url(#arrow)" />
+  <text x="530" y="116" text-anchor="middle" class="math">
+    <tspan class="italic">y</tspan>(<tspan class="italic">t</tspan>)
+  </text>
+
+  <!-- Sampler switch t = t_0 -->
+  <circle cx="560" cy="134" r="4.5" class="box" />
+  <circle cx="610" cy="134" r="4.5" class="box" />
+  <line x1="606.5" y1="131" x2="568" y2="96" class="line" />
+  <path d="M 578 84 Q 560 92 560 124" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#blue-arrow)" />
+  <text x="585" y="64" text-anchor="middle" class="math">
+    <tspan class="italic">t</tspan> = <tspan class="italic">t</tspan><tspan dy="4" class="sub">0</tspan>
+  </text>
+
+  <!-- l to decision block -->
+  <line x1="614.5" y1="134" x2="658" y2="134" class="line" />
+  <text x="636" y="116" text-anchor="middle" class="math italic">l</text>
+
+  <!-- 判决 block -->
+  <rect x="658" y="96" width="38" height="76" class="box" />
+  <text x="677" y="126" text-anchor="middle" class="zh">判</text>
+  <text x="677" y="154" text-anchor="middle" class="zh">决</text>
+
+  <!-- Output -->
+  <line x1="696" y1="134" x2="738" y2="134" class="line" marker-end="url(#arrow)" />
+</svg>
