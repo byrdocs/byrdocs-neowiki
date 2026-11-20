@@ -1,0 +1,236 @@
+---
+时间: 2019-2020学年第一学期
+科目: 信号与系统
+阶段: 期中
+类型: 本科
+答案完成度: 完整
+学院:
+- 信息与通信工程学院
+---
+
+## 一、填空题（每空 2 分，共 40 分）
+
+1. $\int_{-\infty}^{\infty}(t+\sin t)\delta\left(t-\frac\pi6\right)\mathrm{d}t=$<Blank>$\frac\pi6+\frac12$</Blank>。
+
+1. $\int_{-\infty}^t u(\tau-0.5)\mathrm{d}\tau=$<Blank>$(t-0.5)u(t-0.5)$ 或 $r(t-0.5), r(t)=tu(t)$</Blank>。
+
+1. 信号 $10\mathrm{Sa}(10\pi t)$ 的傅里叶变换为<Blank>$u(\omega+10\pi)-u(\omega-10\pi)$ 或 $G_{20\pi}(\omega)$</Blank>。
+
+1. 已知 $f(t)$ 的频带宽度为 $W$，则 $f(2t)$ 的频带宽度为 <Blank>$2W$</Blank>。
+
+1. 试判断 $2e^{-2}u(-t)$ 属于 <Blank>功率</Blank> （功率/能量）信号。
+
+1. 系统的全响应可分解为零输入响应与零状态响应两部分响应之和，又可分解为 <Blank>自由</Blank> 响应及强迫响应两部分响应之和。
+
+1. 信号 $e(t)=u(t)-u(t-1), h(t)=u(t)-u(t-1), r(t)=e(t)\ast h(t)$，则 $r(2)=$ <Blank>$0$</Blank>。
+
+1. 非周期信号 $f(t)$ 傅里叶变换存在的充分条件是在无限区间内满足绝对可积条件，此绝对可积条件的数学表达式为 <Blank>$\int_{-\infty}^{+\infty} |f(t)| \mathrm{d}t < \infty$</Blank>。
+
+1. 已知离散时间信号 $\cos\left(\frac\pi2 n\right)+\sin\left(\frac\pi3 n\right)$，计算其周期 <Blank>$12$</Blank>。
+
+1. $\int_{-\infty}^t e^{-2\tau}\delta(\tau)\mathrm{d}\tau=$ <Blank>$u(t)$</Blank>。
+
+1. 离散时间信号 $x(n)$ 通过单位样值响应为 $\delta(n)+\delta(n-1)$ 的线性时不变因果系统后，所得的零状态响应为 <Blank>$x(n)+x(n-1)$</Blank>。
+
+1. 如果一 LTI 系统的单位冲激响应 $h(t)=u(t)$，则当该系统的输入信号为 $tu(t)$ 时，其零状态响应为<Blank>$\frac12 t^2u(t)$</Blank>。
+
+1. 求信号 $x(t)=\cos\left(\frac12 t\right)+\sin(t)$ 的偶分量形式为 <Blank>$\cos\left(\frac12 t\right)$</Blank>。
+
+1. 已知 $f_1(t)=u(t+0.5)-u(t-0.5)$ 和 $f_2(t)=\cos(\pi t), t\in (-0.5, 0.5)$， 用 $f_2(t)$ 近似表示 $f_1(t)$ ，即 $f_1(t) \approx C_{12}f_2(t)$ ，则相关系数 $C_{12}$ 为 <Blank>$\frac4\pi$</Blank>。
+
+1. 已知某线性时不变系统在相同初始条件下，当激励为 $u(t)$ 时的完全响应为 $r_1(t)=(2e^{-t}-e^{-3t})u(t)$，当激励为 $0.5u(t)$ 时的完全响应 $r_2(t)=(e^{-t}-2e^{-3t})u(t)$，则在相同初始条件下当激励为 $2u(t)$ 时系统的完全响应 $r_3(t)=$ <Blank>$(4e^{-t}+e^{-3t})u(t)$</Blank>。
+
+1. 已知 $f(t)\leftrightarrow F(\omega)=\frac{E\tau}2 \mathrm{Sa}\left(\frac{\omega\tau}2\right)$ ，求 的傅里叶变换<Blank>$\frac{E\tau}4 \mathrm{Sa}\left(\frac{\omega\tau}4\right)$</Blank>。
+
+1. 设 $f(t)\leftrightarrow F(\omega)$， 利用傅里叶变换性质求 $F(\omega)e^{-\mathrm{j}2\omega}$ 的反变换式 <Blank>$f(t-2)$</Blank>。
+
+1. $x_1(n)=\delta(n)+3\delta(n-1), x_2(n)=4\delta(n)+3\delta(n-1)$， 则 $x_1(n)\otimes x_2(n)=$ <Blank>$4\delta(n)+15\delta(n-1)+9\delta(n-2)$ 或 $\left\{ \underset{\substack{\uparrow\\ n=0}}{4}, 15,9\right\}$</Blank>。
+
+1. 信号 $x(t)=e^{\mathrm{j}10t}$ <Blank>是</Blank> （是/否）为周期信号。
+
+1. 信号 $\frac1t$ 的傅里叶变换为 <Blank>$-\mathrm{j}\pi \mathrm{sgn}(\omega)$ 或 $\mathrm{j}\pi \mathrm{sgn}(-\omega)$</Blank>。（提示：利用对称性）
+
+
+## 二、（6 分）
+判断系统 $r(t)=e(t)u(t)$ 的线性、时不变性和因果性。
+
+<Solution>
+    ### 线性
+
+    $e_1(t)\rightarrow r_1(t)=e_1(t)u(t)$
+
+    $e_2(t)\rightarrow r_2(t)=e_2(t)u(t)$
+
+    由于 $A_1e_1(t)+A_2e_2(t)\rightarrow [A_1e_1(t)+A_2e_2(t)]u(t)\\=A_1e_1(t)u(t)+A_2e_2(t)u(t)=A_1r_1(t)+A_2r_2(t)$
+
+    所以系统是**线性**的。
+
+    ### 时不变性
+    先经系统：$e(t)u(t)$
+
+    再时移：$e(t-t_0)u(t-t_0)$
+
+    先时移：$e(t-t_0)$
+
+    再经系统：$e(t-t_0)u(t)$
+
+    二者不相等，系统是**时变**的。
+
+    ### 因果性
+    输出不超前输入，所以系统是**因果**的。
+</Solution>
+
+## 三、（8 分）
+
+线性时不变系统框图如图 1 所示，已知子系统 $H_1$ 的单位冲激响应 $h_1(t)=u(t)$， $H_2$ 的单位冲激响应 $h_2(t)=\delta(t-1)$。
+
+1. 计算激励信号 $e_1=u(t)-u(t-1)$ 通过子系统 $H_1$ 的响应 $r_1(t)$。
+<Solution>
+    $r_1(t)=e_1(t)\otimes h_1(t)\qquad$ （2 分）
+
+    $r_1(t) = [u(t)-u(t-1)]\otimes u(t)=tu(t)-(t-1)u(t-1)\qquad$（2 分）
+</Solution>
+2. 求总系统的单位冲激响应。
+<Solution>
+    $h(t)=\delta(t)+h_1(t)+h_1(t)\otimes h_2(t)\qquad$（2 分）
+
+    $h(t)=\delta(t)+u(t)+u(t-1)\qquad$（2 分）
+</Solution>
+
+## 四、（8 分）
+已知信号 $x(t)$ 图形如图 2 所示，信号 $y(t)=\sin(\pi t)$，试画出下列信号图形：
+1. $f_1(t)=x''(t)$
+<Solution>
+    $f_1(t)=x''(t)$ 如下图所示（3 分）
+</Solution>
+2. $f_2(t)=f_1(2t)\cdot y(t)$
+<Solution>
+    画出图像 $f_1(2t)$ 得 2 分，$f_2(t)$ 得 3 分。
+
+</Solution>
+
+## 五、（10 分）
+已知系统框图如图3所示。
+
+1. 写出描述该系统的微分方程。
+<Solution>
+    $r(t)=-2\int r(t)\mathrm{d}t-2\iint r(t)\mathrm{d} t+e(t)$
+
+    $\frac{\mathrm{d}^2 r(t)}{\mathrm{d}t^2}=-2 \frac{\mathrm{d}r(t)}{\mathrm{d}t}-3r(t)+\frac{\mathrm{d}^2 e(t)}{\mathrm{d}t^2}$
+
+    $\frac{\mathrm{d}^2 r(t)}{\mathrm{d}t^2} + 2 \frac{\mathrm{d}r(t)}{\mathrm{d}t}+3r(t)=\frac{\mathrm{d}^2 e(t)}{\mathrm{d}t^2}\qquad $ （2分）
+</Solution>
+2. 求该系统的冲激响应。
+<Solution>
+    求冲激响应为：
+
+    $e(t)\rightarrow \delta(t), r(t)\rightarrow h(t)$，得 $\frac{\mathrm{d}^2 h(t)}{\mathrm{d}t^2} + 2 \frac{\mathrm{d}h(t)}{\mathrm{d}t}+3h(t)=\frac{\mathrm{d}^2 \delta(t)}{\mathrm{d}t^2}$
+
+    **方法一**：
+
+    令 $\frac{\mathrm{d}^2 \hat{h}(t)}{\mathrm{d}t^2} + 2 \frac{\mathrm{d}\hat{h}(t)}{\mathrm{d}t}+3\hat{h}(t)= \delta(t)$
+
+    特征根为 $\alpha_1=-1+\mathrm{j}\sqrt2, \quad \alpha_2=-1-\mathrm{j}\sqrt2\qquad $（2 分）
+
+    则：$\hat{h}=e^{-t}\left[C_1\cos\left(\sqrt2 t\right) +C_2\sin\left(\sqrt2 t\right) \right]u(t)\qquad$ （2 分）
+
+    得 $C_1=0, C_2=\frac{\sqrt2}2, \quad \hat{h}(t)=\frac{\sqrt2}2e^{-t}\sin\left(\sqrt2 t\right)u(t)\qquad$ （2 分）
+
+    或 $D_1 = -\frac{\sqrt2}4\mathrm{j}, D_2=\frac{\sqrt2}4\mathrm{j},\quad \hat{h}(t)=\left[-\frac{\sqrt2}4\mathrm{j}e^{(-1+\mathrm{j}\sqrt2)t}+ \frac{\sqrt2}4\mathrm{j}e^{(-1-\mathrm{j}\sqrt2)t}\right]u(t)$
+
+    $h(t)=\hat{h}''(t)\qquad$ （1 分）
+
+    $\hat{h}'(t)=e^{-t}\left[\cos\left(\sqrt2 t\right) - \frac{\sqrt2\sin\left(\sqrt2 t\right)}2\right]u(t)$
+
+    $h(t)=\hat{h}''(t)=\delta(t)-e^{-t}\left[2\cos\left(\sqrt2 t\right) + \frac{\sqrt2\sin\left(\sqrt2 t\right)}2\right]u(t)\qquad $ （计算 1 分）
+
+    **方法二**：
+
+    特征根为 $\alpha_1=-1+\mathrm{j}\sqrt2, \quad \alpha_2=-1-\mathrm{j}\sqrt2\qquad $（2 分）
+
+    设 $h(t)=e^{-t}\left[C_1\cos\left(\sqrt2 t\right) + C_2\sin\left(\sqrt2 t\right)\right]u(t) + C_3\delta(t)\qquad$ （4 分）
+
+    或 $h(t)=e^{-t}\left[D_1e^{(-1+\mathrm{j}\sqrt2)t} + D_2e^{(-1-\mathrm{j}\sqrt2)t}\right]u(t) + D_3\delta(t)\qquad$ 
+
+    将 $h(t)$ 代入上述微分方程，整理得：
+    $\begin{cases}
+    4\sqrt2 C_2-2C_1=0\\
+    3C_3 + 2C_1+\sqrt2 C_2-C_1=0\\
+    2C_3+C_1=0\\
+    C_3 =1
+    \end{cases}$
+
+    $\therefore C_1=-2, C_2=-\frac{\sqrt2}2, C_3=1$
+
+    $h(t)=\delta(t)-e^{-t}\left[2\cos\left(\sqrt2 t\right) + \frac{\sqrt2\sin\left(\sqrt2 t\right)}2\right]u(t)\qquad $ （包括计算， 共 2 分）
+
+    或 $D_1 = -1+\mathrm{j}\frac{\sqrt2}4, D_2=-1-\mathrm{j}\frac{\sqrt2}4, D_3=1$
+
+    $h(t)=\left[\left(-1+\mathrm{j}\frac{\sqrt2}4\right)e^{(-1+\mathrm{j}\sqrt2)t} + \left(-1-\mathrm{j}\frac{\sqrt2}4\right) e^{(-1-\mathrm{j}\sqrt2)t}\right]u(t)+\delta(t)$
+</Solution>
+
+## 六、（10 分）
+
+求如图 4 所示信号 $f_1(t)$ 的频谱。（要求：必须利用傅里叶变换的时域微分性质，其他方法不得分）
+
+<Solution>
+    **解题方法 1：使用二次微分**
+
+    $f_1(t)$ 一阶微分 $f_1'(t)$ 的波形如图所示。（2 分）
+
+    $f_1''(t)$ 的波形如图所示。（2 分）
+
+    由图可写出 （2 分）
+    
+    $f''(t)=\delta(t+4)-\delta(t+2)-\delta(t-2)+\delta(t-4)$
+
+    $f''(t)\leftrightarrow e^{\mathrm{j}4\omega} -e^{\mathrm{j}2\omega} - e^{-\mathrm{j}2\omega} + e^{-\mathrm{j}4\omega}$
+
+    又因为 $\mathcal{F}\left[f''(t)\right]\bigl|_{\omega=0}=\int_{-\infty}^{\infty}f'(t)\mathrm{d}t=0$，所以
+
+    $F(\omega)=\frac1{(\mathrm{j}\omega)^2}\mathcal{F}[f''(t)]\\=\frac1{(\mathrm{j}\omega)^2}e^{\mathrm{j}4\omega} -e^{\mathrm{j}2\omega} - e^{-\mathrm{j}2\omega} + e^{-\mathrm{j}4\omega}\qquad\text{（2分）}\\=-\frac2{\omega^2}(\cos4\omega-\cos2\omega)\qquad\text{（2分，不用继续化简）}\\=\frac4{\omega^2} \sin3\omega\sin\omega$
+
+    **解题方法 2：**
+
+    $f_1(t)$ 一阶微分 $f_1'(t)$ 的波形如图所示。（2 分）
+
+    $F(\omega)=\frac1{\mathrm{j}\omega} \mathcal{F}[f'(t)]\\=\frac1{\mathrm{j}\omega}\left[2\mathrm{Sa}(\omega)e^{\mathrm{j}3\omega}-2\mathrm{Sa}(\omega)e^{-\mathrm{j}3\omega}\right]\qquad$ （4 分）
+
+    **上式中，仅写出了 $F(\omega)=\frac1{\mathrm{j}\omega} \mathcal{F}[f'(t)]$ 不给分。**
+
+    $F(\omega)=\frac4{\omega^2} \sin3\omega\sin\omega\qquad$（4 分，最终结果）
+
+    **上式中，未整理得最终结果，不给分。**
+</Solution>
+
+## 七、（8 分）
+
+已知信号 $x(t)=3\cos\left(\pi t+\frac\pi4\right)-2\cos\left(2\pi t+\frac\pi6\right)+2\sin\left(4\pi t+\frac\pi3\right)$：
+1. 画出 $x(t)$ 的单边幅度频谱图 $C_n$ 与相位频谱图 $\varphi_n$
+2. 画出 $x(t)$ 的双边幅度频谱图 $|F_n|$ 与相位频谱图 $\psi_n$
+
+<Solution>
+$x(t)=3\cos\left(\pi t+\frac\pi4\right)-2\cos\left(2\pi t+\frac\pi6\right)+2\sin\left(4\pi t+\frac\pi3\right)\\=3\cos\left(\pi t+\frac\pi4\right)+2\cos\left(2\pi t-\frac{5\pi}6\right)+2\sin\left(4\pi t+\frac\pi3\right)$
+
+单边幅度谱
+
+单边相位谱
+
+双边幅度谱
+
+双边相位谱
+
+</Solution>
+
+## 八、（10 分）
+
+1. 直流信号 $x_0(t)=1$ 的傅里叶变换可以表示为 $X_0(\omega)=2\pi \delta(\omega)$，根据直流频移性质求信号 $x_1(t)=e^{\mathrm{j}2t}$ 的傅里叶变换 $X_1(\omega)$。
+<Solution>
+    根据频移性质，$x_1(t)=e^{\mathrm{j}2t}$ 的傅里叶变换为 $X_1(\omega)=X_0(\omega-2)=2\pi\delta(\omega-2)\qquad$ （2 分）
+</Solution>
+2. 信号 $x_2(t)=\cos(2t)$ 利用欧拉公式可以表示为 $x_2(t)=\frac12 e^{-\mathrm{j}2t}+\frac12 e^{\mathrm{j}2t}$，求 $x_2(t)$ 的傅里叶变换 $X_2(\omega)$，并画出 $X_2(\omega)$ 的图形，即信号 $x_2(t)=\cos(2t)$ 的频谱图。
+<Solution>
+    $x_2(t)=\frac12 e^{-\mathrm{j}2t}+\frac12 e^{\mathrm{j}2t}$ 的傅里叶变换为 $X_2(\omega)=\frac12 X_0(\omega+2)+\frac12 X_0(\omega-2)=\pi\delta(\omega+2)+\pi\delta(\omega-2)\qquad$ （4 分）
+
+    $X_2(\omega)$ 的图形，即信号 $x_2(t)=\cos(2t)$ 的频谱图如下图所示。（4 分） 
+</Solution>
