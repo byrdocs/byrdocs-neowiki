@@ -1,0 +1,306 @@
+---
+时间: 2026-2027学年第一学期
+科目: 计算机系统基础
+阶段: 期中
+类型: 本科
+学院:
+  - 计算机学院（国家示范性软件学院）
+---
+
+## 一、（20 分）单项选择题
+
+1. 在 x86-64 机器上，TMax 表示的值为 <Slot />。
+
+<Choices>
+  <Option>$2^{63}$</Option>
+  <Option>$2^{63} - 1$</Option>
+  <Option>$2^{64} - 1$</Option>
+  <Option>$2^{64}$</Option>
+</Choices>
+
+2. 执行下列 C 代码后，变量 `c` 和 `d` 的值为 <Slot />。
+
+```c
+unsigned a = 0xffffffff;
+unsigned b = 2;
+int c = a;
+int d = b + c;
+printf("%d, %d\n", c, d);
+```
+
+<Choices>
+  <Option>$-1$ 和 $1$</Option>
+  <Option>$2^{64} - 1$ 和 $1$</Option>
+  <Option>$-1$ 和 $2^{64} + 1$</Option>
+  <Option>$2^{64} - 1$ 和 $2^{64} + 1$</Option>
+</Choices>
+
+3. 用 gcc 编译 C 语言程序生成在 x86-64 上运行的 64 位程序，给数据类型 `int`、`float`、`long`、`char *` 分配的字节数分别是 <Slot />。
+
+<Choices>
+  <Option>4、8、4、8</Option>
+  <Option>4、2、8、1</Option>
+  <Option>4、4、8、8</Option>
+  <Option>4、8、4、1</Option>
+</Choices>
+
+4. 用 gcc 编译下面 C 程序，然后执行，其结果是 <Slot />。
+
+```c
+#include <stdio.h>
+int main() {
+    char x = 0x82;
+    printf("x = %d\n", x);
+    return 0;
+}
+```
+
+<Choices>
+  <Option>x = 130</Option>
+  <Option>x = 83</Option>
+  <Option>x = -125</Option>
+  <Option>x = -126</Option>
+</Choices>
+
+5. 在 Linux 下，把可执行程序 foo 反汇编生成类似于汇编代码格式的文本文件的命令是 <Slot />。
+
+<Choices>
+  <Option>`disas foo > foo.s`</Option>
+  <Option>`disas foo foo.s`</Option>
+  <Option>`objdump -d foo foo.s`</Option>
+  <Option>`objdump -d foo > foo.s`</Option>
+</Choices>
+
+6. 已知 IEEE754 单精度浮点数的值为 0xC0B00000，那么它的十进制为 <Slot />。
+
+<Choices>
+  <Option>$-5.5$</Option>
+  <Option>$-2.75$</Option>
+  <Option>$-0.5$</Option>
+  <Option>$-0.75$</Option>
+</Choices>
+
+7. 在 Linux/x86-64 环境下，调用函数 `func(a, b, c)` 的 `call` 指令执行前存放参数 `b` 的寄存器是 <Slot />。
+
+<Choices>
+  <Option>`%rax`</Option>
+  <Option>`%rbx`</Option>
+  <Option>`%rsi`</Option>
+  <Option>`%rdi`</Option>
+</Choices>
+
+8. 下列关于在 Linux 中 GCC 编译器使用的叙述中，正确的是 <Slot />。
+
+<Choices>
+  <Option>GCC 第 2 步是预处理，对 `#include`、`#define` 等预处理命令进行处理</Option>
+  <Option>执行 `gcc foo.c -o bar -Og` 命令行，将编译 `foo.c` 生成可执行文件 `bar`</Option>
+  <Option>执行 `gcc -c -Og foo.c` 命令行，将编译 `foo.c` 生成汇编文件 `foo.s`</Option>
+  <Option>执行 `gcc -Og bar -o foo.c` 命令行，将编译 `foo.c` 生成可执行文件 `bar`</Option>
+</Choices>
+
+9. C 语言有如下声明：
+
+```c
+int array[6] = {10, 20, 30, 40, 50, 60};
+```
+
+假设编译器把变量 `array` 放到 `%rcx` 寄存器中，且已知 `%rbx` 的值为 2，把 `array[2]` 的值传送到 `%edx` 寄存器中的指令是 <Slot />。
+
+<Choices>
+  <Option>`leal (%rcx, %rbx, 4), %edx`</Option>
+  <Option>`leal (%rbx, %rcx, 4), %edx`</Option>
+  <Option>`movl (%rbx, %rcx, 4), %edx`</Option>
+  <Option>`movl (%rcx, %rbx, 4), %edx`</Option>
+</Choices>
+
+10. 正确指出下列 3 条指令对错的是 <Slot />。
+
+`subw %ax, (%ebp)`、`addl %rbx, (%rcx)`、`testq (%rsi, %rcx, %rdi), %rax`
+
+<Choices>
+  <Option>错、对、错</Option>
+  <Option>错、对、对</Option>
+  <Option>对、对、错</Option>
+  <Option>错、错、错</Option>
+</Choices>
+
+## 二、（18 分）
+
+若某机器仅为 7 位，有符号数（`int`）用补码表示，依据
+
+```c
+int z;
+int x = -11;
+unsigned y = x;
+```
+
+填写下表：
+
+| 表达式 | 十进制表示 | 二进制表示 |
+| --- | --- | --- |
+| 零 | `0` | (11) <Blank /> |
+| `z` | (12) <Blank /> | `1000101` |
+| `x` | `-11` | (13) <Blank /> |
+| `y` | (14) <Blank /> | (15) <Blank /> |
+| Tmax（补码最大值） | (16) <Blank /> | (17) <Blank /> |
+| Tmin（补码最小值） | (18) <Blank /> | (19) <Blank /> |
+
+## 三、（27 分）
+
+使用 GDB 调试工具调试某程序，表 1 给出了部分内存区间的存储内容，表 2 给出了部分寄存器的值，顺序执行表 3 的每一条指令，回答下列问题。
+
+**表 1**
+
+| 内存地址 | 存储内容 |
+| --- | --- |
+| `0x7fffffffe378:` | `0x01  0x06  0x40  0x00  0xb8  0x00  0x9a  0x00` |
+| `0x7fffffffe380:` | `0x40  0x00  0x00  0x00  0x00  0x00  0x00  0x00` |
+| `0x7fffffffe388:` | `0x00  0x24  0x7b  0xba  0x92  0xcd  0xa6  0x50` |
+
+**表 2**
+
+| 寄存器 | 值 | 寄存器 | 值 |
+| --- | --- | --- | --- |
+| `%rax` | `0x0` | `%rsi` | `0x7fffffffe380` |
+| `%rbx` | `0x0` | `%rdi` | `0x64` |
+| `%rcx` | `0x0` | `%rsp` | `0x7fffffffe378` |
+| `%rdx` | `0x7fffffffe488` | `%rip` | `0x4005b6` |
+
+**表 3**
+
+| 指令 | 回答问题 |
+| --- | --- |
+| `lea (%rdi,%rdi,8),%rdx` | (20) `%rdx =` <Blank /> |
+| `lea (%rdx,%rdx,1),%rax` | (21) `%rax =` <Blank /> |
+| `add $0x10,%rax` | (22) `ZF =` <Blank /> |
+| `mov (%rsi),%rcx` | (23) `%rcx =` <Blank /> |
+| `lea 0x7(%rcx),%rdx` | (24) `%rdx =` <Blank /> |
+| `test %rcx,%rcx` | (25) `SF =` <Blank /> |
+| `cmovns %rcx,%rdx` 注：条件传送 | (26) `%rdx =` <Blank /> |
+| `sar $0x3,%rdx` | (27) `%rdx =` <Blank /> |
+| `mov %rdx,(%rsi)` 注：小端方式，按字节从小到大依次 8 字节 | (28) `(%rsi) =` <Blank /> |
+
+## 四、（20 分）
+
+C 语言函数的部分代码如下所示，用 GCC 编译之生成汇编代码和内存内容如下所示，分析汇编代码，完成 (1) ~ (5) 填空。
+
+**C 代码**
+
+```c
+int foo(int x, int i)
+{
+    switch(i)
+    {
+        case 1: (1); break;
+        case 2: (2);
+        case 3: (3);
+        case 5: (4); break;
+        case 0: x &= 1;
+        default: (5)
+    }
+    return x;
+}
+```
+
+**汇编代码**
+
+```asm
+00000000004004a8 <foo>:
+  4004a8:  movl    %edi,%edx
+  4004aa:  cmpl    $0x5,%esi
+  4004ad:  ja      4004d4 <foo+0x2c>
+  4004af:  movl    %esi,%eax
+  4004b1:  jmpq    *0x400690(,%rax,8)
+  4004b8:  subl    $0xa,%edx
+  4004bb:  shl     $0x3,%edx
+  4004be:  jmp     4004d6 <foo+0x2e>
+  4004c0:  addl    $0x5,%edx
+  4004c3:  movl    %edx,%eax
+  4004c5:  shrl    $0x1f,%eax
+  4004c8:  leal    (%rdx,%rax,1),%eax
+  4004cb:  movl    %eax,%edx
+  4004cd:  sarl    %edx
+  4004cf:  jmp     4004d6 <foo+0x2e>
+  4004d1:  andl    $0x1,%edx
+  4004d4:  addl    %esi,%edx
+  4004d6:  movl    %edx,%eax
+  4004d8:  retq
+```
+
+**内存**
+
+```text
+0x400690:   0x00000000004004d1   0x00000000004004b8
+0x4006a0:   0x00000000004004c0   0x00000000004004c8
+0x4006b0:   0x00000000004004d4   0x00000000004004cd
+0x4006c0:   0x000000000040060b   0x2c646c25203d2078
+```
+
+1. <Blank />
+2. <Blank />
+3. <Blank />
+4. <Blank />
+5. <Blank />
+
+## 五、（15 分）
+
+C 语言函数 `fabc` 的部分代码如下所示，用 GCC 编译之生成汇编代码如下所示，分析汇编代码，完成 (1) ~ (5) 填空。
+
+**C 代码**
+
+```c
+long fabc(long *array, long n) {
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        if (  (1)  )
+        {
+            (2)
+        } else
+            (3)
+        if (  (4)  )
+            return  (5) ;
+    }
+    return -1;
+}
+```
+
+**汇编代码**
+
+```asm
+fabc:
+    movl    $0, %ecx
+    jmp     .L2
+.L6:
+    movslq  %ecx, %rdx
+    leaq    (%rdi,%rdx,8), %r8
+    movq    (%r8), %rdx
+    movq    %rsi, %r9
+    subq    %rax, %r9
+    movq    (%rdi,%r9,8), %r9
+    cmpq    %r9, %rdx
+    jne     .L3
+    movq    %r9, (%r8)
+    jmp     .L4
+.L3:
+    addq    %rax, %rdx
+    movq    %rdx, (%r8)
+.L4:
+    movq    -8(%rdi,%rsi,8), %rdx
+    cmpq    %rdx, (%r8)
+    jg      .L5
+    addl    $1, %ecx
+.L2:
+    movslq  %ecx, %rax
+    cmpq    %rsi, %rax
+    jl      .L6
+    movq    $-1, %rax
+.L5:
+    rep ret
+```
+
+1. <Blank />
+2. <Blank />
+3. <Blank />
+4. <Blank />
+5. <Blank />
