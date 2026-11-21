@@ -20,6 +20,7 @@
     </g>
     <g font-family="serif" font-size="15" fill="black">
       <text x="64" y="147">0</text>
+      <text x="60" y="87">1</text>
       <text x="126" y="148">1</text>
       <text x="176" y="148">2</text>
       <text x="241" y="135" font-style="italic">t</text>
