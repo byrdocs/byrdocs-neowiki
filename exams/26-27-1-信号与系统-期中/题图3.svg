@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="240" viewBox="0 0 380 240">
+  <rect width="380" height="240" fill="white"/>
+
+  <!-- 坐标轴 -->
+  <g stroke="black" fill="none" stroke-width="1.6">
+    <!-- t轴 -->
+    <line x1="40" y1="180" x2="345" y2="180"/>
+    <polygon points="345,180 335,176 335,184" fill="black" stroke="none"/>
+    <!-- f(t)轴 -->
+    <line x1="120" y1="215" x2="120" y2="30"/>
+    <polygon points="120,30 116,40 124,40" fill="black" stroke="none"/>
+
+    <!-- 刻度线 -->
+    <line x1="70" y1="180" x2="70" y2="174"/>
+    <line x1="170" y1="180" x2="170" y2="174"/>
+    <line x1="220" y1="180" x2="220" y2="174"/>
+    <line x1="270" y1="180" x2="270" y2="174"/>
+    <line x1="120" y1="130" x2="126" y2="130"/>
+    <line x1="120" y1="80" x2="126" y2="80"/>
+
+    <!-- 辅助虚线 -->
+    <line x1="170" y1="80" x2="170" y2="180" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="120" y1="80" x2="170" y2="80" stroke-width="1" stroke-dasharray="4 4"/>
+
+    <!-- 三角形折线：(-1,0) -> (0,1) -> (1,2) -> (3,0) -->
+    <polyline points="70,180 170,80 270,180" stroke-width="2.2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 标注 -->
+  <g font-family="serif" font-size="14" fill="black" text-anchor="middle">
+    <text x="66" y="199">-1</text>
+    <text x="108" y="198">0</text>
+    <text x="170" y="199">1</text>
+    <text x="220" y="199">2</text>
+    <text x="270" y="199">3</text>
+    <text x="108" y="135">1</text>
+    <text x="108" y="85">2</text>
+  </g>
+  <g font-family="serif" font-style="italic" font-size="15" fill="black">
+    <text x="350" y="185">t</text>
+    <text x="132" y="34">f(t)</text>
+  </g>
+</svg>
