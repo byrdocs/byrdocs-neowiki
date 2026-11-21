@@ -37,15 +37,25 @@
     <line class="axis" x1="449" y1="180" x2="716" y2="180" marker-end="url(#arrow)" />
     <line class="axis" x1="580" y1="290" x2="580" y2="70" marker-end="url(#arrow)" />
     <line class="dash" x1="464" y1="105" x2="686" y2="105" />
-    <text class="tick" x="448" y="110">2</text>
+    <line class="dash" x1="464" y1="142.5" x2="686" y2="142.5" />
+    <line class="dash" x1="464" y1="217.5" x2="686" y2="217.5" />
+    <line class="dash" x1="464" y1="255" x2="686" y2="255" />
+    <text class="tick" x="458" y="110" text-anchor="end">2</text>
+    <text class="tick" x="458" y="147.5" text-anchor="end">1</text>
+    <text class="tick" x="458" y="222.5" text-anchor="end">-1</text>
+    <text class="tick" x="458" y="260" text-anchor="end">-2</text>
     <text class="tick" x="564" y="198">0</text>
     <path class="wave" d="M 484.0,180.0 L 484.0,105.0 L 508.0,105.0 L 508.0,255.0 L 532.0,255.0 L 532.0,105.0 L 556.0,105.0 L 556.0,255.0 L 580.0,255.0 L 580.0,105.0 L 604.0,105.0 L 604.0,255.0 L 628.0,255.0 L 628.0,105.0 L 652.0,105.0 L 652.0,255.0 L 676.0,255.0 L 676.0,180.0" />
   </g>
-  <!-- Placeholder box -->
+  <!-- (c) -->
   <g>
     <text class="label" x="69" y="390">(c)</text>
-    <rect class="box-dash" x="75" y="420" width="270" height="190" />
-    <text class="empty-hint" x="210" y="522" text-anchor="middle">（忘了）</text>
+    <line class="axis" x1="79" y1="515" x2="346" y2="515" marker-end="url(#arrow)" />
+    <line class="axis" x1="210" y1="630" x2="210" y2="400" marker-end="url(#arrow)" />
+    <line class="dash" x1="94" y1="440" x2="316" y2="440" />
+    <text class="tick" x="78" y="445">1</text>
+    <text class="tick" x="215" y="533">0</text>
+    <path class="wave" d="M 114.0,440.0 L 126.0,440.0 L 126.0,590.0 L 150.0,590.0 L 150.0,440.0 L 174.0,440.0 L 174.0,590.0 L 198.0,590.0 L 198.0,440.0 L 222.0,440.0 L 222.0,590.0 L 246.0,590.0 L 246.0,440.0 L 270.0,440.0 L 270.0,590.0 L 294.0,590.0 L 294.0,440.0 L 306.0,440.0" />
   </g>
 
   <!-- (d) -->
