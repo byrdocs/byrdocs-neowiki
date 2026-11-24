@@ -1,0 +1,51 @@
+<svg width="420" height="320" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Edges: bottom {} to level 1 {b}, {c}, {a} -->
+  <line x1="210" y1="280" x2="90" y2="210" stroke="#475569" stroke-width="1.5"/>
+  <line x1="210" y1="280" x2="210" y2="210" stroke="#475569" stroke-width="1.5"/>
+  <line x1="210" y1="280" x2="330" y2="210" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- Edges: level 1 to level 2 {b,c}, {a,b}, {a,c} -->
+  <!-- {b} -> {b,c}, {a,b} -->
+  <line x1="90" y1="210" x2="90" y2="120" stroke="#475569" stroke-width="1.5"/>
+  <line x1="90" y1="210" x2="210" y2="120" stroke="#475569" stroke-width="1.5"/>
+  <!-- {c} -> {b,c}, {a,c} -->
+  <line x1="210" y1="210" x2="90" y2="120" stroke="#475569" stroke-width="1.5"/>
+  <line x1="210" y1="210" x2="330" y2="120" stroke="#475569" stroke-width="1.5"/>
+  <!-- {a} -> {a,b}, {a,c} -->
+  <line x1="330" y1="210" x2="210" y2="120" stroke="#475569" stroke-width="1.5"/>
+  <line x1="330" y1="210" x2="330" y2="120" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- Edges: level 2 to top {a,b,c} -->
+  <line x1="90" y1="120" x2="210" y2="50" stroke="#475569" stroke-width="1.5"/>
+  <line x1="210" y1="120" x2="210" y2="50" stroke="#475569" stroke-width="1.5"/>
+  <line x1="330" y1="120" x2="210" y2="50" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- Nodes -->
+  <!-- Top -->
+  <circle cx="210" cy="50" r="5" fill="#64748b"/>
+  <text x="210" y="34" font-size="14" text-anchor="middle" fill="#1e293b">{a, b, c}</text>
+
+  <!-- Level 2 -->
+  <circle cx="90" cy="120" r="5" fill="#64748b"/>
+  <text x="66" y="125" font-size="14" text-anchor="end" fill="#1e293b">{b, c}</text>
+
+  <circle cx="210" cy="120" r="5" fill="#64748b"/>
+  <text x="224" y="125" font-size="14" text-anchor="start" fill="#1e293b">{a, b}</text>
+
+  <circle cx="330" cy="120" r="5" fill="#64748b"/>
+  <text x="348" y="125" font-size="14" text-anchor="start" fill="#1e293b">{a, c}</text>
+
+  <!-- Level 1 (elements of W highlighted) -->
+  <circle cx="90" cy="210" r="5" fill="#2563eb"/>
+  <text x="66" y="215" font-size="14" text-anchor="end" fill="#1e293b">{b}</text>
+
+  <circle cx="210" cy="210" r="5" fill="#2563eb"/>
+  <text x="196" y="215" font-size="14" text-anchor="end" fill="#1e293b">{c}</text>
+
+  <circle cx="330" cy="210" r="5" fill="#2563eb"/>
+  <text x="348" y="215" font-size="14" text-anchor="start" fill="#1e293b">{a}</text>
+
+  <!-- Bottom -->
+  <circle cx="210" cy="280" r="5" fill="#2563eb"/>
+  <text x="210" y="302" font-size="14" text-anchor="middle" fill="#1e293b">∅</text>
+</svg>
