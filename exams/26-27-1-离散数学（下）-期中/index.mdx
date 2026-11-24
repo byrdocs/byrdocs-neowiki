@@ -5,41 +5,149 @@
 类型: 本科
 学院:
 - 计算机学院
+答案完成度: 完整可靠
 ---
 
-## 一、
-设 $R=\{(x,y)\mid x-y+2>0,\ x-y-2<0\}$ 是实数集上的二元关系。判断关系 $R$ 是否具有自反性、对称性、反对称性和传递性，并说明理由。
+## 1. [4 points]
 
-## 二、
-设集合 $A=\{1,2,3\}$。
-1. 写出集合 $A$ 上的所有等价关系。
-2. 在集合 $A\times A$ 上定义二元关系 $R$：对任意 $(u,v),(x,y)\in A\times A$，$(u,v)R(x,y)$ 当且仅当 $u+y=v+x$。证明 $R$ 是 $A\times A$ 上的等价关系。
-3. 确定关系 $R$ 在集合 $A\times A$ 上的划分。
+Let $R=\{(x,y)\mid x-y+2>0,\ x-y-2<0\}$ be a relation on the set of real numbers. Determine whether the relation $R$ is reflexive, symmetric, antisymmetric, and/or transitive. **Give reasons.**
 
-## 三、
+<Solution>
+    - 自反，理由是 $x-x+2>0$ 且 $x-x-2<0$。
+    - 对称，理由是：若 $x-y+2>0$，则左式移动到右边后可推出 $0>y-x-2$；若 $x-y-2<0$，可推出 $0<y-x+2$。所以是对称的。
+</Solution>
+
+## 2. [15 points]
+
+Let $A=\{1,2,3\}$,
+
+1. Give all equivalence relations on $A$. (5 points)
+2. Define a binary relation $R$ on $A\times A$, $\forall (u,v),(x,y)\in A\times A$, $(u,v)R(x,y) \iff u+y=x+v$. Prove that $R$ is an equivalence relation on $A\times A$. (5 points)
+3. Determine the partition induced by $R$ on $A\times A$. (5 points)
+
+<Solution>
+    1. $\{\{1\},\{2\},\{3\}\};\quad \{\{1,2\},\{3\}\};\quad \{\{1,3\},\{2\}\};\quad \{\{2,3\},\{1\}\};\quad \{\{1,2,3\}\}$
+
+    2. 等价关系从 1）导出，每个 1 分，共 5 个
+       - **自反性**：对任意 $(u,v)\in A\times A$，有 $u+v=u+v$，故 $(u,v)R(u,v)$。
+       - **对称性**：设 $(u,v)R(x,y)$，即 $u+y=x+v$。等式两边交换即为 $x+v=u+y$，也就是 $x+y$ 与 $u+v$ 的关系对称成立，故 $(x,y)R(u,v)$。
+       - **传递性**：设 $(u,v)R(x,y)$ 且 $(x,y)R(s,t)$，则
+
+         $$u-v=x-y \text{ 且 } x-y=s-t \implies u-v=s-t \implies u+t=s+v$$
+
+         故 $(u,v)R(s,t)$。
+
+       三条性质都成立，所以 $R$ 是 $A\times A$ 上的等价关系。
+
+    3. 划分：
+
+       $$\{\{(3,1)\},\ \{(2,1),(3,2)\},\ \{(1,1),(2,2),(3,3)\},\ \{(1,2),(2,3)\},\ \{(1,3)\}\}$$
+</Solution>
+
+## 3. [10 points]
 
 <Figure src="题图3.svg" float>
-    题图3
+    Figure 1
 </Figure>
 
-下图为关系 $R$ 的有向图。
+The figure below shows the directed graph of the relation $R$.
 
-1. 计算 $R^2$。
-2. 求 $R$ 的对称闭包。
-3. 用 Warshall 算法求 $R$ 的传递闭包。
+1. Compute $R^2=?$ [3 points]
+2. Find the symmetric closure of $R$. [2 points]
+3. Use Warshall's algorithm to find the transitive closure of $R$. [5 points]
 
-## 四、
-1. 设集合 $S=\{a,b,c\}$，在 $S$ 的幂集上定义偏序关系 $\{(A,B)\mid A\subseteq B\}$，求该偏序的覆盖关系。
-（注：设 $(P,\preceq)$ 是偏序集。若 $x \prec y$，且不存在元素 $z\in S$ 满足 $x \prec z \prec y$，则称元素 $y$ 覆盖元素 $x$。所有满足“$y$ 覆盖 $x$”的有序对 $(x,y)$ 构成的集合，称为 $(P,\preceq)$ 的覆盖关系）
+<Solution>
+    1. $R^2=\{(5,3),(1,3),(2,1),(2,4),(3,3)\}$（3 分，错一个扣 1 分）
+    2. $s(R)=\{(1,3),(3,1),(1,5),(5,1),(2,5),(5,2),(3,3),(4,5),(5,4)\}$（2 分，错一个扣 1 分）
+    3. Warshall 算法（列出 3 个不等矩阵 $W_0, W_1, W_5$ 得 3 分，少一个扣 1 分）：
 
-2. 画出幂集 $\mathcal{P}(S)$ 的 Hasse 图。设 $W=\{\emptyset,\{a\},\{b\},\{c\}\}$（其中 $W\subseteq \mathcal{P}(S)$），求集合 $W$ 的极大元、极小元、最小上界和最大下界。
+       $$
+       W_0=\begin{bmatrix}
+       0 & 0 & 1 & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 1 & 0 \\
+       0 & 0 & 1 & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 0 & 0 \\
+       1 & 0 & 0 & 1 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 0 & 0
+       \end{bmatrix},\quad
+       W_1=\begin{bmatrix}
+       0 & 0 & 1 & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 1 & 0 \\
+       0 & 0 & 1 & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 0 & 0 \\
+       1 & 0 & 1 & 1 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 0 & 0
+       \end{bmatrix},\quad
+       W_2=W_1
+       $$
 
-## 五、
-设集合 $G=\{1,2,3,4\}$，定义二元运算 $\odot$：
-$a\odot b=(a\cdot b)\bmod 5,\quad \forall a,b\in G$，$\cdot$ 为普通乘法。证明 $(G,\odot)$ 是阿贝尔群。
+       $$
+       W_3=W_1,\quad W_4=W_1,\quad
+       W_5=\begin{bmatrix}
+       0 & 0 & 1 & 0 & 0 & 0 \\
+       1 & 0 & 1 & 1 & 1 & 0 \\
+       0 & 0 & 1 & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 0 & 0 \\
+       1 & 0 & 1 & 1 & 0 & 0 \\
+       0 & 0 & 0 & 0 & 0 & 0
+       \end{bmatrix},\quad
+       W_6=W_5
+       $$
 
-## 六、
-设 $S=\{a,b\}$ 和 $T=\{u,v\}$ 是两个半群，各自的二元运算如下：
+       $$t(R)=\{(1,3),(2,1),(2,3),(2,4),(2,5),(3,3),(5,1),(5,3),(5,4)\}$$
+</Solution>
+
+## 4. [11 points]
+
+1. What is the covering relation of the partial order $\{(A,B)\mid A\subseteq B\}$ defined on the power set of $S$, where $S=\{a,b,c\}$? [5 points]
+2. Draw the Hasse diagram of the power set $P(S)$. Let $W=\{\emptyset,\{a\},\{b\},\{c\}\}$, where $W\subseteq P(S)$. Find the maximal elements, minimal elements, least upper bound, and greatest lower bound of $W$. [6 points]
+
+<Solution>
+    1. 覆盖关系（2 分）：
+
+       $$
+       \begin{aligned}
+       &(\emptyset,\{a\}),\ (\emptyset,\{b\}),\ (\emptyset,\{c\}),\\
+       &(\{a\},\{a,b\}),\ (\{a\},\{a,c\}),\ (\{b\},\{a,b\}),\ (\{b\},\{b,c\}),\ (\{c\},\{a,c\}),\ (\{c\},\{b,c\}),\\
+       &(\{a,b\},S),\ (\{a,c\},S),\ (\{b,c\},S),\quad S=\{a,b,c\}
+       \end{aligned}
+       $$
+
+    2. 哈斯图（3 分）：
+
+       <Figure src="解答4.svg" />
+
+       极元（6 分）：
+
+       | 名称 | 结果 |
+       | --- | --- |
+       | 极大元 maximal elements | $\{a\},\{b\},\{c\}$ |
+       | 极小元 minimal elements | $\emptyset$ |
+       | 上界 upper bounds | 只有 $\{a,b,c\}$ |
+       | 最小上界 least upper bound | $\{a,b,c\}=S$ |
+       | 下界 lower bounds | 只有 $\emptyset$ |
+       | 最大下界 greatest lower bound | $\emptyset$ |
+</Solution>
+
+## 5. [10 points]
+
+Let $G=\{1,2,3,4\}$. Define binary operation $\odot$ by $a\odot b=(a\cdot b)\bmod 5$, $\forall a,b\in G$, $\cdot$ is the ordinary multiplication. Prove that $(G,\odot)$ is an Abelian group.
+
+<Solution>
+    1. Closure: For $a,b\in\{1,2,3,4\}$, $\gcd(ab,5)=1$, so $(ab)\bmod 5\in\{1,2,3,4\}$.
+    2. Associativity: Integer multiplication mod 5 is associative.
+    3. Identity: $e=1$.
+    4. Inverses: $1^{-1}=1,\ 2^{-1}=3,\ 3^{-1}=2,\ 4^{-1}=4$.
+    5. Commutativity: $a\odot b=(ab)\bmod 5=(ba)\bmod 5=b\odot a$ for all $a,b\in G$.
+
+    Thus $(G,\odot)$ is an Abelian group. (2 points for each step.)
+</Solution>
+
+## 6. [8 points]
+
+Let $S=\{a,b\}$ and $T=\{u,v\}$ be two semigroups with the following binary operations:
+
+Operation $*$ on $S$:
 
 $$
 \begin{array}{c|cc}
@@ -50,6 +158,8 @@ b & b & a
 \end{array}
 $$
 
+Operation $\cdot$ on $T$:
+
 $$
 \begin{array}{c|cc}
 \cdot & u & v \\
@@ -59,25 +169,67 @@ v & u & v
 \end{array}
 $$
 
-1. 写出积半群 $(S\times T,\odot)$ 的运算表。
-2. 判断 $S\times T$ 是否与 $\mathbb{Z}_4$（模 4 加法群）同构，并证明你的结论。
+<Solution>
+    **Step 1** operation table of $S\times T$ (4 points)
 
-## 七、
-设 $G=(\mathbb{Z}_6,+_6)$，即模 6 整数加法群。在 $G$ 上定义二元关系 $R$：$x\,R\,y \iff 2x\equiv 2y \pmod{6}$。
+    $$
+    \begin{array}{c|cccc}
+    \odot & (a,u) & (a,v) & (b,u) & (b,v) \\
+    \hline
+    (a,u) & (a,u) & (a,u) & (b,u) & (b,u) \\
+    (a,v) & (a,u) & (a,v) & (b,u) & (b,v) \\
+    (b,u) & (b,u) & (b,u) & (a,u) & (a,u) \\
+    (b,v) & (b,u) & (b,v) & (a,u) & (a,v)
+    \end{array}
+    $$
 
-1. 证明 $R$ 是 $G$ 上的同余关系。
-2. 构造商群 $G/R$。
-3. 找出 $\mathbb{Z}_6$ 的所有子群。
+    **Step 2** $S\times T$ is not isomorphic to $\mathbb{Z}_4$. (4 points)
 
-## 八、
-1. 设集合 $S=\mathbb{Z}$，二元运算定义为 $x*y=x$，则 $(S,*)$ 是 <Blank />（半群 / 含幺半群 / 群）。
-2. 设 $N$ 是群 $G$ 的正规子群，则商群 $G/N$ 上的群运算为 $(gN)(hN)=$ <Blank />
-3. 设 $(S,*)$ 是半群，子集 $T\subseteq S$ 是 $S$ 的子半群，当且仅当对任意 $t_1,t_2\in T$，<Blank />
-4. 在模 8 加法群 $G=\mathbb{Z}_8$ 中，设 $H=\{0,4\}$，则左陪集 $3+H=$ <Blank />
-5. 设集合 $S=\{1,2,3\}$，运算为 $x*y=\max\{x,y\}$，则子集 $T=\{2,3\}$ <Blank />（是 / 不是）子半群。
+    $\mathbb{Z}_4$ is a cyclic group, so every element is some power (multiple) of a generator; in particular $\mathbb{Z}_4$ is a group (has identity, every element invertible).
 
-## 九、
-设
+    In $S\times T$, $(a,v)$ is the identity, but $(a,u)$ or $(b,u)$ has no inverse. $S\times T$ is not a group, while $\mathbb{Z}_4$ is a group, they cannot be isomorphic as semigroups.
+</Solution>
+
+## 7. [12 points]
+
+Let $G=(\mathbb{Z}_6,+_6)$, the additive group of integers modulo 6. Define a binary relation $R$ on $G$ by $x\,R\,y \iff 2x\equiv 2y\pmod{6}$.
+
+<Solution>
+    1. Prove $R$ is a congruence. (4 points)
+
+       - **Reflexivity:** For any $x\in\mathbb{Z}_6$, $2x\equiv 2x\pmod{6}$, so $x\,R\,x$.
+       - **Symmetry:** If $x\,R\,y$, then $2x\equiv 2y\pmod{6}$, hence $2y\equiv 2x\pmod{6}$, so $y\,R\,x$.
+       - **Transitivity:** If $x\,R\,y$ and $y\,R\,z$, then $2x\equiv 2y$ and $2y\equiv 2z\pmod{6}$; by transitivity of congruence modulo 6, $2x\equiv 2z\pmod{6}$, so $x\,R\,z$. Hence $R$ is an equivalence relation.
+       - **Compatibility (congruence):** Suppose $a\,R\,b$ and $c\,R\,d$. Then $2a\equiv 2b$ and $2c\equiv 2d\pmod{6}$. Adding gives $2(a+c)\equiv 2(b+d)\pmod{6}$, i.e., $a+c\,R\,b+d$. Therefore $R$ is a congruence relation on $G$.
+
+    2. Quotient group. (4 points)
+
+       The equivalence classes are: $[0]=\{0,3\}$, $[1]=\{1,4\}$, $[2]=\{2,5\}$. Thus $G/R=\{[0],[1],[2]\}$, with quotient addition $[x]+[y]=[x+_6 y]$:
+
+       $$
+       \begin{array}{c|ccc}
+       + & [0] & [1] & [2] \\
+       \hline
+       [0] & [0] & [1] & [2] \\
+       [1] & [1] & [2] & [0] \\
+       [2] & [2] & [0] & [1]
+       \end{array}
+       $$
+
+    3. All subgroups of $\mathbb{Z}_6$: $\{0\}$, $\{0,3\}$, $\{0,2,4\}$, $\mathbb{Z}_6$. (4 points)
+</Solution>
+
+## 8. [10 points] Fill in the blanks.
+
+1. Let $S=\mathbb{Z}$ with binary operation defined by $x*y=x$. Then $(S,*)$ is a <Blank>semigroup</Blank> (semigroup / monoid / group).
+2. Suppose $N$ is a normal subgroup of $G$. The group operation on the quotient group $(G/N)$ is given by $(gN)(hN)=$ <Blank>$ghN$</Blank>.
+3. Let $(S,*)$ be a semigroup. A subset $T\subseteq S$ is a subsemigroup of $S$ if and only if for all $t_1,t_2\in T$, <Blank>$t_1*t_2\in T$</Blank>.
+4. In $G=\mathbb{Z}_8$ under addition modulo 8, let $H=\{0,4\}$. The left coset $3+H=$ <Blank>$\{3,7\}$</Blank>.
+5. Let $S=\{1,2,3\}$ with operation $x*y=\max\{x,y\}$. The subset $T=\{2,3\}$ <Blank>is</Blank> (is / is not) a subsemigroup.
+
+## 9. [10 points]
+
+Let
 $$
 H=\begin{bmatrix}
 1 & 0 & 1\\
@@ -88,14 +240,71 @@ H=\begin{bmatrix}
 0 & 0 & 1
 \end{bmatrix}
 $$
+be a parity check matrix.
 
-1. 确定该 $(3,6)$ 群码的编码函数 $e_H:B^3\to B^6$。
-2. 求该编码的最小距离；该编码可以检测多少位错误？设 $d$ 是对应的最大似然译码函数，则该编码-译码系统 $(e,d)$ 可以纠正多少位错误？
-3. 借助译码表，使用最大似然译码函数对下列码字进行译码：
-(a) $011101$ (b) $101001$ (c) $110010$
+1. Determine the $(3,6)$ group code function $e_H(B^m)$.
+2. Find the minimum distance of $e$. How many errors will $e$ detect? Let $d$ be an associated maximum likelihood decoding function. How many errors that $(e,d)$ will correct?
+3. Decode the following words relative to a maximum likelihood decoding function with a decode table.
 
-## 十、
-设
+   (a) $011101$ &emsp; (b) $101001$ &emsp; (c) $110010$
+
+<Solution>
+    1. （2 分）
+
+       $$
+       \begin{bmatrix}
+       0 & 0 & 0 \\
+       0 & 0 & 1 \\
+       0 & 1 & 0 \\
+       0 & 1 & 1 \\
+       1 & 0 & 0 \\
+       1 & 0 & 1 \\
+       1 & 1 & 0 \\
+       1 & 1 & 1
+       \end{bmatrix}
+       \begin{bmatrix}
+       1 & 0 & 0 & 1 & 0 & 1 \\
+       0 & 1 & 0 & 1 & 1 & 0 \\
+       0 & 0 & 1 & 0 & 1 & 1
+       \end{bmatrix}
+       =
+       \begin{bmatrix}
+       0 & 0 & 0 & 0 & 0 & 0 \\
+       0 & 0 & 1 & 0 & 1 & 1 \\
+       0 & 1 & 0 & 1 & 1 & 0 \\
+       0 & 1 & 1 & 1 & 0 & 1 \\
+       1 & 0 & 0 & 1 & 0 & 1 \\
+       1 & 0 & 1 & 1 & 1 & 0 \\
+       1 & 1 & 0 & 0 & 1 & 1 \\
+       1 & 1 & 1 & 0 & 0 & 0
+       \end{bmatrix}
+       $$
+
+    2. 因为 minimum distance of $e$ 为 $3$，detect $2$，correct $1$。（2 分）
+
+    3. （译码表 3 分，结果 3 分）
+
+       $$
+       \begin{aligned}
+       000000\oplus N &= \{000000,\ 001011,\ 010110,\ 011101,\ 100101,\ 101110,\ 110011,\ 111000\} \\
+       000001\oplus N &= \{000001,\ 001010,\ 010111,\ 011100,\ 100100,\ 101111,\ 110010,\ 111001\} \\
+       000010\oplus N &= \{000010,\ 001001,\ 010100,\ 011111,\ 100111,\ 101100,\ 110001,\ 111010\} \\
+       000100\oplus N &= \{000100,\ 001111,\ 010010,\ 011001,\ 100001,\ 101010,\ 110111,\ 111100\} \\
+       001000\oplus N &= \{001000,\ 000011,\ 011110,\ 010101,\ 101101,\ 100110,\ 111011,\ 110000\} \\
+       010000\oplus N &= \{010000,\ 011011,\ 000110,\ 001101,\ 110101,\ 111110,\ 100011,\ 101000\} \\
+       100000\oplus N &= \{100000,\ 101011,\ 110110,\ 111101,\ 000101,\ 001110,\ 010011,\ 011000\} \\
+       100010\oplus N &= \{100010,\ 101001,\ 110100,\ 111111,\ 000111,\ 001100,\ 010001,\ 011010\}
+       \end{aligned}
+       $$
+
+       - $d(011101)=011$
+       - $d(101001)=001$ 或 $111$
+       - $d(110010)=110$
+</Solution>
+
+## 10. [10 points]
+
+Let
 $$
 H=\begin{bmatrix}
 1 & 1 & 0\\
@@ -105,7 +314,59 @@ H=\begin{bmatrix}
 0 & 0 & 1
 \end{bmatrix}
 $$
+be a parity check matrix.
 
-1. 找出 $e_H(B^2)$ 在 $B^5$ 中的所有左陪集。
-2. 对每个陪集，找出一个陪集首，并计算每个陪集首的伴随式。
-3. 利用伴随式，使用最大似然译码函数对码字 $01010$ 进行译码。
+1. Find all left cosets of $e_H(B^2)$ in $B^5$.
+2. For each coset, find a coset leader, and compute the syndrome of each leader.
+3. Decode the word $01010$ relative to a maximum likelihood decoding function using its syndrome.
+
+<Solution>
+    1. （4 分）
+
+       $$
+       \begin{bmatrix}
+       0 & 0 \\
+       0 & 1 \\
+       1 & 0 \\
+       1 & 1
+       \end{bmatrix}
+       \begin{bmatrix}
+       1 & 0 & 1 & 1 & 0 \\
+       0 & 1 & 0 & 1 & 1
+       \end{bmatrix}
+       =
+       \begin{bmatrix}
+       0 & 0 & 0 & 0 & 0 \\
+       0 & 1 & 0 & 1 & 1 \\
+       1 & 0 & 1 & 1 & 0 \\
+       1 & 1 & 1 & 0 & 1
+       \end{bmatrix}
+       $$
+
+       $$
+       \begin{aligned}
+       00000\oplus N &= \{00000,\ 01011,\ 10110,\ 11101\} \\
+       00001\oplus N &= \{00001,\ 01010,\ 10111,\ 11100\} \\
+       00010\oplus N &= \{00010,\ 01001,\ 10100,\ 11111\} \\
+       00100\oplus N &= \{00100,\ 01111,\ 10010,\ 11001\} \\
+       01000\oplus N &= \{01000,\ 00011,\ 11110,\ 10101\} \\
+       10000\oplus N &= \{10000,\ 11011,\ 00110,\ 01101\} \\
+       11000\oplus N &= \{11000,\ 10011,\ 01110,\ 00101\} \\
+       10001\oplus N &= \{10001,\ 11010,\ 00111,\ 01100\}
+       \end{aligned}
+       $$
+
+    2. （4 分）
+       - $00000 * H = 000$
+       - $00001 * H = 001$
+       - $00010 * H = 010$
+       - $00100 * H = 100$
+       - $01000 * H = 011$
+       - $10000 * H = 110$
+       - $11000 * H = 101$
+       - $10001 * H = 111$
+
+    3. （2 分）
+       - $01010 * H = 001$
+       - $01010 \oplus 00001 = 01011$，$d(01011)=01$
+</Solution>
