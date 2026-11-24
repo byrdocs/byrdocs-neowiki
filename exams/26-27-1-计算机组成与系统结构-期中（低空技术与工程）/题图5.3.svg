@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 56" width="264" height="56">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <style>
+    .cell { fill: #ffffff; stroke: #1f2933; stroke-width: 1.8; }
+    .label { fill: #1f2933; font-family: "Times New Roman", "Noto Serif CJK SC", "SimSun", serif; font-size: 18px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+  </style>
+
+  <rect x="12" y="10" width="84" height="36" class="cell" />
+  <text x="54" y="28" class="label">OP</text>
+
+  <rect x="96" y="10" width="42" height="36" class="cell" />
+  <text x="117" y="28" class="label">I</text>
+
+  <rect x="138" y="10" width="54" height="36" class="cell" />
+  <text x="165" y="28" class="label">X</text>
+
+  <rect x="192" y="10" width="60" height="36" class="cell" />
+  <text x="222" y="28" class="label">D</text>
+</svg>
