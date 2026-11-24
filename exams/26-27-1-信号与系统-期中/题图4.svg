@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="380" viewBox="0 0 520 380" role="img" aria-labelledby="title desc">
+  <title id="title">系统方框图与子系统单位冲激响应</title>
+  <desc id="desc">上方为子系统单位冲激响应 h_a(t)（0到2矩形脉冲）与 h_b(t)（1到2、高度1矩形脉冲）的波形图；下方为输入经 h_b 后接入 h_a 与 h_b 并联支路输出 y 的系统方框图。</desc>
+  <rect width="520" height="380" fill="white"/>
+
+  <!-- 左上：h_a(t) 波形 -->
+  <g id="plot-ha">
+    <g stroke="black" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <!-- x轴 (t) -->
+      <line x1="36" y1="130" x2="235" y2="130"/>
+      <polygon points="235,130 226,126 226,134" fill="black" stroke="none"/>
+      <!-- y轴 (h_a(t)) -->
+      <line x1="80" y1="168" x2="80" y2="34"/>
+      <polygon points="80,34 76,43 84,43" fill="black" stroke="none"/>
+      <!-- 刻度 -->
+      <line x1="130" y1="130" x2="130" y2="124"/>
+      <line x1="180" y1="130" x2="180" y2="124"/>
+      <!-- 矩形脉冲 0~2 -->
+      <polyline points="80,130 80,82 180,82 180,130" stroke-width="2.1"/>
+    </g>
+    <g font-family="serif" font-size="15" fill="black">
+      <text x="64" y="147">0</text>
+      <text x="60" y="87">1</text>
+      <text x="126" y="148">1</text>
+      <text x="176" y="148">2</text>
+      <text x="241" y="135" font-style="italic">t</text>
+      <text x="90" y="34" font-style="italic">h<tspan dy="3" font-size="11">a</tspan><tspan dy="-3">(t)</tspan></text>
+    </g>
+  </g>
+
+  <!-- 右上：h_b(t) 波形 -->
+  <g id="plot-hb">
+    <g stroke="black" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <!-- x轴 -->
+      <line x1="276" y1="130" x2="485" y2="130"/>
+      <polygon points="485,130 476,126 476,134" fill="black" stroke="none"/>
+      <!-- y轴 (h_b(t)) -->
+      <line x1="325" y1="168" x2="325" y2="44"/>
+      <polygon points="325,44 321,53 329,53" fill="black" stroke="none"/>
+      <!-- 高度虚线 -->
+      <line x1="325" y1="82" x2="375" y2="82" stroke-width="1.2" stroke-dasharray="6 5" stroke-linecap="butt"/>
+      <!-- 矩形脉冲 1~2, 高度 1 -->
+      <polyline points="375,130 375,82 425,82 425,130" stroke-width="2.1"/>
+    </g>
+    <g font-family="serif" font-size="15" fill="black">
+      <text x="309" y="147">0</text>
+      <text x="309" y="87">1</text>
+      <text x="371" y="148">1</text>
+      <text x="421" y="148">2</text>
+      <text x="315" y="34" font-style="italic">h<tspan dy="3" font-size="11">b</tspan><tspan dy="-3">(t)</tspan></text>
+    </g>
+  </g>
+
+  <!-- 下方：系统框图（严格按手稿圆圈节点与外标） -->
+  <g id="system-diagram">
+    <g stroke="black" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 输入箭头 -->
+      <line x1="118" y1="268" x2="158" y2="268"/>
+      <polygon points="158,268 149,264 149,272" fill="black" stroke="none"/>
+      <!-- 左侧 h_b 圆圈与连线 -->
+      <circle cx="195" cy="278" r="14"/>
+      <line x1="209" y1="278" x2="252" y2="278"/>
+      <!-- 并联分支竖线 -->
+      <line x1="252" y1="230" x2="252" y2="326"/>
+      <!-- 上支路 h_a -->
+      <line x1="252" y1="230" x2="294" y2="230"/>
+      <circle cx="308" cy="230" r="14"/>
+      <line x1="322" y1="230" x2="364" y2="230"/>
+      <!-- 下支路 h_b -->
+      <line x1="252" y1="326" x2="294" y2="326"/>
+      <circle cx="308" cy="326" r="14"/>
+      <line x1="322" y1="326" x2="364" y2="326"/>
+      <!-- 右侧汇合与输出 y -->
+      <line x1="364" y1="230" x2="364" y2="326"/>
+      <line x1="364" y1="278" x2="404" y2="278"/>
+    </g>
+    <g font-family="serif" font-size="16" fill="black">
+      <text x="138" y="292" text-anchor="middle" font-style="italic">input</text>
+      <text x="195" y="248" text-anchor="middle" font-style="italic">h<tspan dy="3" font-size="12">b</tspan></text>
+      <text x="308" y="204" text-anchor="middle" font-style="italic">h<tspan dy="3" font-size="12">a</tspan></text>
+      <text x="308" y="362" text-anchor="middle" font-style="italic">h<tspan dy="3" font-size="12">b</tspan></text>
+      <text x="415" y="283" font-style="italic">y</text>
+    </g>
+  </g>
+</svg>
