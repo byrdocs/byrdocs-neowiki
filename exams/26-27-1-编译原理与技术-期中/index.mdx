@@ -3,61 +3,76 @@
 科目: 编译原理与技术
 阶段: 期中
 类型: 本科
-学院:
-- 计算机学院
 ---
 
-## 一（20分）
+## 一、（10 分）
 
 某自动机有如下状态转换图：
 
-<Figure src="题图1.svg" />
+<Figure src="题图1.svg" float>
+    题图 1
+</Figure>
 
-1. 写出与之等价的右线性文法。
+1. （5 分）写出与之等价的右线性文法；
+2. （5 分）写出与之等价的正规表达式。
 
-2. 写出与之等价的正规表达式。
+## 二、（15 分）
 
-## 二（30分）
+无符号数的正规表达式为：
+
+$$
+(\mathrm{digit})^+(.(\mathrm{digit})^+)?(E(+ \mid -)?(\mathrm{digit})^+)?
+$$
+
+其中，$\mathrm{digit} \rightarrow 0 \mid 1 \mid \dots \mid 9$，`?` 表示可选。
+
+1. （7 分）写出与该正规表达式等价的正规文法；
+2. （8 分）根据上述正规文法，画出无符号数的状态转换图。
+
+## 三、（20 分）
 
 有如下文法 $G[S]$：
 
 $$
 \begin{aligned}
-S &\rightarrow AB \mid AC \mid m \\
-A &\rightarrow Aq \mid p \\
-B &\rightarrow rB \mid \varepsilon \\
-C &\rightarrow sC \mid n
+S &\rightarrow Sa \mid bA \\
+A &\rightarrow cAd \mid e
 \end{aligned}
 $$
 
-1. 判断该文法是否为 LL(1) 文法，说明理由。若不是，继续做（2）；若是，继续做（3）。
+1. （3 分）判断该文法是否为 LL(1) 文法，说明理由。
+2. （5 分）将该文法变换为等价的 LL(1) 文法 $G'$。
+3. （6 分）计算文法 $G'$ 中每个非终结符号的 FIRST 集合和 FOLLOW 集合。
+4. （6 分）为文法 $G'$ 构造 LL(1) 分析表。
 
-2. 将该文法变换为等价的 LL(1) 文法 $G'$。
+## 四、（25 分）
 
-3. 计算文法中每个非终结符号的 FIRST 集合和 FOLLOW 集合。
+有如下文法 $G[E]$：
 
-4. 为文法构造 LL(1) 分析表。
+$$
+\begin{aligned}
+E &\rightarrow E+T \mid T \\
+T &\rightarrow T*F \mid F \\
+F &\rightarrow (E) \mid \mathrm{id}
+\end{aligned}
+$$
 
-## 三（50分）
+1. （10 分）给出该文法的拓广文法，构造其 LR(0) 项目集规范族及识别其所有活前缀的 DFA。
+2. （5 分）判断该文法是否为 LR(0) 文法。若是，构造其 LR(0) 分析表；若不是，说明理由。
+3. （10 分）判断该文法是否为 SLR(1) 文法。若是，构造其 SLR(1) 分析表；若不是，说明理由。
+
+## 五、（30 分）
 
 有如下文法 $G[S]$：
 
 $$
 \begin{aligned}
-S &\rightarrow S+T \mid T \\
-T &\rightarrow -N \mid N \mid (N) \\
-N &\rightarrow n
+S &\rightarrow aAb \mid bA \\
+A &\rightarrow cA \mid c
 \end{aligned}
 $$
 
-1. 给出该文法的拓广文法。
-
-2. 构造文法 $G$ 的 LR(1) 项目集规范族及识别其所有活前缀的 DFA。
-
-3. 判断该文法是否为 LR(1) 文法，简述理由。若是，继续做（4）。
-
-4. 构造该文法的 LR(1) 分析表。
-
-5. 判断该文法是否为 SLR(1) 文法，简述理由。
-
-6. 判断该文法是否为 LALR(1) 文法，简述理由。
+1. （3 分）给出该文法的拓广文法；
+2. （12 分）构造其 LR(1) 项目集规范族及识别其所有活前缀的 DFA；
+3. （9 分）构造该文法的 LR(1) 分析表；
+4. （6 分）判断该文法是否为 LALR(1) 文法，说明理由。
