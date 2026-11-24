@@ -1,0 +1,32 @@
+name: VS Code Extension Tests
+
+on:
+  pull_request:
+    paths:
+      - 'vscode-extension/**'
+      - 'exams/**'
+      - '.github/workflows/extension-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extension:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: vscode-extension
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+          cache: pnpm
+          cache-dependency-path: vscode-extension/pnpm-lock.yaml
+      - run: pnpm install --ignore-workspace --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm test

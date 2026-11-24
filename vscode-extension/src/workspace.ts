@@ -43,6 +43,7 @@ export function getWikiWorkspaceFolderForUri(
     if (workspaceFolder && isWikiWorkspaceFolder(workspaceFolder)) {
       return workspaceFolder;
     }
+    return null;
   }
 
   return getWikiWorkspaceFolders()[0] || null;
