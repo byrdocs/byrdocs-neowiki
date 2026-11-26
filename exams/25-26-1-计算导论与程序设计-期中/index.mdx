@@ -283,6 +283,29 @@ NO
 
 内存限制 64 MB
 
+<Solution>
+
+```c
+int isOddEvenEqualed(int n)
+{
+    int sumOdd, sumEven, isOdd = 1;
+
+    sumOdd = sumEven = 0;
+    while (n != 0) {
+        if (isOdd)
+            sumOdd += n % 10;
+        else
+            sumEven += n % 10;
+        n /= 10;
+        isOdd = (isOdd + 1) % 2;
+    }
+
+    return sumOdd == sumEven;
+}
+```
+
+</Solution>
+
 ### 6-2 质因数数位之和
 
 每个大于 1 的正整数都能表示为素数的乘积。这个因数分解是唯一的，被称为素数分解（prime factorization）。例如，数字 18 的素数分解为 $2\times 3\times 3$，22 的素数分解为 $2\times 11$，其中每一个约数都是素数（质数），因此这些因数又叫质因数。其中某些正整数的各位数字之和等于其素数分解后所有质因数的各位数字之和。例如，数字 18 的各位数字之和为 $1+8=9$，而 18 的质因数的数字之和为 $2+3+3=8$，不满足条件。但数字 22 的各位数字之和为 $2+2=4$，质因数的数字之和为 $2+1+1=4$，满足条件。现请你实现一个函数，判断给定的正整数是否满足这一条件。
@@ -298,7 +321,7 @@ NO
 **函数接口定义**：
 
 ```c
-int     isSumOfDigitEqualed(int n) ;
+int     isSumOfDigitsEqualed(int n) ;
 ```
 
 其中 `n` 是用户传入的参数，代表待判断整数。`n` 的值不超过 `int` 的范围。如果 `n` 满足要求则函数返回 1，否则返回 0。
@@ -308,7 +331,7 @@ int     isSumOfDigitEqualed(int n) ;
 ```c
 #include <stdio.h>
 
-int     isSumOfDigitEqualed(int n) ;
+int     isSumOfDigitsEqualed(int n) ;
 
 int main()
 {
@@ -317,7 +340,7 @@ int main()
     scanf("%d", &t);
     while (t--){
         scanf("%d", &num);
-        if (isSumOfDigitEqualed(num))
+        if (isSumOfDigitsEqualed(num))
             printf("YES\n");
         else
             printf("NO\n");
@@ -349,6 +372,58 @@ NO
 时间限制 400 ms
 
 内存限制 64 MB
+
+<Solution>
+
+```c
+// 计算数字之和
+int digitSum(int num)
+{
+    int sum = 0;
+    while (num > 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+    return sum;
+}
+
+// 质因数分解并计算质因数的数字之和
+int primeFactorDigitSum(int n)
+{
+    int i, sum = 0;
+    i = 2;
+    while (n != 1) {
+        if (n % i == 0) {
+            sum += digitSum(i);
+            n /= i;
+        } else {
+            i += 1;
+        }
+    }
+    return sum;
+}
+
+int isSumOfDigitsEqualed(int n)
+{
+    int sumDigits, sumPrimeDigits;
+
+    sumDigits = digitSum(n);
+    sumPrimeDigits = primeFactorDigitSum(n);
+
+    return sumDigits == sumPrimeDigits ? 1 : 0;
+}
+```
+
+其中 `isSumOfDigitsEqualed` 也可简写为：
+
+```c
+int isSumOfDigitsEqualed(int n)
+{
+    return digitSum(n) == primeFactorDigitSum(n);
+}
+```
+
+</Solution>
 
 ## 四、编程题（每题 100 分，共 300 分）
 
@@ -383,6 +458,27 @@ NO
 内存限制 64 MB
 
 栈限制 8192 KB
+
+<Solution>
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int i, n, solution = 0;
+
+    scanf("%d", &n);
+    for (i = n + 1; solution == 0; i++) {
+        if (i % 83 == 2 && i % 89 == 3 && i % 97 == 2)
+            solution = i;
+    }
+    printf("%d\n", solution);
+    return 0;
+}
+```
+
+</Solution>
 
 ### 7-2 最大公约数比较
 
@@ -425,6 +521,42 @@ NO
 
 栈限制 8192 KB
 
+<Solution>
+
+```c
+#include <stdio.h>
+
+// 原参考代码中省略了 gcd 函数实现，此处补充欧几里得算法实现
+int gcd(int a, int b)
+{
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
+}
+
+int main()
+{
+    int n, number1, number2, count;
+    scanf("%d", &n);
+    while (n--) {
+        count = 0;
+        scanf("%d%d", &number1, &number2);
+        while (number1 != 0 && number2 != 0) {
+            if (gcd(number1, number2) > 100)
+                count++;
+            scanf("%d%d", &number1, &number2);
+        }
+        printf("%d\n", count);
+    }
+    return 0;
+}
+```
+
+</Solution>
+
 ### 7-3 最值问题
 
 给出 $N$ 个数，求出这 $N$ 个数中最大值和次大值。注意这里的次大值必须严格小于最大值。也就是说输入中可能有多个最大值相等，但我们认为这些相等的值为一个最大值。同理次大值也一样，可能有多个相等的次大值。输入保证 $N$ 个数中至少存在两个不同的数。
@@ -461,3 +593,43 @@ NO
 内存限制 64 MB
 
 栈限制 8192 KB
+
+<Solution>
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int T, count, N, max1, max2, num;
+    scanf("%d", &T);
+    while (T--) {
+        scanf("%d", &N);
+        scanf("%d", &max1);
+        count = 1;
+        do {
+            scanf("%d", &num);
+            count++;
+        } while (num == max1); // 找到一个不同的值
+        if (num > max1) {
+            max2 = max1;
+            max1 = num;
+        } else {
+            max2 = num; // 给出当前的最大值和次大值
+        }
+        for (; count < N; count++) {
+            scanf("%d", &num);
+            if (num > max1) {
+                max2 = max1;
+                max1 = num;
+            } else if (num > max2 && num != max1) {
+                max2 = num;
+            }
+        }
+        printf("%d %d\n", max1, max2);
+    }
+    return 0;
+}
+```
+
+</Solution>
